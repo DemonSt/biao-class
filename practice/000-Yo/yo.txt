@@ -1,17 +1,11 @@
 Yooo
 Yo
 在Git Bash上输入如下命令，将本地仓库与远程仓库关联
-
 $git remote add github https://github.com/DemonSt/biao-class.git
-
-注意：这里需要注意的是上面命令中的github 是远程仓库在本地Git的名称，默认情况下一般命名为origin，但是这里为了区分不同平台的远程仓库（例如：Gitee平台的远程仓库在本地可以命名为gitee），所以为github。另外J·需要改为你自己
-
+注意：这里需要注意的是上面命令中的github 是远程仓库在本地Git的名称，默认情况下一般命名为origin，但是这里为了区分不同平台的远程仓库（例如：Gitee平台的远程仓库在本地可以命名为gitee），所以为github。另外需要改为你自己
 查看本地仓库与远程仓库的关联详情
-
 $ git remote -v
-
 解除远程仓库
 删除与远程仓库的关联就比较简单了，直接输入以下命令： 
 $ git remote rm github
-
 注意： 以上github 是远程仓库在本地Git中的名称。
