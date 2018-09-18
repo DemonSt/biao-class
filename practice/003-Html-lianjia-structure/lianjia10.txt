@@ -14,7 +14,7 @@ header
                      行 小轮播图
               行 搜索
                      行 搜索类型
-                             链接 *5
+                              链接 *5
                      行 搜索栏
       行 声明
             列 链接 *3
@@ -34,8 +34,8 @@ container
       行 推荐区 二手房
                     行 头
                         列 float left
-                             行 标题
-                             行 描述
+                                     行 标题
+                                     行 描述
                         列 float right
                              链接
                     行 卡片组 *4
@@ -49,10 +49,10 @@ container
       行 推荐区 小区 背景灰
                         行 头
                              列 float left
-                                  行 标题
-                                  行 描述
+                                          行 标题
+                                          行 描述
                              列 float right
-                                  链接
+                                           链接
                         行 卡片组 *3
                                    行 图片
                                    行 详情
@@ -63,10 +63,10 @@ container
       行 推荐区 新房 
                   行 头
                        列 float left
-                            行 标题
-                            行 描述
+                                    行 标题
+                                    行 描述
                        列 float right
-                            链接 
+                                     链接 
                   行 卡片组 *3
                              列 卡片 
                                    行 图片
@@ -76,20 +76,20 @@ container
                                    行 优惠 （可有可没有）
       行 口号
             列 float left
-                 口号
+                         口号
             列 float right
-                 行 描述
-                 行 查询栏
+                          行 描述
+                          行 查询栏
             
 footer
     行 link-group
-            列 float left
-                  链接 *8
-            列 float right
-                  客服电话
+                 列 float left
+                              链接 *8
+                 列 float right
+                              客服电话
     行 友情链接
             行 link-group
-                     列 链接 *10
+                        列 链接 *10
              行 分支链接组
                         行 链接 *20
     行 元信息
