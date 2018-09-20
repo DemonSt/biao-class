@@ -81,7 +81,7 @@ container
                                    row 优惠 （可有可没有）
       row 口号
             列 float left
-                         口号
+                         加粗
             列 float right
                           row 描述
                           row 查询栏
