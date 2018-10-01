@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            background: pink;
+            border: 2px solid red;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        div.col1, .col2 {
+            background: yellow;
+            border: 1px solid #000;
+        }
+        
+        .col1 {
+            width: 40%;
+        }
+        
+        .col2 {
+            width: 60%;
+        }
+
+        .row:before,
+        .row:after {
+            clear: both;
+            display: block;
+            content: '';
+        }
+    </style>
+</head>
+<body>
+     <div class="row">
+         <div class="col1 fl">熙洪氏</div>
+         <div class="col2 fr">伍声爹</div>
+     </div>
+</body>
+</html>

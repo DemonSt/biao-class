@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+          .parent {
+              border: solid 1px #000;
+          }
+        
+        div .a, .b, .c {
+            background: rgba(194, 138, 26, 0.067);
+            border: solid 2px pink;
+            width: 33.33333333%;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        div.parent::before,
+        div.parent::after {
+            display: block;
+            clear: both;
+            content: '';
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="a fl">A</div>
+        <div class="b fl">B</div>
+        <div class="c fl">C</div>
+    </div>
+</body>
+</html>
