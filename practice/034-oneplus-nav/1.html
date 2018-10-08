@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Oneolus-nav</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .row:before, .row:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .col {
+            float: left;
+        }
+
+        .link-group {
+            padding-left: 250px;
+            padding-right: 100px;
+        }
+
+        .link-group a {
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-block;
+            vertical-align: top;
+            margin: 1.3em 2.5em 1em;
+            color: #828282;;
+            font-weight: 100;
+
+        }
+
+        .col-6 {
+            width: 25%;
+            padding-left: 70px;
+        }
+
+        .col-1 {
+            width: 4.166666666666667%;
+        }
+
+        .col-17 {
+            width: 70.83333333333333%;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            /* background: #aaa; */
+            overflow: hidden;
+        }
+
+        #logo {
+            color: #eb0028;
+            position: relative;
+            top: 15px;
+            left: 150px;
+    
+        }
+
+        .col-6 .icon {
+            padding: 10px;
+        }
+
+        .icon {
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row nav global">
+        <div class="container">
+            <div class="col col-1" id="logo">1</div>
+            <div class="col col-17 link-group">
+                <a href="#">OnePlus6</a>
+                <a href="#">商城</a>
+                <a href="#">服务</a>
+                <a href="#">博客</a>
+                <a href="#">论坛</a>
+            </div>
+            <div class="col col-6">
+                <img class="icon" src="https://dummyimage.com/30x30/cccccc/fff">
+                <img class="icon" src="https://dummyimage.com/30x30/cccccc/fff">
+                <img class="icon" src="https://dummyimage.com/30x30/cccccc/fff">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
