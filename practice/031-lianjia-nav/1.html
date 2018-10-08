@@ -6,12 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>lianjia.nav.global</title>
     <style>
+        /*  */
         * {
             box-sizing: border-box;
         }
 
         body {
             margin: 0;
+            background: #777;
+            font-family: sans-serif;
+            font-size: 13px;
+            color: #fff;
+        }
+
+        .nav a {
+            display: inline-block;
+            padding: .2em .4em;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1020px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .row:before, .row:after {
@@ -28,128 +46,91 @@
             text-align: right;
         }
 
-        .col-1 {
-            width: 4.166666666666667%;
-        }
-
-        .col-2 {
-            width: 8.333333333333333%;
-        }
-
-        .col-3 {
-            width: 12.5%;
-        }
-
-        .col-4 {
-            width: 16.6666666666667%;
-        }
-
-        .col-5 {
-            width: 20.8333333333333%;
-        }
-
-        .col-6 {
-            width: 25%;
-        }
-
         .col-7 {
             width: 29.166666666667%;
-        }
-
-        .col-8 {
-            width: 33.3333333333333%;
-        }
-
-        .col-9 {
-            width: 37.5%;
-        }
-
-        .col-10 {
-            width: 41.666666666667%;
-        }
-
-        .col-11 {
-            width: 45.83333333333333%;
-        }
-
-        .col-12 {
-            width: 50%;
-        }
-
-        .col-13 {
-            width: 54.1666666666667%;
-        }
-
-        .col-14 {
-            width: 58.3333333333333%;
-        }
-
-        .col-15 {
-            width: 62.5%;
-        }
-
-        .col-16 {
-            width: 66.66666666666667%;
         }
 
         .col-17 {
             width: 70.83333333333333%;
         }
 
-        .col-18 {
-            width: 75%;
+        #logo {
+            display: inline-block;
+            width: 90px;
+            height: 50px;
+            /* background-color: rgba(0,0, 0, .3); */
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/spriteV2_new.png?index=20170526);
+            background-position: -4px -4px;
+            position: relative;
+            top: 18px;
         }
 
-        .col-19 {
-            width: 79.16666666667%;
+        .icon-location {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            /* background-color: rgba(0,0, 0, .3); */
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/spriteV2_new.png?index=20170526);
+            background-position: -184px -17px;
+            vertical-align: middle;
         }
 
-        .col-20 {
-            width: 83.33333333333%;
+        .icon-head {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            /* background-color: rgba(0,0, 0, .3); */
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/spriteV2_new.png?index=20170526);
+            background-position: -200px -20px;
+            vertical-align: middle;
         }
 
-        .col-21 {
-            width: 87.5%;
+        .auth {
+            font-size: 70%;
         }
 
-        .col-22 {
-            width: 91.666666666666667%;
+        .right {
+            margin-top: 25px;
         }
 
-        .col-23 {
-            width: 95.833333333333333%;
-        }
-
-        .col-24 {
-            width: 100%;
+        .location {
+            border: solid rgba(0, 0, 0, 0.3) 2px;
+            border-radius:25px; 
+            padding-right: 3px;
+            position: relative;
+            top: 3px;
+            background: rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
 <body>
     <div class="row nav global">
-        <div class="col col-7 left ">
-            <a href="#">logo</a>
-            <a href="#">北京</a>
-        </div>
-        <div class="col col-17 right ">
-            <div class="row">
-                <a href="#">登录</a>
-                <a href="#">注册</a>
+        <div class="container">
+            <div class="col col-7">
+                <a href="#" id="logo"></a>
+                <span class="location"><span class="icon-location"></span>北京</span>
             </div>
-            <div class="row">
-                <a href="#">二手房</a>
-                <a href="#">新房</a>
-                <a href="#">租房</a>
-                <a href="#">旅居</a>
-                <a href="#">海外</a>
-                <a href="#">小区</a>
-                <a href="#">经纪人</a>
-                <a href="#">指南</a>
-                <a href="#">房价</a>
-                <a href="#">工具</a>
-                <a href="#">经验</a>
-                <a href="#">发布房源</a>
-                <a href="#">企业汇</a>
+            <div class="col col-17 right ">
+                <div class="auth">
+                    <span class="icon-head"></span>
+                    <a href="#">登录</a>
+                    <a href="#">注册</a>
+                </div>
+                <div>
+                    <a href="#">二手房</a>
+                    <a href="#">新房</a>
+                    <a href="#">租房</a>
+                    <a href="#">旅居</a>
+                    <a href="#">海外</a>
+                    <a href="#">小区</a>
+                    <a href="#">经纪人</a>
+                    <a href="#">指南</a>
+                    <a href="#">房价</a>
+                    <a href="#">工具</a>
+                    <a href="#">经验</a>
+                    <a href="#">发布房源</a>
+                    <a href="#">企业汇</a>
+                </div>
             </div>
         </div>
     </div>
