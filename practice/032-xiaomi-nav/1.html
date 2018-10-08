@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mi-nav</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .row:before, .row:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        body a {
+            text-decoration: none;
+            font-family: sans-serif;
+            font-size: .7em;
+        }
+
+        .col-16 {
+            width: 66.66666666666667%;
+        }
+
+        .col-8 {
+            width: 33.3333333333333%;
+        }
+
+        .col {
+            float: left;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .container {
+            max-width: 1210px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .iconfont {
+            width: 20px;
+            height: 20px;
+            /* display: inline-block; */
+            background-image: url(https://dummyimage.com/20x20/#0084ff/fff)
+        }
+
+        .nav.global {
+            background: #333;
+            color: #b0b0b0;
+        }
+
+        .nav a,
+        .nav-item {
+            color: inherit;
+            padding: .8em .5em;
+            display: inline-block;
+        }
+
+        .nav a:after {
+            content: '';
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: #424242;
+            position: relative;
+            top: 2px;
+            left: .5em;
+        }
+
+        .nav a:last-of-type:after {
+            display: none;
+        }
+        
+        .nav-item {
+            padding-left: 30px;
+            padding-right: 30px;
+            background: #424242;
+            border-color: #424242;
+        }
+    </style>
+</head>
+<body>
+    <div class="row nav global">
+        <div class="container">
+            <div class="col col-16 left">
+                <a href="#">小米商城</a>
+                <a href="#">MIUI</a>
+                <a href="#">loT</a>
+                <a href="#">云服务</a>
+                <a href="#">金融</a>
+                <a href="#">有品</a>
+                <a href="#">小爱开放平台</a>
+                <a href="#">政企服务</a>
+                <a href="#">Select Region</a>
+            </div>
+            <div class="col col-8 right">
+                <a href="#">登录</a>
+                <a href="#">注册</a>
+                <a href="#">消息通知</a>
+                <button class="nav-item"><span class="iconfont"></span>购物车</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
