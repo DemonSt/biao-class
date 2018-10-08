@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>zhihu-nav</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #ddd;
+        }
+
+        .center::before, .center::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .col {
+            float: left;
+        }
+
+        .col-2 {
+            width: 8.333333333333333%;
+        }
+
+        .col-5 {
+            width: 20.8333333333333%;
+        }
+
+        .col-7 {
+            width: 29.166666666667%;
+        }
+
+        .col-10 {
+            width: 41.666666666667%;
+        }
+        
+        .center {
+            max-width: 1020px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .nav {
+            background: #fff;
+        }
+        
+        #logo {
+            color: #0084ff;
+            font-size: 30px;
+            padding-left: 10px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+
+        .link-group a {
+            text-decoration: none;
+            padding: 0 15px;
+            font-size: 15px;
+            line-height: 30px;
+        }
+
+        .link-group {
+            padding-top: 10px;
+        }
+
+        .first {
+            color: #444;
+        }
+
+        .color {
+            color: #8590a6;
+        }
+
+        .search {
+            position: relative;
+            top: 5px;
+
+        }
+
+        .sou {
+            width: 326px;
+            height: 35px;
+            margin-right: 10px;
+            border-radius: 3px;
+            background: #eee;
+        }
+
+        .but {
+            color: #fff;
+            background: #0084ff;
+            width: 60px;
+            height: 35px;
+            border-radius: 3px;
+        }
+
+        .icon.icon-1 {
+            margin-left: 120px;
+        }
+
+        .icon  {
+            margin: 8px 15px 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav global">
+        <div class="center">
+            <div class="col col-2" id="logo">知乎</div>
+            <div class="col col-5 link-group">
+                <a href="#" class="first">首页</a>
+                <a href="#" class="color">发现</a>
+                <a href="#" class="color">话题</a>
+            </div>
+            <form class="col col-10 search">
+                <input type="text" class="sou">
+                <button class="but">提问</button>
+            </form>
+            <div class="col col-7 but-group">
+                <div class="col icon icon-1"><img src="https://dummyimage.com/30x30/#0084ff/fff"></div>
+                <div class="col icon"><img src="https://dummyimage.com/30x30/#0084ff/fff"></div>
+                <div class="col icon"><img src="https://dummyimage.com/30x30/#0084ff/fff"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
