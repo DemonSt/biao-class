@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>豆瓣</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body, form {
+            margin: 0;
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            border: 0;
+        }
+
+        .row:before, .row:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .col {
+            float: left;
+        }
+
+        .col-1 {
+            width: 4.166666666666667%;
+        }
+
+        .col-2 {
+            width: 8.333333333333333%;
+        }
+
+        .col-3 {
+            width: 12.5%;
+        }
+
+        .col-4 {
+            width: 16.6666666666667%;
+        }
+
+        .col-5 {
+            width: 20.8333333333333%;
+        }
+
+        .col-6 {
+            width: 25%;
+        }
+
+        .col-7 {
+            width: 29.166666666667%;
+        }
+
+        .col-8 {
+            width: 33.3333333333333%;
+        }
+
+        .col-9 {
+            width: 37.5%;
+        }
+
+        .col-10 {
+            width: 41.666666666667%;
+        }
+
+        .col-11 {
+            width: 45.83333333333333%;
+        }
+
+        .col-12 {
+            width: 50%;
+        }
+
+        .col-13 {
+            width: 54.1666666666667%;
+        }
+
+        .col-14 {
+            width: 58.3333333333333%;
+        }
+
+        .col-15 {
+            width: 62.5%;
+        }
+
+        .col-16 {
+            width: 66.66666666666667%;
+        }
+
+        .col-17 {
+            width: 70.83333333333333%;
+        }
+
+        .col-18 {
+            width: 75%;
+        }
+
+        .col-19 {
+            width: 79.16666666667%;
+        }
+
+        .col-20 {
+            width: 83.33333333333%;
+        }
+
+        .col-21 {
+            width: 87.5%;
+        }
+
+        .col-22 {
+            width: 91.666666666666667%;
+        }
+
+        .col-23 {
+            width: 95.833333333333333%;
+        }
+
+        .col-24 {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1130px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+        /* 以上 全局样式 */
+        .nav.global {
+            background: #555;
+            color: #ddd;
+        }
+
+        .nav a {
+            color: inherit;
+            padding: 6px 10px;
+            font-size: 12px;
+            display: inline-block;
+        }
+
+        .header-nav a img {
+            padding: 20px 60px 20px 0px;
+        }
+
+        .header-nav {
+            background: #f0f6f3;
+        }
+
+        .header-nav .line-group a {
+            color: #037b82;
+            margin: 27px 30px 25px 0;
+            display: inline-block;
+            font-size: 15px;
+        }
+
+        .header-nav .line-group a:hover {
+            color: #fff;
+            background: #037b82;
+        }
+
+        input, button {
+            padding: 5px 15px;
+            margin-top: 20px;
+        }
+
+        .search input {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        .dynamic:after {
+            border-top: 1px solid #ddd;
+        }
+
+        .dynamic .like {
+            margin-right: 19px;
+            padding: 12px;
+            width: 52px;
+            line-height: 1.3;
+            text-align: center;
+            font-size: 13px;
+            color: #ca6445;
+            background: #fae9da;
+        }
+
+        .dynamic .title {
+            margin: 0 10px 10px 0;
+            display: inline-block;
+            font-size: 16px;
+            color: #259;
+        }
+
+        .dynamic .icon {
+            width: 70px;
+            margin: 10px;
+            vertical-align: middle;
+        }
+
+        .dynamic .describe {
+            padding: 10px 10px 0 10px;
+            font-size: 13px;
+        }
+
+        .rec .title {
+            padding: 10px 10px 10px 0;
+            color: #666;
+        }
+
+        .info {
+            color: #666;
+            margin: 10px 10px 10px 0;
+            display: inline-block;
+        }
+
+        .info:hover {
+            background: #259;
+            color: #fff;
+        }
+
+        .aside {
+            margin-bottom: 10px;
+        }
+
+        .row.rec.sm-dynamic {
+            margin: 20px 0;
+        }
+
+        .row.rec.sm-dynamic::after {
+            border: 1px solid #eee;
+        }
+
+        .sm-dynamic, {
+            padding: 10px 0;
+            margin-bottom: 10px;
+        }
+
+        .sm-icon {
+            margin: 5px 0;
+        }
+
+        .sm-des, 
+        .sm-info {
+            display: inline-block;
+            padding: 5px 16px;
+        }
+
+        .sm-des,
+        .btn {
+            color: #259;
+        }
+
+        .sm-info {
+            color: #666;
+        }
+
+        .bcc {
+            background: #f9f9f9;
+        }
+
+        .muted {
+            opacity: .5;
+        }
+
+        .footer .line-group a {
+            color: #259;
+        }
+
+        .footer .line-group a:hover {
+            color: #fff;
+            background: #769;
+        }
+
+        .footer .line-group a:after {
+            content: '·';
+            position: relative;
+            left: 2px;
+        }
+
+        .footer .line-group a:last-child:after {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="row nav global">
+        <div class="col col-16">
+            <a href="#">豆瓣</a>
+            <a href="#">读书</a>
+            <a href="#">电影</a>
+            <a href="#">音乐</a>
+            <a href="#">同城</a>
+            <a href="#">小组</a>
+            <a href="#">阅读</a>
+            <a href="#">FM</a>
+            <a href="#">时间</a>
+            <a href="#">豆品</a>
+            <a href="#">更多</a>
+        </div>
+        <div class="col col-8 text-right">
+            <a href="#">下载豆瓣客户端</a>
+            <a href="#">登录</a>
+            <a href="#">注册</a>
+        </div>
+    </div>
+    <div class="main">
+        <div class="header-nav">
+            <div class="row container">
+                <a href="#" class="col col-4" id="logo">
+                    <img src="https://img3.doubanio.com/f/shire/86033885f71d164e11b4ecc2fc06e945fe01c10b/pics/nav/lg_group_a11@2x.png" alt="">
+                </a>
+                <div class="col col-12 line-group">
+                    <a href="#">精选</a>
+                    <a href="#">文化</a>
+                    <a href="#">行摄</a>
+                    <a href="#">娱乐</a>
+                    <a href="#">时尚</a>
+                    <a href="#">生活</a>
+                    <a href="#">科技</a>
+                </div>
+                <form class="col col-8 search text-right">
+                    <input type="text">
+                    <button class="but" type="submit">搜</button>
+                </form>
+            </div>
+        </div>
+        <div>
+            <div class="row container">
+                <h1 class="title">讨论精选</h1>
+                <div class="row">
+                    <div class="col col-18">
+                        <div class="row dynamic">
+                            <div class="col col-4 like">5<br>喜欢</div>
+                            <div class="col col-20">
+                                <a href="#" class="title">猫的眼睛好好看啊！流量慎入</a>
+                                <div class="row bcc">
+                                    <div class="col col-4 icon">
+                                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539077139312&di=e42e35fde23b4a7894ed1e42b01659df&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F010d9256cab0ee6ac7252ce61a8d4d.jpg%402o.jpg" alt="">
+                                    </div>
+                                    <div class="col col-20 describe muted">来小组窥屏已久，今天忍不住晒眼睛了，跟宝石一样，好想看看你们的眼睛啊啊啊啊啊啊！小猫咪为什么这么可爱！</div>
+                                </div>
+                                <div class="row">
+                                    <a href="#" class="info">来自猫小组</a>
+                                    <span class="time muted">昨天16:51</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row dynamic">
+                            <div class="col col-4 like">5<br>喜欢</div>
+                            <div class="col col-20">
+                                <a href="#" class="title">猫的眼睛好好看啊！流量慎入</a>
+                                <div class="row bcc">
+                                    <div class="col col-4 icon">
+                                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539077139312&di=e42e35fde23b4a7894ed1e42b01659df&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F010d9256cab0ee6ac7252ce61a8d4d.jpg%402o.jpg" alt="">
+                                    </div>
+                                    <div class="col col-20 describe muted">来小组窥屏已久，今天忍不住晒眼睛了，跟宝石一样，好想看看你们的眼睛啊啊啊啊啊啊！小猫咪为什么这么可爱！</div>
+                                </div>
+                                <div class="row">
+                                    <a href="#" class="info">来自猫小组</a>
+                                    <span class="time muted">昨天16:51</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row dynamic">
+                            <div class="col col-4 like">5<br>喜欢</div>
+                            <div class="col col-20">
+                                <a href="#" class="title">猫的眼睛好好看啊！流量慎入</a>
+                                <div class="row bcc">
+                                    <div class="col col-4 icon">
+                                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539077139312&di=e42e35fde23b4a7894ed1e42b01659df&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F010d9256cab0ee6ac7252ce61a8d4d.jpg%402o.jpg" alt="">
+                                    </div>
+                                    <div class="col col-20 describe muted">来小组窥屏已久，今天忍不住晒眼睛了，跟宝石一样，好想看看你们的眼睛啊啊啊啊啊啊！小猫咪为什么这么可爱！</div>
+                                </div>
+                                <div class="row">
+                                    <a href="#" class="info">来自猫小组</a>
+                                    <span class="time muted">昨天16:51</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row dynamic">
+                            <div class="col col-4 like">5<br>喜欢</div>
+                            <div class="col col-20">
+                                <a href="#" class="title">猫的眼睛好好看啊！流量慎入</a>
+                                <div class="row bcc">
+                                    <div class="col col-4 icon">
+                                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539077139312&di=e42e35fde23b4a7894ed1e42b01659df&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F010d9256cab0ee6ac7252ce61a8d4d.jpg%402o.jpg" alt="">
+                                    </div>
+                                    <div class="col col-20 describe muted">来小组窥屏已久，今天忍不住晒眼睛了，跟宝石一样，好想看看你们的眼睛啊啊啊啊啊啊！小猫咪为什么这么可爱！</div>
+                                </div>
+                                <div class="row">
+                                    <a href="#" class="info">来自猫小组</a>
+                                    <span class="time muted">昨天16:51</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row dynamic">
+                            <div class="col col-4 like">5<br>喜欢</div>
+                            <div class="col col-20">
+                                <a href="#" class="title">猫的眼睛好好看啊！流量慎入</a>
+                                <div class="row bcc">
+                                    <div class="col col-4 icon">
+                                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539077139312&di=e42e35fde23b4a7894ed1e42b01659df&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F010d9256cab0ee6ac7252ce61a8d4d.jpg%402o.jpg" alt="">
+                                    </div>
+                                    <div class="col col-20 describe muted">来小组窥屏已久，今天忍不住晒眼睛了，跟宝石一样，好想看看你们的眼睛啊啊啊啊啊啊！小猫咪为什么这么可爱！</div>
+                                </div>
+                                <div class="row">
+                                    <a href="#" class="info">来自猫小组</a>
+                                    <span class="time muted">昨天16:51</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-6 rec">
+                        <div class="title">值得加入的小组</div>
+                        <div class="aside">
+                            <div class="row rec sm-dynamic">
+                                <div class="col col-4 sm-icon">
+                                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539077192996&di=b459c8aa881e006073b0cf98a520c128&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20150428%2Ftooopen_sy_120651113818.jpg" alt="">
+                                </div>
+                                <div class="col col-20">
+                                    <a href="#" class="sm-des">北京80后靠谱交友小组</a>
+                                    <div class="sm-info">
+                                        <span>23120个成员</span>
+                                        <a href="#" class="btn">+加入小组</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row rec sm-dynamic">
+                                <div class="col col-4 sm-icon">
+                                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539077192996&di=b459c8aa881e006073b0cf98a520c128&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20150428%2Ftooopen_sy_120651113818.jpg" alt="">
+                                </div>
+                                <div class="col col-20">
+                                    <a href="#" class="sm-des">北京80后靠谱交友小组</a>
+                                    <div class="sm-info">
+                                        <span>23120个成员</span>
+                                        <a href="#" class="btn">+加入小组</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row rec sm-dynamic">
+                                <div class="col col-4 sm-icon">
+                                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539077192996&di=b459c8aa881e006073b0cf98a520c128&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20150428%2Ftooopen_sy_120651113818.jpg" alt="">
+                                </div>
+                                <div class="col col-20">
+                                    <a href="#" class="sm-des">北京80后靠谱交友小组</a>
+                                    <div class="sm-info">
+                                        <span>23120个成员</span>
+                                        <a href="#" class="btn">+加入小组</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row rec sm-dynamic">
+                                <div class="col col-4 sm-icon">
+                                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539077192996&di=b459c8aa881e006073b0cf98a520c128&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20150428%2Ftooopen_sy_120651113818.jpg" alt="">
+                                </div>
+                                <div class="col col-20">
+                                    <a href="#" class="sm-des">北京80后靠谱交友小组</a>
+                                    <div class="sm-info">
+                                        <span>23120个成员</span>
+                                        <a href="#" class="btn">+加入小组</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row rec sm-dynamic">
+                                <div class="col col-4 sm-icon">
+                                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539077192996&di=b459c8aa881e006073b0cf98a520c128&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20150428%2Ftooopen_sy_120651113818.jpg" alt="">
+                                </div>
+                                <div class="col col-20">
+                                    <a href="#" class="sm-des">北京80后靠谱交友小组</a>
+                                    <div class="sm-info">
+                                        <span>23120个成员</span>
+                                        <a href="#" class="btn">+加入小组</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row rec sm-dynamic">
+                                <div class="col col-4 sm-icon">
+                                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539077192996&di=b459c8aa881e006073b0cf98a520c128&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20150428%2Ftooopen_sy_120651113818.jpg" alt="">
+                                </div>
+                                <div class="col col-20">
+                                    <a href="#" class="sm-des">北京80后靠谱交友小组</a>
+                                    <div class="sm-info">
+                                        <span>23120个成员</span>
+                                        <a href="#" class="btn">+加入小组</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row rec sm-dynamic">
+                                <div class="col col-4 sm-icon">
+                                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539077192996&di=b459c8aa881e006073b0cf98a520c128&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20150428%2Ftooopen_sy_120651113818.jpg" alt="">
+                                </div>
+                                <div class="col col-20">
+                                    <a href="#" class="sm-des">北京80后靠谱交友小组</a>
+                                    <div class="sm-info">
+                                        <span>23120个成员</span>
+                                        <a href="#" class="btn">+加入小组</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row rec sm-dynamic">
+                                <div class="col col-4 sm-icon">
+                                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539077192996&di=b459c8aa881e006073b0cf98a520c128&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20150428%2Ftooopen_sy_120651113818.jpg" alt="">
+                                </div>
+                                <div class="col col-20">
+                                    <a href="#" class="sm-des">北京80后靠谱交友小组</a>
+                                    <div class="sm-info">
+                                        <span>23120个成员</span>
+                                        <a href="#" class="btn">+加入小组</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row rec sm-dynamic">
+                                <div class="col col-4 sm-icon">
+                                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539077192996&di=b459c8aa881e006073b0cf98a520c128&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20150428%2Ftooopen_sy_120651113818.jpg" alt="">
+                                </div>
+                                <div class="col col-20">
+                                    <a href="#" class="sm-des">北京80后靠谱交友小组</a>
+                                    <div class="sm-info">
+                                        <span>23120个成员</span>
+                                        <a href="#" class="btn">+加入小组</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row paging"></div>
+    </div>
+    <div class="row footer">
+        <div class="container">
+            <div class="col col-12 muted">© 2005－2018 douban.com, all rights reserved 北京豆网科技有限公司</div>
+            <div class="col col-12 line-group text-right">
+                <a href="#">关于豆瓣</a>
+                <a href="#">在豆瓣工作</a>
+                <a href="#">联系我们</a>
+                <a href="#">免责声明</a>
+                <a href="#">帮助中心</a>
+                <a href="#">移动应用</a>
+                <a href="#">豆瓣广告</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
