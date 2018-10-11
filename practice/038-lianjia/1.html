@@ -576,6 +576,66 @@
         .footer {
             background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/footer-bg.jpg);
         }
+
+        .footer .link-group::after,
+        .estate-group::after {
+            border: solid .5px #555;
+        }
+
+        .footer .link-group a {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 300;
+            display: inline-block;
+            margin-right:15px;
+            padding: 30px 0;
+        }
+
+        .footer .fr {
+            color: #00ae66;
+            padding: 30px 0;
+        }
+
+        .footer .but-group {
+            margin: 10px 0 0;
+        }
+
+        .but-group button {
+            padding: 10px;
+            color: #888c8e;
+            background:#394043;
+            margin-right: 8px;
+        }
+
+        .but-group button:hover {
+            color: #fff;
+            background: #152931;
+        }
+
+        .but-group .estate-group a {
+            color: #888c8e;
+            font-size: 12px;
+            display: inline-block;
+            margin: 20px 5px 50px 0;
+        }
+
+        .footer .info {
+            margin-top: 25px;
+            display: inline-block;
+            margin-bottom: 75px;
+        }
+
+        .footer .info .icon {
+            position: relative;
+            top: 5px;
+        }
+
+        .footer .info span, a {
+            color: #888c8e;
+            font-size: 12px;
+        }
+
+        
     </style>
 </head>
 <body>
@@ -744,7 +804,7 @@
                                 <img src="https://image1.ljcdn.com/hdic-resblock/356c6bce-4179-40ae-977d-d1e2c59ebe80.jpg.710x400.jpg">   
                            </div>
                             <div class="row">
-                                <div class="title">远洋山水</div>
+                                <a href="#" class="title">远洋山水</a>
                                 <div class="row info">
                                     <span class="price">665520元/平</span>
                                     <span class="birthday fr">2003年建</span>
@@ -794,50 +854,52 @@
         </div>
     </div>
     <div class="row footer">
-        <div class="row link-group">
-            <a href="#">了解链家</a>
-            <a href="#">关于链家</a>
-            <a href="#">联系我们</a>
-            <a href="#">加入我们</a>
-            <a href="#">隐私声明</a>
-            <a href="#">网站地图</a>
-            <a href="#">友情链接</a>
-            <a href="#">经纪人登录</a>
-            <span class="tel text-right">官方客服 1010 9666</span>
-        </div>
-        <div class="row but-group">
-            <div class="row">
-                <button>城市二手房</button>
-                <button>城市新房</button>
-                <button>城市租房</button>
-                <button>问答</button>
-                <button>百科</button>
-                <button>热门小区</button>
-                <button>城市二手房推荐</button>
-                <button>推荐新房</button>
-                <button>推荐楼盘</button>
-                <button>合作与友情链接</button>
+        <div class="container">
+            <div class="row link-group">
+                <a href="#">了解链家</a>
+                <a href="#">关于链家</a>
+                <a href="#">联系我们</a>
+                <a href="#">加入我们</a>
+                <a href="#">隐私声明</a>
+                <a href="#">网站地图</a>
+                <a href="#">友情链接</a>
+                <a href="#">经纪人登录</a>
+                <span class="tel fr">官方客服 1010 9666</span>
             </div>
-            <div class="row">
-                <a href="#">德佑地产</a>
-                <a href="#">北京二手房</a>
-                <a href="#">广州二手房</a>
-                <a href="#">深圳二手房</a>
-                <a href="#">天津二手房</a>
-                <a href="#">成都二手房</a>
-                <a href="#">南京二手房</a>
-                <a href="#">杭州二手房</a>
-                <a href="#">青岛二手房</a>
-                <a href="#">大连二手房</a>
-                <a href="#">厦门二手房</a>
-                <a href="#">武汉二手房</a>
-                <a href="#">重庆二手房</a>
-                <a href="#">长沙二手房</a>
+            <div class="row but-group">
+                <div>
+                    <button>城市二手房</button>
+                    <button>城市新房</button>
+                    <button>城市租房</button>
+                    <button>问答</button>
+                    <button>百科</button>
+                    <button>热门小区</button>
+                    <button>城市二手房推荐</button>
+                    <button>推荐新房</button>
+                    <button>推荐楼盘</button>
+                    <button>合作与友情链接</button>
+                </div>
+                <div class="row estate-group">
+                    <a href="#">德佑地产</a>
+                    <a href="#">北京二手房</a>
+                    <a href="#">广州二手房</a>
+                    <a href="#">深圳二手房</a>
+                    <a href="#">天津二手房</a>
+                    <a href="#">成都二手房</a>
+                    <a href="#">南京二手房</a>
+                    <a href="#">杭州二手房</a>
+                    <a href="#">青岛二手房</a>
+                    <a href="#">大连二手房</a>
+                    <a href="#">厦门二手房</a>
+                    <a href="#">武汉二手房</a>
+                    <a href="#">重庆二手房</a>
+                    <a href="#">长沙二手房</a>
+                </div>
             </div>
-        </div>
-        <div class="row info">
-            <span>链家网（北京）科技有限公司 | 网络经营许可证 京ICP备16057509号-2 | © Copyright©2010-2018 链家网Lianjia.com版权所有</span>
-            <span><img src="https://s1.ljcdn.com/feroot/pc/asset/img/home/beian.png?_v=20180926210301"></span><a href="#">京公网安备 11010802024019号</a>
+            <div class="row info">
+                <span>链家网（北京）科技有限公司 | 网络经营许可证 京ICP备16057509号-2 | © Copyright©2010-2018 链家网Lianjia.com版权所有</span><br>
+                <span><img class="icon" src="https://s1.ljcdn.com/feroot/pc/asset/img/home/beian.png?_v=20180926210301"></span><a href="#">京公网安备 11010802024019号</a>
+            </div>
         </div>
     </div>
 </body>
