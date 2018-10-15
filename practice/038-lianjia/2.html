@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>链家2.0</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body, form, p {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        h1, h2, h3, h4 {
+            margin: 0;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .search-group {
+            font-size: 0;
+        }
+
+        input,
+        button {
+            outline: none;
+            border: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        button {
+            border-radius:  0 3px 3px 0;
+        }
+
+        .row:before,
+        .row:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .muted {
+            opacity: .5;
+        }
+
+        .col {
+            float: left;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .col-1 {
+            width: 4.166666666666667%;
+        }
+
+        .col-2 {
+            width: 8.333333333333333%;
+        }
+
+        .col-3 {
+            width: 12.5%;
+        }
+
+        .col-4 {
+            width: 16.6666666666667%;
+        }
+
+        .col-5 {
+            width: 20.8333333333333%;
+        }
+
+        .col-6 {
+            width: 25%;
+        }
+
+        .col-7 {
+            width: 29.166666666667%;
+        }
+
+        .col-8 {
+            width: 33.3333333333333%;
+        }
+
+        .col-9 {
+            width: 37.5%;
+        }
+
+        .col-10 {
+            width: 41.666666666667%;
+        }
+
+        .col-11 {
+            width: 45.83333333333333%;
+        }
+
+        .col-12 {
+            width: 50%;
+        }
+
+        .col-13 {
+            width: 54.1666666666667%;
+        }
+
+        .col-14 {
+            width: 58.3333333333333%;
+        }
+
+        .col-15 {
+            width: 62.5%;
+        }
+
+        .col-16 {
+            width: 66.66666666666667%;
+        }
+
+        .col-17 {
+            width: 70.83333333333333%;
+        }
+
+        .col-18 {
+            width: 75%;
+        }
+
+        .col-19 {
+            width: 79.16666666667%;
+        }
+
+        .col-20 {
+            width: 83.33333333333%;
+        }
+
+        .col-21 {
+            width: 87.5%;
+        }
+
+        .col-22 {
+            width: 91.666666666666667%;
+        }
+
+        .col-23 {
+            width: 95.833333333333333%;
+        }
+
+        .col-24 {
+            width: 100%;
+        }
+        /*       以上 全局样式          */
+
+        .first-screen {
+            background: #bbb;
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/bannerV2.jpg);
+            color: #fff;
+        }
+
+        #logo {
+            display: inline-block;
+            width: 120px;
+            height: 70px;
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/spriteV2_new.png?index=20170526);
+            background-position: -10px -365px;
+            margin-top: 30px;
+        }
+
+        .icon-location {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/spriteV2_new.png?index=20170526);
+            background-position: -184px -17px;
+            vertical-align: middle;
+        }
+
+        .location {
+            color: inherit;
+            border-radius:15px;
+            background: rgba(0,0,0,0.25);
+            font-size: 11px;
+            font-weight: 100;
+            padding: 4px 8px 4px 4px;
+            position: relative;
+            bottom: 30px;
+        }
+
+        .first-screen a {
+            color: inherit;
+            font-size: 12px;
+            font-weight: 100;
+        }
+
+        .enroll .icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            /* background-color: rgba(0,0, 0, .3); */
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/spriteV2_new.png?index=20170526);
+            background-position: -200px -20px;
+            vertical-align: middle;
+        }
+
+        .enroll {
+            padding-top: 25px;
+        }
+
+        .nav .link-group a {
+            font-size: 15px;
+            font-weight: 500;
+            padding: 7px;
+            display: inline-block;
+        }
+
+        .tree {
+            position: relative;
+            top: 2px;
+            margin-left: 12px;
+            margin-right: -11px;
+            width: 21px;
+            height: 25px;
+        }
+
+        .connector {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/spriteV2_new.png?index=20170526);
+            background-position: -222px -20px;
+            vertical-align: middle;
+        }
+
+        .heading {
+            margin-top: 115px;
+            text-align: center;
+        }
+
+        .sub-heading {
+            font-size: 20px;
+            font-weight: 300;
+        }
+
+        .search-box {
+            max-width: 800px;
+            padding: 20px 20px 120px 20px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .but-group span {
+            display: inline-block;
+            padding: 10px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .but-group span:hover {
+            color: #fff;
+        }
+
+        .search-group input {
+            width: 80%;
+            padding: 20px;
+        }
+
+        .search-group button {
+            width: 20%;
+            color: inherit;
+            font-size: 18px;
+            font-weight: 300;
+            padding: 15px;
+            text-align: center;
+            background: #00ae66;
+            position: relative;
+            top: 2px;
+        }
+        
+        .search-box .pointer {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 7.5px 10px 7.5px;
+            border-color: transparent transparent #ffffff transparent;
+            position: relative;
+            top: 2px;
+            left: 15px;
+        }
+
+        .trust a {
+            color: #ddd;
+            display: inline-block;
+            margin: 20px 30px 30px 0;
+        }
+
+        .trust a:hover {
+            color: #fff;
+        }
+
+        .trust img {
+            width: 15px;
+            height: 15px;
+            position: relative;
+            top: 4px;
+            right: 5px;
+        }
+        
+
+
+        .main .sub-title {
+            color: #888;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .main .header a {
+            color: #333;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .main .header a:hover {
+            text-decoration:underline;
+            color: #333;
+        }
+
+        .main .service .card {
+            text-align: center;
+            font-size: 18px;
+            color: #394043;
+            display: inline-block;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .main .service img {
+            padding: 0 150px 10px;
+        }
+
+        .main .service h4 {
+            font-weight: 400;
+            font-size: 18px;
+            color: #394043;
+            padding-bottom: 5px;
+        }
+
+        .main .service p {
+            font-size: 12px;
+            color: #b0b3b4;
+            line-height: 18px;
+            max-width: 185px;
+            margin: 0 auto;
+        }
+   
+        .main .reliance {
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/truth-bgV2.jpg);
+            padding: 60px 0;
+        }
+
+        .main .slogan {
+            width: 500px;
+            height: 120px;
+            display: inline-block;
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/spriteV2_new.png?t=2017052520523424);
+            background-position: -19px -254px;
+        }
+
+        .main .reliance p {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            margin-left: 30px;
+        }
+
+        .main .reliance .query-group {
+            max-width: 555px;
+            font-size: 0;
+            margin-left: 30px;
+        }
+
+        .main .reliance .query-group input {
+            width: 93%;
+            padding: 13px;
+        }
+
+        input::-webkit-input-placeholder {
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .main .reliance .query-group button {
+            width: 7%;
+            padding: 10px 0;
+            position: relative;
+            top: 3px;
+        }
+
+        .main .reliance .query-group button:focus {
+            border: .5px solid #00ae66;
+        }
+
+        .main .reliance .query-group .icon {
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/spriteV2_new.png?t=2017052520523424);
+            background-position: -408px -20px;
+        }
+
+        .main .app {
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/bg-app.jpg);
+            font-size: 14px;
+            line-height: 22px;
+            color: rgb(51, 51, 51);
+        }
+
+        .main .app .left {
+            max-width: 42%;
+            padding-top: 80px;
+            padding-bottom: 85px;
+        }
+
+        .main .app .title {
+            width: 290px;
+            height: 120px;
+            display: inline-block;
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/spriteV2_new.png?t=2017052520523424);
+            background-position: -448px -379px;
+        }
+
+        .main .app p {
+            line-height: 1.6;
+            font-weight: 300;
+            padding: 20px 0 40px;
+        }
+
+        .main .app img {
+            width: 100px;
+            height: 100px;
+            margin-left: 10px;
+        }
+
+        .main .app .ios {
+            width: 135px;
+            height: 45px;
+            display: inline-block;
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/spriteV2_new.png?t=2017052520523424);
+            background-position: -20px -139px;
+        }
+
+        .main .app .and {
+            width: 135px;
+            height: 45px;
+            display: inline-block;
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/spriteV2_new.png?t=2017052520523424);
+            background-position: -20px -197px;
+        }
+
+        .main .app .but {
+            max-width: 140px;
+        }
+
+        .main .used .title {
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/spriteV2_new.png?t=2017052520523424);
+            background-position: -19px -94px;
+            display: inline-block;
+            width: 248px;
+            height: 30px;
+            margin-bottom: 3px;
+        }
+
+        .main .used .card {
+            display: inline-block;
+            box-shadow: 0 0 5px #666;
+            max-width: 250px;
+            position: relative;
+        }
+
+        .main .used .card.second,
+        .hot-2 {
+            margin-left: 13px;
+        }
+
+        .main .used .card.third,
+        .hot-3 {
+            margin-left: 26px;
+        }
+
+        .hot-4 {
+            margin-left: 38px;
+        }
+
+        .main .used .card .price {
+            position: absolute;
+            left: 0px;
+            top: 140px;
+            color: #fff;
+            background: #394043;
+            font-size: 18px;
+            font-weight: 300;
+            padding: 0 8px;
+            text-align: center;
+        }
+
+        .main .used .card .describe > *{
+            padding: 5px 20px;
+        }
+
+        .main .used .card .merit {
+            font-size: 16px;
+            font-weight: 300;
+            color: #111;
+        }
+
+        .main .used .card .info {
+            color: #555;
+            font-size: 12px;
+            font-weight: 300;
+        }
+
+        .main .used .card .info > * {
+            margin-right: 8px;
+        }
+
+        .main .used .hot {
+            font-size: 12px;
+            font-weight: 300;
+            color: #888c8e;
+            padding: 10px 0;
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+
+        .main .header {
+            padding-top: 50px;
+            padding-bottom: 40px;
+        }
+
+        .main .community {
+            background: #eeeef1;
+        }
+
+        .main .community .header img {
+            width: 190px;
+            height: 30px;
+        }
+
+        .main .community .card {
+            display: inline-block;
+            box-shadow: 0 0 5px #666;
+            margin-bottom: 65px;
+        }
+
+        .main .community .card img {
+            width: 350px;
+            height: 200px;
+        }
+
+        .main .community .card.six {
+            margin-left: 15px;
+        }
+
+        .main .community .info {
+            padding: 0 20px 20px;
+        }
+
+        .main .community .info .title {
+            color: #394043;
+            font-size: 19px;
+            font-weight: bold;
+            padding-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .main .community .info .price {
+            color: #394043;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .main .community .info .time {
+            color: #888c8e;
+            font-size: 13px;
+        }
+
+        .main .new-house .title {
+            width: 158px;
+            height: 30px;
+            display: inline-block;
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/spriteV2_new.png?t=2017052520523424);
+            background-position: -20px -56px;
+        } 
+
+        .main .new-house .card {
+            width: 350px;
+            height: 260px;
+            display: inline-block;
+        }
+
+        .main .new-house .card.nine {
+            margin-left: 15px;
+        }
+
+        .main .new-house img {
+            height: 260px;
+        }
+
+        .main .new-house .relative {
+            position: relative;
+        }
+
+        .main .new-house .discount {
+            color: #394043;
+            background: #fff2ab;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 5px 12px;
+            display: inline-block;
+            position: absolute;
+            left: 0px;
+            bottom: 25px;
+        }
+
+        .main .new-house .info {
+            position: relative;
+            bottom: 170px;
+            right: 10px;
+        }
+
+        .main .new-house .info .name {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+        }
+
+        .main .new-house .info .price {
+            color: #fff2ab;
+            font-weight: 700;
+            font-size: 20px;
+            font-family: tahoma;
+            text-align: center;
+        }
+
+        .footer {
+            background-image: url(https://s1.ljcdn.com/feroot/pc/asset/img/home/footer-bg.jpg);
+            font-size: 12px;
+            font-weight: 300;
+            color: #888c8e;
+        }
+
+        .footer .friendly-link a {
+            color: #fff;
+            margin-right: 15px;
+            font-size: 14px;
+            font-weight: 300;
+            display: inline-block;
+        }
+
+        .footer .friendly-link span {
+            color: #00ae66;
+            font-size: 14px;
+            font-weight: 200;
+        }
+
+        .footer .friendly-link > * {
+            margin: 30px 0;
+        }
+
+        .footer .friendly-link {
+            border-bottom: .5px solid #444;
+        }
+
+        .footer .but-group span {
+            font-size: inherit;
+            font-weight: inherit;
+            background: #121212;
+            margin: 10px 10px 10px 0;
+        }
+
+        .footer .but-group span:hover {
+            background: #394043;
+            color: #fff;
+        }
+
+        .footer .link-group a {
+            color: #888c8e;
+            display: inline-block;
+            margin: 10px 10px 0 0;
+        }
+
+        .footer .link-group {
+            padding-bottom: 50px;
+            border-bottom: .5px solid #444;
+        }
+
+        .footer .info {
+            padding: 25px 0 120px;
+        }
+
+        .footer .info a {
+            color: inherit;
+            display: inline-block;
+        }
+
+        .footer .info img {
+            position: relative;
+            top: 5px;
+            right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="first-screen">
+        <div class="container">
+            <div class="row nav global">
+                <div class="col">
+                    <a href="#" id="logo"></a>
+                    <a href="#" class="location"><span class="icon-location"></span>北京</a>
+                </div>
+                <div class="fr text-right">
+                    <div class="enroll">
+                        <span class="icon"></span>
+                        <a href="#">登录</a>
+                        <a href="#">立即注册</a>
+                    </div>
+                    <div class="row">
+                        <div class="row link-group">
+                            <a href="#">二手房</a>
+                            <a href="#">新房</a>
+                            <a href="#">租房</a><img class="tree" src="https://s1.ljcdn.com/feroot/pc/asset/img/home/lvju.png?_v=20181011211706">
+                            <a href="#">旅居</a>
+                            <a href="#">海外</a>
+                            <a href="#">小区</a>
+                            <a href="#">经纪人</a>
+                            <a href="#">指南</a>
+                            <a href="#">房价</a>
+                            <a href="#">工具</a>
+                            <a href="#">经验</a><span class="connector"></span>
+                            <a href="#">发布房源</a>
+                            <a href="#">企业汇</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row centered">
+                <div class="heading">
+                    <img src="https://s1.ljcdn.com/feroot/pc/asset/img/home/banner-text.png?_v=20170317">
+                    <div class="sub-heading">北京链家真实在售二手房 50772 套</div>
+                </div>
+                <div class="search-box">
+                    <div class="but-group text-left">
+                        <span>找二手房</span>
+                        <span>找新房</span>
+                        <span>找租房</span>
+                        <span>找小区</span>
+                        <span>搜问答</span>
+                    </div>
+                    <div class="pointer"></div>
+                    <form class="search-group">
+                        <input placeholder="汤城一品">
+                        <button>开始找房</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row trust">
+                <a href="#"><img src="https://image1.ljcdn.com/materials/list/2016-08-17/php3X11MP.png">关于仿冒我公司进行不正当竞争行为的郑重声明</a>
+                <a href="#"><img src="https://image1.ljcdn.com/materials/list/2016-06-29/phpAPdvEm.png">房地产中介诚信服务承诺及保证书</a>
+                <a href="#"><img src="https://image1.ljcdn.com/materials/list/2016-06-29/phpAPdvEm.png">致广大用户</a>
+            </div>
+        </div>
+    </div>
+    <div class="row main">
+        <div class="service">
+            <div class="row container">
+                <div class="col col-8">
+                    <a class="card" href="#">
+                        <img src="https://image1.ljcdn.com/materials/list/2016-11-23/phpe022WE.png">
+                        <h4>找二手房</h4>
+                        <p>真实二手房源，链家承诺真实在售所见即真</p>
+                    </a>
+                </div>
+                <div class="col col-8">
+                    <a class="card" href="#">
+                        <img src="https://image1.ljcdn.com/materials/list/2016-07-21/php4TtmtO.png">
+                        <h4>地图找房</h4>
+                        <p>为您精准定位，位置周边配套设施一览无余</p>
+                    </a>
+                </div>
+                <div class="col col-8">
+                    <a class="card" href="#">
+                        <img src="https://image1.ljcdn.com/materials/list/2017-02-16/phphnmv10.png">
+                        <h4>房屋估价</h4>
+                        <p>基于海量成交数据，帮您合理定价预估市值</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="app">
+            <div class="container">
+                <div class="left">
+                    <span class="title"></span>
+                    <p>集二手、新房、租房功能于一体，随时随地任性找房。IM匿名咨询让您放心，消息动态推送让您省心，服务承诺让您安心，数据百科锦囊让您感受贴心漫漫找房路，我们努力为您想更多。</p>
+                    <div class="row">
+                        <div class="col but">
+                            <a href="#"><span class="ios"></span></a>
+                            <a href="#"><span class="and"></span></a>
+                        </div>
+                        <div class="col"><img src="https://ajax.api.lianjia.com/qr/getDownloadQr?location=site_middle&ljweb_channel_key=site_index"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="used">
+            <div class="row container">
+                <div class="header">
+                    <div>
+                        <span class="title"></span>
+                    </div>
+                    <div class="row">
+                        <span class="sub-title">好房源那么多，我们为你精选，链家网会越来越懂你</span>
+                        <a href="#" class="fr">更多北京二手房</a>
+                    </div>
+                </div>
+                <div class="rwo">
+                    <div class="col col-6">
+                        <a href="#" class="card">
+                            <div>
+                                <img src="https://image1.ljcdn.com/110000-inspection/b545d03b-4c87-43d8-853c-c640f536b131.jpg.280x210.jpg">
+                                <span class="price">350万</span>
+                            </div>
+                            <div class="describe">
+                                <div class="merit">龙城别墅 两居 精装修 供</div>
+                                <div class="info">
+                                    <span>龙城花园北二区</span>
+                                    <span>2室1厅</span>
+                                    <span>65.64平</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="hot">近期关注度较高房源</a>
+                    </div>
+                </div>
+                <div class="rwo">
+                    <div class="col col-6">
+                        <a href="#" class="card second">
+                            <div>
+                                <img src="https://image1.ljcdn.com/110000-inspection/611f74db-eedb-4299-8c85-e083d0038514.jpg.280x210.jpg">
+                                <span class="price">380万</span>
+                            </div>
+                            <div class="describe">
+                                <div class="merit">角门东里 两居 格局好 楼</div>
+                                <div class="info">
+                                    <span>角门东里</span>
+                                    <span>2室1厅</span>
+                                    <span>62.65平</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="hot hot-2">近期关注度较高房源</a>
+                    </div>
+                </div>
+                <div class="rwo">
+                    <div class="col col-6">
+                        <a href="#" class="card third">
+                            <div>
+                                <img src="https://image1.ljcdn.com/110000-inspection/test-471f5250-0957-4437-887d-b06b2194ac54.png.280x210.jpg">
+                                <span class="price">690万</span>
+                            </div>
+                            <div class="describe">
+                                <div class="merit">万科紫苑 南北通透 全能小三</div>
+                                <div class="info">
+                                    <span>万科紫苑</span>
+                                    <span>3室2厅</span>
+                                    <span>95.22平</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="hot hot-3">近期关注度较高房源</a>
+                    </div>
+                </div>
+                <div class="rwo">
+                    <div class="col col-6">
+                        <a href="#" class="card fr">
+                            <div>
+                                <img src="https://image1.ljcdn.com/110000-inspection/2558c304-cf38-4c7f-8b27-c278e3717311.jpg.280x210.jpg">
+                                <span class="price">450万</span>
+                            </div>
+                            <div class="describe">
+                                <div class="merit">富卓苑 低楼层南北通透</div>
+                                <div class="info">
+                                    <span>丰台马家堡</span>
+                                    <span>2室1厅</span>
+                                    <span>69.59平</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="hot hot-4">近期关注度较高房源</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="community">
+            <div class="row container">
+                <div class="header">
+                    <div>
+                        <img class="title" src="https://s1.ljcdn.com/feroot/pc/asset/img/home/xiaoqu-recom.png?t=2017052520523424">
+                    </div>
+                    <div class="row">
+                        <span class="sub-title">纵览小区，恋上这座城</span>
+                        <a href="#" class="fr">更多北京二小区</a>
+                    </div>
+                </div>
+                <div class="col col-8">
+                    <a href="#" class="card">
+                        <div class="row">
+                            <img src="https://image1.ljcdn.com/hdic-resblock/356c6bce-4179-40ae-977d-d1e2c59ebe80.jpg.710x400.jpg">
+                        </div>
+                        <div class="info">
+                            <div class="title">远洋山水</div>
+                            <div>
+                                <span class="price">66224元/平</span>
+                                <span class="time fr">2003年建</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col col-8">
+                    <a href="#" class="card six">
+                        <div class="row">
+                            <img src="https://image1.ljcdn.com/hdic-resblock/0f31bdd0-3cf4-47ce-bbb1-14e269b8cf5f.jpg.710x400.jpg">
+                        </div>
+                        <div class="info">
+                            <div class="title">北京新天地</div>
+                            <div>
+                                <span class="price">55524元/平</span>
+                                <span class="time fr">2004年建</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col col-8">
+                    <a href="#" class="card fr">
+                        <div class="row">
+                            <img src="https://image1.ljcdn.com/hdic-resblock/c057cbaf-d5a1-4dc7-af82-b852f4f22b97.jpg.710x400.jpg">
+                        </div>
+                        <div class="info">
+                            <div class="title">荣丰2008</div>
+                            <div>
+                                <span class="price">88303元/平</span>
+                                <span class="time fr">2000年建</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="new-house">
+            <div class="row container">
+                <div class="header">
+                    <div>
+                        <span class="title"></span>
+                    </div>
+                    <div class="row">
+                        <span class="sub-title">真实信息准确同步，楼盘动态一手掌握</span>
+                        <a href="#" class="fr">更多北京新房</a>
+                    </div>
+                </div>
+                <div class="col col-8 box">
+                    <a href="#" class="card">
+                        <div class="relative">
+                            <img src="https://image1.ljcdn.com/xf-resblock/b384bab6-1f47-44c2-997b-e8309d7f7a1e.jpeg.510x300.jpg">
+                            <span class="discount">立减15万</span>
+                        </div>
+                        <div class="info">
+                            <div class="name">万科大都会滨江N2</div>
+                            <div class="price">65000元/平</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col col-8 box">
+                    <a href="#" class="card nine">
+                        <div class="relative">
+                            <img src="https://image1.ljcdn.com/xf-resblock/10f487c9-09e1-46e7-ac3c-77e21dc20f9e.jpg.510x300.jpg">
+                            <!-- <span class="discount">立减15万</span> -->
+                        </div>
+                        <div class="info">
+                            <div class="name">丽景长安</div>
+                            <div class="price">52000元/平</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col col-8 box">
+                    <a href="#" class="card fr">
+                        <div class="relative">
+                            <img src="https://image1.ljcdn.com/xf-resblock/9fa05f6d-87ca-4954-ad31-1ba147b95c27.jpg.510x300.jpg">
+                            <span class="discount">立减15万</span>
+                        </div>
+                        <div class="info">
+                            <div class="name">中俊西山天璟</div>
+                            <div class="price">65000元/平</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="reliance">
+            <div class="row container">
+                <div class="col col-12">
+                    <span class="slogan"></span>
+                </div>
+                <div class="col col-12">
+                    <div>
+                        <p>真实存在，真实在售，真实价格，真实图片！<br> 链家郑重向用户承诺：真实房源，假一赔百元！</p>
+                    </div>
+                    <form class="query-group">
+                        <input placeholder="请输入链家编号查询真伪...">
+                        <button><span class="icon"></span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="container">
+            <div class="friendly-link">
+                <a href="#">了解链家</a>
+                <a href="#">关于链家</a>
+                <a href="#">联系我们</a>
+                <a href="#">加入我们</a>
+                <a href="#">隐私声明</a>
+                <a href="#">网站地图</a>
+                <a href="#">友情链接</a>
+                <a href="#">经纪人登录</a>
+                <span class="tel fr">官方客服 1010 9666</span>
+            </div>
+            <div class="row">
+                <div class="but-group">
+                    <span>城市二手房</span>
+                    <span>城市新房</span>
+                    <span>城市租房</span>
+                    <span>问答</span>
+                    <span>百科</span>
+                    <span>热门小区</span>
+                    <span>城市二手房推荐</span>
+                    <span>推荐新房</span>
+                    <span>推荐楼盘</span>
+                    <span>合作与友情链接</span>
+                </div>
+                <div class="row link-group">
+                    <a href="#">德佑地产</a>
+                    <a href="#">北京二手房</a>
+                    <a href="#">广州二手房</a>
+                    <a href="#">深圳二手房</a>
+                    <a href="#">天津二手房</a>
+                    <a href="#">成都二手房</a>
+                    <a href="#">南京二手房</a>
+                    <a href="#">杭州二手房</a>
+                    <a href="#">青岛二手房</a>
+                    <a href="#">大连二手房</a>
+                    <a href="#">厦门二手房</a>
+                    <a href="#">武汉二手房</a>
+                    <a href="#">重庆二手房</a>
+                    <a href="#">长沙二手房</a>
+                </div>
+            </div>
+            <div class="info">
+                <div class="row">链家网（北京）科技有限公司 | 网络经营许可证 京ICP备16057509号-2 | © Copyright©2010-2018 链家网Lianjia.com版权所有</div>
+                <a href="#"><img src="https://s1.ljcdn.com/feroot/pc/asset/img/home/beian.png?_v=20181011211706">京公网安备 11010802024019号</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
