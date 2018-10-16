@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>米 1.0</title>
+    <style>
+        /* 备注问题  navpage的搜索栏不加relative的话button就掉下来 */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        body, form, h1, h2, h3, h4 {
+            margin: 0;
+        }
+
+        img {
+            max-width: 100%;
+            border: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        input,
+        button {
+            outline: none;
+            border: .5px #ddd solid;
+        }
+
+        input {
+            border-radius: 3px 0 0 3px;
+        }
+
+        button {
+            border-radius:  0 3px 3px 0;
+        }
+
+        .search-group {
+            font-size: 0;
+        }
+
+        .row:before, .row:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .col {
+            float: left;
+        }
+
+        .container {
+            max-width: 1225px;
+            margin: 0 auto;
+        }
+
+        .muted {
+            opacity: .5;
+        }
+
+        .col-1 {
+            width: 4.166666666666667%;
+        }
+
+        .col-2 {
+            width: 8.333333333333333%;
+        }
+
+        .col-3 {
+            width: 12.5%;
+        }
+
+        .col-4 {
+            width: 16.6666666666667%;
+        }
+
+        .col-5 {
+            width: 20.8333333333333%;
+        }
+
+        .col-6 {
+            width: 25%;
+        }
+
+        .col-7 {
+            width: 29.166666666667%;
+        }
+
+        .col-8 {
+            width: 33.3333333333333%;
+        }
+
+        .col-9 {
+            width: 37.5%;
+        }
+
+        .col-10 {
+            width: 41.666666666667%;
+        }
+
+        .col-11 {
+            width: 45.83333333333333%;
+        }
+
+        .col-12 {
+            width: 50%;
+        }
+
+        .col-13 {
+            width: 54.1666666666667%;
+        }
+
+        .col-14 {
+            width: 58.3333333333333%;
+        }
+
+        .col-15 {
+            width: 62.5%;
+        }
+
+        .col-16 {
+            width: 66.66666666666667%;
+        }
+
+        .col-17 {
+            width: 70.83333333333333%;
+        }
+
+        .col-18 {
+            width: 75%;
+        }
+
+        .col-19 {
+            width: 79.16666666667%;
+        }
+
+        .col-20 {
+            width: 83.33333333333%;
+        }
+
+        .col-21 {
+            width: 87.5%;
+        }
+
+        .col-22 {
+            width: 91.666666666666667%;
+        }
+
+        .col-23 {
+            width: 95.833333333333333%;
+        }
+
+        .col-24 {
+            width: 100%;
+        }
+        /*       以上 全局样式          */
+        .nav.global {
+            color: #b0b0b0;
+            background: #333;
+            font-size: 12px;
+        }
+
+        .nav.global a {
+            color: inherit;
+            padding: 10px 0;
+            display: inline-block;
+        }
+
+        .nav.global a:hover {
+            color: #fff;
+        }
+
+        .nav.global a:after {
+            content: '|';
+            color: #424242;
+            margin-right: 8px;
+            position: relative;
+            left: 6px;
+        }
+
+        .nav.global a:last-child:after {
+            display: none;
+        }
+
+        .nav.global .enter img {
+            width: 25px;
+            height: 15px;
+            position: relative;
+            top: 3px;
+        }
+
+        .nav.global .enter .car {
+            padding: 10px 25px 10px 15px;
+            background: #424242;
+        }
+
+        .nav.global .enter .car:hover {
+            color: #ff6700;
+            background: #fff;
+        }
+
+        .first-screen .nav.page {
+            padding: 20px 0;
+        }
+
+        .first-screen .nav.page a > * {
+            vertical-align: middle;
+        }
+
+        .first-screen .nav.page a:hover {
+            color: #ff6700;
+        }
+
+        .first-screen .nav.page a {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .first-screen .nav.page .festival {
+            margin-left: 10px;
+        }
+
+        .first-screen .nav.page .thick {
+            padding: 20px 7px;
+        }
+
+        .first-screen .nav.page .search-group {
+            margin-top: 5px;
+        }
+
+        .first-screen .nav.page .search-group input {
+            width: 245px;
+            padding: 18px 10px;
+            border-right: 0;
+        }
+
+        .first-screen .nav.page .search-group input::-webkit-input-placeholder {
+            text-align: right;
+        }
+
+        .first-screen .nav.page .search-group button {
+            padding: 14px;
+            position: relative;
+            top: 4px;
+        }
+
+        .first-screen .nav.page .search-group button:hover {
+            background: #ff6700;
+        }
+
+        .first-screen .nav.page .search-group img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .first-screen .nav.page .search-group input:hover,
+        .first-screen .nav.page .search-group button:hover {
+            border: .5px #aaa solid;
+        }
+
+        .first-screen .nav.page .search-group input:focus,
+        .first-screen .nav.page .search-group button:focus {
+            border: .5px #ff6700 solid;
+        }
+
+        .first-screen .main-promotion .kind-group {
+            max-width: 235px;
+            padding: 20px 0;
+            color: #fff;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .first-screen .main-promotion .kind-group a {
+            display: block;
+            color: inherit;
+            font-size: 14px;
+            padding: 11px 36px;
+        }
+
+        .first-screen .main-promotion .kind-group a::after {
+            content: '>';
+            float: right;
+            margin-left: 74px;
+        }
+
+        .first-screen .main-promotion .kind-group a:hover {
+            background: #ff6700;
+        }
+
+        .first-screen .main-promotion img {
+            width: 995.84px;
+            height: 460px;
+        }
+
+        .first-screen .main-promotion .big-card {
+            position: relative;
+        }
+
+        .first-screen .main-promotion .page img {
+            width: 20px;
+            height: 35px;
+        }
+
+        .first-screen .main-promotion .before {
+            position: absolute;
+            left: 1px;
+        }
+        
+        .first-screen .main-promotion .after {
+            position: absolute;
+            right: 1px;
+        }
+
+        .first-screen .main-promotion .after,
+        .first-screen .main-promotion .before {
+            top: 43%;
+            background: transparent;
+            border: 0;
+        }
+
+        .first-screen .main-promotion .after:hover,
+        .first-screen .main-promotion .before:hover {
+            background: #777;
+        }
+
+        .first-screen .sub-promotion {
+            padding-top: 10px;
+            padding-bottom: 20px;
+        }
+
+        .first-screen .sub-promotion .fast-channel {
+            max-width: 235px;
+            background: #5f5750;
+        }
+
+        .first-screen .sub-promotion .fast-channel a {
+            display: inline-block;
+            font-size: 13px;
+            text-align: center;
+            color: #ddd;
+            padding: 16.5px 11px;
+        }
+
+        .first-screen .sub-promotion .fast-channel img {
+            width: 25px;
+            height: 30px;
+        }
+
+        .first-screen .sub-promotion .product-card {
+            margin-left: 15px;
+        }
+
+        .first-screen .sub-promotion .product-card img {
+            width: 315px;
+            height: 170px;;
+        }
+
+        .main .discount h2 {
+            font-weight: 400;
+        }
+
+        .main .discount .page-turning {
+            font-size: 0;
+            margin-top: 5px;
+        }
+
+        .main .discount button {
+            padding: 5px 15px;
+        }
+
+        .main .discount button:hover {
+            background: #ff6700;
+        }
+
+        .main .discount .card-group {
+            margin-bottom: 40px;
+        }
+
+        .main .discount .count-down {
+            position: relative;
+            text-align: center;
+            background: #f1eded;
+            border-top: #ef3a3b 1px solid;
+        }
+
+        .main .discount .count-down .time {
+            padding-top: 55px;
+            padding-left: 74.5px;
+            padding-right: 74.5px;
+            font-size: 21px;
+            color: #ef3a3b;
+        }
+
+        .main .discount .count-down img {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .main .discount .count-down .distance {
+            color: rgba(0,0,0,0.54);
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .main .discount .count-down .timekeeping span {
+            display: inline-block;
+            margin-bottom: 40px;
+
+        }
+
+        .main .discount .count-down .timekeeping .num {
+            background: #605751;
+            font-size: 24px;    
+            color: #fff;
+            padding: 7px;
+        }
+
+        .main .discount .count-down .timekeeping .colon {
+            font-size: 24px;
+        }
+
+        .main .discount .goods-card {
+            position: relative;
+            text-align: center;
+            background: rgba(0,0,0,0.02);
+            border-top: #ff6700 1px solid;
+            margin-left: 15px;
+        }
+
+        .main .discount .goods-card img {
+            max-width: 150px;
+            margin: 24px 42px;
+        }
+
+
+        .main .discount .goods-card .name {
+            font-size: 14px;
+            color: #333;
+            padding-top: 20px;
+            padding-bottom: 2px;
+        }
+
+        .main .discount .goods-card .trait {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .main .discount .goods-card .price {
+            margin-top: 15px;
+            margin-bottom: 40px;
+        }
+
+        .main .discount .goods-card .price .new {
+            color: #ff6700;
+            font-size: 14px;
+        }
+
+        .main .discount .goods-card .price .old {
+            color: #aaa;
+            font-size: 14px;
+            text-decoration: line-through;
+        }
+
+        .main .discount .goods-card .seckill {
+            position: absolute;
+            background-color: #e53935;
+            color: #fff;
+            font-size: 12px;
+            top: 0;
+            left: 39%;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav global">
+        <div class="row container">
+            <div class="fl link-group">
+                <a href="#">小米商城</a>
+                <a href="#">MIUI</a>
+                <a href="#">loT</a>
+                <a href="#">云服务</a>
+                <a href="#">金融</a>
+                <a href="#">有品</a>
+                <a href="#">小爱开放平台</a>
+                <a href="#">政企服务</a>
+                <a href="#">下载app</a>
+                <a href="#">Select Region</a>
+            </div>
+            <div class="fr enter">
+                <a href="#">登录</a>
+                <a href="#">注册</a>
+                <a href="#">消息通知</a>
+                <a href="#" class="car"><img src="http://pics.sc.chinaz.com/Files/pic/icons128/5883/12.png">购物车(0)</a>
+            </div>
+        </div>
+    </div>
+    <div class="row first-screen">
+        <div class="container">
+            <div class="row nav page">
+                <div class="fl">
+                    <a href="#" class="logo">
+                        <img src="https://s01.mifile.cn/i/logo.png">
+                    </a>
+                    <a href="#" class="festival">
+                        <img src="http://i8.mifile.cn/v1/a1/b7acecd8-729b-dc3a-6a93-1eeb82cd0846.webp">
+                    </a>
+                    <a href="#" class="thick">小米手机</a>
+                    <a href="#" class="thick">红米</a>
+                    <a href="#" class="thick">电视</a>
+                    <a href="#" class="thick">笔记本</a>
+                    <a href="#" class="thick">空调</a>
+                    <a href="#" class="thick">新品</a>
+                    <a href="#" class="thick">路由器</a>
+                    <a href="#" class="thick">智能硬件</a>
+                    <a href="#" class="thick">服务</a>
+                    <a href="#" class="thick">社区</a>
+                </div>
+                <form class="fr search-group">
+                    <input placeholder="小米8小米MIX2S">
+                    <button><img src="http://www.iconpng.com/png/komik/lupita.png"></button>
+                </form>
+            </div>
+            <div class="row main-promotion">
+                <div class="fl kind-group">
+                    <a href="#">手机 电话卡</a>
+                    <a href="#">电视 盒子</a>
+                    <a href="#">笔记本 平板</a>
+                    <a href="#">家电 插线板</a>
+                    <a href="#">出行 穿戴</a>
+                    <a href="#">智能 路由器</a>
+                    <a href="#">电影 配件</a>
+                    <a href="#">健康 儿童</a>
+                    <a href="#">耳机 音响</a>
+                    <a href="#">生活 箱包</a>
+                </div>
+                <a href="#" class="fr big-card">
+                    <img src="https://i1.mifile.cn/a4/xmad_15390566279642_JIicR.jpg">
+                    <span class="page">
+                        <button class="before"><img src="http://www.iconpng.com/png/basic-application/arrowhead7.png"></button>
+                        <button class="after"><img src="http://www.iconpng.com/png/basic-application/arrow487.png"></button>
+                    </span>
+                </a>
+            </div>
+            <div class="row sub-promotion">
+                <div class="fl fast-channel">
+                    <a href="#">
+                        <img src="http://www.iconpng.com/png/phone-set-full/phone206.png">
+                        <div>选购手机</div>
+                    </a>
+                    <a href="#">
+                        <img src="http://www.iconpng.com/png/phone-set-full/phone206.png">
+                        <div>选购手机</div>
+                    </a>
+                    <a href="#">
+                        <img src="http://www.iconpng.com/png/phone-set-full/phone206.png">
+                        <div>选购手机</div>
+                    </a>
+                    <a href="#">
+                        <img src="http://www.iconpng.com/png/phone-set-full/phone206.png">
+                        <div>选购手机</div>
+                    </a>
+                    <a href="#">
+                        <img src="http://www.iconpng.com/png/phone-set-full/phone206.png">
+                        <div>选购手机</div>
+                    </a>
+                    <a href="#">
+                        <img src="http://www.iconpng.com/png/phone-set-full/phone206.png">
+                        <div>选购手机</div>
+                    </a>
+                </div>
+                <a href="#" class="fr product-card">
+                    <img src="https://i1.mifile.cn/a4/xmad_15382348202641_EoZuy.jpg">
+                </a>
+                <a href="#" class="fr product-card">
+                    <img src="https://i1.mifile.cn/a4/xmad_15382347865119_ZhSrK.jpg">
+                </a>
+                <a href="#" class="fr product-card">
+                    <img src="https://i1.mifile.cn/a4/xmad_15166223451193_skuUX.jpg">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="discount">
+            <div class="row container">
+                <div class="row title">
+                    <h2 class="fl">小米啥狗</h2>
+                    <div class="fr page-turning">
+                        <button> < </button>
+                        <button> > </button>
+                    </div>
+                </div>
+                <div class="row card-group">
+                    <div class="count-down fl">
+                        <div class="time">10:00 场</div>
+                        <img src="https://i1.mifile.cn/f/i/2018/mihome/flashpurchase.png">
+                        <div class="distance">距离结束还有</div>
+                        <div class="timekeeping">
+                            <span class="num">00</span>
+                            <span class="colon">:</span>
+                            <span class="num">37</span>
+                            <span class="colon">:</span>
+                            <span class="num">39</span>
+                        </div>
+                    </div>
+                    <a href="#" class="fr goods-card">
+                        <img src="https://i8.mifile.cn/a1/pms_1538019072.40043349!560x560.png">
+                        <div class="name">TS防蓝光护目镜 米家定制 黑色</div>
+                        <div class="trait">新“视”界，有目共睹</div>
+                        <div class="price">
+                            <span class="new">89元</span>
+                            <span class="old">99元</span>
+                        </div>
+                        <div class="seckill">9.9元秒杀</div>
+                    </a>
+                    <a href="#" class="fr goods-card">
+                        <img src="https://i8.mifile.cn/a1/pms_1538019072.40043349!560x560.png">
+                        <div class="name">TS防蓝光护目镜 米家定制 黑色</div>
+                        <div class="trait">新“视”界，有目共睹</div>
+                        <div class="price">
+                            <span class="new">89元</span>
+                            <span class="old">99元</span>
+                        </div>
+                        <div class="seckill">9.9元秒杀</div>
+                    </a>
+                    <a href="#" class="fr goods-card">
+                        <img src="https://i8.mifile.cn/a1/pms_1538019072.40043349!560x560.png">
+                        <div class="name">TS防蓝光护目镜 米家定制 黑色</div>
+                        <div class="trait">新“视”界，有目共睹</div>
+                        <div class="price">
+                            <span class="new">89元</span>
+                            <span class="old">99元</span>
+                        </div>
+                        <div class="seckill">9.9元秒杀</div>
+                    </a>
+                    <a href="#" class="fr goods-card">
+                        <img src="https://i8.mifile.cn/a1/pms_1538019072.40043349!560x560.png">
+                        <div class="name">TS防蓝光护目镜 米家定制 黑色</div>
+                        <div class="trait">新“视”界，有目共睹</div>
+                        <div class="price">
+                            <span class="new">89元</span>
+                            <span class="old">99元</span>
+                        </div>
+                        <div class="seckill">9.9元秒杀</div>
+                    </a>
+                </div>
+                <a href="#">
+                    <img src="https://i1.mifile.cn/a4/xmad_15283599920813_VWpSg.jpg">
+                </a>
+            </div>
+        </div>
+        <div class="row phone"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+    </div>
+    <div class="row footer">
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+    </div>
+</body>
+</html>
