@@ -265,10 +265,24 @@
             text-align: right;
         }
 
+        .first-screen .nav.page .search-a a {
+            color: #757575;
+            background: #eee;
+            font-size: 12px;
+            display: inline-block;
+            margin-right: 5px;
+            position: relative;
+            bottom: 46px;
+            left: 1060px;
+        }
+
+        .first-screen .nav.page .search-a a:hover {
+            color: #fff;
+            background: #ff6700;
+        }
+
         .first-screen .nav.page .search-group button {
             padding: 14px;
-            position: relative;
-            top: 4px;
         }
 
         .first-screen .nav.page .search-group button:hover {
@@ -291,7 +305,7 @@
         }
 
         .first-screen .main-promotion {
-            background-image: url(https://i1.mifile.cn/a4/xmad_15338982727289_EhONt.jpg);
+            position: relative;
         }
 
         .first-screen .main-promotion .kind-group {
@@ -312,15 +326,11 @@
             background: #ff6700;
         }
 
-        .first-screen .main-promotion .big-card {
-            position: relative;
+        .first-screen .main-promotion .big {
+            position: absolute;
+            top: 0;
+            z-index: -1;
         }
-
-        /* .first-screen .main-promotion .big-card img {
-            max-width: 990px;
-            height: 456px;
-            background: transparent;
-        } */
 
         .first-screen .main-promotion .page img {
             width: 20px;
@@ -329,7 +339,7 @@
 
         .first-screen .main-promotion .before {
             position: absolute;
-            left: 1px;
+            left: 231px;
         }
         
         .first-screen .main-promotion .after {
@@ -367,6 +377,7 @@
             text-align: center;
             color: #ddd;
             padding: 16.5px 5px;
+            border-left: 1px solid #999;
         }
 
         .first-screen .sub-promotion .fast-channel .pass {
@@ -409,8 +420,11 @@
         }
 
         .main .discount .card-group {
-            margin-top: 15px;
             margin-bottom: 40px;
+        }
+
+        .main .discount .title {
+            padding-bottom: 10px;
         }
 
         .main .discount .count-down {
@@ -509,6 +523,8 @@
 
         .main .discount .across {
             max-height: 120px;
+            display: block;
+            margin-bottom: 50px;
         }
 
         .main .phone .title {
@@ -528,9 +544,12 @@
             color: #666;
         }
 
-        .main .grey,
-        .footer .grey {
+        .main .grey {
             background: #f5f5f5;
+        }
+
+        .main .phone .title {
+            padding-bottom: 10px;
         }
 
         .main .phone .title .more span:hover {
@@ -547,7 +566,7 @@
         }
 
         .main .phone .long-card img {
-            height: 615px;
+            height: 635px;
         }
 
         .main .phone-group {
@@ -698,6 +717,15 @@
 
         .main .first-one.phone-group {
             margin: 0;
+        }
+
+        .main .recommend .title {
+            padding-top: 10px;
+        }
+
+        .main .recommend .page-turning,
+        .main .discount .page-turning {
+            font-size: 0;
         }
 
         .main .hot-comment .comment-card {
@@ -1033,9 +1061,13 @@
                     <a href="#" class="thick">社区</a>
                 </div>
                 <form class="fr search-group">
-                    <input placeholder="小米8小米MIX2S">
-                    <button><img src="http://www.iconpng.com/png/komik/lupita.png"></button>
+                    <input>
+                    <button class="fr"><img src="http://www.iconpng.com/png/komik/lupita.png"></button>
                 </form>
+                <div class="row search-a">
+                    <a href="#">小米8</a>
+                    <a href="#">小米MIX 2S</a>
+                </div>
             </div>
             <div class="row main-promotion">
                 <div class="fl kind-group">
@@ -1050,11 +1082,12 @@
                     <a href="#">耳机 音响</a>
                     <a href="#">生活 箱包</a>
                 </div>
-                <a href="#" class="fr big-card">
-                    <!-- <span class="page">
+                <a href="#" class="row big-card">
+                    <img class="big" src="https://i1.mifile.cn/a4/xmad_1539741203964_XkPBM.jpg">
+                    <span class="page">
                         <button class="before"><img src="http://www.iconpng.com/png/basic-application/arrowhead7.png"></button>
                         <button class="after"><img src="http://www.iconpng.com/png/basic-application/arrow487.png"></button>
-                    </span> -->
+                    </span>
                 </a>
             </div>
             <div class="row sub-promotion">
@@ -1974,8 +2007,8 @@
                                 <div class="triangle"></div>
                             </button>
                         </a>
-                        <a href="#" class="topic">一团火</a>
-                        <div class="describe">小米创业8年内部纪录片（手机篇）</div>
+                        <a href="#" class="topic">生活中无所不在的小爱同学</a>
+                        <div class="describe">一句话搞定手机复杂操作</div>
                     </div>
                     <div class="fr card second">
                         <a href="#">
@@ -1984,8 +2017,8 @@
                                 <div class="triangle"></div>
                             </button>
                         </a>
-                        <a href="#" class="topic">一团火</a>
-                        <div class="describe">小米创业8年内部纪录片（手机篇）</div>
+                        <a href="#" class="topic">小米MIX 2S，一面科技 一面艺术</a>
+                        <div class="describe">艺术品般陶瓷机身，惊艳、璀璨</div>
                     </div>
                     <div class="fr card">
                         <a href="#">
@@ -1994,8 +2027,8 @@
                                 <div class="triangle"></div>
                             </button>
                         </a>
-                        <a href="#" class="topic">一团火</a>
-                        <div class="describe">小米创业8年内部纪录片（手机篇）</div>
+                        <a href="#" class="topic">小米8，一部与众不同的手机</a>
+                        <div class="describe">透明探索版，将科技与美学完美结合</div>
                     </div>
                 </div>
             </div>
