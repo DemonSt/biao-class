@@ -1,0 +1,2233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MI-responsive</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        body, form, h1, h2, h3, h4 {
+            margin: 0;
+        }
+
+        img {
+            max-width: 100%;
+            border: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        input,
+        button {
+            outline: none;
+            border: .5px #ddd solid;
+        }
+
+        input {
+            border-radius: 3px 0 0 3px;
+        }
+
+        button {
+            border-radius:  0 3px 3px 0;
+        }
+
+        .search-group {
+            font-size: 0;
+        }
+
+        .row:before, .row:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .col {
+            float: left;
+        }
+
+        .container {
+            max-width: 1225px;
+            margin: 0 auto;
+        }
+
+        .muted {
+            opacity: .5;
+        }
+
+        .col-1 {
+            width: 4.166666666666667%;
+        }
+
+        .col-2 {
+            width: 8.333333333333333%;
+        }
+
+        .col-3 {
+            width: 12.5%;
+        }
+
+        .col-4 {
+            width: 16.6666666666667%;
+        }
+
+        .col-5 {
+            width: 20.8333333333333%;
+        }
+
+        .col-6 {
+            width: 25%;
+        }
+
+        .col-7 {
+            width: 29.166666666667%;
+        }
+
+        .col-8 {
+            width: 33.3333333333333%;
+        }
+
+        .col-9 {
+            width: 37.5%;
+        }
+
+        .col-10 {
+            width: 41.666666666667%;
+        }
+
+        .col-11 {
+            width: 45.83333333333333%;
+        }
+
+        .col-12 {
+            width: 50%;
+        }
+
+        .col-13 {
+            width: 54.1666666666667%;
+        }
+
+        .col-14 {
+            width: 58.3333333333333%;
+        }
+
+        .col-15 {
+            width: 62.5%;
+        }
+
+        .col-16 {
+            width: 66.66666666666667%;
+        }
+
+        .col-17 {
+            width: 70.83333333333333%;
+        }
+
+        .col-18 {
+            width: 75%;
+        }
+
+        .col-19 {
+            width: 79.16666666667%;
+        }
+
+        .col-20 {
+            width: 83.33333333333%;
+        }
+
+        .col-21 {
+            width: 87.5%;
+        }
+
+        .col-22 {
+            width: 91.666666666666667%;
+        }
+
+        .col-23 {
+            width: 95.833333333333333%;
+        }
+
+        .col-24 {
+            width: 100%;
+        }
+        /*       以上 全局样式          */
+        .nav.global {
+            color: #b0b0b0;
+            background: #333;
+            font-size: 12px;
+        }
+
+        .nav.global a {
+            color: inherit;
+            padding: 10px 0;
+            display: inline-block;
+        }
+
+        .nav.global a:hover {
+            color: #fff;
+        }
+
+        .nav.global a:after {
+            content: '|';
+            color: #424242;
+            margin-right: 8px;
+            position: relative;
+            left: 6px;
+        }
+
+        .nav.global a:last-child:after {
+            display: none;
+        }
+
+        .nav.global .enter img {
+            width: 25px;
+            height: 15px;
+            position: relative;
+            top: 3px;
+        }
+
+        .nav.global .enter .car {
+            padding: 10px 25px 10px 15px;
+            background: #424242;
+        }
+
+        .nav.global .enter .car:hover {
+            color: #ff6700;
+            background: #fff;
+        }
+
+        .first-screen .nav.page {
+            padding: 20px 0;
+        }
+
+        .first-screen .nav.page a > * {
+            vertical-align: middle;
+        }
+
+        .first-screen .nav.page a:hover {
+            color: #ff6700;
+        }
+
+        .first-screen .nav.page a {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .first-screen .nav.page .festival {
+            margin-left: 10px;
+        }
+
+        .first-screen .nav.page .thick {
+            padding: 20px 7px;
+        }
+
+        .first-screen .nav.page .search-group {
+            margin-top: 5px;
+        }
+
+        .first-screen .nav.page .search-group input {
+            width: 245px;
+            padding: 18px 10px;
+            border-right: 0;
+        }
+
+        .first-screen .nav.page .search-group input::-webkit-input-placeholder {
+            text-align: right;
+        }
+
+        .first-screen .nav.page .search-a a {
+            color: #757575;
+            background: #eee;
+            font-size: 12px;
+            display: inline-block;
+            margin-right: 5px;
+            position: relative;
+            bottom: 46px;
+            left: 1060px;
+        }
+
+        .first-screen .nav.page .search-a a:hover {
+            color: #fff;
+            background: #ff6700;
+        }
+
+        .first-screen .nav.page .search-group button {
+            padding: 14px;
+        }
+
+        .first-screen .nav.page .search-group button:hover {
+            background: #ff6700;
+        }
+
+        .first-screen .nav.page .search-group img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .first-screen .nav.page .search-group input:hover,
+        .first-screen .nav.page .search-group button:hover {
+            border: .5px #aaa solid;
+        }
+
+        .first-screen .nav.page .search-group input:focus,
+        .first-screen .nav.page .search-group button:focus {
+            border: .5px #ff6700 solid;
+        }
+
+        .first-screen .main-promotion {
+            position: relative;
+        }
+
+        .first-screen .main-promotion .kind-group {
+            max-width: 235px;
+            padding: 20px 0;
+            color: #fff;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .first-screen .main-promotion .kind-group a {
+            display: block;
+            color: inherit;
+            font-size: 14px;
+            padding: 11px 130px 11px 30px;
+        }
+
+        .first-screen .main-promotion .kind-group a:hover {
+            background: #ff6700;
+        }
+
+        .first-screen .main-promotion .big {
+            position: absolute;
+            top: 0;
+            z-index: -1;
+        }
+
+        .first-screen .main-promotion .page img {
+            width: 20px;
+            height: 35px;
+        }
+
+        .first-screen .main-promotion .before {
+            position: absolute;
+            left: 231px;
+        }
+        
+        .first-screen .main-promotion .after {
+            position: absolute;
+            right: 1px;
+        }
+
+        .first-screen .main-promotion .after,
+        .first-screen .main-promotion .before {
+            top: 43%;
+            background: transparent;
+            border: 0;
+        }
+
+        .first-screen .main-promotion .after:hover,
+        .first-screen .main-promotion .before:hover {
+            background: #777;
+        }
+
+        .first-screen .sub-promotion {
+            padding-top: 10px;
+            padding-bottom: 20px;
+        }
+
+        .first-screen .sub-promotion .fast-channel {
+            max-width: 235px;
+            max-height: 170px;
+            background: #5f5750;
+        }
+
+        .first-screen .sub-promotion .fast-channel a {
+            display: inline-block;
+            max-width: 31%;
+            font-size: 13px;
+            text-align: center;
+            color: #ddd;
+            padding: 16.5px 5px;
+            border-left: 1px solid #999;
+        }
+
+        .first-screen .sub-promotion .fast-channel .pass {
+            display: inline-block;
+        }
+
+        .first-screen .sub-promotion .fast-channel img {
+            width: 25px;
+            height: 30px;
+        }
+
+        .first-screen .sub-promotion .product-card {
+            margin-left: 15px;
+        }
+
+        .first-screen .sub-promotion .product-card img {
+            width: 315px;
+            height: 170px;;
+        }
+
+        .main .discount .title {
+            padding-top: 10px;
+        }
+
+        .main h2 {
+            font-weight: 300;
+        }
+
+        .main .discount .page-turning {
+            font-size: 0;
+            margin-top: 5px;
+        }
+
+        .main .title button {
+            padding: 5px 15px;
+        }
+
+        .main .title button:hover {
+            background: #ff6700;
+        }
+
+        .main .discount .card-group {
+            margin-bottom: 40px;
+        }
+
+        .main .discount .title {
+            padding-bottom: 10px;
+        }
+
+        .main .discount .count-down {
+            position: relative;
+            text-align: center;
+            background: #f1eded;
+            border-top: #ef3a3b 1px solid;
+        }
+
+        .main .discount .count-down .time {
+            padding-top: 55px;
+            padding-left: 74.5px;
+            padding-right: 74.5px;
+            font-size: 21px;
+            color: #ef3a3b;
+        }
+
+        .main .discount .count-down img {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .main .discount .count-down .distance {
+            color: rgba(0,0,0,0.54);
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .main .discount .count-down .timekeeping span {
+            display: inline-block;
+            margin-bottom: 40px;
+
+        }
+
+        .main .discount .count-down .timekeeping .num {
+            background: #605751;
+            font-size: 24px;    
+            color: #fff;
+            padding: 7px;
+        }
+
+        .main .discount .count-down .timekeeping .colon {
+            font-size: 24px;
+        }
+
+        .main .discount .goods-card {
+            position: relative;
+            text-align: center;
+            background: rgba(0,0,0,0.02);
+            border-top: #ff6700 1px solid;
+            margin-left: 15px;
+        }
+
+        .main .discount .goods-card img {
+            max-width: 150px;
+            margin: 24px 42px;
+        }
+
+
+        .main .discount .goods-card .name {
+            font-size: 14px;
+            color: #333;
+            padding-top: 20px;
+            padding-bottom: 2px;
+        }
+
+        .main .discount .goods-card .trait {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .main .discount .goods-card .price {
+            margin-top: 15px;
+            margin-bottom: 40px;
+        }
+
+        .main .discount .goods-card .price .new {
+            color: #ff6700;
+            font-size: 14px;
+        }
+
+        .main .discount .goods-card .price .old {
+            color: #aaa;
+            font-size: 14px;
+            text-decoration: line-through;
+        }
+
+        .main .discount .goods-card .seckill {
+            position: absolute;
+            background-color: #e53935;
+            color: #fff;
+            font-size: 12px;
+            top: 0;
+            left: 39%;
+        }
+
+        .main .discount .across {
+            max-height: 120px;
+            display: block;
+            margin-bottom: 50px;
+        }
+
+        .main .phone .title {
+            padding-top: 40px;
+        }
+
+        .main .title img {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            top: 4px;
+        }
+
+        .main .title .fr {
+            font-size: 16px;
+            font-weight: 200px;
+            color: #666;
+        }
+
+        .main .grey {
+            background: #f5f5f5;
+        }
+
+        .main .phone .title {
+            padding-bottom: 10px;
+        }
+
+        .main .phone .title .more span:hover {
+            color: #ff6700;
+        }
+
+        .main .card-group {
+            padding-bottom: 15px;
+        }
+
+        .main .phone .long-card {
+            max-width: 231px;
+            margin-bottom: 40px;
+        }
+
+        .main .phone .long-card img {
+            height: 635px;
+        }
+
+        .main .phone-group {
+            max-width: 235px;
+            background: #fff;
+            text-align: center;
+            position: relative;
+            margin-left: 15px;
+            margin-bottom: 15px;
+        }
+
+        .main .phone-group a {
+            max-width: 170px;
+            display: inline-block;
+            margin: 20px 36px 0 36px;
+        }
+
+        .main .phone-group a img {
+            width: 160px;
+            height: 160px;
+        }
+
+        .main .phone-group a .title {
+            color: #333;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 4px 0;
+            padding-top: 10px;
+        }
+
+        .main .phone-group .feature {
+            color: #b0b0b0;
+            font-size: 12px;
+        }
+
+        .main .phone-group .price {
+            color: #ff6700;
+            font-size: 14px;
+            margin: 10px 0 30px;
+        }
+
+        .main .phone-group span {
+            background-color: #83c44e;
+            color: #fff;
+            font-size: 12px;
+            padding: 1px 20px;
+            position: absolute;
+            top: 0px;
+            left: 35%;
+        }
+
+        .main .classify span {
+            font-size: 16px;
+            color: #424242;
+            font-weight: 300;
+            margin-left: 25px;
+        }
+
+        .main .title {
+            padding-top: 40px;
+            padding-bottom: 20px;
+        }
+
+        .main .classify span:hover {
+            color: #ff6700;
+            border-bottom: 2px solid #ff6700;
+        }
+
+        .main .long-box {
+            max-width: 231px;
+        }
+
+        .main .product {
+            max-width: 231px;
+            margin-bottom: 11px;
+        }
+
+        .main .product img {
+            height: 320px;
+        }
+
+        .main .brick {
+            max-width: 235px;
+            max-height: 150px;
+            background: #fff;
+            margin-bottom: 20px;
+        }
+
+        .main .brick .info {
+            padding-left: 2px;
+            margin: 45px 0 60px 30px;
+        }
+
+        .main .brick img {
+            width: 80px;
+            height: 80px;
+            margin: 35px 20px;
+        }
+
+        .main .brick .name {
+            display: block;
+            color: #333;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .main .brick .price {
+            font-size: 14px;
+            color: #ff6700;
+        }
+
+        .main .brick > * {
+            vertical-align: top;
+        }
+
+        .main .brick .browse {
+            display: block;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .main .brick .hot {
+            display: block;
+            font-size: 12px;
+            color: #757575;
+        }
+
+        .main .brick .right img {
+            padding: 10px 10px 24px 24px;
+        }
+
+        .main .phone-group .name {
+            color: #333;
+            font-size: 14px;
+            padding: 10px 0;
+        }
+
+        .main .price-2 {
+            color: #ff6700;
+            padding-bottom: 10px;
+        }
+
+        .main .phone-group .discuss {
+            color: #757575;
+            font-size: 14px;
+            padding-bottom: 25px;
+        }
+
+        .main .first-one.phone-group {
+            margin: 0;
+        }
+
+        .main .recommend .title {
+            padding-top: 10px;
+        }
+
+        .main .recommend .page-turning,
+        .main .discount .page-turning {
+            font-size: 0;
+        }
+
+        .main .hot-comment .comment-card {
+            padding-bottom: 40px;
+        }
+
+        .main .hot-comment .comment-card .card {
+            max-width: 296px;
+            color: #333;
+            font-size: 14px;
+            line-height: 24px;
+            font-weight: 400;
+            background: #fff;
+            width: 25%;
+        }
+
+        .main .hot-comment .comment-card .card p {
+            display: inline-block;
+            margin:  25px 25px 13px 25px;
+            color: #333;
+        }
+
+        .main .hot-comment .comment-card .card .from {
+            font-size: 12px;
+            color: #b0b0b0;
+            margin-left: 25px;
+        }
+
+        .main .hot-comment .comment-card .card .name {
+            display: inline-block;
+            color: #333;
+            margin: 0 15px 30px 20px;
+        }
+
+        .main .hot-comment .comment-card .card.second,
+        .main .theme-card .card.second,
+        .main .video .video-card .card.card.second {
+            margin-right: 14px;
+            margin-left: 14px;
+        }
+
+        .main .hot-comment .comment-card .card span:before {
+            content: '|';
+            color: #e0e0e0;
+            position: relative;
+            right: 7px;
+        }
+
+        .main .theme h2,
+        .main .hot-comment h2 {
+            margin-bottom: 20px;
+        }
+
+        .main .hot-comment h2 {
+            padding-top: 30px;
+        }
+
+        .main .theme-card .card {
+            text-align: center;
+            max-width: 296px;
+            font-size: 12px;
+            color: #b0b0b0;
+            border-top: 1px solid green;
+            border-bottom: 1px solid green;
+            background: #fff;
+        }
+
+        .main .theme-card .card a {
+            display: block;
+        }
+
+        .main .theme-card .card .subject {
+            color: green;
+            font-size: 16px;
+            font-weight: 400;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        .main .theme-card .card .name {
+            color: #333;
+            font-weight: 400;
+            font-size: 20px;
+        }
+
+        .main .theme-card .card .describe {
+            color: #b0b0b0;
+            max-width: 205px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+        .main .theme-card .card .price {
+            color: #333;
+            font-size: 13px;
+            margin: 10px auto 20px;
+        }
+
+        .main .theme-card .card img {
+            width: 215px;
+            height: 160px;
+            margin-bottom: 70px;
+        }
+
+        .main .video .video-card .card {
+            max-width: 295px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 60px;
+            text-align: center;
+            background: #fff;
+            position: relative;
+        }
+
+        .main .video .video-card .card .play {
+            background-color: rgba(0,0,0,0.6);
+            border-radius: 12px;
+            padding: 5px 11px;
+            border: 2px solid #fff;
+            position: absolute;
+            left: 15px;
+            top: 50%;
+        } 
+
+        .main .video .video-card .card button:hover {
+            background: #ff6700;
+            border: #ff6700;
+        }
+
+        .main .video .video-card .card .triangle {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px 0 5px 10px;
+            border-color: transparent transparent transparent #ffffff;
+
+        }
+
+        .main .video .video-card .card .topic {
+            display: block;
+            margin-top: 25px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .main .video .video-card .card .topic:hover {
+            color: #ff6700;
+        }
+
+        .main .video .video-card .card .describe {
+            margin-bottom: 30px;
+            font-size: 12px;
+            color: #b0b0b0;
+        }
+
+        .footer .service {
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .footer .service a {
+            color: #616161;
+            font-size: 16px;
+            margin: 30px 62px;
+            display: inline-block;
+        }
+
+        .footer .service a:hover {
+            color: #ff6700;
+        }
+
+        .footer .service a:after {
+            content: '|';
+            position: relative;
+            left: 70px;
+            color: #e0e0e0;
+        }
+
+        .footer .service a:last-child:after {
+            display: none;
+        }
+
+        .footer .help {
+            margin-bottom: 30px;
+        }
+
+        .footer .help .link {
+            max-width: 80px;
+            margin-right: 100px;
+        }
+
+        .footer .help .link h4 {
+            color: #424242;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 20px 0;
+        }
+
+        .footer .help .link a {
+            display: block;
+            color: #757575;
+            font-size: 12px;
+            line-height: 2.4;
+        }
+        
+        .footer .help .link a:hover {
+            color: #ff6700;
+        }
+
+        .footer .help .tel-service {
+            text-align: center;
+            padding: 0 50px 0 75px;
+            border-left: 1px solid #e0e0e0;
+            margin-top: 20px;
+        }
+
+        .footer .help .tel-service .tel {
+            font-size: 22px;
+            color: #ff6700;
+        }
+
+        .footer .help .tel-service .time {
+            font-size: 12px;
+            color: #616161;
+        }
+
+        .footer .help .tel-service button {
+            border-color: #ff6700;
+            background: #fff;
+            color: #ff6700;
+            font-size: 12px;
+            padding: 5px 40px;
+            border-radius: 3px;
+            margin-top: 20px;
+        }
+
+        .footer .help .tel-service button:hover {
+            color: #fff;
+            background: #ff6700;
+        }
+
+        .footer-bottom {
+            background: #fafafa;
+        }
+
+        .footer-bottom .info {
+            padding: 30px 0;
+        }
+
+        .footer-bottom .info img {
+            padding-top: 5px;
+            padding-right: 10px;
+        }
+
+        .footer-bottom .info .title-linkgroup > * {
+            color: #757575;
+            font-size: 12px;
+        }
+
+        .footer-bottom .info .title-linkgroup a:after {
+            content: '|';
+            position: relative;
+            left: 3px;
+        }
+
+        .footer-bottom .info .meta-message {
+            color: #b0b0b0;
+            font-size: 12px;
+        }
+
+        .footer-bottom .info .meta-message a {
+            color: inherit;
+        }
+
+        .footer-bottom .info .meta-message a:hover {
+            color: #ff6700;
+        }
+
+        .footer-bottom .info .img-linkgroup img {
+            width: 85px;
+            height: 30px;
+        }
+
+        .footer-bottom .slogan {
+            text-align: center;
+            padding-bottom: 30px;
+        }
+    </style>
+
+    <style media="screen and (max-width:900px)">
+        body {
+            background: rgb(248, 234, 188);
+        }
+
+        .nav.global .enter .car {
+            display: none;
+        }  
+
+        .first-screen .nav.page .festival {
+            display: none;
+        }
+
+        .first-screen .nav.page .search-group {
+            display: none;
+        }
+
+        .first-screen .main-promotion .big-card img {
+            position: sticky;
+        }
+
+        .first-screen .main-promotion .big-card .before {
+            left: 0;
+        }
+
+        .first-screen .main-promotion .big-card .before,
+        .first-screen .main-promotion .big-card .after {
+            top: 230px;
+        }
+
+        .first-screen .main-promotion .kind-group {
+            max-width: 100%;
+            background: 0;
+            text-align: center;
+        }
+
+        .first-screen .main-promotion .kind-group a {
+            display: inline-block;
+            padding: 10px;
+            font-size: 12px;
+            color: #616161;
+        }
+
+        .first-screen .sub-promotion .fast-channel {
+            max-width: 100px;
+            max-height: 100%;
+        }
+
+        .first-screen .sub-promotion .fast-channel a {
+            display: block;
+            max-width: 100%;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .first-screen .sub-promotion .fast-channel a > * {
+            vertical-align: middle;
+        }
+
+        .first-screen .sub-promotion .product-card {
+            margin-right: 15%;
+        }
+
+        .first-screen .sub-promotion .goods-card {
+            max-width: 20%;
+        }
+
+        .main .phone .long-card {
+            max-width: 20%;
+        }
+
+        .main .phone .phone-group {
+            max-width: 20%;
+        }
+    </style>
+
+    <style media="screen and (max-width:500px)">
+        body {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav global">
+        <div class="row container">
+            <div class="fl link-group">
+                <a href="#">小米商城</a>
+                <a href="#">MIUI</a>
+                <a href="#">loT</a>
+                <a href="#">云服务</a>
+                <a href="#">金融</a>
+                <a href="#">有品</a>
+                <a href="#">小爱开放平台</a>
+                <a href="#">政企服务</a>
+                <a href="#">下载app</a>
+                <a href="#">Select Region</a>
+            </div>
+            <div class="fr enter">
+                <a href="#">登录</a>
+                <a href="#">注册</a>
+                <a href="#">消息通知</a>
+                <a href="#" class="car"><img src="http://pics.sc.chinaz.com/Files/pic/icons128/5883/12.png">购物车(0)</a>
+            </div>
+        </div>
+    </div>
+    <div class="row first-screen">
+        <div class="container">
+            <div class="row nav page">
+                <div class="fl">
+                    <a href="#" class="logo">
+                        <img src="https://s01.mifile.cn/i/logo.png">
+                    </a>
+                    <a href="#" class="festival">
+                        <img src="http://i8.mifile.cn/v1/a1/b7acecd8-729b-dc3a-6a93-1eeb82cd0846.webp">
+                    </a>
+                    <a href="#" class="thick">小米手机</a>
+                    <a href="#" class="thick">红米</a>
+                    <a href="#" class="thick">电视</a>
+                    <a href="#" class="thick">笔记本</a>
+                    <a href="#" class="thick">空调</a>
+                    <a href="#" class="thick">新品</a>
+                    <a href="#" class="thick">路由器</a>
+                    <a href="#" class="thick">智能硬件</a>
+                    <a href="#" class="thick">服务</a>
+                    <a href="#" class="thick">社区</a>
+                </div>
+                <form class="fr search-group">
+                    <input>
+                    <button class="fr"><img src="http://www.iconpng.com/png/komik/lupita.png"></button>
+                </form>
+                <div class="row search-a">
+                    <a href="#">小米8</a>
+                    <a href="#">小米MIX 2S</a>
+                </div>
+            </div>
+            <div class="row main-promotion">
+                <div class="fl kind-group">
+                    <a href="#">手机 电话卡</a>
+                    <a href="#">电视 盒子</a>
+                    <a href="#">笔记本 平板</a>
+                    <a href="#">家电 插线板</a>
+                    <a href="#">出行 穿戴</a>
+                    <a href="#">智能 路由器</a>
+                    <a href="#">电影 配件</a>
+                    <a href="#">健康 儿童</a>
+                    <a href="#">耳机 音响</a>
+                    <a href="#">生活 箱包</a>
+                </div>
+                <a href="#" class="row big-card">
+                    <img class="big" src="https://i1.mifile.cn/a4/xmad_1539741203964_XkPBM.jpg">
+                    <span class="page">
+                        <button class="before"><img src="http://www.iconpng.com/png/basic-application/arrowhead7.png"></button>
+                        <button class="after"><img src="http://www.iconpng.com/png/basic-application/arrow487.png"></button>
+                    </span>
+                </a>
+            </div>
+            <div class="row sub-promotion">
+                <div class="fl fast-channel">
+                    <a href="#">
+                        <img src="http://www.iconpng.com/png/phone-set-full/phone206.png">
+                        <div class="pass">选购手机</div>
+                    </a>
+                    <a href="#">
+                        <img src="http://www.iconpng.com/png/phone-set-full/phone206.png">
+                        <div class="pass">选购手机</div>
+                    </a>
+                    <a href="#">
+                        <img src="http://www.iconpng.com/png/phone-set-full/phone206.png">
+                        <div class="pass">选购手机</div>
+                    </a>
+                    <a href="#">
+                        <img src="http://www.iconpng.com/png/phone-set-full/phone206.png">
+                        <div class="pass">选购手机</div>
+                    </a>
+                    <a href="#">
+                        <img src="http://www.iconpng.com/png/phone-set-full/phone206.png">
+                        <div class="pass">选购手机</div>
+                    </a>
+                    <a href="#">
+                        <img src="http://www.iconpng.com/png/phone-set-full/phone206.png">
+                        <div class="pass">选购手机</div>
+                    </a>
+                </div>
+                <a href="#" class="fr product-card">
+                    <img src="https://i1.mifile.cn/a4/xmad_15382348202641_EoZuy.jpg">
+                </a>
+                <a href="#" class="fr product-card">
+                    <img src="https://i1.mifile.cn/a4/xmad_15382347865119_ZhSrK.jpg">
+                </a>
+                <a href="#" class="fr product-card">
+                    <img src="https://i1.mifile.cn/a4/xmad_15166223451193_skuUX.jpg">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="discount">
+            <div class="row container">
+                <div class="row title">
+                    <h2 class="fl">小米闪购</h2>
+                    <div class="fr page-turning">
+                        <button> < </button>
+                        <button> > </button>
+                    </div>
+                </div>
+                <div class="row card-group">
+                    <div class="count-down fl">
+                        <div class="time">10:00 场</div>
+                        <img src="https://i1.mifile.cn/f/i/2018/mihome/flashpurchase.png">
+                        <div class="distance">距离结束还有</div>
+                        <div class="timekeeping">
+                            <span class="num">00</span>
+                            <span class="colon">:</span>
+                            <span class="num">37</span>
+                            <span class="colon">:</span>
+                            <span class="num">39</span>
+                        </div>
+                    </div>
+                    <a href="#" class="fr goods-card">
+                        <img src="https://i1.mifile.cn/a1/pms_1495520422.36514041!220x220.jpg">
+                        <div class="name">TS防蓝光护目镜 米家定制 黑色</div>
+                        <div class="trait">新“视”界，有目共睹</div>
+                        <div class="price">
+                            <span class="new">89元</span>
+                            <span class="old">99元</span>
+                        </div>
+                        <div class="seckill">9.9元秒杀</div>
+                    </a>
+                    <a href="#" class="fr goods-card">
+                        <img src="https://i1.mifile.cn/a1/pms_1496647119.81414190!220x220.jpg">
+                        <div class="name">TS防蓝光护目镜 米家定制 黑色</div>
+                        <div class="trait">新“视”界，有目共睹</div>
+                        <div class="price">
+                            <span class="new">89元</span>
+                            <span class="old">99元</span>
+                        </div>
+                        <div class="seckill">9.9元秒杀</div>
+                    </a>
+                    <a href="#" class="fr goods-card">
+                        <img src="https://i1.mifile.cn/a1/pms_1490702347.3628109!220x220.png">
+                        <div class="name">TS防蓝光护目镜 米家定制 黑色</div>
+                        <div class="trait">新“视”界，有目共睹</div>
+                        <div class="price">
+                            <span class="new">89元</span>
+                            <span class="old">99元</span>
+                        </div>
+                        <div class="seckill">9.9元秒杀</div>
+                    </a>
+                    <a href="#" class="fr goods-card">
+                        <img src="https://i8.mifile.cn/a1/pms_1519898051.32296997!560x560.jpg">
+                        <div class="name">TS防蓝光护目镜 米家定制 黑色</div>
+                        <div class="trait">新“视”界，有目共睹</div>
+                        <div class="price">
+                            <span class="new">89元</span>
+                            <span class="old">99元</span>
+                        </div>
+                        <div class="seckill">9.9元秒杀</div>
+                    </a>
+                </div>
+                <a href="#" class="across">
+                    <img src="https://i1.mifile.cn/a4/xmad_15283599920813_VWpSg.jpg">
+                </a>
+            </div>
+        </div>
+        <div class="phone grey">
+            <div class="container">
+                <div class="row title">
+                    <h2 class="fl">手机</h2>
+                    <a href="#" class="fr more">
+                        <span>查看全部</span>
+                        <img src="http://www.iconpng.com/png/metrize/right169.png">
+                    </a>
+                </div>
+                <div class="row card-group">
+                    <a href="#" class="fl long-card">
+                        <img src="https://i1.mifile.cn/a4/xmad_15323220713837_GLBVX.jpg">
+                    </a>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1537356460.6227958!220x220.png">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1527684990.93616987!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1522034061.12391230!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1527144859.25489991!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1495692033.10494295!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1509723483.31416776!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1525853341.8312102!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1537323963.1278763!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <a href="#" class="across">
+                        <img src="https://i1.mifile.cn/a4/xmad_15393230912983_uwELN.jpg">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="home-appliances grey">
+            <div class="container">
+                <div class="row title">
+                    <h2 class="fl">家电</h2>
+                    <span class="classify fr">
+                        <span>热门</span>
+                        <span>电视影音</span>
+                        <span>电脑</span>
+                        <span>家居</span>
+                    </span>
+                </div>
+                <div class="row card-group">
+                    <div class="long-box fl">
+                        <a href="#" class="fl product">
+                            <img src="https://i1.mifile.cn/a4/xmad_15232433421155_vCzhJ.jpg">
+                        </a>
+                        <a href="#" class="fl product">
+                            <img src="https://i1.mifile.cn/a4/xmad_15123939053142_dFlAw.jpg">
+                        </a>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1524883847.49276938!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1522318330.86967810!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/xmad_15350951136177_QUuVm.pngg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/xmad_14972549116226_tZpod.png">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1504498936.11861982!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/xmad_15281923207128_rOfDp.png">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1521634907.16181074!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr last-box">
+                        <div class="row brick">
+                            <div class="col info">
+                                <a href="#" class="name">小米净水器...</a>
+                                <span class="price">1999元</span>
+                            </div>
+                            <a href="#" class="col">
+                                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1540292397&di=dbc4509aec8e048a0ee491c3e739c444&imgtype=jpg&er=1&src=http%3A%2F%2Fd6.yihaodianimg.com%2FN01%2FM07%2FCC%2FF8%2FCgQCrVNaMRWASR-1AAQKVDdJlG840501.jpg">
+                            </a>
+                        </div>
+                        <div class="row brick">
+                            <div class="col info">
+                                <a href="#" class="browse">浏览更多</a>
+                                <a href="#" class="hot">热门</a>
+                            </div>
+                            <a href="#" class="col right">
+                                <img src="http://www.iconpng.com/png/grey-moonlight/next.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="across">
+                    <img src="https://i1.mifile.cn/a4/xmad_1539262647664_pRtbG.jpg">
+                </a>
+            </div>
+        </div>
+        <div class="brainpower grey">
+            <div class="container">
+                <div class="row title">
+                    <h2 class="fl">智能</h2>
+                    <span class="classify fr">
+                        <span>热门</span>
+                        <span>出行</span>
+                        <span>健康</span>
+                        <span>酷玩</span>
+                        <span>路由器</span>
+                    </span>
+                </div>
+                <div class="row card-group">
+                    <div class="long-box fl">
+                        <a href="#" class="fl product">
+                            <img src="https://i1.mifile.cn/a4/xmad_15266395374048_JnZQo.jpg">
+                        </a>
+                        <a href="#" class="fl product">
+                            <img src="https://i1.mifile.cn/a4/xmad_14950995035103_fhWtH.jpg">
+                        </a>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/cf6660a3-d424-4248-889f-0eed1e99a342">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1527754949.17141338!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/T1sWd_B7VT1RXrhCrK!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1490770630.65576964!220x220.png">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1506733860.3164711!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1539051273.95659582!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1498564154.53184175!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr last-box">
+                        <div class="row brick">
+                            <div class="col info">
+                                <a href="#" class="name">小米净水器...</a>
+                                <span class="price">1999元</span>
+                            </div>
+                            <a href="#" class="col">
+                                <img src="https://i1.mifile.cn/a1/pms_1528698828.42759625!220x220.jpg">
+                            </a>
+                        </div>
+                        <div class="row brick">
+                            <div class="col info">
+                                <a href="#" class="browse">浏览更多</a>
+                                <a href="#" class="hot">热门</a>
+                            </div>
+                            <a href="#" class="col right">
+                                <img src="http://www.iconpng.com/png/grey-moonlight/next.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="across">
+                    <img src="https://i1.mifile.cn/a4/xmad_15392629146753_GIzbX.jpg">
+                </a>
+            </div>
+        </div>
+        <div class="match grey">
+            <div class="container">
+                <div class="row title">
+                    <h2 class="fl">搭配</h2>
+                    <span class="classify fr">
+                        <span>热门</span>
+                        <span>耳机音响</span>
+                        <span>电源</span>
+                        <span>电池储存卡</span>
+                    </span>
+                </div>
+                <div class="row card-group">
+                    <div class="long-box fl">
+                        <a href="#" class="fl product">
+                            <img src="https://i1.mifile.cn/a4/xmad_15338967362713_dmRBh.jpg">
+                        </a>
+                        <a href="#" class="fl product">
+                            <img src="https://i1.mifile.cn/a4/xmad_15361151164481_dhyZE.jpg">
+                        </a>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1535440524.10478102.jpg?width=150&height=150">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1522666970.27937468.jpg?width=150&height=150">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1513857241.9291821.jpg?width=150&height=150">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1505264799.43246303.jpg?width=150&height=150">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1507877361.06147174.jpg?width=150&height=150">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1481269289.59498154.jpg?width=150&height=150">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1508894595.80572640.jpg?width=150&height=150">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr last-box">
+                        <div class="row brick">
+                            <div class="col info">
+                                <a href="#" class="name">小米净水器...</a>
+                                <span class="price">1999元</span>
+                            </div>
+                            <a href="#" class="col">
+                                <img src="https://i1.mifile.cn/a1/pms_1506417289.23728408.jpg?width=80&height=80">
+                            </a>
+                        </div>
+                        <div class="row brick">
+                            <div class="col info">
+                                <a href="#" class="browse">浏览更多</a>
+                                <a href="#" class="hot">热门</a>
+                            </div>
+                            <a href="#" class="col right">
+                                <img src="http://www.iconpng.com/png/grey-moonlight/next.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="across">
+                    <img src="https://i1.mifile.cn/a4/xmad_15381340961167_kSfKZ.jpg">
+                </a>
+            </div>
+        </div>
+        <div class="fitting grey">
+            <div class="container">
+                <div class="row title">
+                    <h2 class="fl">配件</h2>
+                    <span class="classify fr">
+                        <span>热门</span>
+                        <span>保护套</span>
+                        <span>贴膜</span>
+                        <span>其他配件</span>
+                    </span>
+                </div>
+                <div class="row card-group">
+                    <div class="long-box fl">
+                        <a href="#" class="fl product">
+                            <img src="https://i1.mifile.cn/a4/xmad_15365645746268_AbyRf.jpg">
+                        </a>
+                        <a href="#" class="fl product">
+                            <img src="https://i1.mifile.cn/a4/xmad_15382741599366_Ojqsx.jpg">
+                        </a>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1536219960.33647181.jpg?width=150&height=150">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1527840801.33455226.jpg?width=150&height=150">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1537342194.63927944.jpg?width=150&height=150">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1537342959.92144787.jpg?width=150&height=150">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1537323963.1278763!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1481269289.59498154.jpg?width=150&height=150">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1527839741.58144552.jpg?width=150&height=150">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr last-box">
+                        <div class="row brick">
+                            <div class="col info">
+                                <a href="#" class="name">小米净水器...</a>
+                                <span class="price">1999元</span>
+                            </div>
+                            <a href="#" class="col">
+                                <img src="https://i1.mifile.cn/a1/pms_1522142136.45425672.jpg?width=80&height=80">
+                            </a>
+                        </div>
+                        <div class="row brick">
+                            <div class="col info">
+                                <a href="#" class="browse">浏览更多</a>
+                                <a href="#" class="hot">热门</a>
+                            </div>
+                            <a href="#" class="col right">
+                                <img src="http://www.iconpng.com/png/grey-moonlight/next.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="across">
+                    <img src="https://i1.mifile.cn/a4/xmad_15282822747649_UXhkN.jpg">
+                </a>
+            </div>
+        </div>
+        <div class="ambitus grey">
+            <div class="container">
+                <div class="row title">
+                    <h2 class="fl">周边</h2>
+                    <span class="classify fr">
+                        <span>热门</span>
+                        <span>出行</span>
+                        <span>居家</span>
+                        <span>生活周边</span>
+                        <span>箱包</span>
+                    </span>
+                </div>
+                <div class="row card-group">
+                    <div class="long-box fl">
+                        <a href="#" class="fl product">
+                            <img src="https://i1.mifile.cn/a4/xmad_15284596646115_wNMGC.jpg">
+                        </a>
+                        <a href="#" class="fl product">
+                            <img src="https://i1.mifile.cn/a4/xmad_15349041091303_OpIrD.jpg">
+                        </a>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1522309592.89679012!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1512702607.05524534!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1512702607.05524534!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1502097740.52392774!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1502258923.87257653!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1537323963.1278763!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fl phone-group">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a1/pms_1522311796.15496400!220x220.jpg">
+                            <div class="title">小米8 青春版 4GB+64GB</div>
+                        </a>
+                        <div class="feature">潮流镜面渐变色，2400万自拍旗舰</div>
+                        <div class="price">1399元</div>
+                        <span>新品</span>
+                    </div>
+                    <div class="fr last-box">
+                        <div class="row brick">
+                            <div class="col info">
+                                <a href="#" class="name">小米净水器...</a>
+                                <span class="price">1999元</span>
+                            </div>
+                            <a href="#" class="col">
+                                <img src="https://i1.mifile.cn/a1/pms_1502097740.52392774!220x220.jpg">
+                            </a>
+                        </div>
+                        <div class="row brick">
+                            <div class="col info">
+                                <a href="#" class="browse">浏览更多</a>
+                                <a href="#" class="hot">热门</a>
+                            </div>
+                            <a href="#" class="col right">
+                                <img src="http://www.iconpng.com/png/grey-moonlight/next.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="recommend grey">
+            <div class="row container">
+                <div class="row title">
+                    <h2 class="fl">为你推荐</h2>
+                    <div class="fr page-turning">
+                        <button> < </button>
+                        <button> > </button>
+                    </div>
+                </div>
+                <div class="fl first-one phone-group">
+                    <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1536653491.01742388!280x280.jpg">
+                        <div class="name">红米6全网通版3GB内</div>
+                    </a>
+                    <div class="price-2">769元</div>
+                    <div class="discuss">3616人好评</div>
+                </div>
+                <div class="fr phone-group">
+                    <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1536833428.43292402!280x280.jpg">
+                        <div class="name">红米6全网通版3GB内</div>
+                    </a>
+                    <div class="price-2">769元</div>
+                    <div class="discuss">3616人好评</div>
+                </div>
+                <div class="fr phone-group">
+                    <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1508895293.24876014!280x280.jpg">
+                        <div class="name">红米6全网通版3GB内</div>
+                    </a>
+                    <div class="price-2">769元</div>
+                    <div class="discuss">3616人好评</div>
+                </div>
+                <div class="fr phone-group">
+                    <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1481099756.86043368!280x280.jpg">
+                        <div class="name">红米6全网通版3GB内</div>
+                    </a>
+                    <div class="price-2">769元</div>
+                    <div class="discuss">3616人好评</div>
+                </div>
+                <div class="fr phone-group">
+                    <a href="#">
+                        <img src="https://i1.mifile.cn/a1/pms_1528718738.78643039!280x280.jpg">
+                        <div class="name">红米6全网通版3GB内</div>
+                    </a>
+                    <div class="price-2">769元</div>
+                    <div class="discuss">3616人好评</div>
+                </div>
+            </div>
+        </div>
+        <div class="hot-comment grey">
+            <div class="row container">
+                <h2>热评产品</h2>
+                <div class="row comment-card">
+                    <div class="fl card">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/54e35fdd-bc68-4a89-bad7-c9c3bb2fc6fe">
+                        </a>
+                        <a href="#">
+                            <p>包装很让人感动，式样也很可爱，做出的饭全家人都爱吃，超爱五星！手机控制还是不太熟练，最主要是没有连接...</p>
+                        </a>
+                        <div class="from">来自于 HZG 的评价</div>
+                        <a href="#" class="name">米家压力IH电饭煲</a>
+                        <span class="price-2">999元</span>
+                    </div>
+                    <div class="fr card">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/xmad_15094337975564_BSRIq.jpg">
+                        </a>
+                        <a href="#">
+                            <p>包装很让人感动，式样也很可爱，做出的饭全家人都爱吃，超爱五星！手机控制还是不太熟练，最主要是没有连接...</p>
+                        </a>
+                        <div class="from">来自于 HZG 的评价</div>
+                        <a href="#" class="name">米兔定位电话</a>
+                        <span class="price-2">49元</span>
+                    </div>
+                    <div class="fr card second">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/97d80b35-152e-4934-af34-402251458e16">
+                        </a>
+                        <a href="#">
+                            <p>包装很让人感动，式样也很可爱，做出的饭全家人都爱吃，超爱五星！手机控制还是不太熟练，最主要是没有连接...</p>
+                        </a>
+                        <div class="from">来自于 HZG 的评价</div>
+                        <a href="#" class="name">小米插线板 </a>
+                        <span class="price-2">169元</span>
+                    </div>
+                    <div class="fr card third">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/aa6b038a-2946-4549-acff-17c58e701556">
+                        </a>
+                        <a href="#">
+                            <p>包装很让人感动，式样也很可爱，做出的饭全家人都爱吃，超爱五星！手机控制还是不太熟练，最主要是没有连接...</p>
+                        </a>
+                        <div class="from">来自于 HZG 的评价</div>
+                        <a href="#" class="name">米家车载空气净化器</a>
+                        <span class="price-2">289元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="theme grey">
+            <div class="row container">
+                <h2>内容</h2>
+                <div class="row theme-card">
+                    <div class="fl card">
+                        <div class="subject">图书</div>
+                        <a href="#" class="name">哈利·波特与被诅咒的孩子</a>
+                        <a href="#" class="describe">“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本!</a>
+                        <a href="#" class="price">29.37元</a>
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/xmad_15299832299419_eIPOw.png">
+                        </a>
+                    </div>
+                    <div class="fr card">
+                        <div class="subject">图书</div>
+                        <a href="#" class="name">哈利·波特与被诅咒的孩子</a>
+                        <a href="#" class="describe">“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本!</a>
+                        <a href="#" class="price">29.37元</a>
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/3332da7d-4056-4694-9548-c83b7b3af7d3">
+                        </a>
+                    </div>
+                    <div class="fr card second">
+                        <div class="subject">图书</div>
+                        <a href="#" class="name">哈利·波特与被诅咒的孩子</a>
+                        <a href="#" class="describe">“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本!</a>
+                        <a href="#" class="price">29.37元</a>
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/5e5da924-84e3-4959-9e25-5891cdf30757">
+                        </a>
+                    </div>
+                    <div class="fr card">
+                        <div class="subject">图书</div>
+                        <a href="#" class="name">哈利·波特与被诅咒的孩子</a>
+                        <a href="#" class="describe">“哈利·波特”第八个故事中文版震撼来袭！特别彩排版剧本!</a>
+                        <a href="#" class="price">29.37元</a>
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/xmad_15360565735203_Uuvyd.jpg">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="video grey">
+            <div class="row container">
+                <div class="row title">
+                    <h2 class="fl">视频</h2>
+                    <a href="#" class="fr more">
+                        <span>查看全部</span>
+                        <img src="http://www.iconpng.com/png/metrize/right169.png">
+                    </a>
+                </div>
+                <div class="row video-card">
+                    <div class="fl card">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/xmad_15318974928021_cthgC.jpg">
+                            <button class="play">
+                                <div class="triangle"></div>
+                            </button>
+                        </a>
+                        <a href="#" class="topic">一团火</a>
+                        <div class="describe">小米创业8年内部纪录片（手机篇）</div>
+                    </div>
+                    <div class="fr card">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/xmad_15278358912266_LDHfI.jpg">
+                            <button class="play">
+                                <div class="triangle"></div>
+                            </button>
+                        </a>
+                        <a href="#" class="topic">生活中无所不在的小爱同学</a>
+                        <div class="describe">一句话搞定手机复杂操作</div>
+                    </div>
+                    <div class="fr card second">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/xmad_15278351912522_frJQc.jpg">
+                            <button class="play">
+                                <div class="triangle"></div>
+                            </button>
+                        </a>
+                        <a href="#" class="topic">小米MIX 2S，一面科技 一面艺术</a>
+                        <div class="describe">艺术品般陶瓷机身，惊艳、璀璨</div>
+                    </div>
+                    <div class="fr card">
+                        <a href="#">
+                            <img src="https://i1.mifile.cn/a4/xmad_15278359339164_dDTJC.jpg">
+                            <button class="play">
+                                <div class="triangle"></div>
+                            </button>
+                        </a>
+                        <a href="#" class="topic">小米8，一部与众不同的手机</a>
+                        <div class="describe">透明探索版，将科技与美学完美结合</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="row container">
+            <div class="row service">
+                <a href="#">预约维修服务</a>
+                <a href="#">7天无理由退货</a>
+                <a href="#">15天免费换货</a>
+                <a href="#">满150元包邮</a>
+                <a href="#">520余家售后网点</a>
+            </div>
+            <div class="row help">
+                <div class="fl link">
+                    <h4>帮助中心</h4>
+                    <a href="#">账户管理</a>
+                    <a href="#">购物指南</a>
+                    <a href="#">订单操作</a>
+                </div>
+                <div class="fl link">
+                    <h4>服务支持</h4>
+                    <a href="#">售后政策</a>
+                    <a href="#">自助服务</a>
+                    <a href="#">相关下载</a>
+                </div>
+                <div class="fl link">
+                    <h4>线下门店</h4>
+                    <a href="#">小米之家</a>
+                    <a href="#">服务网点</a>
+                    <a href="#">授权体验店</a>
+                </div>
+                <div class="fl link">
+                    <h4>关于小米</h4>
+                    <a href="#">了解小米</a>
+                    <a href="#">加入小米</a>
+                    <a href="#">投资者关系</a>
+                </div>
+                <div class="fl link">
+                    <h4>关注我们</h4>
+                    <a href="#">新浪微博</a>
+                    <a href="#">官方微信</a>
+                    <a href="#">联系我们</a>
+                </div>
+                <div class="fl link">
+                    <h4>特色服务</h4>
+                    <a href="#">F 码通道</a>
+                    <a href="#">礼物码</a>
+                    <a href="#">防伪查询</a>
+                </div>
+                <div class="fr tel-service">
+                    <div class="tel">400-100-5678</div>
+                    <div class="time">周一至周日 8:00-18:00<br>（仅收市话费）</div>
+                    <button>联系客服</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom grey">
+        <div class="container">
+            <div class="row gery">
+                <div class="row info">
+                    <img class="fl" src="https://s01.mifile.cn/i/logo-footer.png?v2">
+                    <div class="fl">
+                        <div class="title-linkgroup">
+                            <a href="#">小米商城</a>
+                            <a href="#">MIUI</a>
+                            <a href="#">米家</a>
+                            <a href="#">米聊</a>
+                            <a href="#">多看</a>
+                            <a href="#">游戏</a>
+                            <a href="#">路由器</a>
+                            <a href="#">米粉卡</a>
+                            <a href="#">政企服务</a>
+                            <a href="#">小米天猫店</a>
+                            <a href="#">隐私政策</a>
+                            <a href="#">问题反馈</a>
+                            <a href="#">廉正举报</a>
+                            <a href="#">Select Region</a>
+                        </div>
+                        <div class="meta-message">
+                            <a href="#">© mi.com</a>
+                            <span>京ICP证110507号</span>
+                            <a href="#">京ICP备10046444号</a>
+                            <a href="#">京公网安备11010802020134号</a>
+                            <a href="#">京网文[2017]1530-131号</a>
+                        </div>
+                        <div class="meta-message">
+                            <a href="#">（京）网械平台备字（2018）第00005号</a>
+                            <a href="#">互联网药品信息服务资格证 (京) -非经营性-2014-0090</a>
+                            <a href="#">营业执照</a>
+                        </div>
+                        <div class="meta-message">违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</div>
+                    </div>
+                    <div class="fr img-linkgroup">
+                        <a href="#">
+                            <img src="https://s01.mifile.cn/i/v-logo-2.png">
+                        </a>
+                        <a href="#">
+                            <img src="https://s01.mifile.cn/i/v-logo-1.png">
+                        </a>
+                        <a href="#">
+                            <img src="https://s01.mifile.cn/i/v-logo-3.png">
+                        </a>
+                        <a href="#">
+                            <img class="original" src="https://i1.mifile.cn/f/i/17/site/truste.png">
+                        </a>
+                        <a href="#">
+                            <img src="https://i8.mifile.cn/b2c-mimall-media/ba10428a4f9495ac310fd0b5e0cf8370.png">
+                        </a>
+                    </div>
+                </div>
+                <div class="row slogan">
+                    <img src="https://s01.mifile.cn/i/slogan2016.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
