@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>豆瓣 4.0</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body, form {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        input,
+        button {
+            outline: none;
+            border: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        button {
+            border-radius:  0 3px 3px 0;
+        }
+
+        .row:before,
+        .row:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .muted {
+            opacity: .5;
+        }
+
+        .col {
+            float: left;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .col-1 {
+            width: 4.166666666666667%;
+        }
+
+        .col-2 {
+            width: 8.333333333333333%;
+        }
+
+        .col-3 {
+            width: 12.5%;
+        }
+
+        .col-4 {
+            width: 16.6666666666667%;
+        }
+
+        .col-5 {
+            width: 20.8333333333333%;
+        }
+
+        .col-6 {
+            width: 25%;
+        }
+
+        .col-7 {
+            width: 29.166666666667%;
+        }
+
+        .col-8 {
+            width: 33.3333333333333%;
+        }
+
+        .col-9 {
+            width: 37.5%;
+        }
+
+        .col-10 {
+            width: 41.666666666667%;
+        }
+
+        .col-11 {
+            width: 45.83333333333333%;
+        }
+
+        .col-12 {
+            width: 50%;
+        }
+
+        .col-13 {
+            width: 54.1666666666667%;
+        }
+
+        .col-14 {
+            width: 58.3333333333333%;
+        }
+
+        .col-15 {
+            width: 62.5%;
+        }
+
+        .col-16 {
+            width: 66.66666666666667%;
+        }
+
+        .col-17 {
+            width: 70.83333333333333%;
+        }
+
+        .col-18 {
+            width: 75%;
+        }
+
+        .col-19 {
+            width: 79.16666666667%;
+        }
+
+        .col-20 {
+            width: 83.33333333333%;
+        }
+
+        .col-21 {
+            width: 87.5%;
+        }
+
+        .col-22 {
+            width: 91.666666666666667%;
+        }
+
+        .col-23 {
+            width: 95.833333333333333%;
+        }
+
+        .col-24 {
+            width: 100%;
+        }
+        /*       以上 全局样式          */
+
+        body a {
+            color: #259;
+        }
+
+        body a:hover {
+            color: #fff;
+        }
+        
+        .nav.global .container {
+            max-width: 95%;
+        }
+
+        .nav.global {
+            color: #d5d5d5;
+            background: #545652;
+        }
+
+        .nav.global a {
+            color: inherit;
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 70%;
+        }
+
+        #menu {
+            display: none;
+        }
+
+        #menu-checkbox {
+            display: none;
+        }
+
+        .main .nav.page {
+            background: #f0f6f3;
+        }
+
+        .nav.page #logo {
+            padding: 20px 60px 20px 0;
+        }
+
+        .nav.page .link-group a {
+            color: #037b82;
+            padding: 25px 0;
+            margin-right: 25px;
+            display: inline-block;
+        }
+
+        .nav.page .link-group a:hover {
+            color: rgb(2, 83, 39);
+        }
+
+        .nav.page .search {
+            max-width: 280px;
+            font-size:0px;
+            padding-top: 21px;
+        }
+
+        .search input {
+            width: 90%;
+            padding: 7px;
+        }
+
+        input::-webkit-input-placeholder {
+            color: #bbb;
+        }
+
+        input:focus,
+        button:focus {
+            border: #037b82 1px solid;
+        }
+        .search button {
+            width: 10%;
+            height: 29px;
+        }
+
+        .search button img {
+            position: relative;
+            top: 3px;
+        }
+
+        h1 {
+            padding: 20px 0 15px 0;
+            font-size: 26px;
+            color: #494949;
+        }
+
+        .channel {
+            margin-right: 100px;
+        }
+
+        .channel .preview > * {
+            padding: 0 0 8px 0;
+            margin-left: 15px;
+        }
+
+        .channel .like {
+            color: #ca6445;
+            background: #fae9da;
+            text-align: center;
+            padding: 8px 14px;
+            display: inline-block;
+            font-size: 13px;
+            margin-top: 17px;
+        }
+
+        .channel .title {
+            font-size: 15px;
+        }
+
+        .channel .title a:hover {
+            background: #666699;
+        }
+
+        .channel .describe {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #999;
+            background: #f9f9f9;
+        }
+
+        .channel .describe img {
+            width: 60px;
+            height: 60px;
+            margin: 10px;
+        }
+
+        .channel .describe p {
+            padding: 0 10px;
+        }
+
+        .channel .info span {
+            color: #666;
+            font-size: 13px; 
+        }
+
+        .channel .info a {
+            color: #666;
+            font-size: 13px; 
+        }
+
+        .channel .info a:hover {
+            color: #fff;
+            background: #666699;
+        }
+
+        .channel .info .time {
+            color: #999;
+            margin-left: 25px;
+        }
+
+        .time-line h3 {
+            font-size: 14px;
+            color: #666;
+            padding-bottom: 10px;
+            border-bottom: solid 1px #ddd;
+            margin: 0;
+        }
+
+        .preview {
+            padding: 15px 0;
+            border-bottom: solid 1px #ddd;
+        }
+
+        .recommend {
+            border-bottom: solid 1px #ddd;
+        }
+
+        .recommend img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .recommend .summarize {
+            padding-left: 13px;
+        }
+
+        .recommend > * {
+            margin: 10px 0;
+        }
+
+        .recommend .title {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .recommend .title a:hover {
+            background: #666699;
+        }
+
+        .recommend .info {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .recommend .info > * {
+            margin-right: 10px;
+        }
+
+        .recommend .info a:hover {
+            background: #666699;
+        }
+
+        .page-turning {
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .page-turning > * {
+            margin: 25px 5px 100px;
+        }
+
+        .page-turning a {
+            display: inline-block;
+            padding: 0 5px;
+        }
+
+        .page-turning a:hover {
+            background: #666699;
+        }
+
+        .page-turning .one {
+            color: #fff;
+            background: #6ebfc3;
+        }
+
+        .footer {
+            font-size: 13px;
+            color: #999;
+        }
+
+        .footer .container {
+            border-top: #ddd 1px dashed;
+        }
+
+        .footer .message {
+            margin: 10px 0;
+        }
+
+        .footer .link-group.text-right {
+            margin-top: 10px;
+        }
+
+        .footer .link-group a:hover {
+            background: #666699;
+        }
+
+        .footer .link-group a:after {
+            content: '·';
+            margin: 0 3px;
+        }
+
+        .footer .link-group a:last-child:after {
+            display: none;
+        }
+    </style>
+
+    <style media="screen and (max-width:900px)">
+        .col-md-1 {
+            width: 4.166666666666667%;
+        }
+
+        .col-md-2 {
+            width: 8.333333333333333%;
+        }
+
+        .col-md-3 {
+            width: 12.5%;
+        }
+
+        .col-md-4 {
+            width: 16.6666666666667%;
+        }
+
+        .col-md-5 {
+            width: 20.8333333333333%;
+        }
+
+        .col-md-6 {
+            width: 25%;
+        }
+
+        .col-md-7 {
+            width: 29.166666666667%;
+        }
+
+        .col-md-8 {
+            width: 33.3333333333333%;
+        }
+
+        .col-md-9 {
+            width: 37.5%;
+        }
+
+        .col-md-10 {
+            width: 41.666666666667%;
+        }
+
+        .col-md-11 {
+            width: 45.83333333333333%;
+        }
+
+        .col-md-12 {
+            width: 50%;
+        }
+
+        .col-md-13 {
+            width: 54.1666666666667%;
+        }
+
+        .col-md-14 {
+            width: 58.3333333333333%;
+        }
+
+        .col-md-15 {
+            width: 62.5%;
+        }
+
+        .col-md-16 {
+            width: 66.66666666666667%;
+        }
+
+        .col-md-17 {
+            width: 70.83333333333333%;
+        }
+
+        .col-md-18 {
+            width: 75%;
+        }
+
+        .col-md-19 {
+            width: 79.16666666667%;
+        }
+
+        .col-md-20 {
+            width: 83.33333333333%;
+        }
+
+        .col-md-21 {
+            width: 87.5%;
+        }
+
+        .col-md-22 {
+            width: 91.666666666666667%;
+        }
+
+        .col-md-23 {
+            width: 95.833333333333333%;
+        }
+
+        .col-md-24 {
+            width: 100%;
+        }
+
+        .nav.global .nav,
+        .nav.global .enter {
+            display: none;
+        }
+
+        .nav.global .download {
+            display: none;
+        }
+
+        .channel {
+            margin-right: 0;
+        }
+
+        .channel .like {
+            margin-left: 20px;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        #logo {
+            display: none;
+        }
+
+        .md-fl {
+            float: left;
+        }
+
+        .page-turning .hide {
+            display: none;
+        }
+
+        .page-turning a {
+            margin-bottom: 30px;
+        }
+
+        .time-line .aside {
+            text-align: center;
+        }
+
+        .recommend {
+            display: inline-block;
+            margin-left: 20px;
+            margin-right: 20px;
+            text-align-last: left;
+        }
+
+        .footer .message {
+            display: none;
+        }
+
+        .footer .link-group {
+            text-align: center;
+        }
+
+        #menu-checkbox:checked ~ .nav,
+        #menu-checkbox:checked ~ .enter {
+            display: block;
+        }
+
+        #menu {
+            display: block;
+            position: absolute;
+            top: 100px;
+            right: 30px;
+            color:  #037b82;
+            background: #f0f6f3;
+        }
+    </style>
+
+    <style media="screen and (max-width:580px)">
+        .col-sm-1 {
+            width: 4.166666666666667%;
+        }
+
+        .col-sm-2 {
+            width: 8.333333333333333%;
+        }
+
+        .col-sm-3 {
+            width: 12.5%;
+        }
+
+        .col-sm-4 {
+            width: 16.6666666666667%;
+        }
+
+        .col-sm-5 {
+            width: 20.8333333333333%;
+        }
+
+        .col-sm-6 {
+            width: 25%;
+        }
+
+        .col-sm-7 {
+            width: 29.166666666667%;
+        }
+
+        .col-sm-8 {
+            width: 33.3333333333333%;
+        }
+
+        .col-sm-9 {
+            width: 37.5%;
+        }
+
+        .col-sm-10 {
+            width: 41.666666666667%;
+        }
+
+        .col-sm-11 {
+            width: 45.83333333333333%;
+        }
+
+        .col-sm-12 {
+            width: 50%;
+        }
+
+        .col-sm-13 {
+            width: 54.1666666666667%;
+        }
+
+        .col-sm-14 {
+            width: 58.3333333333333%;
+        }
+
+        .col-sm-15 {
+            width: 62.5%;
+        }
+
+        .col-sm-16 {
+            width: 66.66666666666667%;
+        }
+
+        .col-sm-17 {
+            width: 70.83333333333333%;
+        }
+
+        .col-sm-18 {
+            width: 75%;
+        }
+
+        .col-sm-19 {
+            width: 79.16666666667%;
+        }
+
+        .col-sm-20 {
+            width: 83.33333333333%;
+        }
+
+        .col-sm-21 {
+            width: 87.5%;
+        }
+
+        .col-sm-22 {
+            width: 91.666666666666667%;
+        }
+
+        .col-sm-23 {
+            width: 95.833333333333333%;
+        }
+
+        .col-sm-24 {
+            width: 100%;
+        }
+
+        .nav.global .enter a {
+            display: none;
+        }
+
+        .nav.page .search {
+            display: none;
+        }
+
+        .nav.page .link-group {
+            text-align: center;
+        }
+
+        .nav.page .link-group a {
+            padding: 10px;
+            margin: 0;
+        }
+
+        .channel .like {
+            display: none;
+        }
+
+        #menu {
+            top: 70px;
+        }
+
+        .channel {
+            margin-left: 15px;
+        }
+
+        h1 {
+            margin-left: 25px;
+        }
+
+        .main .time-line .preview .describe .icon {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav global">
+        <div class="row container">
+            <label id="menu" for="menu-checkbox">菜单</label>
+            <input id="menu-checkbox" type="checkbox">
+            <div class="col col-16 col-md-18 col-sm-24 nav">
+                <a href="#">豆瓣</a>
+                <a href="#">读书</a>
+                <a href="#">电影</a>
+                <a href="#">音乐</a>
+                <a href="#">同城</a>
+                <a href="#">小组</a>
+                <a href="#">阅读</a>
+                <a href="#">FM</a>
+                <a href="#">时间</a>
+                <a href="#">豆品</a>
+                <a href="#">更多</a>
+            </div>
+            <div class="col col-8 col-md-4 text-right enter">
+                <a href="#" class="download">下载客户端</a>
+                <a href="#">登录</a>
+                <a href="#">注册</a>
+            </div>
+        </div>
+    </div>
+    <div class="row main">
+        <div class="nav page">
+            <div class="row container">
+                <a href="#" class="col col-4" id="logo">
+                    <img src="https://img3.doubanio.com/f/shire/86033885f71d164e11b4ecc2fc06e945fe01c10b/pics/nav/lg_group_a11@2x.png" alt="logo">
+                </a>
+                <div class="col col-14 col-md-18 col-sm-24 link-group">
+                    <a href="#">精选</a>
+                    <a href="#">文化</a>
+                    <a href="#">行摄</a>
+                    <a href="#">娱乐</a>
+                    <a href="#">时尚</a>
+                    <a href="#">生活</a>
+                    <a href="#">科技</a>
+                </div>
+                <form class="col col-6 search">
+                    <input placeholder="小组、话题">
+                    <button><img src="https://img3.doubanio.com/f/shire/f71f15922ebd7c0ff0ea0e7a25577529efd8981a/pics/icon/bn_srh_1.png"></button>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <h1>讨论精选</h1>
+        </div>
+        <div class="container">
+            <div class="row time-line">
+                <div class="col col-18 article col-md-22">
+                    <div>
+                        <div class="row channel">
+                            <div class="col col-2 col-md-3">
+                                <div class="like">
+                                    <div>103</div>
+                                    <div>喜欢</div>
+                                </div>
+                            </div>
+                            <div class="col  col-22 col-md-21 col-sm-24 preview">
+                                <div class="title">
+                                    <a href="#">常用苹果修片aPP推荐 欢迎回复分享更多的app</a>
+                                </div>
+                                <div class="row describe">
+                                    <div class="col col-3 icon">
+                                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539497334661&di=acdaee4d7a8bbae34713e7e05a73faab&imgtype=0&src=http%3A%2F%2Fwww.goumin.com%2Fattachments%2Fphoto%2F0%2F0%2F69%2F17866%2F4573921.jpg">
+                                    </div>
+                                    <div class="col col-21">
+                                        <p>1、snapseed好在不收费，这个app很全面，局部修片功能非常强大，自带的滤镜也还不错，是我最常用的。 2、vsco滤镜王者，就是收费真心有点高呀，vsco最好的地方是可以对单色进行别分的调整，...</p>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <span>来自</span><a href="#">口袋摄影小组</a><span class="time">10-11</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row channel">
+                            <div class="col col-2 col-md-3">
+                                <div class="like">
+                                    <div>103</div>
+                                    <div>喜欢</div>
+                                </div>
+                            </div>
+                            <div class="col  col-22 col-md-21 col-sm-24 preview">
+                                <div class="title">
+                                    <a href="#">拍照，你能做到几个一致</a>
+                                </div>
+                                <div class="row describe">
+                                    <div class="col col-3 icon">
+                                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539497334660&di=7e8ec1997e987edc485a4f8d6d8653c1&imgtype=0&src=http%3A%2F%2Ffa.topitme.com%2Fa%2Fa2%2F8a%2F1130147841d058aa2al.jpg">
+                                    </div>
+                                    <div class="col col-21">
+                                        <p>养宠物第一件大事就是，买粮啊。 那你是怎么选择猫粮的？ 曾经我问一个同事，他告诉我，在淘宝搜索猫粮，按销量排下来，买销量最好的那个。 我听到这个方法的时候非常震惊。他这个方...</p>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <span>来自</span><a href="#">嘻嘻哈哈</a><span class="time">昨天12:17</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row channel">
+                            <div class="col col-2 col-md-3">
+                                <div class="like">
+                                    <div>103</div>
+                                    <div>喜欢</div>
+                                </div>
+                            </div>
+                            <div class="col  col-22 col-md-21 col-sm-24 preview">
+                                <div class="title">
+                                    <a href="#">国庆螺蛳粉之旅</a>
+                                </div>
+                                <div class="row describe">
+                                    <div class="col col-3 icon">
+                                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539497334660&di=a6da93bc9c14150d63d6b985f234032a&imgtype=0&src=http%3A%2F%2Fa3.topitme.com%2F0%2F82%2F57%2F11302368668ab57820o.jpg">
+                                    </div>
+                                    <div class="col col-21">
+                                        <p>看组里一直安利，终于在国庆节挤了几天去柳州吃螺蛳粉啦。顺便安利一下柳州这个城市，人好市容干净生活悠闲。到处都是桂花树，空气里都是桂花香。好了，下面开始正题，来分享一波螺蛳粉啦！ ...</p>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <span>来自</span><a href="#">螺蛳粉fans小组</a><span class="time">15:22</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row channel">
+                            <div class="col col-2 col-md-3">
+                                <div class="like">
+                                    <div>103</div>
+                                    <div>喜欢</div>
+                                </div>
+                            </div>
+                            <div class="col  col-22 col-md-21 col-sm-24 preview">
+                                <div class="title">
+                                    <a href="#">大家好！我来分享一个电脑桌面</a>
+                                </div>
+                                <div class="row describe">
+                                    <div class="col col-3 icon">
+                                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539497334660&di=12dfcbe1d89f742dd575b3d22c4a3c50&imgtype=0&src=http%3A%2F%2Ffile29.mafengwo.net%2FM00%2F7B%2F34%2FwKgBpVYdGOiAS71LAABuKaLQB_887.groupinfo.w600.jpeg">
+                                    </div>
+                                    <div class="col col-21">
+                                        <p>前段时间转过一轮以后我做了个改良版的。今天又在微博轮起来了，我发了以后好多好多人来求原图！ 想着，生活是大家，方便你我他，的原则。到生活组也来分享给大家！ 祝大家！国庆节快乐！</p>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <span>来自</span><a href="#">生活组小组</a><span class="time">11:47</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row channel">
+                            <div class="col col-2 col-md-3">
+                                <div class="like">
+                                    <div>103</div>
+                                    <div>喜欢</div>
+                                </div>
+                            </div>
+                            <div class="col  col-22 col-md-21 col-sm-24 preview">
+                                <div class="title">
+                                    <a href="#">【多图慎入】东北特色外卖差评分享</a>
+                                </div>
+                                <div class="row describe">
+                                    <div class="col col-3 icon">
+                                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539497334659&di=96606478e8ab5b34f3216253fd2c38cf&imgtype=0&src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-s%2F01%2F48%2Fa9%2Ff6%2Ftup-island.jpg">
+                                    </div>
+                                    <div class="col col-21">
+                                        <p>国庆家里蹲，坐标东北某五线城市。烧烤是东北人的soul，本想在家撸串看电视美滋滋，然鹅！（dbq家乡我错了！不是六线城市！最远只到五线！） 一点开某App却被各类东北特色差评吸引！一发不...</p>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <span>来自</span><a href="#">戒掉网络小说小组</a><span class="time">昨天12:17</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row channel">
+                            <div class="col col-2 col-md-3">
+                                <div class="like">
+                                    <div>103</div>
+                                    <div>喜欢</div>
+                                </div>
+                            </div>
+                            <div class="col  col-22 col-md-21 col-sm-24 preview">
+                                <div class="title">
+                                    <a href="#">小区里的那些古惑仔仔们</a>
+                                </div>
+                                <div class="row describe">
+                                    <div class="col col-3 icon">
+                                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539497334659&di=0bcc0227a47a6c74ca172d6c74c25165&imgtype=0&src=http%3A%2F%2Fpic3.16pic.com%2F00%2F33%2F78%2F16pic_3378101_b.jpg">
+                                    </div>
+                                    <div class="col col-21">
+                                        <p>以前在小区里走总能时不时地感觉到有双眼睛在看着我 平时扛把子每天下午都会在房顶上晒太阳，直到有一天扛把子失踪了一只假扛把子趴在了扛把子的位置上 时光荏苒，这天假扛把子也消失了，...</p>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <span>来自</span><a href="#">猫小组</a><span class="time">昨天12:17</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row page-turning">
+                        <a href="#" class="muted"> <前页 </a>
+                        <a href="#" class="one">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">6</a>
+                        <a href="#">7</a>
+                        <a href="#">8</a>
+                        <a href="#">9</a>
+                        <a href="#">...</a>
+                        <a href="#" class="hide">297</a>
+                        <a href="#" class="hide">298</a>
+                        <a href="#">后页></a>
+                    </div>
+                </div>
+                <div class="col col-6 aside col-md-24">
+                    <div>
+                        <h3>值得加入的小组</h3>
+                    </div>
+                    <div class="row recommend">
+                        <a href="#" class="col col-5 icon">
+                            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539497334658&di=72ab28b6eb4755136c6a6fc0b6c5c0f7&imgtype=0&src=http%3A%2F%2Fpic.kekenet.com%2F2017%2F0323%2F24621490236152.png">
+                        </a>
+                        <div class="col col-19  summarize">
+                            <div class="title">
+                                <a href="#">北京租房 望京小分队</a>
+                            </div>
+                            <div class="info">
+                                <span>13332个成员</span>
+                                <a href="#">+加入小组</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row recommend">
+                        <a href="#" class="col col-5 icon">
+                            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539497920797&di=080358ec1292c69b6d8642ef832d4ac6&imgtype=0&src=http%3A%2F%2Fimg.25pp.com%2Fuploadfile%2Fbizhi%2Fipad3%2F2014%2F0226%2F20140226090409716_ipad3.jpg">
+                        </a>
+                        <div class="col col-19  summarize">
+                            <div class="title">
+                                <a href="#">加入这个组你就会变得很瘦</a>
+                            </div>
+                            <div class="info">
+                                <span>21798个成员</span>
+                                <a href="#">+加入小组</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row recommend">
+                        <a href="#" class="col col-5 icon">
+                            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539497920793&di=f9831acb42300166f3996f18f934dc61&imgtype=0&src=http%3A%2F%2Fwww.wangjing.cn%2Fwww%2Fforum%2Fdata%2Fattachment%2Fforum%2F201411%2F15%2F145846wiccpi56pni2ixi2.jpg">
+                        </a>
+                        <div class="col col-19  summarize">
+                            <div class="title">
+                                <a href="#">青旅客栈求职招聘、义工</a>
+                            </div>
+                            <div class="info">
+                                <span>86321个招募者</span>
+                                <a href="#">+加入小组</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row recommend">
+                        <a href="#" class="col col-5 icon">
+                            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539497920791&di=faa436e36d450266cfc7f718a28f342c&imgtype=0&src=http%3A%2F%2Fa3.topitme.com%2F6%2Ff2%2Fea%2F119407098904aeaf26o.jpg">
+                        </a>
+                        <div class="col col-19  summarize">
+                            <div class="title">
+                                <a href="#">路过心上的句子</a>
+                            </div>
+                            <div class="info">
+                                <span>146618个逗号</span>
+                                <a href="#">+加入小组</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row recommend">
+                        <a href="#" class="col col-5 icon">
+                            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539497971069&di=4ee19c437046fd55f37fc8c56a45d1c7&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D208030678%2C815555418%26fm%3D214%26gp%3D0.jpg">
+                        </a>
+                        <div class="col col-19  summarize">
+                            <div class="title">
+                                <a href="#">大连没事出来玩</a>
+                            </div>
+                            <div class="info">
+                                <span>29739个XX</span>
+                                <a href="#">+加入小组</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row recommend">
+                        <a href="#" class="col col-5 icon">
+                            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539497955937&di=6a0c533efe1d89c27bdff20c641fc9fd&imgtype=0&src=http%3A%2F%2Fwww.07073.com%2Fuploads%2F131118%2F721895_134953_1.jpg">
+                        </a>
+                        <div class="col col-19  summarize">
+                            <div class="title">
+                                <a href="#">北京大学生兼职信息交流</a>
+                            </div>
+                            <div class="info">
+                                <span>54883个靠兼</span>
+                                <a href="#">+加入小组</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="container">
+            <div class="col col-12 message">© 2005－2018 douban.com, all rights reserved 北京豆网科技有限公司</div>
+            <div class="col col-12 col-md-24 link-group text-right">
+                <a href="#">关于豆瓣</a>
+                <a href="#">在豆瓣工作</a>
+                <a href="#">联系我们</a>
+                <a href="#">免责声明</a>
+                <a href="#">帮助中心</a>
+                <a href="#">移动应用</a>
+                <a href="#">豆瓣广告</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
