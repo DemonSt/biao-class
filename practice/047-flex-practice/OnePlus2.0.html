@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OnePlus-1.0</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1220px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .col-1 {
+            flex-basis: 4.166666666666667%;
+        }
+
+        .col-2 {
+            flex-basis: 8.333333333333333%;
+        }
+
+        .col-3 {
+            flex-basis: 12.5%;
+        }
+
+        .col-4 {
+            flex-basis: 16.6666666666667%;
+        }
+
+        .col-5 {
+            flex-basis: 20.8333333333333%;
+        }
+
+        .col-6 {
+            flex-basis: 25%;
+        }
+
+        .col-7 {
+            flex-basis: 29.166666666667%;
+        }
+
+        .col-8 {
+            flex-basis: 33.3333333333333%;
+        }
+
+        .col-9 {
+            flex-basis: 37.5%;
+        }
+
+        .col-10 {
+            flex-basis: 41.666666666667%;
+        }
+
+        .col-11 {
+            flex-basis: 45.83333333333333%;
+        }
+
+        .col-12 {
+            flex-basis: 50%;
+        }
+
+        .col-13 {
+            flex-basis: 54.1666666666667%;
+        }
+
+        .col-14 {
+            flex-basis: 58.3333333333333%;
+        }
+
+        .col-15 {
+            flex-basis: 62.5%;
+        }
+
+        .col-16 {
+            flex-basis: 66.66666666666667%;
+        }
+
+        .col-17 {
+            flex-basis: 70.83333333333333%;
+        }
+
+        .col-18 {
+            flex-basis: 75%;
+        }
+
+        .col-19 {
+            flex-basis: 79.16666666667%;
+        }
+
+        .col-20 {
+            flex-basis: 83.33333333333%;
+        }
+
+        .col-21 {
+            flex-basis: 87.5%;
+        }
+
+        .col-22 {
+            flex-basis: 91.666666666666667%;
+        }
+
+        .col-23 {
+            flex-basis: 95.833333333333333%;
+        }
+
+        .col-24 {
+            flex-basis: 100%;
+        }
+        /* 以上 全局样式 */
+        .nav.global .container {
+            display: flex;
+            justify-content: space-between;
+            padding-top: .6em;
+        }
+
+        .nav.global .logo svg {
+            fill: #eb0028;
+            margin-top: .3em;
+        }
+
+        .nav.global .link-group a {
+            color: #828282;
+            font-size: 14px;
+            font-weight: 300;
+            padding: 1em 2.5em;
+            display: inline-block;
+        }
+
+        .nav.global .link-group a:hover {
+            color: #eb0028;
+            border-bottom: #eb0028 solid 2px;
+        }
+
+        .nav.global .icon-group > * {
+            padding: .6em 1.2em;
+            display: inline-block;
+            fill: #828282;
+        }
+
+        .nav.global .icon-group a:hover {
+            border-bottom: #828282 solid 2px;
+        }
+
+        .main {
+            background-size: cover;
+        }
+
+        .main .first-screen {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .main .first-screen .box img {
+            width: 100%;
+            height: 100%;
+            vertical-align:bottom;
+        }
+
+        .main .first-screen .message > * {
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding-bottom: .5em;
+        }
+
+        .main .first-screen .message {
+            position: absolute;
+            top: 30%;
+            right: 30%;
+        }
+
+        .main .first-screen .message .type {
+            font-size: 24px;
+        }
+
+        .main .first-screen .message .slogan {
+            font-size: 48px;
+            font-weight: 500;
+        }
+
+        .main .first-screen .message .price {
+            font-size: 29px;
+        }
+
+        .main .first-screen .message .but {
+            font-size: 14px;
+            font-weight: 400;
+            border: solid 1px;
+            padding: 1.1em 1em;
+        }
+
+        .main .first-screen .message .more {
+            font-size: 20px;
+            font-weight: 100;
+            margin-top: 1.5em;
+        }
+
+        .main .first-screen .page-turning img {
+            width: 45px;
+            height: 45px;
+            border-radius: 25px;
+            position: absolute;
+            top: 22em;
+        }
+
+        .main .first-screen .page-turning .left {
+            left: 2em;
+        }
+
+        .main .first-screen .page-turning .right {
+            right: 2em;
+        }
+
+        .main .img-box {
+            display: flex;
+            overflow: hidden;
+        }
+
+        .main .img-box a {
+            position: relative;
+        }
+
+        .main .img-box a img {
+            display: block;
+            width: 100%;
+        }
+
+        .main .img-box a span {
+            font-size: 1.5em;
+            color: #333;
+            position: absolute;
+            top: 1em;
+            left: 1em;
+        }
+
+        .main .photography {
+            display: flex;
+            height: 37.5vw;
+            justify-content: center;
+            align-items: center; 
+            flex-direction: column;
+            background-image: url(https://image01.oneplus.cn/shop/201809/26/880/8070f60cb10b64a0bcf03d98242947ca.jpg);
+        }
+
+        .main .photography .title {
+            font-size: 2.8em;
+            color: #fff;
+            padding-top: 1.7em;
+            padding-bottom: .8em;
+        }
+
+        .main .photography button {
+            color: #fff;
+            font-weight: 300;
+            font-size: 1em;
+            padding-top: .5em;
+            padding-bottom: .5em;
+            width: 8.3em;
+            background: transparent;
+            border: 2px solid #fff;
+        }
+
+        .main .photography button:hover {
+            color: #828282;
+            background: -webkit-linear-gradient(left, #fff , rgb(210, 211, 183));
+        }
+
+        .main .card-group {
+            background: #f6f6f6;
+            padding-top: 6em;
+            padding-bottom: 6em;
+        }
+
+        .main .card-group .container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .main .card-group a {
+            background: #fff;
+            display: inline-block;
+            transition: all .2s;
+        }
+
+        .main .card-group a:hover {
+            box-shadow: 0 0  50px rgba(0, 0, 0, .3);
+            transform: scale(1.01);
+        }
+
+        .main .card-group .info {
+            padding-top: 1.5em;
+            padding-bottom: 3em;
+            padding-left: 1.7em;
+        }
+
+        .main .card-group .info .title {
+            font-size: 18px;
+            color: #333;
+            font-weight: 400;
+            padding-bottom: .2em;
+        }
+
+        .main .card-group .info .describe {
+            font-size: 14px;
+            font-weight: 300;
+            color: #333;
+        }
+
+        .main .card-group .info .muted {
+            color: #828282;
+        }
+
+        .main .service {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .main .service .container {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .main .service a {
+            padding: 2em;
+        }
+
+        .main .service div {
+            padding-top: 1.5em;
+            color: #565b62;
+            font-weight: 300;
+        }
+
+        .main .service .seven {
+            width: 70px;
+            height: 70px;
+            display: inline-block;
+            background-image: url(https://statics.oneplus.cn/v2/img/common/serviceIcons-sd81bbaa639.png);
+            background-position: 0px 198px;
+        }
+
+        .main .service .fifteen {
+            width: 70px;
+            height: 70px;
+            display: inline-block;
+            background-image: url(https://statics.oneplus.cn/v2/img/common/serviceIcons-sd81bbaa639.png);
+            background-position: 0px 0px;
+        }
+
+        .main .service .exchange {
+            width: 70px;
+            height: 70px;
+            display: inline-block;
+            background-image: url(https://statics.oneplus.cn/v2/img/common/serviceIcons-sd81bbaa639.png);
+            background-position: 0px 320px;
+        }
+
+        .main .service .postage {
+            width: 70px;
+            height: 70px;
+            display: inline-block;
+            background-image: url(https://statics.oneplus.cn/v2/img/common/serviceIcons-sd81bbaa639.png);
+            background-position: 0px 557px;
+        }
+
+        .footer .friendlink {
+            background-color: #fcfcfc;
+        }
+            
+        .footer .friendlink .container {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 300;
+            color: #828282;
+            padding-top: 2em;
+            padding-bottom: 2em;
+        }
+
+        .footer .friendlink .link-group > * {
+            line-height: 2.9;
+        }
+
+        .footer .friendlink .link-group .title {
+            color: #101920;
+            font-size: 16px;
+        }
+
+        .footer .friendlink .link-group a {
+            display: block;
+            color: inherit;
+        }
+
+        .footer .friendlink .contact {
+            text-align: center;
+        }
+
+        .footer .friendlink .contact > * {
+            display: block;
+        }
+
+        .footer .friendlink .tel {
+            color: #101920;
+            font-size: 20px;
+            padding-top: .5em;
+            padding-bottom: .5em;
+        }
+
+        .footer .friendlink button {
+            color: #101920;
+            font-size: 17px;
+            font-weight: 300;
+            background: transparent;
+            border: #101920 1px solid;
+            padding: .7em 5em;
+            border-radius: 3px;
+            margin-top: 1em;
+            margin-bottom: 1em; 
+        }
+
+        .footer .friendlink button:hover {
+            color: #fff;
+            background: -webkit-linear-gradient(left, #fff , #101920);
+        }
+
+        .footer .friendlink span {
+            color: #828282;
+            font-size: 16px;
+        }
+
+        .footer .friendlink svg {
+            width: 40px;
+        }
+
+        .footer .privacy,
+        .footer .sureness {
+            background-color: #f9f9f9;
+        }
+
+        .footer .privacy .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 2em 1em 3em;
+            border-bottom: #ddd solid 1px;
+        }
+
+        .footer .privacy .language .icon {
+            width: 27px;
+            height: 17px;
+            display: inline-block;
+            background-image: url(https://statics.oneplus.cn/ov/assets/images/sprites/header-stores-sprites2x-2586635083.png);
+            background-position: 0 -63px;
+            background-size: 186px 168px;
+            position: relative;
+            top: 5px;
+        }
+
+        .footer .privacy .language span {
+            color: #10181f;
+            font-weight: 300;
+            font-size: 15px;
+        }
+
+        .footer .privacy .link-group a {
+            font-size: 12px;
+            font-weight: 300;
+            color: #10181f;
+            display: inline-block;
+        }
+
+        .footer .privacy .link-group a:after {
+            content: '|';
+            color: #bbb;
+            margin: 1.5em;
+        }
+
+        .footer .privacy .link-group a:last-child:after {
+            display: none;
+        }
+
+        .footer .sureness .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.4em 1em 0 1em;
+        }
+
+        .footer .sureness .info span {
+            color: #999;
+            font-size: 12px;
+            font-weight: 300;
+        }
+
+        .footer .sureness .info img {
+            width: 80px;
+            height: 30px;
+        }
+
+        .footer .net-police {
+            display: inline-block;
+            padding: .3em 1em 2em;
+        }
+
+        .footer .net-police span {
+            font-size: 16px;
+            font-weight: 200;
+            color: #10181f;
+        }
+
+        .footer .net-police img {
+            position: relative;
+            top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav global">
+        <div class="container">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 1024 1024" version="1.1" p-id="4442" width="32" height="32">
+                    <path d="M482.818377 689.73703v-306.398342H320.43401v62.924122h99.459222v243.47422h-99.459222v62.925145h259.522731v-62.925145z" p-id="1402"/><path d="M833.405127 460.552258h-72.093968v420.684248H145.293107V254.920924h420.108127V182.826955H73.199139V953.329451H833.405127v-72.092945zM827.397297 188.913581V67.176982h-62.925145v121.736599H642.735553v62.925144h121.736599v121.736599h62.925145V251.838725h121.736598v-62.925144z" p-id="1403"/>
+                </svg>
+            </a>
+            <div class="link-group">
+                <a href="#">OnePlus6</a>
+                <a href="#">商城</a>
+                <a href="#">服务</a>
+                <a href="#">品牌</a>
+                <a href="#">论坛</a>
+            </div>
+            <div class="icon-group">
+                <a href="#">
+                    <svg viewBox="0 0 1024 1024" version="1.1" p-id="4442" width="24" height="24">
+                        <path d="M510.965949 522.366092c98.688673 0 178.703031-80.044034 178.703031-178.703031 0-98.719372-80.014358-178.704055-178.703031-178.704055s-178.703031 79.984682-178.703031 178.704055C332.262918 442.323081 412.278299 522.366092 510.965949 522.366092z" p-id="4443"/><path d="M843.730799 706.247052c-52.643987-50.319036-187.654914-94.528933-341.606215-94.528933-153.950278 0-281.288454 44.209898-333.875137 94.528933-12.158924 11.634991-14.515598 27.689642-14.515598 44.443212l0 111.292736 345.225649 0 370.065384 0 0-111.292736C869.025904 733.935672 855.830371 717.821669 843.730799 706.247052z" p-id="4444"/>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg viewBox="0 0 1024 1024" version="1.1" p-id="10946" width="24" height="24"><defs><style type="text/css"/></defs><path d="M857.930195 958.87577 163.057191 958.87577 163.057191 264.008906l694.873004 0L857.930195 958.87577zM207.35714 914.575822l606.273107 0 0-606.26799L207.35714 308.307831 207.35714 914.575822z" p-id="10947"/><path d="M646.888642 428.978145l-44.299949 0L602.588693 197.715037c0-49.710169-40.444131-90.151229-90.151229-90.151229s-90.152253 40.441061-90.152253 90.151229l0 231.263108-44.299949 0L377.985262 197.715037c0-74.136487 60.311621-134.451178 134.451178-134.451178s134.451178 60.314691 134.451178 134.451178L646.887618 428.978145z" p-id="10948"/><path d="M398.199653 513.027399c-30.364565 0-55.066153-24.702612-55.066153-55.064107 0-30.364565 24.702612-55.066153 55.066153-55.066153 30.364565 0 55.066153 24.702612 55.066153 55.066153C453.266829 488.324788 428.564217 513.027399 398.199653 513.027399zM398.199653 447.197088c-5.937223 0-10.767228 4.828982-10.767228 10.767228 0 5.935176 4.828982 10.764158 10.767228 10.764158 5.937223 0 10.766205-4.828982 10.766205-10.764158C408.96688 452.02607 404.137899 447.197088 398.199653 447.197088z" p-id="10949"/><path d="M622.786711 513.027399c-30.364565 0-55.066153-24.702612-55.066153-55.064107 0-30.364565 24.702612-55.066153 55.066153-55.066153 30.358425 0 55.061037 24.702612 55.061037 55.066153C677.847747 488.324788 653.146159 513.027399 622.786711 513.027399zM622.786711 447.197088c-5.937223 0-10.766205 4.828982-10.766205 10.767228 0 5.935176 4.828982 10.764158 10.766205 10.764158 5.932106 0 10.761088-4.828982 10.761088-10.764158C633.548822 452.02607 628.718817 447.197088 622.786711 447.197088z" p-id="10950"/></svg>
+                </a>
+                <a href="#">
+                    <svg viewBox="0 0 1024 1024" version="1.1" p-id="11731" width="24" height="24"><defs><style type="text/css"/></defs><path d="M927.142533 924.263461c9.828856 9.828856 9.828856 25.700335 0 35.528168-8.528234 8.558933-21.409612 9.208732-31.153534 2.968611l-0.224104 0.223081-1.215688-1.159406c-0.960885-0.76134-2.090615-1.098008-2.991124-2.032286-0.87902-0.874927-1.270946-2.029216-1.980097-2.965541L698.628026 765.847475C545.719474 880.486422 328.102155 868.682585 189.032796 729.612203c-152.425551-152.460344-152.425551-399.671679 0-552.130999 152.459321-152.457274 399.645073-152.457274 552.130999 0 152.455227 152.459321 152.455227 399.670655 0 552.130999-1.779529 1.77339-3.727904 3.243881-5.507434 5.024433l186.010461 186.008414C923.527193 921.664264 925.535943 922.625148 927.142533 924.263461L927.142533 924.263461zM713.68086 205.242478c-136.924509-136.89381-358.859157-136.89381-495.752967 0-136.897903 136.898927-136.897903 358.834598 0 495.728408 136.89381 136.868227 358.828458 136.868227 495.752967 0C850.549088 564.046377 850.549088 342.111728 713.68086 205.242478L713.68086 205.242478zM713.68086 205.242478" p-id="11732"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="first-screen">
+            <a href="#" class="box">
+                <img src="https://image01.oneplus.cn/shop/201806/01/749/31cdecff25e1ae5d9af388070f18926c.jpg">
+                <div class="message">
+                    <a href="#" class="type">OnePlus 6</a>
+                    <a href="#" class="slogan">全速旗舰</a>
+                    <a href="#" class="price">¥ 3199起</a>
+                    <a href="#" class="but">立即购买</a>
+                    <a href="#" class="more">了解更多</a>
+                </div>
+                <div class="page-turning">
+                    <a href="#">
+                        <img class="left" src="http://www.iconpng.com/png/metrize/left166.png">
+                    </a>
+                    <a href="#">
+                        <img class="right" src="http://www.iconpng.com/png/metrize/right168.png">
+                    </a>
+                </div>
+            </a>
+        </div>
+        <div class="img-box">
+            <a href="#">
+                <img src="https://image01.oneplus.cn/shop/201808/27/982/6966b85e5aa37e6d3e11d65d23e3bca4.jpg">
+                <span>以旧换新</span>
+            </a>
+            <a href="#">
+                <img src="https://image01.oneplus.cn/shop/201810/09/1371/055b121c2259c388bfe7f5d767f916c0.jpg">
+                <span>参赛赢手机</span>
+            </a>
+            <a href="#">
+                <img src="https://image01.oneplus.cn/shop/201711/27/1144/04788510f69288329e75c754eff3fa00.jpg">
+                <span>推荐有礼</span>
+            </a>
+        </div>
+        <div class="photography">
+            <div class="title">Shot on OnePlus</div>
+            <button>我要参加</button>
+        </div>
+        <div class="card-group">
+            <div class="container">
+                <a class="card" href="#">
+                    <img src="https://image01.oneplus.cn/shop/201810/11/177/1ff19e3121bff3083812e050fa7b8ac5.jpg">
+                    <div class="info">
+                        <div class="title">博客</div>
+                        <div class="describe">OnePlus 6 Android 9.0<span class="muted">正式版现已推送</span></div>
+                    </div>
+                </a>
+                <a class="card" href="#">
+                    <img src="https://image01.oneplus.cn/shop/201810/17/1834/ab3aa0a023b295546c47212406ef232c.jpg">
+                    <div class="info">
+                        <div class="title">新闻</div>
+                        <div class="describe">OnePlus 6T，<span class="muted">来了。</span></div>
+                    </div>
+                </a>
+                <a class="card" href="#">
+                    <img src="https://image01.oneplus.cn/shop/201810/10/644/50a4a33de2e2f5e036f5796e55232aec.jpg">
+                    <div class="info">
+                        <div class="title">技巧</div>
+                        <div class="describe">OnePlus 6<span class="muted">使用技巧</span></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="service">
+            <div class="container">
+                <a href="#">
+                    <span class="seven"></span>
+                    <div>7天无理由退货</div>
+                </a>
+                <a href="#">
+                    <span class="fifteen"></span>
+                    <div>15天退货保障</div>
+                </a>
+                <a href="#">
+                    <span class="exchange"></span>
+                    <div>30天换货保障</div>
+                </a>
+                <a href="#">
+                    <span class="postage"></span>
+                    <div>99元全场包邮</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="friendlink">
+            <div class="container">
+                <div class="link-group">
+                        <div class="title">一加产品</div>
+                        <a href="#">OnePlus 6</a>
+                        <a href="#">OnePlus 5T</a>
+                        <a href="#">OnePlus 5</a>
+                        <a href="#">OnePlus 3T</a>
+                </div>
+                <div class="link-group">
+                        <div class="title">热门活动</div>
+                        <a href="#">推荐有礼</a>
+                        <a href="#">以旧换新</a>
+                        <a href="#">Shot on OnePlus</a>
+                </div>
+                <div class="link-group">
+                        <div class="title">关于一加</div>
+                        <a href="#">了解一加</a>
+                        <a href="#">加入一加</a>
+                        <a href="#">H2OS</a>
+                        <a href="#">云服务</a>
+                </div>
+                <div class="link-group">
+                        <div class="title">服务支持</div>
+                        <a href="#">购买帮助</a>
+                        <a href="#">用户手册</a>
+                        <a href="#">寄修服务</a>
+                        <a href="#">服务中心</a>
+                        <a href="#">联系我们</a>
+                </div>
+                <div class="contact">
+                    <a class="tel" href="#">400-888-1111</a>
+                    <button>在线客服</button>
+                    <span>周一至周日 9:00 - 22:00</span>
+                    <a href="#">
+                        <svg height="60px" version="1.1" viewBox="0 0 60 60" width="60px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title></title><desc></desc><defs></defs><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g id="Social_icons" transform="translate(-822.000000, -552.000000)"><g id="Weibo" transform="translate(822.000000, 552.000000)"><path d="M30,60 C46.5685425,60 60,46.5685425 60,30 C60,13.4314575 46.5685425,0 30,0 C13.4314575,0 0,13.4314575 0,30 C0,46.5685425 13.4314575,60 30,60 Z" fill="transparent" id="Oval"></path><g id="Sina_Weibo" transform="translate(12.000000, 16.000000)"><path d="M3,19.5 C3,23.6426702 8.37408313,27 15,27 C21.6259169,27 27,23.6426702 27,19.5 C27,15.3573298 21.6259169,12 15,12 C8.37408313,12 3,15.3573298 3,19.5" fill="#FFFFFF" id="Shape"></path><path d="M14.9311888,26.8682147 C9.04697649,27.4581739 3.96693983,24.7661752 3.58446602,20.8645124 C3.20199222,16.9578919 7.66418659,13.3189839 13.5434954,12.7290248 C19.4277078,12.1390656 24.5077444,14.8310642 24.8853147,18.7327271 C25.272692,22.6393476 20.8104977,26.2832132 14.9311888,26.8682147 M26.69471,13.9039855 C26.194552,13.7502986 25.8513063,13.6511458 26.1111923,12.986822 C26.6799995,11.5441487 26.7388416,10.299781 26.1209993,9.40740579 C24.9686744,7.74163867 21.8108138,7.8308762 18.1920232,9.36278703 C18.1920232,9.36278703 17.0544088,9.8635087 17.3486194,8.95626053 C17.9027161,7.14672185 17.8193564,5.63464158 16.9563386,4.75713925 C14.9949345,2.76912552 9.77269601,4.83150386 5.29579112,9.35782939 C1.94669359,12.7438977 0,16.3381868 0,19.4466273 C0,25.3858803 7.53669532,29 14.9066713,29 C24.5714901,29 30.9999921,23.3235019 30.9999921,18.817007 C31.0048956,16.0903048 28.7345703,14.5435211 26.69471,13.9039855" fill="#E6162D" id="Shape"></path><path d="M33.4694908,3.0481144 C31.0328202,0.506552864 27.4392429,-0.460973402 24.1220947,0.203298363 L24.1220947,0.203298363 C23.3542363,0.357332395 22.867926,1.0697398 23.0317357,1.78696076 C23.1955455,2.50899529 23.9480468,2.96628382 24.7159052,2.81224979 C27.0757899,2.34052056 29.6301989,3.02886015 31.3604398,4.83394646 C33.0906807,6.63903278 33.5616338,9.09876374 32.8193707,11.2552402 L32.8193707,11.2552402 C32.5787751,11.9580205 32.9882996,12.7089364 33.7356817,12.9351739 C34.4830639,13.1614113 35.2816366,12.7763263 35.5222322,12.0783596 L35.5222322,12.073546 C36.5665197,9.04581454 35.9061614,5.58486237 33.4694908,3.0481144" fill="#FF9933" id="Shape"></path><path d="M29.7237466,6.55374074 C28.4920804,5.25707362 26.6764347,4.76262468 25.0041293,5.1057117 C24.3192805,5.24193743 23.8839502,5.88774829 24.0272907,6.53860455 C24.17594,7.18946081 24.8501711,7.60318339 25.529711,7.46191226 L25.529711,7.46191226 C26.3472825,7.29541415 27.2391787,7.53759322 27.839085,8.16826789 C28.4389914,8.80398796 28.6035675,9.6667509 28.3434311,10.4235605 L28.3434311,10.4235605 C28.1310748,11.0542352 28.4920804,11.7353638 29.1610026,11.9422251 C29.8299247,12.144041 30.5413181,11.800954 30.7589832,11.1652339 C31.2845649,9.61629693 30.9554127,7.85040786 29.7237466,6.55374074" fill="#FF9933" id="Shape"></path><path d="M15.8864165,20.2835677 C15.6671068,20.642386 15.1814925,20.811828 14.805533,20.6623204 C14.4295736,20.5177963 14.3146971,20.1141258 14.5287851,19.7652747 C14.7480948,19.4164236 15.2128225,19.2469816 15.5835603,19.386522 C15.9595197,19.5160953 16.0952829,19.9197659 15.8864165,20.2835677 M13.886521,22.7255255 C13.2808085,23.6474891 11.9806154,24.0511597 11.0041651,23.6275548 C10.0433798,23.2089334 9.75618855,22.1374622 10.361901,21.2354329 C10.9623918,20.3383872 12.2155901,19.9397002 13.1868187,20.32842 C14.1684906,20.7320906 14.4817902,21.7935947 13.886521,22.7255255 M16.1631644,16.1970262 C13.181597,15.4544717 9.8136268,16.8747941 8.51865531,19.3815385 C7.19757553,21.9381187 8.47688204,24.7787634 11.4845578,25.7057106 C14.60711,26.667543 18.2831581,25.1924012 19.5624646,22.4364774 C20.8261061,19.7353732 19.249165,16.9595151 16.1631644,16.1970262" fill="#000000" id="Shape"></path></g></g></g></g></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="privacy">
+            <div class="container">
+                <a href="#" class="language">
+                    <span class="icon"></span>
+                    <span>中国( 简体中文/CNY )</span>
+                </a>
+                <div class="link-group">
+                    <a href="#">隐私政策</a>
+                    <a href="#">用户协议</a>
+                    <a href="#">安全问题反馈</a>
+                </div>
+            </div>
+        </div>
+        <div class="sureness">
+            <div class="container">
+                <div class="info">
+                    <span>© 2013-2018 OnePlus. All Rights Reserved. (粤ICP备13080605号-4)</span>
+                    <a href="#"><img src="https://statics.oneplus.cn/ov/assets/images/footer/cnnic.png"></a>
+                </div>
+                <a class="net-police" href="#">
+                    <img src="https://statics.oneplus.cn/ov/assets/images/footer/badge.png">
+                    <span>粤公网安备 44030402001407号</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
