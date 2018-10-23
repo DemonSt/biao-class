@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文章详情页</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .text-right {
+            text-align: right;
+        }
+
+        .col-1 {
+            flex-basis: 4.166666666666667%;
+        }
+
+        .col-2 {
+            flex-basis: 8.333333333333333%;
+        }
+
+        .col-3 {
+            flex-basis: 12.5%;
+        }
+
+        .col-4 {
+            flex-basis: 16.6666666666667%;
+        }
+
+        .col-5 {
+            flex-basis: 20.8333333333333%;
+        }
+
+        .col-6 {
+            flex-basis: 25%;
+        }
+
+        .col-7 {
+            flex-basis: 29.166666666667%;
+        }
+
+        .col-8 {
+            flex-basis: 33.3333333333333%;
+        }
+
+        .col-9 {
+            flex-basis: 37.5%;
+        }
+
+        .col-10 {
+            flex-basis: 41.666666666667%;
+        }
+
+        .col-11 {
+            flex-basis: 45.83333333333333%;
+        }
+
+        .col-12 {
+            flex-basis: 50%;
+        }
+
+        .col-13 {
+            flex-basis: 54.1666666666667%;
+        }
+
+        .col-14 {
+            flex-basis: 58.3333333333333%;
+        }
+
+        .col-15 {
+            flex-basis: 62.5%;
+        }
+
+        .col-16 {
+            flex-basis: 66.66666666666667%;
+        }
+
+        .col-17 {
+            flex-basis: 70.83333333333333%;
+        }
+
+        .col-18 {
+            flex-basis: 75%;
+        }
+
+        .col-19 {
+            flex-basis: 79.16666666667%;
+        }
+
+        .col-20 {
+            flex-basis: 83.33333333333%;
+        }
+
+        .col-21 {
+            flex-basis: 87.5%;
+        }
+
+        .col-22 {
+            flex-basis: 91.666666666666667%;
+        }
+
+        .col-23 {
+            flex-basis: 95.833333333333333%;
+        }
+
+        .col-24 {
+            flex-basis: 100%;
+        }
+        /* 以上 全局样式 */
+        .nav.global {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .nav.global .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav.global .logo {
+            color: #999;
+            padding: 1rem 1rem 1rem 0;
+        }
+
+        .nav.global .ling-group a {
+            color: #999;
+            display: inline-block;
+            padding: 1rem;
+        }
+
+        .nav.global .ling-group a > * {
+            vertical-align: middle;
+        }
+
+        .nav.global .ling-group a:hover {
+            color: #FF5E99;
+        }
+
+        .main .header {
+            color: #3b3b3b;
+            font-weight: bold;
+            font-size: 2.8rem;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .main .preview {
+            display: flex;
+        }
+
+        .main .aside  {
+            margin-right: 3rem;
+            line-height: 1.8rem;
+            color: #3b3b3b;
+            font-size: 14px;
+        }
+
+        .main .aside .portrait {
+            margin-bottom: 1.5rem;
+        }
+
+        .main .aside .portrait img {
+            border-radius: 50%;
+            width: 45%;
+        }
+
+        .main .aside .name {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .main .aside .contact {
+            color: #cccbbb;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .main .aside .contact:hover {
+            color: #999;
+        }
+
+        .main .aside .share {
+            display: inline-block;
+            padding-top: 1rem;
+            padding-bottom: .4rem;
+            border-top: 1px solid #cccbbb;
+        }
+
+        .main .aside .share-group img {
+            max-width: 23px;
+            margin-left: .5rem;
+        }
+
+        .main .content img {
+            max-width: 800px;
+        }
+
+        .main .content .section {
+            line-height: 2;
+            color: #3b3b3b;
+        }
+
+        .main .content .section .title {
+            font-size: 1.6rem;
+            padding-top: 1rem;
+        }
+
+        .main .comment {
+            display: flex;
+            justify-content: center;
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+        }
+
+        .main .comment img {
+            margin-right: 1rem;
+        }
+
+        .main .comment span {
+            flex: 1;
+            max-width: 800px;
+            color: #3b3b3b;
+            font-size: 1.2rem;
+            padding-bottom: .2rem;
+            border-bottom: 1px solid #f05f58;
+        }
+
+        .main .recommend {
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+            max-width: 1180px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #3b3b3b;
+        }
+
+        .main .recommend .title {
+            font-size: 1.6rem;
+            margin-bottom: 3rem;
+        }
+
+        .main .recommend .card-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .main .recommend .card {
+            display: inline-block;
+        }
+
+        .main .recommend .card-group img {
+            max-width: 260px;
+        }
+
+        .main .recommend .card p {
+            color: #3b3b3b;
+        }
+
+        .footer {
+            border-top: .4rem solid #eee;
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1180px;
+            padding-top: 2.5rem;
+            padding-bottom: 3.5rem;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: .85rem;
+            color: #999;
+        }
+
+        .footer .link-group a {
+            color: inherit;
+            margin-right: 1rem;
+        }
+
+        .footer .link-group span {
+            color: #3b3b3b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav global">
+        <div class="container">
+            <a class="logo" href="#">logo</a>
+            <div class="ling-group">
+                <a href="#">技术</a>
+                <a href="#">事业</a>
+                <a href="#">生活</a>
+                <a href="#">文化</a>
+                <a href="#">科技</a>
+                <a href="#">更多资源</a>
+                <a href="#">
+                    <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18"><path d="M17.068 15.58a8.377 8.377 0 0 0 1.774-5.159 8.421 8.421 0 1 0-8.42 8.421 8.38 8.38 0 0 0 5.158-1.774l3.879 3.88c.957.573 2.131-.464 1.488-1.49l-3.879-3.878zm-6.647 1.157a6.323 6.323 0 0 1-6.316-6.316 6.323 6.323 0 0 1 6.316-6.316 6.323 6.323 0 0 1 6.316 6.316 6.323 6.323 0 0 1-6.316 6.316z" fill-rule="evenodd"></path></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="container">
+            <div class="header">习近平宣布:港珠澳大桥正式开通</div>
+            <div class="preview">
+                <div class="aside col-5 text-right">
+                    <div class="portrait">
+                        <img src="https://secure.gravatar.com/avatar/35b752b81682db8373d7e493ee044810?s=96&d=mm&r=g">
+                    </div>
+                    <div class="name">DamonSalvatore</div>
+                    <div>最后更新时间为</div>
+                    <div>2018年10月24日</div>
+                    <a href="#" class="contact">
+                        <img src="https://skillcrush.com/wp-content/themes/skillcrush3.0-child/img/global/comments.png">
+                        私信
+                    </a>
+                    <div class="share-group">
+                        <div class="share">分享</div>
+                        <div>
+                            <a href="#">
+                                <img src="https://common.cnblogs.com/images/icon_weibo_24.png">
+                            </a>
+                            <a href="#">
+                                <img src="https://common.cnblogs.com/images/wechat.png">
+                            </a>
+                            <a href="#">
+                                <img src="https://skillcrush.com/wp-content/themes/skillcrush3.0-child/img/global/tw.png">
+                            </a>
+                            <a href="#">
+                                <img src="https://skillcrush.com/wp-content/themes/skillcrush3.0-child/img/global/fb.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content col-19">
+                    <div class="div">
+                        <img src="https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2018/09/Blog_15-min.jpg">
+                    </div>
+                    <div class="section">
+                        <div class="title">一个帽，把领导帽进了医院</div>
+                        <p>刚下班不久，我和我们部门老大一块约着打球，刚好球场人数够，就打3对3，本来打的挺松的，基本就是象征性的防下那种，突破伸下手，远投基本不防。
+                            打了大概十几分钟吧，副总过来了，还带了个不认得的人，说要加进来一起，说实话平常和这副总不怎么熟，他主要负责业务这一块，在公司不长待，以前从没和他打过球。
+                            打了几个球之后，副总说这样不防，打的没劲，重新分组，输了买饮料，我和我们老大，还有另外两个熟人一队，他们4个人一队。他这样一说防守突然就上来了，身体对抗也慢慢有了，毕竟谁都不想输。本来我不防副总的，楼主身高比较高，打内线，副总主要外线投。
+                            高潮来了，打到后面双方打平了，就最后一个球，大家都特别认真，他们内线拉上来挡拆，我换防副总，他见我速度比较慢，往里面突，我也倾尽全力跟他脚步，他挑手上篮，我直接一个帽把他的球连着他的人一起扇出去了。我敢保证绝对没推他，也没打他手，结结实实一个好帽，他因为惯性摔出去了，疼得在地上打滚，站都站不起了，然后球没打了，开车送他去医院，都在医院等他，医生说要拍片子，心里真的烦，这责任算我吗？
+                        </p>
+                    </div>
+                    <div class="section">
+                        <div class="title">学费十余万，学校却给学生吃霉番茄？食堂工作人员：送错地方了</div>
+                        <p>这所学校，英文部9至12年级的学费，每年达124000元；幼儿园及1至3年级的学费每年108000元。家长们质疑，学费如此高昂，一个国际学校竟连食品安全都难以保证。
+                            同时，因此事件，全球团餐巨头康帕斯旗下企业上海怡乐食食品科技服务有限公司陷入食物霉变丑闻。
+                            有家长告诉红星新闻，在学校就餐后，部分孩子出现呕吐等现象。
+                            上海市浦东新区教育局一位工作人员接受红星新闻采访时称，浦东新区多部门高度重视此事，已有联合调查组进驻上海怡乐食食品科技服务有限公司及其供应的学校。“目前，这一事件仍在调查中。”
+                            红星新闻从上海中芯国际学校获悉，21日晚，新的供应商已入驻学校。该校承认，对供应商监管不力，存在不可推卸的责任，“我们对此十分愧疚，向在食堂就餐的学生、教职员工以及广大学生家长致以万分的歉意……”
+                            今日（10月22日）18时31分，上海怡乐食食品科技服务有限公司母公司康帕斯(中国)有限公司首次回应此事件：深深自责，并致以诚挚歉意……根据学校、家长的要求，暂停对上海地区部分学校食堂的供餐服务……
+                        </p>
+                    </div>
+                    <div class="section">
+                        <div class="title">塔克正式成为火箭的防守大闸</div>
+                        <p>之前我们就曾多次谈到这个话题。休赛期，火箭经历了巨大的人员变动，包括去年贡献突出的两名防守悍将也已经离队。
+                            特雷沃-阿里扎与太阳签下了一年肥约，并且表示对于离开火箭有些失望。卢克-巴莫特也在效力一年之后离队回到老东家快船，而火箭下一场的对手就是他们。
+                            很多人相信火箭的防守会有大幅下滑，远远达不到去年的水准。他们引进了詹姆斯-恩尼斯来加强防守，还有探寻了潜在的交易可能，虽然都还没有实现。幸运的是，他们需要的球员早已在阵中了。PJ-塔克已经准备好挺身而出来接手这些几乎不可能完成的任务。
+                            他的第一个不可能的任务在与湖人的比赛就有所体现。塔克需要从一开始就去防守勒布朗。在深入研究之前，我想说明防守勒布朗几乎是不可能的，他在进攻端能做任何事，突破扣篮、三分远投。我的意思是他就是无所不能的。
+                            但幸运的是，塔克几乎是为了防守这种进攻而量身定做的球员。他不是很高，但他足够强壮，因此他能在禁区里生扛内线。同时，他也非常灵活，足以换防到外线。他在限制勒布朗方面的表现是现象级的。
+                            勒布朗花了22次投篮才得到了24分。他也尝试了7记三分仅仅命中1次。所以，即使基础数据看上去还不错，但他的效率却不高。整晚你都能看见塔克在勒布朗屁股后面穷追不舍，包括他还在第四节完全冻结了后者。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="comment">
+                <img src="https://skillcrush.com/wp-content/themes/skillcrush3.0-child/img/icons/comment-icon_red.png">
+                <span>0条评论</span>
+            </div>
+        </div>
+        <div class="recommend">
+            <div class="title">你可能想看看......</div>
+            <div class="card-group">
+                <a href="#" class="card">
+                    <img src="https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2018/10/Blog_Travel-tips-500x500.jpg">
+                    <p>生命中的一天：除了工作还是工作</p>
+                </a>
+                <a href="#" class="card">
+                    <img src="https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2018/10/OctinarWebinarblogimgREG1-500x500.jpg">
+                    <p>你们怎么不管什么都相信</p>
+                </a>
+                <a href="#" class="card">
+                    <img src="https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2018/11/Blog_Remote-year-500x500.jpg">
+                    <p>学习就是这么一回事</p>
+                </a>
+                <a href="#" class="card">
+                    <img src="https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2017/12/Blog_gift-guide-500x500.jpg">
+                    <p>某个人丧失了＂现实感＂</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="link-group">
+                <a href="#">使用条款</a>
+                <a href="#"> 隐私政策</a>
+                <span>有问题吗？请发送电子邮件至<a href="#">demonsalvat@gmail.com</a></span>
+            </div>
+            <div class="info">©2018 DamonSalvat,保留所有权利。</div>
+        </div>
+    </div>
+</body>
+</html>
