@@ -123,34 +123,87 @@
             flex-basis: 100%;
         }
         /* 以上 全局样式 */
-        .nav.global {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            /* position: fixed;
-            width: 100%; */
+        .first-screen {
+            background: #2a2e31;
+            height: 18.0vw;
+            color: #fefefe;
         }
 
-        .nav.global .container {
+        .first-screen .nav.global {
             display: flex;
+            align-items: center;
             justify-content: space-between;
         }
 
-        .nav.global .logo {
-            color: #999;
-            padding: 1rem 1rem 1rem 0;
+        .first-screen .nav.global .logo {
+            font-weight: bolder;
+            font-size: 2rem;
+            color: inherit;
+            margin: 1rem;
         }
 
-        .nav.global .ling-group a {
+        .first-screen .nav.global .ling-group a {
+            color: inherit;
+            display: inline-block;
+            padding: 1rem 1.5rem;
+        }
+
+        .first-screen  .nav.global .ling-group a:hover {
+            color: #ddd;
+        }
+
+        .first-screen .nav.global button {
+            border: #fefefe 1px solid;
+            background: transparent;
+            color: inherit;
+            font-size: .8rem;
+            font-weight: bold;
+            padding: .6rem .7rem;
+            margin: 1rem;
+        }
+
+        .first-screen .moon svg {
+            width: 100%;
+            position: relative;
+            top: 175px;
+        }
+
+        .nav.page {
+            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+            cursor: pointer;
+            position: fixed;
+            width: 100%;
+            top: 302.39px;
+            background: #fff;
+        }
+
+        .nav.page .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav.page .tag span {
+            color: #121416;
+            font-size: .8rem;
+        }
+
+        .nav.page .tag a {
+            color: #8997D8;
+            font-size: .8rem;
+        }
+
+        .nav.page .ling-group a {
             color: #999;
             display: inline-block;
             padding: 1rem;
         }
 
-        .nav.global .ling-group a > * {
+        .nav.page .ling-group a > * {
             vertical-align: middle;
         }
 
-        .nav.global .ling-group a:hover {
+        .nav.page .ling-group a:hover {
             color: #FF5E99;
         }
 
@@ -159,7 +212,7 @@
             font-weight: bold;
             font-size: 2.8rem;
             max-width: 800px;
-            margin: 3rem auto;
+            margin: 5rem auto 3rem;
         }
 
         .main .preview {
@@ -223,24 +276,77 @@
             padding-top: 1rem;
         }
 
-        .main .comment {
-            display: flex;
-            justify-content: center;
+        .main .content .remarks {
+            color: #999;
+            font-size: .9rem;
+            padding-top: 3rem;
+        }
+
+        .main .comment-wrap {
             margin-top: 5rem;
             margin-bottom: 5rem;
         }
 
-        .main .comment img {
+        .main .comment-wrap .line-between {
+            display: flex;
+            max-width: 750px;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .main .comment-wrap img {
             margin-right: 1rem;
         }
 
-        .main .comment span {
+        .main .comment-wrap span {
             flex: 1;
             max-width: 800px;
             color: #3b3b3b;
             font-size: 1.2rem;
             padding-bottom: .2rem;
             border-bottom: 1px solid #f05f58;
+        }
+
+        .main .comment-wrap .comment {
+            display: flex;
+            justify-content: left;
+            padding: 2rem;
+            margin-left: 8.5rem;
+        }
+
+        .main .comment-wrap .comment .portrait img {
+            border-radius: 50%;
+            box-shadow: 0 5px 20px #ccc;
+        }
+
+        .main .comment-wrap .comment .window > * {
+            margin-top: .3rem;
+            margin-bottom: .3rem;
+        }
+
+        .main .comment-wrap .comment .window {
+            background: #eee;
+            box-shadow: 0 5px 20px #ccc;
+            border-radius: 0 5px 5px 5px;
+            color: #565656;
+            padding: 1rem 8rem .5rem 3rem;
+        }
+
+        .main .comment-wrap .comment .window .info {
+            font-weight: bold;
+            font-size: .95rem;
+        }
+
+        .main .comment-wrap .comment .window .answer {
+            font-size: .95rem;
+            font-weight: 400;
+        }
+
+        .main .comment-wrap .comment .window .reply {
+            font-size: 0.9rem;
+            color: #f16059;
+            font-weight: 800;
         }
 
         .main .recommend {
@@ -276,6 +382,7 @@
 
         .footer {
             border-top: .4rem solid #eee;
+            background: #121416;
         }
 
         .footer .container {
@@ -296,14 +403,14 @@
         }
 
         .footer .link-group span {
-            color: #3b3b3b;
+            color: #bbb;
             font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div class="nav global">
-        <div class="container">
+    <div class="first-screen">
+        <div class="nav global">
             <a class="logo" href="#">logo</a>
             <div class="ling-group">
                 <a href="#">技术</a>
@@ -312,6 +419,26 @@
                 <a href="#">文化</a>
                 <a href="#">科技</a>
                 <a href="#">更多资源</a>
+            </div>
+            <button>联系我们</button>
+        </div>
+        <div class="moon">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="moon-curve-svg" preserveAspectRatio="none" width="1440px" height="51px" viewBox="0 0 1440 51" version="1.1">
+                <path fill="#ffffff" d="M1440,50.7652095 C1440,50.7652095 1077.44727,0 720,0 C362.552734,0 0,50.7652095 0,50.7652095 L1440,50.7652095 Z" id="path-1"/>
+            </svg>
+        </div>
+    </div>
+    <div class="nav page">
+        <div class="container">
+            <div class="tag">
+                <span>标签:</span>
+                <a href="#">导师</a>
+                <a href="#">职场</a>
+                <a href="#">杂谈</a>
+            </div>
+            <div class="ling-group">
+                <a href="#">登录</a>
+                <a href="#">注册</a>
                 <a href="#">
                     <svg fill="currentColor" viewBox="0 0 24 24" width="18" height="18"><path d="M17.068 15.58a8.377 8.377 0 0 0 1.774-5.159 8.421 8.421 0 1 0-8.42 8.421 8.38 8.38 0 0 0 5.158-1.774l3.879 3.88c.957.573 2.131-.464 1.488-1.49l-3.879-3.878zm-6.647 1.157a6.323 6.323 0 0 1-6.316-6.316 6.323 6.323 0 0 1 6.316-6.316 6.323 6.323 0 0 1 6.316 6.316 6.323 6.323 0 0 1-6.316 6.316z" fill-rule="evenodd"></path></svg>
                 </a>
@@ -382,27 +509,47 @@
                             但幸运的是，塔克几乎是为了防守这种进攻而量身定做的球员。他不是很高，但他足够强壮，因此他能在禁区里生扛内线。同时，他也非常灵活，足以换防到外线。他在限制勒布朗方面的表现是现象级的。
                             勒布朗花了22次投篮才得到了24分。他也尝试了7记三分仅仅命中1次。所以，即使基础数据看上去还不错，但他的效率却不高。整晚你都能看见塔克在勒布朗屁股后面穷追不舍，包括他还在第四节完全冻结了后者。
                         </p>
+                        <img src="https://images.unsplash.com/photo-1530042133068-0296a09adf7b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=05d2e861ce42fc2fdc790d5b44d9d06e&auto=format&fit=crop&w=800&q=60">
                     </div>
+                    <div class="section">
+                        <div class="title">接口文档神器Swagger</div>
+                        <p>
+                            接口文档管理一直是一个让人头疼的问题，伴随着各种接口文档管理平台涌现，如阿里开源的rap，ShowDoc，sosoapi，等等（网上能找到很多这种管理平台，包括我们自己做的idoc）。这些平台都是一个共同特点，创建文档，编辑，保存文档，一些功能强大的还有mock，统计接口信息等功能，所以这些平台更像一个接口文档的存储管理系统，可以方便人们查看、编辑文档。然而接口一般都是经常变化（添加、删除参数），这就需要接口编写者及时更新文档，否则文档将失去意义，但是频繁去更新文档也会花费开发不少时间。Swagger的出现在某种程度上解决了这些问题，Swagger提供了一套完整的接口文档解决方案，其功能非常强大
+                        </p>
+                    </div>
+                    <div class="remarks text-right">附注: 亲们，码字不容易，转载请注明出处。</div>
                 </div>
             </div>
-            <div class="comment">
-                <img src="https://skillcrush.com/wp-content/themes/skillcrush3.0-child/img/icons/comment-icon_red.png">
-                <span>0条评论</span>
+            <div class="comment-wrap">
+                <div class="line-between">
+                    <img src="https://skillcrush.com/wp-content/themes/skillcrush3.0-child/img/icons/comment-icon_red.png">
+                    <span>1 条评论</span>
+                </div>
+                <div class="comment">
+                    <div class="portrait">
+                        <img src="https://secure.gravatar.com/avatar/35b752b81682db8373d7e493ee044810?s=96&d=mm&r=g">
+                    </div>
+                    <div class="window">
+                        <div class="info">熙洪氏于两个星期前回复</div>
+                        <div class="answer">要不要成为10,000名失业的开发者之一</div>
+                        <div><a class="reply" href="#">答复</a></div> 
+                    </div>
+                </div>
             </div>
         </div>
         <div class="recommend">
             <div class="title">你可能想看看......</div>
             <div class="card-group">
                 <a href="#" class="card">
-                    <img src="https://b-ssl.duitang.com/uploads/item/201312/05/20131205172459_MThBA.jpeg">
+                    <img src="https://img4.duitang.com/uploads/item/201312/05/20131205172415_jfJcZ.thumb.700_0.jpeg">
                     <p>生命中的一天：除了工作还是工作</p>
                 </a>
                 <a href="#" class="card">
-                    <img src="http://p2.ifengimg.com/a/2017_21/4b6f696be49f1ea_size12_w300_h300.jpg">
+                    <img src="http://img0.imgtn.bdimg.com/it/u=1586250841,2239473563&fm=26&gp=0.jpg">
                     <p>你们怎么不管什么都相信</p>
                 </a>
                 <a href="#" class="card">
-                    <img src="https://img4.duitang.com/uploads/item/201312/05/20131205172415_jfJcZ.thumb.700_0.jpeg">
+                    <img src="http://img4.imgtn.bdimg.com/it/u=745771661,1170768593&fm=26&gp=0.jpg">
                     <p>学习就是这么一回事</p>
                 </a>
                 <a href="#" class="card">
@@ -422,5 +569,18 @@
             <div class="info">©2018 DamonSalvat,保留所有权利。</div>
         </div>
     </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).scroll(function(e) {
+        if($(document).scrollTop()!=0){
+            $(".nav.page").stop();
+            $(".nav.page").animate({"top":"0"});
+        }
+        else{
+            $(".nav.page").stop();
+            $(".nav.page").animate({"top":"302.39px"});
+        }
+    });
+    </script>
 </body>
 </html>
