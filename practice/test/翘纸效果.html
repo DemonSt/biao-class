@@ -1,0 +1,38 @@
+<style type="text/css">
+    /*box-shadow:x偏移量   y偏移量  模糊度  颜色*/			
+    /*翘边阴影 */
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .box{
+        position: relative;
+        margin: 30px auto;
+        width:250px;
+        height: 350px;
+        background: #fff;
+        border: 1px solid #eee;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.2),0 0 50px rgba(0,0,0,0.07) inset;
+    }
+    .box:before{
+        left: 9px;
+    transform: skew(-11deg) rotate(-6deg);			
+        }
+    .box:after{
+        right: 9px;				
+        transform: skew(11deg) rotate(6deg);								
+    }
+    .box:before,.box:after{
+        position: absolute;
+        bottom: 5px;
+        content: "";
+        width: 140px;
+        height:120px;
+        border: 1px solid #ccc;
+        box-shadow: 0 1px 20px rgba(0,0,0,0.4);
+        z-index: -1;
+    }
+</style>
+<body>
+	<div class="box"></div>	
+</body>
