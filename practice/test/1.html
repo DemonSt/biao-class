@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>淘宝</title>
+<meta charset="utf-8">
+<style>
+    .dropdown-content {
+    display: none;          /*隐藏下拉菜单的内容*/
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;      /*最小宽度*/
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);/*做边框阴影*/
+    }
+    .dropdown-content a:hover {
+    background-color: #f1f1f1
+    }
+    /*hover设置光标悬停未点击之前的样式*/
+     
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }/*鼠标悬停显示下拉菜单*/
+     
+    .dropdown:hover .dropbtn {
+        background-color: #f5f5f5;
+    }
+     
+</style>
+</head>
+<body>
+<div class=dropdown>
+    <button class="dropbtn">我的淘宝</button>
+       <div class="dropdown-content">
+           <a href="#">已买到的宝贝</a>
+           <a href="#">我的足迹</a>
+           <a href="#">我的足迹</a>
+       </div>
+</div>
+</body>
+</html>
