@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>电商首页</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            
+        }
+        a {
+            text-decoration: none;
+        }
+
+        h1, h2, h3, h4, h5 p {
+            margin: 0;
+            color: #2a2e31;
+        }
+
+        input {
+            border-radius: 3px 0 0 3px;
+            outline:none;
+        }
+
+        button {
+            border-radius: 0 3px 3px 0;
+            outline:none;
+        }
+
+        .container {
+            max-width: 1170px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .text-right {
+            text-align: right;
+        }
+
+        .main img {
+            transition: all .2s;
+        }
+
+        .main img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0  50px transparent;
+        }
+
+        .search-group {
+            font-size: 0;
+        }
+
+        .col-1 {
+            flex-basis: 4.166666666666667%;
+        }
+
+        .col-2 {
+            flex-basis: 8.333333333333333%;
+        }
+
+        .col-3 {
+            flex-basis: 12.5%;
+        }
+
+        .col-4 {
+            flex-basis: 16.6666666666667%;
+        }
+
+        .col-5 {
+            flex-basis: 20.8333333333333%;
+        }
+
+        .col-6 {
+            flex-basis: 25%;
+        }
+
+        .col-7 {
+            flex-basis: 29.166666666667%;
+        }
+
+        .col-8 {
+            flex-basis: 33.3333333333333%;
+        }
+
+        .col-9 {
+            flex-basis: 37.5%;
+        }
+
+        .col-10 {
+            flex-basis: 41.666666666667%;
+        }
+
+        .col-11 {
+            flex-basis: 45.83333333333333%;
+        }
+
+        .col-12 {
+            flex-basis: 50%;
+        }
+
+        .col-13 {
+            flex-basis: 54.1666666666667%;
+        }
+
+        .col-14 {
+            flex-basis: 58.3333333333333%;
+        }
+
+        .col-15 {
+            flex-basis: 62.5%;
+        }
+
+        .col-16 {
+            flex-basis: 66.66666666666667%;
+        }
+
+        .col-17 {
+            flex-basis: 70.83333333333333%;
+        }
+
+        .col-18 {
+            flex-basis: 75%;
+        }
+
+        .col-19 {
+            flex-basis: 79.16666666667%;
+        }
+
+        .col-20 {
+            flex-basis: 83.33333333333%;
+        }
+
+        .col-21 {
+            flex-basis: 87.5%;
+        }
+
+        .col-22 {
+            flex-basis: 91.666666666666667%;
+        }
+
+        .col-23 {
+            flex-basis: 95.833333333333333%;
+        }
+
+        .col-24 {
+            flex-basis: 100%;
+        }
+        /* 以上 全局样式 */
+        .nav.global {
+            color: #999;
+            box-shadow: 1px 0px 5px 2px rgba(170,170,170,0.33);
+        }
+
+        .nav.global .nav-up,
+        .nav.global .nav-down {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: .15rem;
+            padding-bottom: .15rem;
+        }
+        .nav.global .nav-up .logo {
+            color: #024b8f;
+            font-size: 2.4rem;
+            font-weight: 600;
+            font-style: italic;
+            font-family: Lora,'Times New Roman',serif,sans-serif;
+        }
+
+        .nav.global .nav-up .link-group a {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: .9rem;
+            color: inherit;
+            margin-right: 1rem; 
+        }
+
+        .nav.global .nav-up .link-group a img {
+            max-width: 1.3rem;
+            width: 3rem;
+            height: 3rem;
+        }
+
+        .nav.global .nav-down {
+            padding-bottom: 1.5rem;
+        }
+
+        .nav.global .nav-down .link-group a {
+            font-size: .9rem;
+            color: inherit;
+            margin-right: 1rem; 
+        }
+
+        .nav.global .search-group {
+            width: 380px;
+        }
+
+        .nav.global .search-group input{
+            width: 80%;
+            padding: .3rem 1rem;
+            border: 1px solid #999;
+            border-right: none;
+        }
+
+        .nav.global .search-group button {
+            width: 20%;
+            font-size: .9rem;
+            padding: .135rem;
+            position: relative;
+            top: 1px;
+            border: #024b8f 1px solid;
+            color: #fff;
+            background: #024b8f;
+        }
+
+        .nav.page {
+            text-align: center;
+            padding-top: 1rem;
+        }
+
+        .nav.page .container {
+            position: relative;
+            max-width: 941px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .nav.page a {
+            display: inline-block;
+            padding: .3rem .8rem;
+            color: #222;
+        }
+
+        .nav.page a:hover {
+            box-shadow: 0 8px 10px 0 rgba(112, 112, 112, 0.2);
+            background-color: #F6F4EE;
+        }
+
+        .nav.page .box {
+            display: inline-block;
+        }
+
+        .box:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            width: 100%;
+            background-color: #F6F4EE;
+            left: 0;
+        }
+
+        .nav.page .box .dropdown-content a {
+            width: 32%;
+            display: inline-block;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            color: #999;
+        }
+
+        .dropdown-content, 
+        .parent {
+            max-width: 940px;
+        }
+
+        .main .main-promotion,
+        .main .outdoors {
+            /* background: #F6F4EE; */
+            background-image: url(./img/tree.png);
+            background-size: 87%;
+            background-position:top;
+            background-repeat: repeat-y;
+        }
+
+        .main .main-promotion .container,
+        .main .outdoors .container {
+            max-width: 1330px;
+            margin-left: auto;
+            margin-right: auto;
+            background:rgba(250, 249, 246, 100);
+            color: #222;
+        }
+
+        .main .main-promotion .title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            margin-left: 1.8rem;
+        }
+
+        .main .main-promotion .circle-group {
+            background: #fff;
+        }
+
+        .main .main-promotion .circle-group,
+        .main .main-promotion .card-group,
+        .main .main-promotion .across {
+            max-width: 1280px;
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+
+        .main .main-promotion .circle-group .card {
+            width: 16.3%;
+            display: inline-block;
+            text-align: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .main .main-promotion .circle-group .card .picture {
+            width: 180px;
+            height: 180px;
+            background: #eee;
+            border-radius: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .main .main-promotion .circle-group .card .picture:hover {
+            background: transparent;
+        }
+
+        .main .main-promotion .circle-group .card .picture img {
+            width: 75%;
+            margin-top: 30%;
+        }
+
+        .main .main-promotion .circle-group .card .name {
+            color: #222;
+            padding-top: .9rem;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .main .main-promotion .card-group {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .main .main-promotion .card-group .rectangle-card {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .main .main-promotion .card-group .rectangle-card img {
+            max-width: 420px;
+        }
+
+        .main .main-promotion .card-group .rectangle-card .title {
+            position: absolute;
+            top: 30%;
+            left: 35%;
+        }
+
+        .main .main-promotion .card-group .rectangle-card .describe {
+            position: absolute;
+            top: 50%;
+            left: 35%;
+        }
+
+        .main .main-promotion .across {
+            padding-bottom: 2rem;
+        }
+
+        .main .main-promotion .across img {
+            width: 100%;
+        }
+
+        .main .sub-promotion .title,
+        .main .outdoors .title {
+            /* background: #F6F4EE; */
+            padding: 1.5rem 0;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        .main .sub-promotion .product {
+            display: flex; 
+            justify-content: space-around;
+        }
+
+        .main .sub-promotion .product img {
+            width: 30%;
+            height: 100%;
+        }
+
+        .main .outdoors .card-group {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .main .outdoors .card-group .card  {
+            text-align: center;
+            width: 33%;
+        }
+
+        .main .outdoors .card-group .card img {
+            max-width: 330px;
+        }
+
+        .main .outdoors .card-group .card a {
+            display: block;
+            color: #222;
+            font-size: 1rem;
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+        }
+
+        .main .ending .title {
+            color: #222;
+            font-size: 1.5rem;
+            font-weight: 400;
+            padding-top: 4rem;
+            margin-left: 4rem;
+        }
+
+        .main .ending .container {
+            max-width: 1330px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .main .ending .trademark-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            text-align: center;
+        }
+
+        .main .ending .trademark-group a {
+            width: 100%;
+        }
+
+        .main .ending .trademark-group img {
+            max-width: 50%;
+            display: inline-block;
+        }
+
+        .main .ending .icon {
+            text-align: center;
+        }
+
+        .main .ending .icon > * {
+            vertical-align: middle;
+        }
+        
+        .main .ending .icon span {
+            color: #222;
+            font-size: 1.1rem;
+            margin: 0 1rem;
+            font-style: italic;
+            font-family: Lora,'Times New Roman',serif,sans-serif;
+        }
+
+        .main .ending .icon img {
+            width: 5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav global">
+        <div class="container">
+            <div class="nav-up">
+                <a class="logo" href="#">bloody battle</a>
+                <div class="link-group">
+                    <a href="#">登录</a>
+                    <a href="#">注册</a>
+                    <a href="#">日渐消瘦</a>
+                    <a href="#">救命</a>
+                    <a href="#">
+                        <img src="./img/gouwuche.svg">
+                    </a>
+                </div>
+            </div>
+            <div class="nav-down">
+                <div class="link-group">
+                    <a href="#">在线客服</a>
+                    <a href="#">订单管理</a>
+                    <a href="#">我的BloodyBattle</a>
+                    <a href="#">收藏夹</a>
+                </div>
+                <form class="search-group" action="#">
+                    <input type="text" placeholder="asdasfsaf">
+                    <button>搜一下</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="nav page">
+        <div class="container">
+            <div class="box">
+                <a class="parent" href="#">美妆</a>
+                <div class="dropdown-content">
+                    <a href="#">兰芝官方旗舰店</a>
+                    <a href="#">理肤泉官方旗舰店</a>
+                    <a href="#">Estee Lauder理诗...</a>
+                    <a href="#">碧欧泉官方旗舰店</a>
+                    <a href="#">SK2官方旗舰店</a>
+                    <a href="#">GIENCHY纪梵希...</a>
+                    <a href="#">Lancome兰蔻官方</a>
+                    <a href="#">自然堂旗舰店</a>
+                    <a href="#">千色店旗舰店</a>
+                    <a href="#">屈臣氏官方旗舰店</a>
+                    <a href="#">GIORGIO ARMANI</a>
+                    <a href="#">Estee Lauder雅诗...</a>
+                    <a href="#">Silwhasoo雪花秀...</a>
+                    <a href="#">Fresh馥蕾诗官方旗舰...</a>
+                    <a href="#">悦木之源官方旗舰店</a>
+                </div>
+            </div>
+            <div class="box">
+                <a class="parent" href="#">手机通信</a>
+                <div class="dropdown-content">
+                    <a href="#">OPPO R17 Pro</a>
+                    <a href="#">vivo X23</a>
+                    <a href="#">华为Mate 20</a>
+                    <a href="#">苹果iPhone XS</a>
+                    <a href="#">魅族16th</a>
+                    <a href="#">一加6</a>
+                    <a href="#">OPPO K1</a>
+                    <a href="#">OPPO R17</a>
+                    <a href="#">华为P20 Pro</a>
+                    <a href="#">苹果iPhone XS</a>
+                    <a href="#">OPPO Find X</a>
+                    <a href="#">vivo Z3</a>
+                    <a href="#">荣耀8X</a>
+                    <a href="#">苹果iPhone XR</a>
+                    <a href="#">华为nova 3</a>
+                </div>
+            </div>
+            <div class="box">
+                <a class="parent" href="#">家电</a>
+                <div class="dropdown-content">
+                    <a href="#">小米电视4A 43英寸 青春版</a>
+                    <a href="#">小米笔记本 15.6</a>
+                    <a href="#">小米笔记本Air 13.3</a>
+                    <a href="#">米家空气净化器Pro</a>
+                    <a href="#">米家电水壶</a>
+                    <a href="#">米家LED吸顶灯</a>
+                    <a href="#">小米电视4A 32英寸</a>
+                    <a href="#">小米电视4A 50英寸</a>
+                    <a href="#">米家扫地机器人</a>
+                    <a href="#">小米米家智能摄像机云台版</a>
+                    <a href="#">小米净水器（厨下式）</a>
+                    <a href="#">米家投影仪</a>
+                    <a href="#">九号平衡车</a>
+                    <a href="#">小米小爱智能闹钟</a>
+                    <a href="#">米家电动剃须刀</a>
+                </div>
+            </div>
+            <div class="box">
+                <a class="parent" href="#">运动户外</a>
+                <div class="dropdown-content">
+                    <a href="#">小米电视4A 43英寸 青春版</a>
+                    <a href="#">小米笔记本 15.6</a>
+                    <a href="#">小米笔记本Air 13.3</a>
+                    <a href="#">米家空气净化器Pro</a>
+                    <a href="#">米家电水壶</a>
+                    <a href="#">米家LED吸顶灯</a>
+                    <a href="#">小米电视4A 32英寸</a>
+                    <a href="#">小米电视4A 50英寸</a>
+                    <a href="#">米家扫地机器人</a>
+                    <a href="#">小米米家智能摄像机云台版</a>
+                    <a href="#">小米净水器（厨下式）</a>
+                    <a href="#">米家投影仪</a>
+                    <a href="#">九号平衡车</a>
+                    <a href="#">小米小爱智能闹钟</a>
+                    <a href="#">米家电动剃须刀</a>
+                </div>
+            </div>
+            <div class="box">
+                <a class="parent" href="#">医药</a>
+                <div class="dropdown-content">
+                    <a href="#">小米电视4A 43英寸 青春版</a>
+                    <a href="#">小米笔记本 15.6</a>
+                    <a href="#">小米笔记本Air 13.3</a>
+                    <a href="#">米家空气净化器Pro</a>
+                    <a href="#">米家电水壶</a>
+                    <a href="#">米家LED吸顶灯</a>
+                    <a href="#">小米电视4A 32英寸</a>
+                    <a href="#">小米电视4A 50英寸</a>
+                    <a href="#">米家扫地机器人</a>
+                    <a href="#">小米米家智能摄像机云台版</a>
+                    <a href="#">小米净水器（厨下式）</a>
+                    <a href="#">米家投影仪</a>
+                    <a href="#">九号平衡车</a>
+                    <a href="#">小米小爱智能闹钟</a>
+                    <a href="#">米家电动剃须刀</a>
+                </div>
+            </div>
+            <div class="box">
+                <a class="parent" href="#">家具</a>
+                <div class="dropdown-content">
+                    <a href="#">小米电视4A 43英寸 青春版</a>
+                    <a href="#">小米笔记本 15.6</a>
+                    <a href="#">小米笔记本Air 13.3</a>
+                    <a href="#">米家空气净化器Pro</a>
+                    <a href="#">米家电水壶</a>
+                    <a href="#">米家LED吸顶灯</a>
+                    <a href="#">小米电视4A 32英寸</a>
+                    <a href="#">小米电视4A 50英寸</a>
+                    <a href="#">米家扫地机器人</a>
+                    <a href="#">小米米家智能摄像机云台版</a>
+                    <a href="#">小米净水器（厨下式）</a>
+                    <a href="#">米家投影仪</a>
+                    <a href="#">九号平衡车</a>
+                    <a href="#">小米小爱智能闹钟</a>
+                    <a href="#">米家电动剃须刀</a>
+                </div>
+            </div>
+            <div class="box">
+                <a class="parent" href="#">男装</a>
+                <div class="dropdown-content">
+                    <a href="#">小米电视4A 43英寸 青春版</a>
+                    <a href="#">小米笔记本 15.6</a>
+                    <a href="#">小米笔记本Air 13.3</a>
+                    <a href="#">米家空气净化器Pro</a>
+                    <a href="#">米家电水壶</a>
+                    <a href="#">米家LED吸顶灯</a>
+                    <a href="#">小米电视4A 32英寸</a>
+                    <a href="#">小米电视4A 50英寸</a>
+                    <a href="#">米家扫地机器人</a>
+                    <a href="#">小米米家智能摄像机云台版</a>
+                    <a href="#">小米净水器（厨下式）</a>
+                    <a href="#">米家投影仪</a>
+                    <a href="#">九号平衡车</a>
+                    <a href="#">小米小爱智能闹钟</a>
+                    <a href="#">米家电动剃须刀</a>
+                </div>
+            </div>
+            <div class="box">
+                <a class="parent" href="#">图书乐器</a>
+                <div class="dropdown-content">
+                    <a href="#">小米电视4A 43英寸 青春版</a>
+                    <a href="#">小米笔记本 15.6</a>
+                    <a href="#">小米笔记本Air 13.3</a>
+                    <a href="#">米家空气净化器Pro</a>
+                    <a href="#">米家电水壶</a>
+                    <a href="#">米家LED吸顶灯</a>
+                    <a href="#">小米电视4A 32英寸</a>
+                    <a href="#">小米电视4A 50英寸</a>
+                    <a href="#">米家扫地机器人</a>
+                    <a href="#">小米米家智能摄像机云台版</a>
+                    <a href="#">小米净水器（厨下式）</a>
+                    <a href="#">米家投影仪</a>
+                    <a href="#">九号平衡车</a>
+                    <a href="#">小米小爱智能闹钟</a>
+                    <a href="#">米家电动剃须刀</a>
+                </div>
+            </div>
+            <div class="box">
+                <a class="parent" href="#">女装</a>
+                <div class="dropdown-content">
+                    <a href="#">小米电视4A 43英寸 青春版</a>
+                    <a href="#">小米笔记本 15.6</a>
+                    <a href="#">小米笔记本Air 13.3</a>
+                    <a href="#">米家空气净化器Pro</a>
+                    <a href="#">米家电水壶</a>
+                    <a href="#">米家LED吸顶灯</a>
+                    <a href="#">小米电视4A 32英寸</a>
+                    <a href="#">小米电视4A 50英寸</a>
+                    <a href="#">米家扫地机器人</a>
+                    <a href="#">小米米家智能摄像机云台版</a>
+                    <a href="#">小米净水器（厨下式）</a>
+                    <a href="#">米家投影仪</a>
+                    <a href="#">九号平衡车</a>
+                    <a href="#">小米小爱智能闹钟</a>
+                    <a href="#">米家电动剃须刀</a>
+                </div>
+            </div>
+            <div class="box">
+                <a class="parent" href="#">办公</a>
+                <div class="dropdown-content">
+                    <a href="#">小米电视4A 43英寸 青春版</a>
+                    <a href="#">小米笔记本 15.6</a>
+                    <a href="#">小米笔记本Air 13.3</a>
+                    <a href="#">米家空气净化器Pro</a>
+                    <a href="#">米家电水壶</a>
+                    <a href="#">米家LED吸顶灯</a>
+                    <a href="#">小米电视4A 32英寸</a>
+                    <a href="#">小米电视4A 50英寸</a>
+                    <a href="#">米家扫地机器人</a>
+                    <a href="#">小米米家智能摄像机云台版</a>
+                    <a href="#">小米净水器（厨下式）</a>
+                    <a href="#">米家投影仪</a>
+                    <a href="#">九号平衡车</a>
+                    <a href="#">小米小爱智能闹钟</a>
+                    <a href="#">米家电动剃须刀</a>
+                </div>
+            </div>
+            <div class="box">
+                <a class="parent" href="#">玩具</a>
+                <div class="dropdown-content">
+                    <a href="#">小米电视4A 43英寸 青春版</a>
+                    <a href="#">小米笔记本 15.6</a>
+                    <a href="#">小米笔记本Air 13.3</a>
+                    <a href="#">米家空气净化器Pro</a>
+                    <a href="#">米家电水壶</a>
+                    <a href="#">米家LED吸顶灯</a>
+                    <a href="#">小米电视4A 32英寸</a>
+                    <a href="#">小米电视4A 50英寸</a>
+                    <a href="#">米家扫地机器人</a>
+                    <a href="#">小米米家智能摄像机云台版</a>
+                    <a href="#">小米净水器（厨下式）</a>
+                    <a href="#">米家投影仪</a>
+                    <a href="#">九号平衡车</a>
+                    <a href="#">小米小爱智能闹钟</a>
+                    <a href="#">米家电动剃须刀</a>
+                </div>
+            </div>
+            <div class="box">
+                <a class="parent" href="#">建材</a>
+                <div class="dropdown-content">
+                    <a href="#">小米电视4A 43英寸 青春版</a>
+                    <a href="#">小米笔记本 15.6</a>
+                    <a href="#">小米笔记本Air 13.3</a>
+                    <a href="#">米家空气净化器Pro</a>
+                    <a href="#">米家电水壶</a>
+                    <a href="#">米家LED吸顶灯</a>
+                    <a href="#">小米电视4A 32英寸</a>
+                    <a href="#">小米电视4A 50英寸</a>
+                    <a href="#">米家扫地机器人</a>
+                    <a href="#">小米米家智能摄像机云台版</a>
+                    <a href="#">小米净水器（厨下式）</a>
+                    <a href="#">米家投影仪</a>
+                    <a href="#">九号平衡车</a>
+                    <a href="#">小米小爱智能闹钟</a>
+                    <a href="#">米家电动剃须刀</a>
+                </div>
+            </div>
+            <div class="box">
+                <a class="parent" href="#">生鲜水果</a>
+                <div class="dropdown-content">
+                    <a href="#">小米电视4A 43英寸 青春版</a>
+                    <a href="#">小米笔记本 15.6</a>
+                    <a href="#">小米笔记本Air 13.3</a>
+                    <a href="#">米家空气净化器Pro</a>
+                    <a href="#">米家电水壶</a>
+                    <a href="#">米家LED吸顶灯</a>
+                    <a href="#">小米电视4A 32英寸</a>
+                    <a href="#">小米电视4A 50英寸</a>
+                    <a href="#">米家扫地机器人</a>
+                    <a href="#">小米米家智能摄像机云台版</a>
+                    <a href="#">小米净水器（厨下式）</a>
+                    <a href="#">米家投影仪</a>
+                    <a href="#">九号平衡车</a>
+                    <a href="#">小米小爱智能闹钟</a>
+                    <a href="#">米家电动剃须刀</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rotate"></div>
+    <div class="main">
+        <div class="main-promotion">
+            <div class="container">
+                <div class="title">按部门购买</div>
+                <div class="circle-group">
+                    <a href="#" class="card">
+                        <div class="picture">
+                            <img src="https://secure.img1-fg.wfcdn.com/im/83911389/resize-h240-w240%5Ecompr-r85%5Etransparent/4814/48145150/default_name.png">
+                        </div>
+                        <div class="name">家具</div>
+                    </a>
+                    <a href="#" class="card">
+                        <div class="picture">
+                            <img src="https://secure.img1-fg.wfcdn.com/im/83911389/resize-h240-w240%5Ecompr-r85%5Etransparent/4814/48145150/default_name.png">
+                        </div>
+                        <div class="name">家具</div>
+                    </a>
+                    <a href="#" class="card">
+                        <div class="picture">
+                            <img src="https://secure.img1-fg.wfcdn.com/im/83911389/resize-h240-w240%5Ecompr-r85%5Etransparent/4814/48145150/default_name.png">
+                        </div>
+                        <div class="name">家具</div>
+                    </a>
+                    <a href="#" class="card">
+                        <div class="picture">
+                            <img src="https://secure.img1-fg.wfcdn.com/im/83911389/resize-h240-w240%5Ecompr-r85%5Etransparent/4814/48145150/default_name.png">
+                        </div>
+                        <div class="name">家具</div>
+                    </a>
+                    <a href="#" class="card">
+                        <div class="picture">
+                            <img src="https://secure.img1-fg.wfcdn.com/im/83911389/resize-h240-w240%5Ecompr-r85%5Etransparent/4814/48145150/default_name.png">
+                        </div>
+                        <div class="name">家具</div>
+                    </a>
+                    <a href="#" class="card">
+                        <div class="picture">
+                            <img src="https://secure.img1-fg.wfcdn.com/im/83911389/resize-h240-w240%5Ecompr-r85%5Etransparent/4814/48145150/default_name.png">
+                        </div>
+                        <div class="name">家具</div>
+                    </a>
+                    <a href="#" class="card">
+                        <div class="picture">
+                            <img src="https://secure.img1-fg.wfcdn.com/im/83911389/resize-h240-w240%5Ecompr-r85%5Etransparent/4814/48145150/default_name.png">
+                        </div>
+                        <div class="name">家具</div>
+                    </a>
+                    <a href="#" class="card">
+                        <div class="picture">
+                            <img src="https://secure.img1-fg.wfcdn.com/im/83911389/resize-h240-w240%5Ecompr-r85%5Etransparent/4814/48145150/default_name.png">
+                        </div>
+                        <div class="name">家具</div>
+                    </a>
+                    <a href="#" class="card">
+                        <div class="picture">
+                            <img src="https://secure.img1-fg.wfcdn.com/im/83911389/resize-h240-w240%5Ecompr-r85%5Etransparent/4814/48145150/default_name.png">
+                        </div>
+                        <div class="name">家具</div>
+                    </a>
+                    <a href="#" class="card">
+                        <div class="picture">
+                            <img src="https://secure.img1-fg.wfcdn.com/im/83911389/resize-h240-w240%5Ecompr-r85%5Etransparent/4814/48145150/default_name.png">
+                        </div>
+                        <div class="name">家具</div>
+                    </a>
+                    <a href="#" class="card">
+                        <div class="picture">
+                            <img src="https://secure.img1-fg.wfcdn.com/im/83911389/resize-h240-w240%5Ecompr-r85%5Etransparent/4814/48145150/default_name.png">
+                        </div>
+                        <div class="name">家具</div>
+                    </a>
+                    <a href="#" class="card">
+                        <div class="picture">
+                            <img src="https://secure.img1-fg.wfcdn.com/im/83911389/resize-h240-w240%5Ecompr-r85%5Etransparent/4814/48145150/default_name.png">
+                        </div>
+                        <div class="name">家具</div>
+                    </a>
+                </div>
+                <div class="card-group">
+                    <a href="#" class="rectangle-card">
+                        <img src="https://dummyimage.com/420x270/e9123e/fff">
+                        <div class="title">标题</div>
+                        <div class="describe">描述</div>
+                    </a>
+                    <a href="#" class="rectangle-card">
+                        <img src="https://dummyimage.com/420x270/e22222/fff">
+                        <div class="title">标题</div>
+                        <div class="describe">描述</div>
+                    </a>
+                    <a href="#" class="rectangle-card">
+                        <img src="https://dummyimage.com/420x270/e22222/fff">
+                        <div class="title">标题</div>
+                        <div class="describe">描述</div>
+                    </a>
+                </div>
+                <div class="across">
+                    <img src="./img/hengtu1.jpg">
+                </div>
+            </div>
+        </div>
+        <div class="sub-promotion">
+            <div class="title">产品经理突然要你加一个横跨页面的，你就会很被动</div>
+            <div class="product">
+                <img src="./img/sub5.jpg">
+                <img src="./img/sub4.jpg">
+                <img src="./img/sub5.jpg">
+            </div>
+        </div>
+        <div class="outdoors">
+            <div class="container">
+                <div class="title">商店顶级类别</div>
+                <div class="card-group">
+                    <div class="card">
+                        <div>
+                            <img src="./img/hw1.jpg">
+                        </div>
+                        <div>
+                            <a href="#">帐篷</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <img src="./img/hw1.jpg">
+                        </div>
+                        <div>
+                            <a href="#">帐篷</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <img src="./img/hw1.jpg">
+                        </div>
+                        <div>
+                            <a href="#">帐篷</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <img src="./img/hw1.jpg">
+                        </div>
+                        <div>
+                            <a href="#">帐篷</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <img src="./img/hw1.jpg">
+                        </div>
+                        <div>
+                            <a href="#">帐篷</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <img src="./img/hw1.jpg">
+                        </div>
+                        <div>
+                            <a href="#">帐篷</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ending">
+            <div class="container">
+                <div class="title">更多受欢迎的品牌</div>
+                <div class="trademark-group">
+                    <a href="#"><img src="./img/pp1.svg"></a> 
+                    <a href="#"><img src="./img/pp2.svg"></a>
+                    <a href="#"><img src="./img/pp3.svg"></a>
+                    <a href="#"><img src="./img/pp4.svg"></a>
+                    <a href="#"><img src="./img/pp5.svg"></a>
+                    <a href="#"><img src="./img/pp6.svg"></a>
+                </div>
+                <div class="icon">
+                    <img src="./img/icon1.svg">
+                    <span>我们怎么样？不要再犹豫，下单吧</span>
+                    <img src="./img/icon2.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
