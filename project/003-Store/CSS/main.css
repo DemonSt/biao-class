@@ -120,6 +120,13 @@
 
 .main {
     background: #F6F4EE;
+    padding-top: 2rem;
+}
+
+.main .main-promotion,
+.main .sub-promotion,
+.main .outdoors,
+.main .ending {
     background-image: url(../img/tree.png);
     background-size: 87%;
     background-position:top;
