@@ -5,408 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>文章详情页</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            margin: 0;
-            font-family: 'Open Sans', sans-serif;
-        }
-        a {
-            text-decoration: none;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .text-right {
-            text-align: right;
-        }
-
-        .col-1 {
-            flex-basis: 4.166666666666667%;
-        }
-
-        .col-2 {
-            flex-basis: 8.333333333333333%;
-        }
-
-        .col-3 {
-            flex-basis: 12.5%;
-        }
-
-        .col-4 {
-            flex-basis: 16.6666666666667%;
-        }
-
-        .col-5 {
-            flex-basis: 20.8333333333333%;
-        }
-
-        .col-6 {
-            flex-basis: 25%;
-        }
-
-        .col-7 {
-            flex-basis: 29.166666666667%;
-        }
-
-        .col-8 {
-            flex-basis: 33.3333333333333%;
-        }
-
-        .col-9 {
-            flex-basis: 37.5%;
-        }
-
-        .col-10 {
-            flex-basis: 41.666666666667%;
-        }
-
-        .col-11 {
-            flex-basis: 45.83333333333333%;
-        }
-
-        .col-12 {
-            flex-basis: 50%;
-        }
-
-        .col-13 {
-            flex-basis: 54.1666666666667%;
-        }
-
-        .col-14 {
-            flex-basis: 58.3333333333333%;
-        }
-
-        .col-15 {
-            flex-basis: 62.5%;
-        }
-
-        .col-16 {
-            flex-basis: 66.66666666666667%;
-        }
-
-        .col-17 {
-            flex-basis: 70.83333333333333%;
-        }
-
-        .col-18 {
-            flex-basis: 75%;
-        }
-
-        .col-19 {
-            flex-basis: 79.16666666667%;
-        }
-
-        .col-20 {
-            flex-basis: 83.33333333333%;
-        }
-
-        .col-21 {
-            flex-basis: 87.5%;
-        }
-
-        .col-22 {
-            flex-basis: 91.666666666666667%;
-        }
-
-        .col-23 {
-            flex-basis: 95.833333333333333%;
-        }
-
-        .col-24 {
-            flex-basis: 100%;
-        }
-        /* 以上 全局样式 */
-        .first-screen {
-            background: #2a2e31;
-            height: 18.0vw;
-            color: #fefefe;
-        }
-
-        .first-screen .nav.global {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .first-screen .nav.global .logo {
-            font-weight: bolder;
-            font-size: 2rem;
-            color: inherit;
-            margin: 1rem;
-        }
-
-        .first-screen .nav.global .ling-group a {
-            color: inherit;
-            display: inline-block;
-            padding: 1rem 1.5rem;
-        }
-
-        .first-screen  .nav.global .ling-group a:hover {
-            color: #ddd;
-        }
-
-        .first-screen .nav.global button {
-            border: #fefefe 1px solid;
-            background: transparent;
-            color: inherit;
-            font-size: .8rem;
-            font-weight: bold;
-            padding: .6rem .7rem;
-            margin: 1rem;
-        }
-
-        .first-screen .moon svg {
-            width: 100%;
-            position: relative;
-            top: 175px;
-        }
-
-        .nav.page {
-            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
-            cursor: pointer;
-            position: fixed;
-            width: 100%;
-            top: 302.39px;
-            background: #fff;
-        }
-
-        .nav.page .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav.page .tag span {
-            color: #121416;
-            font-size: .8rem;
-        }
-
-        .nav.page .tag a {
-            color: #8997D8;
-            font-size: .8rem;
-        }
-
-        .nav.page .ling-group a {
-            color: #999;
-            display: inline-block;
-            padding: 1rem;
-        }
-
-        .nav.page .ling-group a > * {
-            vertical-align: middle;
-        }
-
-        .nav.page .ling-group a:hover {
-            color: #0085a1;
-        }
-
-        .main .header {
-            color: #3b3b3b;
-            font-weight: bold;
-            font-size: 2.8rem;
-            max-width: 800px;
-            margin: 5rem auto 3rem;
-        }
-
-        .main .preview {
-            display: flex;
-        }
-
-        .main .aside  {
-            margin-right: 3rem;
-            line-height: 1.8rem;
-            color: #3b3b3b;
-            font-size: 14px;
-        }
-
-        .main .aside .portrait {
-            margin-bottom: 1.5rem;
-        }
-
-        .main .aside .portrait img {
-            border-radius: 50%;
-            width: 45%;
-        }
-
-        .main .aside .name {
-            font-weight: bold;
-            font-size: 15px;
-        }
-
-        .main .aside .contact {
-            color: #cccbbb;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-
-        .main .aside .contact:hover {
-            color: #999;
-        }
-
-        .main .aside .share {
-            display: inline-block;
-            padding-top: 1rem;
-            padding-bottom: .4rem;
-            border-top: 1px solid #cccbbb;
-        }
-
-        .main .aside .share-group img {
-            max-width: 23px;
-            margin-left: .5rem;
-        }
-
-        .main .content img {
-            max-width: 800px;
-        }
-
-        .main .content .section {
-            line-height: 2;
-            color: #3b3b3b;
-        }
-
-        .main .content .section .title {
-            font-size: 1.6rem;
-            padding-top: 1rem;
-        }
-
-        .main .content .remarks {
-            color: #999;
-            font-size: .9rem;
-            padding-top: 3rem;
-        }
-
-        .main .comment-wrap {
-            margin-top: 5rem;
-            margin-bottom: 5rem;
-        }
-
-        .main .comment-wrap .line-between {
-            display: flex;
-            max-width: 750px;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .main .comment-wrap img {
-            margin-right: 1rem;
-        }
-
-        .main .comment-wrap span {
-            flex: 1;
-            max-width: 800px;
-            color: #3b3b3b;
-            font-size: 1.2rem;
-            padding-bottom: .2rem;
-            border-bottom: 1px solid #f05f58;
-        }
-
-        .main .comment-wrap .comment {
-            display: flex;
-            justify-content: left;
-            padding: 2rem;
-            margin-left: 8.5rem;
-        }
-
-        .main .comment-wrap .comment .portrait img {
-            border-radius: 50%;
-            box-shadow: 0 5px 20px #ccc;
-        }
-
-        .main .comment-wrap .comment .window > * {
-            margin-top: .3rem;
-            margin-bottom: .3rem;
-        }
-
-        .main .comment-wrap .comment .window {
-            background: #eee;
-            box-shadow: 0 5px 20px #ccc;
-            border-radius: 0 5px 5px 5px;
-            color: #565656;
-            padding: 1rem 8rem .5rem 3rem;
-        }
-
-        .main .comment-wrap .comment .window .info {
-            font-weight: bold;
-            font-size: .95rem;
-        }
-
-        .main .comment-wrap .comment .window .answer {
-            font-size: .95rem;
-            font-weight: 400;
-        }
-
-        .main .comment-wrap .comment .window .reply {
-            font-size: 0.9rem;
-            color: #f16059;
-            font-weight: 800;
-        }
-
-        .main .recommend {
-            margin-top: 4rem;
-            margin-bottom: 4rem;
-            max-width: 1180px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #3b3b3b;
-        }
-
-        .main .recommend .title {
-            font-size: 1.6rem;
-            margin-bottom: 3rem;
-        }
-
-        .main .recommend .card-group {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .main .recommend .card {
-            display: inline-block;
-        }
-
-        .main .recommend .card-group img {
-            max-width: 260px;
-        }
-
-        .main .recommend .card p {
-            color: #3b3b3b;
-        }
-
-        .footer {
-            border-top: .4rem solid #eee;
-            background: #121416;
-        }
-
-        .footer .container {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1180px;
-            padding-top: 2.5rem;
-            padding-bottom: 3.5rem;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: .85rem;
-            color: #999;
-        }
-
-        .footer .link-group a {
-            color: inherit;
-            margin-right: 1rem;
-        }
-
-        .footer .link-group span {
-            color: #bbb;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./css/article.css">
 </head>
 <body>
     <div class="first-screen">
@@ -451,36 +50,36 @@
             <div class="preview">
                 <div class="aside col-5 text-right">
                     <div class="portrait">
-                        <img src="https://secure.gravatar.com/avatar/35b752b81682db8373d7e493ee044810?s=96&d=mm&r=g">
+                        <img src="./img/xqy-touxiang.png">
                     </div>
                     <div class="name">DamonSalvatore</div>
                     <div>最后更新时间为</div>
                     <div>2018年10月24日</div>
                     <a href="#" class="contact">
-                        <img src="https://skillcrush.com/wp-content/themes/skillcrush3.0-child/img/global/comments.png">
+                        <img src="./img/xiaoxi-icon.png">
                         私信
                     </a>
                     <div class="share-group">
                         <div class="share">分享</div>
                         <div>
                             <a href="#">
-                                <img src="https://common.cnblogs.com/images/icon_weibo_24.png">
+                                <img src="./img/wb-icon.png">
                             </a>
                             <a href="#">
-                                <img src="https://common.cnblogs.com/images/wechat.png">
+                                <img src="./img/wx-icon.png">
                             </a>
                             <a href="#">
-                                <img src="https://skillcrush.com/wp-content/themes/skillcrush3.0-child/img/global/tw.png">
+                                <img src="./img/tw-icon.png">
                             </a>
                             <a href="#">
-                                <img src="https://skillcrush.com/wp-content/themes/skillcrush3.0-child/img/global/fb.png">
+                                <img src="./img/fb-icon.png">
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="content col-19">
                     <div class="div">
-                        <img src="http://img.zcool.cn/community/01868f591bf324b5b3086ed496c57d.jpg@1280w_1l_2o_100sh.jpg">
+                        <img src="./img/xqy-zt.jpg">
                     </div>
                     <div class="section">
                         <div class="title">一个帽，把领导帽进了医院</div>
@@ -509,7 +108,7 @@
                             但幸运的是，塔克几乎是为了防守这种进攻而量身定做的球员。他不是很高，但他足够强壮，因此他能在禁区里生扛内线。同时，他也非常灵活，足以换防到外线。他在限制勒布朗方面的表现是现象级的。
                             勒布朗花了22次投篮才得到了24分。他也尝试了7记三分仅仅命中1次。所以，即使基础数据看上去还不错，但他的效率却不高。整晚你都能看见塔克在勒布朗屁股后面穷追不舍，包括他还在第四节完全冻结了后者。
                         </p>
-                        <img src="https://images.unsplash.com/photo-1530042133068-0296a09adf7b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=05d2e861ce42fc2fdc790d5b44d9d06e&auto=format&fit=crop&w=800&q=60">
+                        <img src="./img/xqy-ct.jpeg">
                     </div>
                     <div class="section">
                         <div class="title">接口文档神器Swagger</div>
@@ -522,12 +121,12 @@
             </div>
             <div class="comment-wrap">
                 <div class="line-between">
-                    <img src="https://skillcrush.com/wp-content/themes/skillcrush3.0-child/img/icons/comment-icon_red.png">
+                    <img src="./img/comment-icon_red.png">
                     <span>1 条评论</span>
                 </div>
                 <div class="comment">
                     <div class="portrait">
-                        <img src="https://secure.gravatar.com/avatar/35b752b81682db8373d7e493ee044810?s=96&d=mm&r=g">
+                        <img src="./img/xqy-touxiang.png">
                     </div>
                     <div class="window">
                         <div class="info">熙洪氏于两个星期前回复</div>
@@ -541,19 +140,19 @@
             <div class="title">你可能想看看......</div>
             <div class="card-group">
                 <a href="#" class="card">
-                    <img src="https://img4.duitang.com/uploads/item/201312/05/20131205172415_jfJcZ.thumb.700_0.jpeg">
+                    <img src="./img/tjct1.jpeg">
                     <p>生命中的一天：除了工作还是工作</p>
                 </a>
                 <a href="#" class="card">
-                    <img src="http://img0.imgtn.bdimg.com/it/u=1586250841,2239473563&fm=26&gp=0.jpg">
+                    <img src="./img/tjct2.jpg">
                     <p>你们怎么不管什么都相信</p>
                 </a>
                 <a href="#" class="card">
-                    <img src="http://img4.imgtn.bdimg.com/it/u=745771661,1170768593&fm=26&gp=0.jpg">
+                    <img src="./img/tjct3.jpg">
                     <p>学习就是这么一回事</p>
                 </a>
                 <a href="#" class="card">
-                    <img src="http://img4.imgtn.bdimg.com/it/u=2084231009,1622116619&fm=214&gp=0.jpg">
+                    <img src="./img/tjct4.jpg">
                     <p>某个人丧失了＂现实感＂</p>
                 </a>
             </div>
