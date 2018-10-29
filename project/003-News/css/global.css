@@ -36,9 +36,9 @@ button {
     text-align: right;
 }
 
-.main img {
-    /* transition: all .2s; */
-}
+/* .main img {
+    transition: all .2s;
+} */
 
 .main img:hover {
     /* transform: scale(1.02); */
