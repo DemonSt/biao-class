@@ -5,491 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>新闻站 首页</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            margin: 0;
-            font-family: 'Open Sans', sans-serif;
-            background: #f7f6f4;
-        }
-        a {
-            text-decoration: none;
-            cursor: pointer;
-        }
-        
-        h1, h2, h3, h4, h5 p {
-            margin: 0;
-            color: #2a2e31;
-        }
-        
-        input {
-            border-radius: 3px 0 0 3px;
-            outline:none;
-        }
-        
-        button {
-            border-radius: 3px;
-            outline:none;
-        }
-        
-        .container {
-            max-width: 1220px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .text-right {
-            text-align: right;
-        }
-        
-        .main img {
-            transition: all .2s;
-        }
-        
-        .main img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0  50px transparent;
-        }
-        
-        .search-group {
-            font-size: 0;
-        }
-
-        .fr {
-            float: right;
-        }
-
-        .cf {
-            content: '';
-            display: block;
-            clear: both;
-        }
-        
-        .col-1 {
-            flex-basis: 4.166666666666667%;
-        }
-        
-        .col-2 {
-            flex-basis: 8.333333333333333%;
-        }
-        
-        .col-3 {
-            flex-basis: 12.5%;
-        }
-        
-        .col-4 {
-            flex-basis: 16.6666666666667%;
-        }
-        
-        .col-5 {
-            flex-basis: 20.8333333333333%;
-        }
-        
-        .col-6 {
-            flex-basis: 25%;
-        }
-        
-        .col-7 {
-            flex-basis: 29.166666666667%;
-        }
-        
-        .col-8 {
-            flex-basis: 33.3333333333333%;
-        }
-        
-        .col-9 {
-            flex-basis: 37.5%;
-        }
-        
-        .col-10 {
-            flex-basis: 41.666666666667%;
-        }
-        
-        .col-11 {
-            flex-basis: 45.83333333333333%;
-        }
-        
-        .col-12 {
-            flex-basis: 50%;
-        }
-        
-        .col-13 {
-            flex-basis: 54.1666666666667%;
-        }
-        
-        .col-14 {
-            flex-basis: 58.3333333333333%;
-        }
-        
-        .col-15 {
-            flex-basis: 62.5%;
-        }
-        
-        .col-16 {
-            flex-basis: 66.66666666666667%;
-        }
-        
-        .col-17 {
-            flex-basis: 70.83333333333333%;
-        }
-        
-        .col-18 {
-            flex-basis: 75%;
-        }
-        
-        .col-19 {
-            flex-basis: 79.16666666667%;
-        }
-        
-        .col-20 {
-            flex-basis: 83.33333333333%;
-        }
-        
-        .col-21 {
-            flex-basis: 87.5%;
-        }
-        
-        .col-22 {
-            flex-basis: 91.666666666666667%;
-        }
-        
-        .col-23 {
-            flex-basis: 95.833333333333333%;
-        }
-        
-        .col-24 {
-            flex-basis: 100%;
-        }
-
-        .nav.global,
-        .nav.page,
-        .first-screen .container {
-            background: #fff;
-        }
-
-        .nav.global {
-            border-bottom: 1px solid #ddd;
-            
-        }
-
-        .nav.global .nav-up {
-            color: #777;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-
-        .nav.global .nav-up button {
-            font-size: 1rem;
-            color: #fff;
-            background: #4b88c2;
-            padding: .7rem 2rem;
-        }
-
-        .nav.global .nav-up .logo {
-            color: #2a2e31;
-            font-size: 3.4rem;
-            font-weight: 600;
-            font-style: italic;
-            font-family: Lora,'Times New Roman',serif,sans-serif;
-        }
-
-        .nav.global .nav-up .link-group a {
-            color: inherit;
-            font-weight: 400;
-            font-size: 1rem;
-            margin-left: 1rem;
-        }
-
-        .nav.global .nav-up .link-group a:hover {
-            color: #4b88c2;
-        }
-
-        .nav.page {
-            border-bottom: 1px solid #ddd;
-        }
-
-        .nav.page .nav-down {
-            text-align: center;
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-
-        .nav.page .nav-down .link-group {
-            display: inline-block;
-        }
-
-        .nav.page .nav-down .link-group a {
-            color: #333;
-            font-size: .9rem;
-            font-weight: 500;
-            margin-left: 1rem;
-            margin-right: 1rem;
-        }
-
-        .nav.page .nav-down a:hover {
-            border-bottom: 2px solid #333;
-        }
-
-        .first-screen {
-            padding-top: 2.5rem;
-            padding-bottom: 2.5rem;
-        }
-
-        .first-screen .container {
-            display: flex;
-            padding-top: 1rem;
-            padding-left: 1rem;
-            border-radius: 3px;
-            box-shadow: 0 0  50px rgba(0, 0, 0, .2);
-        }
-
-        .first-screen a:hover {
-            color: #4b88c2;
-        }
-
-        .first-screen .left-side .card {
-            max-width: 275px;
-            margin-right: 40px;
-        }
-
-        .first-screen .picture {
-            position: relative;
-            display: inline-block;
-        }
-
-        .first-screen .picture img {
-            width: 100%;
-            vertical-align:bottom;
-        }
-
-        .first-screen .picture span {
-            color: #333;
-            background: #fff;
-            font-size: .85rem;
-            font-weight: 500;
-            padding: .2rem .8rem;
-            position: absolute;
-            bottom: 0;
-            left: 39%;
-        }
-
-        .first-screen .title {
-            color: inherit;
-            font-size: 1.2rem;
-            font-weight: 400;
-            font-family: Georgia,serif;
-            display: inline-block;
-            margin-top: .6rem;
-        }
-
-        .first-screen .info,
-        .main .headline .news-card .preview .info .time {
-            color: #aaa;
-            font-size: .85rem;
-            padding-top: .1rem;
-            padding-bottom: 1.5rem;
-        }
-
-        .first-screen .left-side .dynamic-news:after {
-            height: 0;
-        }
-
-        .first-screen .right-side .dynamic-news:before {
-            height: 0;
-        }
-
-        .dynamic-news .title {
-            padding-top: .8rem;
-        }
-
-        .dynamic-news .info {
-            padding-bottom: .8rem;
-        }
-
-        .dynamic-news::before {
-            display: block;
-            content: '';
-            width: 4.2rem;
-            height: 1px;
-            background: #ddd;
-        }
-
-        .dynamic-news::after {
-            display: inline-block;
-            content: '';
-            width: 4.2rem;
-            height: 1px;
-            background: #ddd;
-        }
-
-        .first-screen .centered {
-            margin-left: 1rem;
-        }
-
-        .first-screen .centered .main-card {
-            border: #ddd dashed 1px;
-            max-width: 590px;
-            text-align: center;
-        }
-
-        .first-screen .centered .main-card .picture span {
-            left: 43%;
-        }
-
-        .first-screen .centered .main-card .picture-bottom > * {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-
-        .first-screen .centered .main-card .title a {
-            color: inherit;
-            font-size: 2.4rem;
-        }
-
-        .first-screen .centered .main-card .title a:hover {
-            color: #4b88c2;
-        }
-
-        .first-screen .centered .main-card .des {
-            color: #555;
-            font-size: 1.2rem;
-            font-weight: 400;
-            line-height: 1.4;
-            margin-right: 2rem;
-            margin-left: 2rem;
-        }
-
-        .first-screen .centered .main-card .time {
-            color: #aaa;
-        }
-
-        .first-screen .right-side .dynamic-news:last-child:after {
-            display: none;
-        }
-
-        .main .headline .container {
-            display: flex;
-            padding-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .main .headline .news-card .title h1 {
-            font-weight: 400;
-            font-size: 2.4rem;
-            font-family: Georgia,serif;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .main .headline .news-card .preview {
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .main .headline .news-card .preview .info {
-            margin-left: 2rem;
-            margin-right: 2rem;
-        }
-
-        .main .headline .news-card .preview .info p {
-            color: #777;
-            font-size: 1.12rem;
-            margin-top: 0;
-        }
-
-        .main .headline .news-card .preview .info .time {
-            font-size: 1rem;
-        }
-
-        .main .headline .link-group {
-            margin-top: 5.2rem;
-            padding-left: 2rem;
-            margin-left: 4rem;
-            border-left: 1px dashed #ddd;
-        }
-
-        .main .headline .link-group a {
-            display: block;
-            color: #333;
-            font-size: .9rem;
-            margin-bottom: 1rem;
-        }
-
-        .main .headline .link-group a:hover,
-        .main .headline .news-card .title h1:hover {
-            color: #4b88c2;
-        }
-
-        .main .headline .news-card .title h1:before {
-            content: '';
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #4b88c2;
-            position: absolute;
-            top: -14px;
-        }
-
-        .main .headline:before {
-            content: '';
-            display: inline-block;
-            width: 1180px;
-            height: 2px;
-            margin-left: 16rem;
-            background: -webkit-linear-gradient(left,#4b88c2, #fff);
-        }
-
-        .main .headline:after {
-            content: '';
-            display: inline-block;
-            width: 1150px;
-            height: 2px;
-            margin-left: 14rem;
-            background: -webkit-linear-gradient(right,#4b88c2, #fff);
-        }
-
-        .main .headline .more {
-            position: absolute;
-            color: #4b88c2;
-            font-size: .8rem;
-            right: 5px;
-            bottom: -22px;
-        }
-
-        .letter{
-            position: relative;
-            margin: 30px auto;
-            width:250px;
-            height: 350px;
-            background: #fff;
-            border: 1px solid #eee;
-            box-shadow: 0 1px 5px rgba(0,0,0,0.2),0 0 50px rgba(0,0,0,0.07) inset;
-        }
-        .letter:before{
-            left: 9px;
-            transform: skew(-11deg) rotate(-6deg);			
-           }
-        .letter:after{
-            right: 9px;				
-            transform: skew(11deg) rotate(6deg);								
-        }
-        .letter:before,.letter:after{
-            position: absolute;
-            bottom: 5px;
-            content: "";
-            width: 140px;
-            height:120px;
-            border: 1px solid #ccc;
-            box-shadow: 0 1px 20px rgba(0,0,0,0.4);
-            z-index: -1;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/global.css">
 </head>
 <body>
     <div class="nav global">
@@ -547,7 +64,7 @@
                 </div>
                 <div class="card">
                     <a class="picture" href="#">
-                        <img src="./img/ct2.png">
+                        <img src="./img/ct5.gif">
                         <span>医 疗</span>
                     </a>
                     <a class="title" href="#">太空科学家最喜欢哪些行星</a>
@@ -557,7 +74,7 @@
             <div class="centered col-14">
                 <div class="main-card">
                     <a class="picture" href="#">
-                        <img src="./img/ct3.jpg">
+                        <img src="./img/ct15.jpeg">
                         <span>化 学</span>
                     </a>
                     <div class="picture-bottom">
@@ -598,10 +115,10 @@
             <div class="container">
                 <div class="news-card col-17">
                     <a class="title" href="#">
-                        <h1>不平等的科学</h1>
+                        <h2>特别报道</h2>
                     </a>
                     <div class="preview">
-                        <img src="./img/ct4.png">
+                        <img src="./img/ct13.jpeg">
                         <div class="info">
                             <p>高度的经济不平等对人类福祉的每个方面以及生物圈的健康都产生了负面影响</p>
                             <div class="time">2018年10月16日</div>
@@ -618,7 +135,141 @@
                 <a class="more" href="#">看更多</a>
             </div>
         </div>
-        <div class="letter">亲笔信</div>
+        <div class="recommend">
+            <div class="container">
+                <a class="title" href="#">
+                    <h2>小编推荐</h2>
+                </a>
+                <div class="card-group">
+                    <div class="left col-12">
+                        <a class="picture" href="#">
+                            <img src="./img/ct8.jpeg">
+                            <span>生物学</span>
+                        </a>
+                        <div class="title">
+                            <a href="#">鸟类如何知道飞向南方</a>
+                        </div>
+                        <div class="des">北极燕鸥等鸟类使用磁性粒子和眼睛颜料进行导航。</div>
+                        <div class="time">2018年10月25日</div>
+                    </div>
+                    <div class="right col-12">
+                        <div class="card">
+                            <a class="picture" href="#">
+                                <img src="./img/ct14.jpeg">
+                                <span>生物学</span>
+                            </a>
+                            <div class="preview">
+                                <a href="#">鸟类如何知道飞向南方</a>
+                                <div class="time">2018年10月25日</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a class="picture" href="#">
+                                <img src="./img/ct16.jpeg">
+                                <span>生物学</span>
+                            </a>
+                            <div class="preview">
+                                <a href="#">鸟类如何知道飞向南方</a>
+                                <div class="time">2018年10月25日</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a class="picture" href="#">
+                                <img src="./img/ct10.jpeg">
+                                <span>生物学</span>
+                            </a>
+                            <div class="preview">
+                                <a href="#">鸟类如何知道飞向南方</a>
+                                <div class="time">2018年10月25日</div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a class="picture" href="#">
+                                <img src="./img/ct11.jpeg">
+                                <span>生物学</span>
+                            </a>
+                            <div class="preview">
+                                <a href="#">鸟类如何知道飞向南方</a>
+                                <div class="time">2018年10月25日</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="special-col">
+            <div class="container">
+                <a class="title" href="#">
+                    <h2>外文专栏</h2>
+                </a>
+                <div class="article">
+                    <a href="#" class="letter">
+                        <div>Football</div>
+                        <p>
+                            The 23-year-old becomes the youngest rider to win three world title breaking Yamaha's 25-race win drought. He takes the chequered flag ahead of Andrea Iannone on a Suzuki.
+                            Vinales started second but took the lead after Marc Marquez retired from the race after a frightening high-speed collision with the French rider Johann Zarco who was...
+                        </p>
+                    </a>
+                    <a href="#" class="letter">
+                        <div>Football</div>
+                        <p>
+                            The 23-year-old becomes the youngest rider to win three world title breaking Yamaha's 25-race win drought. He takes the chequered flag ahead of Andrea Iannone on a Suzuki.
+                            Vinales started second but took the lead after Marc Marquez retired from the race after a frightening high-speed collision with the French rider Johann Zarco who was...
+                        </p>
+                    </a>
+                    <a href="#" class="letter">
+                        <div>Football</div>
+                        <p>
+                            The 23-year-old becomes the youngest rider to win three world title breaking Yamaha's 25-race win drought. He takes the chequered flag ahead of Andrea Iannone on a Suzuki.
+                            Vinales started second but took the lead after Marc Marquez retired from the race after a frightening high-speed collision with the French rider Johann Zarco who was...
+                        </p>
+                    </a>
+                    <a href="#" class="letter">
+                        <div>Football</div>
+                        <p>
+                            The 23-year-old becomes the youngest rider to win three world title breaking Yamaha's 25-race win drought. He takes the chequered flag ahead of Andrea Iannone on a Suzuki.
+                            Vinales started second but took the lead after Marc Marquez retired from the race after a frightening high-speed collision with the French rider Johann Zarco who was...
+                        </p>
+                    </a>
+                </div>
+                <a class="more" href="#">看更多</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="icon">
+                <img src="./img/icon1.svg">
+                <span>访问我们其他的网站
+                    <a href="../001-Blog/Home page.html">博客馆</a>
+                    <a href="../003-Store/1.html">血战商城</a>
+                </span>
+                <img src="./img/icon2.svg">
+            </div>
+            <div class="fri-link">
+                <div class="col">
+                    <a href="#">亚洲分赃区</a>
+                    <a href="#">欧洲分赃区</a>
+                    <a href="#">非洲分赃区</a>
+                </div>
+                <div class="col">
+                    <a href="#">亚洲分赃区</a>
+                    <a href="#">欧洲分赃区</a>
+                    <a href="#">非洲分赃区</a>
+                </div>
+                <div class="col">
+                    <a href="#">亚洲分赃区</a>
+                    <a href="#">欧洲分赃区</a>
+                    <a href="#">非洲分赃区</a>
+                </div>
+                <div class="col">
+                    <a href="#">亚洲分赃区</a>
+                    <a href="#">欧洲分赃区</a>
+                    <a href="#">非洲分赃区</a>
+                </div>
+            </div>
+            <div class="copyright">©2018 Damon Salvatore，INC。版权所有。</div>
+        </div>
     </div>
 </body>
 </html>
