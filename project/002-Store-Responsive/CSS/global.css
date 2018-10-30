@@ -48,6 +48,20 @@ button {
     font-size: 0;
 }
 
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.cl {
+    content: '';
+    clear: both;
+    display: block;
+}
+
 .col-1 {
     flex-basis: 4.166666666666667%;
 }
@@ -189,6 +203,11 @@ button {
     margin-right: 1rem; 
 }
 
+.nav.global .nav-up .link-group a:hover,
+.nav.global .nav-down .link-group a:hover {
+    color: #024b8f;
+}
+
 .nav.global .search-group {
     width: 380px;
 }
@@ -209,4 +228,160 @@ button {
     border: #024b8f 1px solid;
     color: #fff;
     background: #024b8f;
+}
+
+.footer {
+    background: rgba(250, 249, 246, 100);
+}
+
+.footer .major {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer .major .container {
+    max-width: 1330px;
+}
+
+.footer .major .friendly-link {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.footer .major .friendly-link a:hover {
+    color: #024b8f;
+}
+
+.footer .major .friendly-link .col > * {
+    display: block;
+    color: #444;
+    line-height: 3rem;
+}
+
+.footer .major .friendly-link .col span {
+    font-size: 1.1rem;
+}
+
+.footer .major .friendly-link .col a {
+    font-size: .9rem;
+    font-weight: 300;
+}
+
+.footer .major .friendly-link .service > * {
+    padding-top: .8rem;
+    padding-bottom: 1rem;
+}
+
+.footer .major .friendly-link .service {
+    text-align: center;
+    max-width: 500px;
+    padding-left: 7rem;
+    border-left: #ddd 1px solid;
+}
+
+.footer .major .friendly-link .service a:hover {
+    color: #024b8f;
+}
+
+.footer .major .friendly-link .service .help {
+    color: #444;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.footer .major .friendly-link .service .des,
+.footer .major .friendly-link .service .fun-but div {
+    color: #444;
+    line-height: 1.6;
+    font-weight: 300;
+    font-size: .9rem;
+}
+
+.footer .major .friendly-link .service .fun-but {
+    display: flex;
+    justify-content: center;
+}
+
+.footer .major .friendly-link .service .fun-but img {
+    width: 40%;
+}
+
+.footer .icon {
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    max-width: 1330px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: #ddd 1px solid;
+}
+
+.footer .icon > * {
+    vertical-align: middle;
+}
+
+.footer .icon span {
+    color: #222;
+    font-size: 1.1rem;
+    margin: 0 1rem;
+    font-style: italic;
+    font-family: Lora,'Times New Roman',serif,sans-serif;
+}
+
+.footer .icon img {
+    width: 5%;
+}
+
+.footer .icon a {
+    color: #024b8f;
+    font-size: 1.1rem;
+    padding: 1rem;
+}
+
+.footer .footer-middle-bottom {
+    text-align: center;
+    max-width: 666px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: #ddd 1px solid;
+}
+
+.footer .footer-middle-bottom a,
+.footer .info {
+    color: #999;
+    font-size: .7rem;
+    padding: .3rem;
+}
+
+.footer .footer-middle-bottom a:hover {
+    color: #024b8f;
+}
+
+.footer .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.footer .info .logo {
+    font-size: 1.7rem;
+    color: #999;
+}
+
+.footer .info .icon-group span {
+    font-size: 1rem;
+    position: relative;
+    bottom: 3px;
+}
+
+.footer .info .icon-group a {
+    margin-left: 1rem;
+}
+
+.footer .info img {
+    max-width: 20px;
 }

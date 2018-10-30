@@ -1,0 +1,284 @@
+button {
+    border-radius: 3px;
+}
+
+.main img {
+    transition: all .0s;
+}
+
+.main img:hover {
+    transform: scale(1);
+    box-shadow: 0 0  50px transparent;
+}
+
+.main {
+    background: #F6F4EE;
+    padding-bottom: 5rem;
+}
+
+.main .commodity {
+    padding-bottom: 2rem;
+}
+
+.main .commodity .kind {
+    padding: .5rem 3rem;
+}
+
+.main .commodity .kind a {
+    display: inline-block;
+    color: #666;
+    font-size: .85rem;
+}
+
+.main .commodity .kind a:hover {
+    color: #024b8f;
+    text-decoration: underline;
+}
+
+.main .commodity .kind a:after {
+    content: '/';
+    padding-left: .6rem;
+}
+
+.main .commodity .kind a:last-child:after {
+    display: none;
+}
+
+.main .commodity .preview {
+    background: #fff;
+    display: flex;
+    color: #666;
+}
+
+.main .commodity .preview .left {
+    display: flex;
+}
+
+.main .commodity .preview .picture {
+    display: inline-block;
+    max-width: 540px;
+}
+
+.main .commodity .preview .picture img {
+    width: 100%;
+    display: block;
+}
+
+.main .commodity .preview .info {
+    padding-top: 6rem;
+    padding-left: 2rem;
+}
+
+.main .commodity .preview .info > * {
+    margin-bottom: 2rem;
+}
+
+.main .commodity .preview .info .title {
+    font-size: 2.25rem;
+    color: #444;
+}
+
+.main .commodity .preview .info a {
+    color: inherit;
+    display: block;
+}
+
+.main .price .new {
+    color: #c91f24;
+    font-size: 2rem;
+    margin-right: 2rem;
+}
+
+.main .price .old {
+    text-decoration: line-through;
+    margin-right: 2rem;
+}
+
+.main .price .discount {
+    color: #c91f24;
+}
+
+.main .commodity .preview .info .details:before {
+    content: '';
+    display: inline-block;
+    width: .8rem;
+    height: .8rem;
+    background: #ddd;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.main .commodity .preview .right {
+    border-left: solid 1px #ddd;
+    margin-top: 6rem;
+    padding-left: 4rem;
+}
+
+.main .commodity .preview .right > * {
+    margin-bottom: 2rem;
+}
+
+.main .commodity .preview .indent {
+    color: #444;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.main .commodity .preview .site,
+.main .commodity .preview .amount div {
+    color: #666;
+    font-size: .9rem;
+}
+
+.main .commodity .preview .site a {
+    color: #024b8f;
+    margin-left: .3rem;
+    margin-right: .3rem;
+}
+
+.main .commodity .preview .amount button {
+    width: 20rem;
+    padding: .7rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    border: #ddd 1px solid;
+}
+
+.main .commodity .preview .amount button span {
+    font-size: .9rem;
+}
+
+.main .commodity .preview .card,
+.main .commodity .preview .purchase {
+    display: inline-block;
+    font-size: 1rem;
+    border: #024b8f 1px solid;
+    width: 20rem;
+    padding: .7rem 1rem;
+    text-align: center;
+    color: #024b8f;
+}
+
+.main .describe {
+    padding-bottom: 3.5rem;
+}
+
+.main .describe .title,
+.main .recommend .title {
+    color: inherit;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-left: 2rem;
+    margin-bottom: .5rem;
+}
+
+.main .describe .product {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border-radius: 3px;
+    display: flex;
+}
+
+.main .describe .product .des {
+    background: #fff;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.main .describe .product .des button,
+.main .describe .product button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 1rem;
+    font-size: 1rem;
+    border: #9ac6f0 1px solid;
+}
+
+.main .describe .product .des p {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.main .describe .product .des .sub-title {
+    margin-left: 1rem;
+}
+
+.main .describe .product .des .more {
+    margin-left: 1rem;
+    color: #024b8f;
+    font-size: 1rem;
+}
+
+.main .describe .product button {
+    margin-bottom: 1rem;
+    border: #fff;
+}
+
+.main .describe .product button:focus {
+    border: #9ac6f0 1px solid;
+}
+
+.main .describe .product .right-picture {
+    max-width: 450px;
+    margin-left: 2rem;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: 0 0  50px rgba(0, 0, 0, .1);
+}
+
+.main .describe .product .right-picture img {
+    width: 100%;
+}
+
+.main .describe .product .right-picture .price,
+.main .describe .product .right-picture .details {
+    margin-left: 2rem;
+    margin-bottom: .5rem;
+}
+
+.main .recommend .card-group {
+    display: flex;
+    justify-content: space-around;
+}
+
+.main .recommend .card-group .card {
+    max-width: 180px;
+    display: inline-block;
+    text-align: center;
+    border: #9ac6f0 2px solid;
+    border-radius: 3px;
+    background: #fff;
+    position: relative;
+}
+
+.main .recommend .card-group .card img {
+    width: 100%;
+    line-height: 0;
+}
+
+.main .recommend .card-group .card div {
+    color: #333;
+    margin: .5rem 1rem;
+}
+
+.main .recommend .card-group .card button {
+    font-size: .9rem;
+    color: #fff;
+    background: #9ac6f0;
+    border-radius: 3px;
+    padding: .4rem 1.2rem;margin-bottom: .5rem;
+}
+
+.main .recommend .card-group .card span {
+    color: #fff;
+    background: #9ac6f0;
+    font-size: .8rem;
+    border: #9ac6f0 1px solid;
+    padding: .1rem .2rem;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
