@@ -5,44 +5,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>home-page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body,
+        form {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        form {
+            display: inline-block;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .row:after,
+        .row:before {
+            display: block;
+            clear: both;
+            content: '';
+        }
+
+        .col {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .nav.global {
+            background: #0b061a;
+            border-bottom-color: #be9458;
+        }
+
+        .nav.global .link-group > * {
+            vertical-align: middle;
+        }
+
+        .nav.global .logo {
+            margin-top: .2rem;
+            margin-right: 1rem;
+        }
+
+        .nav.global .link-group {
+            padding-top: .6rem;
+        }
+
+        .nav.global .link-group a {
+            color: #f4cb8d;
+            display: inline-block;
+            font-size: 20px;
+            line-height: 30px;
+            padding: .1rem .5rem;
+            margin: 0 .8rem;
+        }
+
+        .nav.global .link-group .hot {
+            position: relative;
+            right: 1.6rem;
+            bottom: .7rem;
+        }
+
+        .nav.global .link-group .first {
+            background: #555;
+            border-radius: 5px;
+        }
+
+        .nav.global .enter a {
+            color: #f4cb8d;
+            font-size: .8rem;
+            padding: 1rem .5rem;
+            margin: 0 .5rem;
+            display: inline-block;
+        }
+
+        .nav.global .enter .search input {
+            background: #555;
+            color: #777;
+            border: 1px solid #555;
+            border-radius: 10px;
+            padding: .2rem .4rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="row nav global">
-        <a href="#" class="col logo">
-            <img src="./img/logo.png" alt="logo">
-        </a>
-        <div class="col link-group">
-            <a href="#">首页</a>
-            <a href="#">直播</a>
-            <a href="#">分类</a>
-            <img src="./img/as">
-            <a href="#">视频</a>
-            <img src="./img/assort-icon.png">
-            <a href="#">游戏</a>
-            <img src="./img/hot-ico.png">
-            <img src="./img/assort-icon.png">
-            <a href="#">鱼吧</a>
-        </div>
-        <div class="fr enter">
-            <form class="search" action="#">
-                <input type="text">
-                <button class="magnify"></button>
-            </form>
-            <a href="#">
-                <span class="film"></span>
-                开播
+    <div class="nav global">
+        <div class="row container">
+            <a href="#" class="col logo">
+                <img src="./img/logo.png" alt="logo">
             </a>
-            <a href="#">
-                <img src="">
-                <span class="TV"></span>
-                客户端
-            </a>
-            <a href="#">
-                <span class="head"></span>
-                <span>登录</span>
-                <span>|</span>
-                <span>注册</span>
-            </a>
+            <div class="col link-group">
+                <a class="first" href="#">首页</a>
+                <a href="#">直播</a>
+                <a href="#">分类</a>
+                <img src="./img/assort-icon.png">
+                <a href="#">视频</a>
+                <img src="./img/assort-icon.png">
+                <a href="#">游戏</a>
+                <img class="hot" src="./img/hot-ico.png">
+                <img src="./img/assort-icon.png">
+                <a href="#">鱼吧</a>
+            </div>
+            <div class="fr enter">
+                <form class="search" action="#">
+                    <input type="text" placeholder="sdasfsfas">
+                    <span class="icon"></span>
+                </form>
+                <a href="#">
+                    <span class="film"></span>
+                    开播
+                </a>
+                <a href="#">
+                    <img src="">
+                    <span class="TV"></span>
+                    客户端
+                </a>
+                <a href="#">
+                    <span class="head"></span>
+                    <span>登录</span>
+                    <span>|</span>
+                    <span>注册</span>
+                </a>
+            </div>
         </div>
     </div>
     <div class="main">
