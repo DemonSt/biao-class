@@ -1,0 +1,60 @@
+.main {
+    background: #F6F4EE;
+}
+
+.main .container {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}
+
+.main .container .box {
+    width: 780px;
+    border-radius: 5px;
+    background: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 3rem 14.5rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .1)
+}
+
+.main .container .box .title {
+    color: #024b8f;
+    font-size: 2.2rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #8ca5b5;
+    opacity: 0.4;
+}
+
+.main .container .box input,
+.main .container .box button {
+    width: 20rem;
+    padding: .7rem 1rem;
+    margin-top: 1rem;
+    border-radius: 3px;
+    border: 1px solid #9ac6f0;
+}
+
+.main .container .box input:hover,
+.main .container .box button:hover {
+    border: #024b8f 1px solid;
+}
+
+.main .container .box button {
+    font-size: 1.2rem;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+    color: #fff;
+    background: #9ac6f0;
+}
+
+.main .container .box button:hover {
+    background: #024b8f;
+}
+
+.main .container .box input::-webkit-input-placeholder {
+    font-size: 1rem;
+    color: #8ca5b5;
+    text-align: center;
+}
