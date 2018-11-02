@@ -1,0 +1,110 @@
+.main {
+    background-color: #F6F4EE;
+}
+
+.main img {
+    transition: all .0s;
+}
+
+.main img:hover {
+    transform: scale(1);
+    box-shadow: 0 0  50px transparent;
+}
+
+.main .header {
+    display: flex;
+    justify-content: space-between;
+    padding-top: .5rem;
+    padding-bottom: 3rem;
+}
+
+.main .header .nav-class > *,
+.main .header .rank span {
+    color: #6f6f6f;
+    font-size: .9rem;
+    margin: .15rem;
+    display: inline-block;
+}
+
+.main .header .nav-class a:hover {
+    color: #024b8f;
+}
+
+.main .header .rank span {
+    margin: 0;
+}
+
+.main .section .kind-group {
+    padding-bottom: 2rem;
+}
+
+.main .section .kind-group button {
+    color: #9ac6f0;
+    background: #fff;
+    border: 1px solid #9ac6f0;
+    padding: .5rem 1rem;
+    border-radius: 3px;
+    font-size: 1rem;
+    margin-right: .5rem;
+}
+
+.main .section .kind-group button:hover {
+    color: #024b8f;
+    border: #024b8f 1px solid;
+}
+
+.main .section .card-group {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.main .section .card-group .card {
+    max-width: 280px;
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #eee;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.main .section .card-group .card:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+}
+
+.main .section .card-group .card img {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.main .section .card-group .title {
+    color: #333;
+    font-size: 1.2rem;
+    margin-left: 2rem;
+    padding-top: 2rem;
+}
+
+.main .section .card-group .price {
+    margin-left: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.main .section .card-group .price .new {
+    color: #c91f24;
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.main .section .card-group .price .old {
+    opacity: .2;
+    text-decoration: line-through;
+}
+
+.main .section .card-group .time {
+    color: #1d781d;
+    font-size: .9rem;
+    margin-left: 2rem;
+    padding-bottom: 1rem;
+}
