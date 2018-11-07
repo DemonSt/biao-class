@@ -1,0 +1,23 @@
+<script>
+    let num1 = +prompt("请输入num1");
+    let num2 = +prompt("请输入num2");
+    let num3 = +prompt("请输入num3");
+
+    if(num1 > num2 && num2 > num3){
+        alert(num1 +','+num2 +','+num3);
+    }else if(num1 < num2 && num2 < num3){
+        alert(num3+','+num2+','+num1);
+    }else if(num1 > num2 && num2 < num3){
+        if(num1 > num3){
+            alert(num1+','+num3+','+num2);
+        }else if(num1 < num3){
+            alert(num3+','+num1+','+num2);
+        }
+    }else if(num2 > num1 && num2 > num3){
+        if(num1 > num3){
+            alert(num2+','+num1+','+num3);
+        }else if(num3 > num1){
+            alert(num2+','+num3+','+num1);
+        }
+    }
+</script>

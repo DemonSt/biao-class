@@ -1,0 +1,13 @@
+<script>
+    let height = prompt("请输入身高:");
+    let money = prompt("请输入存款:");
+    let face = prompt("请输入颜值:");
+
+    if(height > 180 && money > 1000 && face > 500) {
+        alert("一定要嫁");
+    }else if(height > 180 || money > 1000 || face > 500) {
+        alert("比上不足比下有余");
+    }else if(height < 180 && money < 1000 && face < 500) {
+        alert("不嫁");
+    }
+</script>
