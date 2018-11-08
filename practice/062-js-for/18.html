@@ -1,0 +1,36 @@
+<script>
+    let arr = [
+        {
+          name: '王花花',
+          salary: 100,
+        },
+        {
+          name: '李拴蛋',
+          salary: 200,
+        },
+        {
+          name: '牛备备',
+          salary: 300,
+        },
+    ]
+    let sum = "";
+    for(i=0 ; i<arr.length ; i++){
+        let obj = arr[i];
+        if(obj.salary <= 100){
+            continue;
+        }
+        sum = sum + obj.name;
+    }    
+    console.log(sum);
+
+
+    let sum2 = [];
+    for(j=0 ; j<arr.length ; j++){
+        let obj = arr[j];
+        if(obj.salary <= 100){
+            continue;
+        }
+        sum2.push(obj.name);
+    }    
+    console.log(sum2);
+    </script>

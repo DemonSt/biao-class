@@ -1,0 +1,17 @@
+<script>
+    let arr = [
+        'a1', 
+        'a2', 
+        ['b1', 'b2', ['c1', 'c2', 'c3'], 'b3'], 
+        'a3'
+    ];
+    let sum = "";
+    for(i=0 ; i<arr.length ; i++){
+        let name = arr[i];
+        if(name.startsWith("a") != true){
+            continue;
+        }
+        sum = sum + name;
+    }
+    console.log("第一级：" + sum);
+</script>

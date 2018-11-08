@@ -1,0 +1,18 @@
+<script>
+    let num = prompt("请输入一个大于1的整数");
+    let flag = true;
+    if(num <= 1){
+        alert("请重新输入");
+    }else{
+        for(let i=2 ; i<num ; i++){
+            if(num%i == 0){
+                flag = false;
+            }
+        }
+        if(flag){
+            alert("它是一个质数"+ num);
+        }else{
+            alert("它不是一个质数");
+        }
+    }
+</script>
