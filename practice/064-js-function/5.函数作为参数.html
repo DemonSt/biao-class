@@ -1,0 +1,28 @@
+<script>
+    function say(o){
+        console.log('我是'+o.name+'，今年我'+o.age+'岁了，'+'我是一个'+o.gender+'人');
+    }
+    
+    let obj = {
+        name :'刘简',
+        age : '24',
+        gender : '女'
+    };
+    say(obj);
+
+    
+
+    function radius(r){
+        return  3.14 * r * r;
+    }
+    let result2 = radius(10);
+    console.log("result:" + result2);
+
+
+    function sdf(a){
+        a(obj);
+        // console.log('a:'+a);
+    }
+    sdf(say);
+    //sdf(radius(10));  //加括号调用的是返回结果
+</script>
