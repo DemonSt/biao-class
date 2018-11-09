@@ -5,13 +5,28 @@
         ['b1', 'b2', ['c1', 'c2', 'c3'], 'b3'], 
         'a3'
     ];
-    let sum = "";
+    let sum1 = '';
+    let sum2 = '';
+    let sum3 = '';
     for(i=0 ; i<arr.length ; i++){
-        let name = arr[i];
-        if(name.startsWith("a") != true){
-            continue;
+        let a = arr[i];
+        if(typeof a === 'string'){
+            sum1 += a;
+        }else{
+            for(j=0 ; j<a.length ; j++){
+                let b = a[j];
+                if(typeof b === 'string'){
+                    sum2 += b;
+                }else{
+                    for(k=0 ; k<b.length ; k++){
+                        let c = b[k];
+                        sum3 = sum3 + c;
+                    }
+                }
+            }
         }
-        sum = sum + name;
     }
-    console.log("第一级：" + sum);
+    console.log(sum1);
+    console.log(sum2);
+    console.log(sum3);
 </script>
