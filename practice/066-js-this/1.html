@@ -1,0 +1,18 @@
+<script>
+    var name = '全局';
+    function fun () {
+        console.log(this.name);
+    }
+
+    let obj1 = {
+        name: '王花花',
+        sayName:fun
+    };
+
+    let obj2 = {
+        name: '赵可爽',
+        sayName:fun
+    };
+
+    obj1.sayName();
+</script>
