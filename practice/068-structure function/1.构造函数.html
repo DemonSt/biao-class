@@ -1,0 +1,23 @@
+<script>
+    function Person (name, age, gender) {     //现自动生成一个对象 ，就不用像工厂模式一样先创造对象
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.sayName = function(){
+            console.log(this.name);
+        };                                  // 自动返回，就不用return
+    }    
+    let result1 = new Person('网画画', 31, '男');
+    let result2 = new Person('好人图', 61, '男');
+    let result3 = new Person('个人', 14, '男');
+
+    function Dog () {
+        
+    }
+    let dog = new Dog();
+
+
+    console.log(result2);
+    console.log(dog);
+
+</script>
