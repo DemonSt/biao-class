@@ -1,0 +1,20 @@
+<script>
+    function Person (name,age,gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+    Person.prototype.sayName = function(){
+        console.log(this.name);
+    };
+
+
+
+
+    let per = new Person ('王花花', 23, '女');
+    let result2 = new Person('李拴蛋',61,'男');
+    console.log(per);
+    console.log(result2);
+    console.log(per.sayName());
+    console.log(result2.sayName());     //为什么会有undefined；
+</script>
