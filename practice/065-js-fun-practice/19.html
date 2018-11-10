@@ -1,0 +1,27 @@
+<script>
+    let say = [
+        {
+          name: '王花花',
+          salary: 100,
+        },
+        {
+          name: '李拴蛋',
+          salary: 200,
+        },
+        {
+          name: '牛备备',
+          salary: 300,
+        },
+    ]
+    function fun (qwe, wer) {
+        let arr = [];
+        for(let i = 0; i < say.length; i++){
+            let apple = say[i];
+            if(apple.salary > wer)
+                arr.push(apple);
+        }
+        return arr;
+    }
+    let hello = fun (say, 100);
+    console.log(hello);
+</script>

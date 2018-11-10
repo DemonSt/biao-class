@@ -1,0 +1,15 @@
+<script>
+    function sumEven (arr) {
+        for(var i = 0, it, sum = 0; i < arr.length; i++){
+            it = arr[i];
+            if(it % 2 != 0){      // if(it % 2)
+                continue;
+            }
+            sum += it;
+        }
+        return sum;
+    }
+    let result = sumEven([2, 5, 2]);
+    console.log('result = ' + result);
+</script>
+

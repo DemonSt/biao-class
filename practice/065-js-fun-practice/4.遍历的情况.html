@@ -1,0 +1,19 @@
+<script>
+    //分别打印数组中的元素     遍历
+    function printer (arr){
+        for(let i=0; i<arr.length; i++){
+            console.log(arr[i]);
+        }
+    }
+    printer(['a', 'b', 'c']);
+
+
+
+    function print(str){
+        for(let j=0; j<str.length; j++){
+            return str[j];               // 这种情况下 只遍历第一遍就 return 了  所以return 要使用再for循环外面 
+        }
+    }
+    let result = print([1, 'z', 3]);
+    console.log('result =' + result);
+</script>

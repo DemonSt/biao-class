@@ -1,0 +1,15 @@
+<script>
+    function filterOdd (arr) {
+        for(var i = 0, num, ar=[]; i < arr.length; i++){
+            num = arr[i];
+            if(num % 2 == 0){    //if(!(it % 2))
+                continue;
+            }
+            ar.push(num);
+        }
+        return ar;
+    }
+    let result = filterOdd ([1, 2, 3, 4]);
+    console.log(result);
+</script>
+

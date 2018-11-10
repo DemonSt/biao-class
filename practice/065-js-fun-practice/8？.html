@@ -1,0 +1,33 @@
+<script>
+    let list = [
+        '王花花',
+        '李拴蛋',
+        '赵可爽',
+    ];
+    function glue(arr, symbol){
+        for(var i=0, name=''; i<arr.length; i++){
+            //name += arr[i] + symbol;                        写这里就先执行了，所以有逗号 
+            if(i == arr.length - 1){
+                symbol = '';
+            }
+            name += arr[i] + symbol;
+        }
+        return name;
+    }
+    let result2 = glue(list, ', ');
+    console.log('result2 = ' + result2);
+
+
+    function add(arr, symbol){
+        let length = arr.length;
+        for(var j=0, sum=''; j<length; j++){
+            if(j == length -1){
+                symbol = '';
+            }
+            sum += arr[j] + symbol;
+        }
+        return sum;
+    }
+    let result = add(list, '-');
+    console.log('result = ' + result);
+</script>

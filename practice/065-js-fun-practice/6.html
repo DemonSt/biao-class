@@ -1,0 +1,20 @@
+<script>
+    let list = [
+        '王花花',
+        '刘备备',
+        '李拴蛋',
+    ];
+    function printer(arr, jumper){
+        for(var i=0, it; i<arr.length; i++){
+            it = arr[i];
+            if(it == jumper){
+                continue;
+            }
+            console.log(it);
+        }
+        return it;
+    }
+    let result = printer(list, '李拴蛋');
+    // printer(list, '王花花');
+    console.log(result);
+</script>

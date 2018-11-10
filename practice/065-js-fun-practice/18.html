@@ -1,0 +1,18 @@
+<script>
+    let say = [
+        {name: '王花花'},
+        {name: '王拴蛋'},
+        {name: '牛备备'},
+    ]
+    function fun (one, two)  {
+        let arr = [];
+        for(let i = 0; i < say.length; i++){
+            let it = say[i];
+            if(it.name.startsWith(two))
+                arr.push(it);
+        }
+        return arr;
+    }
+    let dada = fun(say, '王');
+    console.log(dada[1].name);
+</script>

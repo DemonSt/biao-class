@@ -1,0 +1,15 @@
+<script>
+    function filterGlue (arr) {
+        for(i = 0, it = ''; i < arr.length; i++){
+            let str = arr[i];
+            if(typeof str !== 'string'){
+                continue;
+            }
+            it += str;
+        }
+        return it;
+    }
+    let result = filterGlue([1, 'a', 2, 'b']);
+    console.log('result = ' + result);
+</script>
+

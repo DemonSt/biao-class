@@ -1,0 +1,20 @@
+<script>
+    let list = [
+        'abb',
+        'bcc',
+        'cdd',
+        'daa',
+    ];
+    function search (a,b) {
+        let arr = [];
+        for(let i = 0; i < a.length; i++){
+            let jiHe = a[i];
+            if(jiHe.includes(b) == true){
+                arr.push(jiHe);
+            }
+        }
+        return arr;
+    }
+    let asd = search(list, 'd');
+    console.log(asd);
+</script>

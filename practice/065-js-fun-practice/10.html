@@ -1,0 +1,15 @@
+<script>
+    function filterSum (arr) {
+        for(var i = 0, num, sum=0; i<arr.length; i++){
+            num = arr[i];
+            if(typeof num !== 'number'){
+                continue;
+            }
+            sum += num;
+        }
+        return sum;
+    }
+    let result = filterSum([1, 'a', 2, 3]);
+    console.log('result = ' + result);
+</script>
+

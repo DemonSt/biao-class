@@ -1,0 +1,17 @@
+<script>
+    function evenMaker (num) {
+        let arr = [];
+        let shu = -1;
+        for(let i = 0; i <= num; i++){    
+            ++shu;
+            if(shu % 2){
+                continue;
+            }
+            arr.push(shu);
+        }
+        return arr;
+    }
+    let asd = evenMaker (44);
+    console.log(asd);
+</script>
+
