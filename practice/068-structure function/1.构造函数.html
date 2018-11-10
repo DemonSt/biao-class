@@ -3,7 +3,7 @@
         this.name = name;
         this.age = age;
         this.gender = gender;
-        this.sayName = function(){
+        this.sayName = function(){           // 为了提升性能 要把里面对象的方法 提取出来 放在原型里
             console.log(this.name);
         };                                  // 自动返回，就不用return
     }    
@@ -11,13 +11,20 @@
     let result2 = new Person('好人图', 61, '男');
     let result3 = new Person('个人', 14, '男');
 
-    function Dog () {
-        
+    function Dog (name, age, gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.sayHello = function(){                // 为了提升性能 要把里面对象的方法 提取出来 放在原型里
+            console.log(this.name);
+        };
     }
-    let dog = new Dog();
+    let dog = new Dog('刘简', 38, '母');
 
 
     console.log(result2);
+    console.log(result1);
+    console.log(result3);
     console.log(dog);
 
 </script>
