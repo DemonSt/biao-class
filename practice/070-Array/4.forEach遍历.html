@@ -1,0 +1,18 @@
+<script>
+    // 除了for循环遍历数组   ，  还有 forEach 遍历方法  但只支持IE9及以上
+
+    var arr = ['王花花', '李拴蛋', '招可爽','熙洪氏','夏建仁','秦寿生','矫厚根']
+
+    arr.forEach(function(value,index,obj){   // 第一个参数：当前正在遍历的元素， 第二个参数：索引， 第三个参数：当前数组对象
+        console.log('value = ' + value);
+    });
+
+
+    var arr2 = [1,2,3,4];
+    let sum = 0;
+    arr2.forEach(function(value,index,array){
+        array[index] == value;
+        sum += value;
+    });
+    console.log(sum);           //forEach 不能被ruturn
+</script>

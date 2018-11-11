@@ -1,0 +1,76 @@
+<script>
+    //    push
+    let arr = ['王花花', '李拴蛋', '招可爽'];
+    arr.push('熙洪氏','夏建仁','秦寿生','矫厚根');    // 该方法会将元素推入数组的后面     将数组新的长度作为返回值返回
+    console.log(arr)
+
+    
+    //     pop
+    let arr2 = ['王花花', '李拴蛋', '招可爽'];
+    arr2.push('熙洪氏','夏建仁','秦寿生','矫厚根'); 
+    arr2.pop();                                   // 该方法会将数组最后一位元素删除 ， 并将被删除的元素作为返回值返回
+    console.log(arr2);
+
+    
+    //   unshift
+    let arr3 = ['王花花', '李拴蛋', '招可爽'];
+    arr3.unshift('熙洪氏','夏建仁','秦寿生','矫厚根');    //  该方法会将元素推入数组的前面     将数组新的长度作为返回值返回
+    console.log(arr3);
+
+    
+    //     shift
+    let arr4 = ['王花花', '李拴蛋', '招可爽'];
+    arr4.push('熙洪氏','夏建仁','秦寿生','矫厚根'); 
+    arr4.shift();                                   // 该方法会将数组最前面一位元素删除 ， 并将被删除的元素作为返回值返回
+    console.log(arr4);
+
+    
+    //     slice                    此方法不会影响原数组  需要将结果返回
+    let arr5 = ['王花花', '李拴蛋', '招可爽','夏建仁','秦寿生'];
+    let result = arr5.slice(0,3);   // 该方法可以截取一个数组里某一段，传两个参数表示索引  比如从0开始包括0，从3结束不包括3
+    let result2 = arr5.slice(2);    // 该方法如果第二个参数不写 则从索引2开始到后面所有元素都截取到，包括索引2.
+    let result3 = arr5.slice(1,-1); // 如果传递一个负值，则索引从后往前计算
+    console.log(result);  
+    console.log(result2); 
+    console.log(result3);  
+
+
+    //  splice      会影响原数组     将指定元素从原数组中删除    并将删除结果作为返回值 返回
+    let arr6 = ['王花花', '李拴蛋', '招可爽','夏建仁','秦寿生'];  
+    let result4 = arr6.splice(1,1,'矫厚根');        //  第一个参数表示索引从0开始，第二个参数表述删除的数量，第三个参数表示 在第一个参数前面 插入一些元素替换掉第一个参数
+    console.log(arr6);  
+    console.log(result4);  
+
+
+    //   concat()   将合并多个数组并将结果返回   不影响原数组
+    let arr7 = ['王花花', '李拴蛋', '招可爽'];
+    let arr8 = ['熙洪氏','夏建仁','秦寿生','矫厚根'];
+    let result5 = arr7.concat(arr8,'刘备备','刘简简');
+    console.log(result5);
+
+
+    //   join()   将数组转化为一个字符串并将结果返回   不影响原数组
+    let arr9 = ['王花花', '李拴蛋', '招可爽'];
+    let result6 = arr9.join('@-@');
+    console.log(result6);
+
+
+    //  reverse()     该方法用来反转数组，（前边变后边，后边变前边）                    会直接影响 原数组
+    let arr10 = ['王花花', '李拴蛋', '招可爽'];
+    arr10.reverse();
+    console.log(arr10);
+
+
+    //  sort()       该方法可以用来对数组中的元素进行排序                              会直接影响 原数组
+    let arr11 = ['c','a','d','b','f','e'];
+    arr11.sort();
+    console.log(arr11);
+    console.log(arr11.reverse());
+                
+    let arr12 = [1,5,2,6];                  //该方法可以用来对数组中的数字进行排序
+    arr12.sort(function(a,b){
+        return a-b;            // 升序排列
+        //return b-a;          // 降序排列
+    });
+    console.log(arr12);
+</script>
