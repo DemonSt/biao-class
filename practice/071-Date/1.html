@@ -1,0 +1,23 @@
+<script>
+    let time = new Date();       //    直接使用 则会 封装当前代码执行时间
+    console.log(time);
+
+    
+    let time2 = new Date('12/20/2018 11:10:30');      // 创建一个指定的时间   月 日 年 时 分 秒
+    console.log(time2);
+
+
+    let date = time.getDate();             // 获取当前日期对象是多少号
+    let date1 = time.getDay();             // 获取当前日期对象是周几    0表示周日
+    let date2 = time.getMonth();           // 获取当前日期对象的月份    0表示一月
+    let date3 = time.getFullYear();        // 获取当前日期对象的年份
+    let date4 = time.getTime();            // 获取当前日期对象的时间戳
+    console.log(date);
+    console.log(date1);
+    console.log(date2);
+    console.log(date3);
+
+
+    time3 = Date.now();      // 获取当前这行代码执行的 时间戳
+    console.log(time3);
+</script>
