@@ -1,0 +1,11 @@
+<script>
+    function a (str) {
+        str();
+    }
+
+    function b () {
+        console.log('函数b在函数a中被调用并执行，b就叫做回调函数');
+    }
+
+    a(b);
+</script>

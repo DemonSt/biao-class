@@ -1,0 +1,17 @@
+<script>
+    //造一个基础函数numberModifier()，可以传入一个数字和一个回调函数
+     
+    function numberModifier(num, fn) {
+        if(typeof num != 'number'){
+            throw '请传入数字类型';
+        }
+        return fn(num);
+    }
+    function double(num) {
+        return numberModifier(num, function(it){
+            return it *= 10;
+        });
+    }
+    let result = double(3);
+    console.log(result);
+</script>   

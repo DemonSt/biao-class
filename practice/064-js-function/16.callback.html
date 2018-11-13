@@ -1,0 +1,24 @@
+<script>
+    //造一个基础函数eachNumber()，可以传入数字组成的数组和一个回调函数
+     
+    function eachNumber(arr, fn) {
+        for(let i = 0; i < arr.length; i++){
+            fn(arr[i]);
+        }
+    }
+    function max(num) {
+        let nn;
+        eachNumber(num, function(a){
+            if(nn === undefined){
+                nn = a;
+                return;
+            }
+            if(a < nn){
+                nn = a;
+            }
+        });
+        return nn;
+    }
+    let result = max([0, 1, 2, 3, 4]);
+    console.log(result);
+</script>   

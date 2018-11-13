@@ -1,0 +1,19 @@
+<script>
+    //造一个基础函数eachStr()，可以传入字符串组成的数组和一个回调函数
+     
+    function eachStr (arr, fn) {
+        for(let i = 0; i < arr.length; i++){
+            fn(arr[i]);
+        }
+    }
+    function shortStr(str) {
+        let newarr = [];
+        eachStr(str, it => {
+            if(it.length == 1)
+                newarr.push(it);
+        });
+        return newarr;
+    }
+    let result = shortStr(['a', 'foo', 'b', 'bar']);
+    console.log(result);
+</script>   

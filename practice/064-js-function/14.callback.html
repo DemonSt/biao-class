@@ -1,0 +1,27 @@
+<script>
+    //造一个基础函数eachNumber()，可以传入数字组成的数组和一个回调函数
+     
+    function eachNumber(arr, fn) {
+        for(let i = 0; i < arr.length; i++){
+            fn(arr[i]);
+        }
+    }
+    function sum(num) {
+        let asd = 0;
+        eachNumber(num, function (ad) {
+            asd += ad;
+        })
+        return asd;
+    }
+    let result = sum([1, 2]);
+    console.log(result);
+
+
+    function sum1(num){
+        let qwe = 0;
+        eachNumber(num, (ad) => qwe += ad);
+        return qwe;
+    }
+    let result1 = sum([1, 2]);
+    console.log(result1);
+</script>   

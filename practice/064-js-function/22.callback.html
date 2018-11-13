@@ -1,0 +1,26 @@
+<script>
+    //造一个基础函数numberModifier()，可以传入一个数字和一个回调函数
+     
+    function numberModifier(num, fn) {
+        if(typeof num != 'number'){
+            throw '请传入数字类型';
+        }
+        return fn(num);
+    }
+    function increment(num) {
+        return numberModifier(num, function(it){
+            return ++it;
+        });
+        
+    }
+    let result = increment(1);
+    console.log(result);
+
+
+
+    function increment1(num) {
+        return numberModifier(num, it => ++it);
+    }
+    let result1 = increment1(2);
+    console.log(result1);
+</script>   
