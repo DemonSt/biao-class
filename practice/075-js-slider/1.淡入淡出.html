@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="./css/main.css">
+<div class="container">
+    <div class="slider">
+        <a class="item" href="#">
+          <img src="./img/1.jpeg" alt="A">
+        </a>
+        <a class="item" href="#">
+          <img src="./img/2.jpeg" alt="B">
+        </a>
+        <a class="item" href="#">
+          <img src="./img/3.jpeg" alt="C">
+        </a>
+    </div>
+</div>
+<script>
+  const parent = document.querySelector('.slider');     //首先在document里取范围slider 赋值给parent
+  const son = parent.querySelectorAll('.item');         // 再在slider里取范围item 赋值给son
+  let index = 0;                                        //定义一个变量 当作索引为 0
+  let lastIndex = son.length - 1;                       // 后面加的  最后一项索引
+  setInterval(() => {                 // steInterval函数
+    index++;                          // 使索引自增
+    if(index >= son.length){          // 判断 如果索引大于长度的话
+      index = 0;                      // 则索引重置为 0
+    }
+    if(son[index - 1])             
+      son[index - 1].style.opacity = 0;      // 当索引不为零的任何数字，隐藏前一项
+    else
+      son[lastIndex].style.opacity = 0;      //当索引为0时，则隐藏最后一项
+    son[index].style.opacity = 1;         //   son[index]  就是将索引 和 选取的范围 结合起来
+  },1000)
+</script>

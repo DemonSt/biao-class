@@ -1,0 +1,84 @@
+<link rel="stylesheet" type="text/css" href="./css/main.css">
+<div class="container">
+    <div class="slider">
+        <a href="#" class="item">
+            <img src="./img/1.jpeg" alt="A">
+        </a>
+        <a href="#" class="item">
+            <img src="./img/2.jpeg" alt="B">
+        </a>
+        <a href="#" class="item">
+            <img src="./img/3.jpeg" alt="C">
+        </a>
+    </div>
+</div>
+<script>
+    const parent = document.querySelector('.slider');
+    const slides = parent.querySelectorAll('.item');
+    let current = 0;
+    let lastIndex =  slides.length - 1;
+    boot ();
+    function boot () {
+        setInterval(() => {
+            flip();
+        },500);
+    }
+    
+    function flip() {
+        current++;
+        if(current >= slides.length)
+            current = 0;
+        let perv = getPerv();
+        let next = slides[current];
+        hide(perv);
+        show(next);
+    }
+    function getPerv () {
+        if(slides[current - 1])
+            return slides[current - 1];
+        else
+            return slides[lastIndex];
+    }
+
+    function hide (el) {
+        if(!el)
+            return;
+        el.style.opacity = 0;
+    }
+
+    function show (el) {
+        if(!el)
+            return;
+        el.style.opacity = 1;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*    setInterval(() => {
+        index++;
+        if(index >= son.length)
+            index = 0;
+        if(son[index - 1])
+            son[index - 1].style.opacity = 0;
+        else
+            son[son.length - 1].style.opacity = 0;
+        son[index].style.opacity = 1;
+    },500)*/
+</script>

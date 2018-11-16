@@ -1,0 +1,54 @@
+<link rel="stylesheet" type="text/css" href="./css/main.css">
+<div class="container">
+    <div class="slider">
+        <a href="#" class="item">
+            <img src="./img/1.jpeg" alt="A">
+        </a>
+        <a href="#" class="item">
+            <img src="./img/2.jpeg" alt="B">
+        </a>
+        <a href="#" class="item">
+            <img src="./img/3.jpeg" alt="C">
+        </a>
+    </div>
+</div>
+<script>
+    const parent = document.querySelector('.slider');
+    const son = parent.querySelectorAll('.item');
+    let index = 0;
+    let lastIndex = son.length - 1;
+    boot();
+    function boot () {
+        setInterval(() => {
+            loop ();
+        },800);
+    }
+
+    function loop () {
+        index++;
+        if(index >= son.length)
+            index = 0;
+        console.log(index);
+        let prev = getPrev();
+        let next = son[index];
+        hide(prev);
+        show(next); 
+    }
+    function getPrev () {
+        if(index == 0){
+            return son[lastIndex];
+        }else{
+            return son[index - 1];
+        }
+    }
+    function hide (el){       // 隐藏
+        if(!el)
+            return;
+        el.style.opacity = 0;
+    }
+    function show (el){       //显示
+        if(!el)
+            return;
+        el.style.opacity = 1;
+    }
+</script>
