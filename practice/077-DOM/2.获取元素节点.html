@@ -1,0 +1,26 @@
+<body>
+    <button id="aa">点点点</button>
+    <div>yo</div>
+    <div>yo.</div>
+    <div>yo..</div>
+    <div>yo...</div>
+    <input type="text" name="gender">
+    <input type="text" name="gender">
+    <script>
+        let but = document.getElementById('aa');    // getElementById  通过id属性获取一个元素节点对象
+        but.onclick = () => {
+            alert('嗨，你好呀');
+        }
+        but.style.color = 'tomato';
+
+
+        let divs = document.getElementsByTagName('div');   // getElementsByTagName 通过元素标签返回所有符合的节点对象
+        console.log(divs[2].innerHTML);                 //  innerHTML 打印元素内部文字（对于自结束标签没有用） 
+        divs[1].style.fontSize = '2rem';
+        divs[2].style.color = 'red';
+
+
+        let inp = document.getElementsByName('gender');    //getElementsByName  一般用于获取表单项
+        inp[0].style.background = '#eee';
+    </script>
+</body>
