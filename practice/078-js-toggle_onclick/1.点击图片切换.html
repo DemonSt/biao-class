@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .container {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        button {
+            font-size: 1rem;
+            color: rgb(35, 41, 5);
+            background: rgb(106, 154, 243);
+            border: 1px solid tomato;
+            margin: 0.2rem 1rem;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <img src="../076-js-slider/img/1.jpeg">
+        <button>上一张</button>
+        <button>下一张</button>
+    </div>
+    <script>
+        let but = document.getElementsByTagName('button');
+        let img = document.getElementsByTagName('img')[0];
+        let imgArr = ["../076-js-slider/img/1.jpeg", "../076-js-slider/img/2.jpeg", "../076-js-slider/img/3.jpeg", "../076-js-slider/img/4.jpeg"];
+        let index = 0;
+        let perv = but[0].onclick = () => {
+            index--;
+            if(index < 0)
+                index = imgArr.length - 1;
+            img.src = imgArr[index];
+        };
+        let next = but[1].onclick = () => {
+            index++;
+            if(index > imgArr.length - 1)
+                index = 0;
+            img.src = imgArr[index];
+        };
+    </script>
+</body>
+</html>
