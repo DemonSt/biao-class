@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let button = document.createElement('button');  //  createElement() 方法可创建元素节点
+        let butText = document.createTextNode('全局创建文本');        //  createTextNode() 方法可创建全局文本节点
+        button.appendChild(butText);                           //  添加文本方法一
+        document.body.appendChild(button);              // appendChild() 方法可添加元素节点
+    
+
+        //   insertBefore 可以在指定节点前插入新的子节点      语法：   父节点.insertBefore(新节点, 旧节点)
+
+
+        //   replaceChild 可以使用指定的子节点替换已有的子节点   语法：   父节点.replaceChild(新节点, 旧节点)
+
+    
+        //   removeChild  可以删除一个子节点    语法： 父节点.removeChild(子节点)   子节点.parentNode.removeChild(子节点)
+                                                                    
+
+        
+                //  添加文本方法二
+        // button.innerText = 'yo';
+        // button.style.background = '#b10';
+        // button.style.padding = '10rem';
+        // button.style.fontSize = '2rem';
+        //  如果您需要创建包含文本的新段落，请记得添加到段落的文本的文本节点，然后向文档添加该段落
+        //  您也可以使用 appendChild() 方法从一个元素向另一个元素中移动元素
+    </script>    
+</body>
+</html>
