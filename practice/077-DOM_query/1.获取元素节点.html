@@ -1,6 +1,6 @@
 <body>
     <button id="aa">点点点</button>
-    <div>yo</div>
+    <div class="box1"><div>我是box1中的div</div></div>
     <div>yo.</div>
     <div>yo..</div>
     <div>yo...</div>
@@ -22,5 +22,12 @@
 
         let inp = document.getElementsByName('gender');    //getElementsByName  一般用于获取表单项
         inp[0].style.background = '#eee';
+
+
+        let vv = document.querySelector('.box1 div');     // querySelector 需要一个选择器的字符串作为参数 很强大
+        console.log(vv.innerHTML);
+
+
+                                                         //   querySelectorAll 
     </script>
 </body>

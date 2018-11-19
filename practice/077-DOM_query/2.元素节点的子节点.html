@@ -1,0 +1,28 @@
+<body>
+    <button id="aaa">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+    </button>
+    <script>
+        let b = document.getElementById('aaa');
+        let c = b.childNodes;
+        console.log(c.length);  //  9
+        // getElementsByTagName()   可返回当前节点的指定标签名后代节点
+
+        //  childNodes  表示当前节点的所有子节点  其中标签间空白也会当成文本
+
+        //  children  可以获取当前元素的所有子元素
+        let d = b.children;
+        console.log(d.length);    //  4
+
+        //  firstChild  可以获取当前元素的第一个子节点  包括空白节点
+
+        //  lastChild  可以获取当前元素的最后一个子节点  包括空白节点
+
+        //  firstElementChild  获取当前元素的第一个子元素    不支持IE8
+
+        //  lastElementChild  获取当前元素的最后一个子元素    不支持IE8
+    </script>
+</body>
