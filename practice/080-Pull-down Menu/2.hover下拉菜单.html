@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        :root {
+          font-family: sans-serif;
+        }
+        
+        button {
+          border: 0;
+          padding: 10px;
+          color: #000;
+        }
+        
+        .dropdown {
+          margin-top: 5px;
+          background: #555;
+          position: absolute;
+        }
+        
+        .dropdown a {
+          display: block;
+          padding: 10px 20px;
+          text-decoration: none;
+          color: #fff;
+        }
+        
+        .dropdown a:hover {
+          background: rgba(0, 0, 0, .1);
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <button class="toggle">查看更多</button>
+    <div class="dropdown" hidden>
+      <a href="#">扫一扫</a>
+      <a href="#">加好友</a>
+      <a href="#">搜索</a>
+      <a href="#">帮助</a>
+      <a href="#">关于我们</a>
+    </div>
+    <script>
+      let btn = document.querySelector('.toggle');
+      let parent = document.querySelector('.dropdown');
+      btn.addEventListener('mouseenter', () => {     //  mouseenter进入 mouseleave 离开  这俩是一组
+        parent.hidden = false;                       //  不论鼠标指针 进入或离开 被选元素时，才会触发
+      });
+      btn.addEventListener('mouseleave', () => {     //  mouseover 进入  mouseout  离开  这俩是一组
+        parent.hidden = true;                        //  不论鼠标指针 进入或离开 被选元素还是任何子元素 都会触发
+      });
+    </script>
+</body>
+</html>

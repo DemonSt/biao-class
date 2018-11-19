@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉菜单</title>
+    <style>
+        .container {
+            max-width: 200px;
+            margin-top: 3rem;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .box {
+            background-color: #f36478;
+            line-height: 40px;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        button {
+            margin: 1rem auto;
+            background-color: #f36478;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 2px solid #777;
+        }
+
+        .name:hover {
+            background-color: #f15268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="btn">点我送美女</button>
+        <div class="box " hidden>
+            <div class="name">刘亦菲</div>
+            <div class="name">高圆圆</div>
+            <div class="name">李冰冰</div>
+            <div class="name">周韦彤</div>
+            <div class="name">张馨予</div>
+        </div>
+    </div>
+    <script>
+        let btn = document.getElementById('btn');
+        let parent = document.querySelector('.box');
+        
+                                    //   多余的  let visible = getComputedStyle(parent).opacity == '1';
+
+        /*btn.onclick = () => {
+            parent.hidden = !parent.hidden;
+        };*/
+        btn.addEventListener("click", () => {
+            parent.hidden = !parent.hidden;
+        });
+        
+    </script>
+</body>
+</html>
