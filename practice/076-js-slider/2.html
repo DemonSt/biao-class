@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>滚动效果</title>
+    <style>
+        .container {
+            width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .pic {
+            margin-left: -200%;
+            width: 100%;
+            float: left;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //选取所有图片
+            const oPic = document.querySelectorAll('.container .pic');
+            console.log(oPic);
+            //current为图片的索引
+            let current = 0;
+            //下一张图的索引
+            let next = 1;
+            //JS加载
+            boot();
+            function boot() {
+                //显示第一张
+                oPic[current].style.marginLeft = 0;
+                setInterval(function () {
+                    slide(0.5);
+                }, 50)
+            };
+            //偏移距离，单位百分比
+            let distance = 0;
+            function slide(num) {
+                //计算当前位移百分比
+                distance += num;
+                //临界点
+                if (distance > 100) {
+                    distance = 100;
+                };
+                //设置图片显示偏移
+                if (current < oPic.length - 1) {
+                    oPic[current].style.marginRight = 0;
+                    oPic[current].style.marginLeft = "-" + distance + "%";
+                    oPic[next].style.marginLeft = 0;
+                    oPic[next].style.marginRight = "-" + (100 - distance) + "%";
+                } else {
+                    //当前为最后一张图，改变的CSS设置不一样
+                    oPic[current].style.marginRight = 0;
+                    oPic[current].style.marginLeft = "-" + distance + "%";
+                    oPic[next].style.marginLeft = 0;
+                    oPic[next].style.marginRight = "-" + 200 + "%";
+                }
+                //达到临界点处理
+                if (distance >= 100) {
+                    //偏移回零
+                    distance = 0;
+                    //索引加1
+                    current++;
+                    next = current + 1;
+                    if (current == oPic.length - 1) {
+                        //当前为最后一张图时，下一张索引归0
+                        next = 0;
+                    };
+                    if (current > oPic.length - 1) {
+                        //超过数组索引，回归初始设置
+                        current = 0
+                        next = 1;
+                        oPic.forEach(it => it.style.marginLeft = '-200%');
+                        oPic[0].style.marginLeft = 0;
+                    };
+                };
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <img class="pic a1" src="./img/1.jpeg">
+        <img class="pic a2" src="./img/2.jpeg">
+        <img class="pic a3" src="./img/3.jpeg">
+        <img class="pic a4" src="./img/4.jpeg">
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>
