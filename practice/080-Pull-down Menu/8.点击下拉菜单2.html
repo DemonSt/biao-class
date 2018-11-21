@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉菜单</title>
+    <style>
+        .container {
+            max-width: 200px;
+            margin-top: 3rem;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .box {
+            background-color: #f36478;
+            line-height: 40px;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        button {
+            margin: 1rem auto;
+            background-color: #f36478;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 2px solid #777;
+        }
+
+        .name:hover {
+            background-color: #f15268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="btn">点我送美女</button>
+        <div class="box" hidden>
+            <div class="name">刘亦菲</div>
+            <div class="name">高圆圆</div>
+            <div class="name">李冰冰</div>
+            <div class="name">周韦彤</div>
+            <div class="name">张馨予</div>
+        </div>
+    </div>
+    <script>
+        let button = document.querySelector('.btn');
+        let parent = document.querySelector('.box');
+        document.body.addEventListener('click', (event) => {
+            if(event.target.classList.contains('btn')){
+                parent.hidden = !parent.hidden;
+                return;
+            }
+            if(!event.target.closest('.box')){
+                parent.hidden = true;
+            }
+        });
+        parent.addEventListener('mouseleave', () => {
+            parent.hidden = true;
+        })
+
+
+        /*const btn = document.querySelector('.btn');
+        const parent = document.querySelector('.box');
+        document.body.addEventListener('click', (event) => {         // classList 属性返回元素的类名
+            let = classList = event.target.classList;
+            if(classList.contains('btn')){               //  contains  查找是否有 btn 这个 类名
+                parent.hidden = !parent.hidden;
+                return;
+            }
+            if(!event.target.closest('.box'))            //   closest   找最靠近的长辈  这个 类
+                parent.hidden = true;
+        });*/
+    </script>
+</body>
+</html>

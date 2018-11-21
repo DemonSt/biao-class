@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div {
+            display: inline-block
+        }
+
+        #areaDiv {
+            width: 200px;
+            height: 50px;
+            border: 1px solid #333;
+        }
+
+        #showMsg {
+            width: 100px;
+            height: 50px;
+            border: 1px solid #333;
+            display: block;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="areaDiv"></div>
+    <div id="showMsg"></div>
+
+    <script>
+        let yidong = document.getElementById('areaDiv');
+        let xianshi = document.getElementById('showMsg');
+
+        // yidong.onmousemove = function(event){
+        //     let x = event.pageX;                 // IE8  要写 window.event
+        //     let y = event.pageY;
+        //     xianshi.innerHTML = 'x='+x+' y='+y;
+        // } 
+
+        yidong.addEventListener('onmousemove', (event) => {
+            let x = event.pageX;                 // IE8  要写 window.event
+            let y = event.pageY;
+            xianshi.innerHTML = 'x='+x+' y='+y;
+        });
+        //  screen指到电脑屏幕的边界值   page指到浏览器边界加上滚动的长度  client指到浏览器边界值  offset不包含border，表现跟page一样
+
+        
+        //client是相对当时屏幕的距离屏幕顶部的距离
+        // page是相对当时页面的内容原点，包含滚动的
+        // screen是相对于屏幕原点的距离移动端很少用
+        // 当页面的宽度和屏幕一样宽高时候client和page一样
+    </script>
+</body>
+</html>    
