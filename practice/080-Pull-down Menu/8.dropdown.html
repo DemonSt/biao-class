@@ -47,20 +47,25 @@
         </div>
     </div>
     <script>
-        let button = document.querySelector('.btn');
-        let parent = document.querySelector('.box');
-        document.body.addEventListener('click', (event) => {
-            if(event.target.classList.contains('btn')){
-                parent.hidden = !parent.hidden;
-                return;
-            }
-            if(!event.target.closest('.box')){
-                parent.hidden = true;
-            }
-        });
-        parent.addEventListener('mouseleave', () => {
-            parent.hidden = true;
-        })
+        let btn, dropdown;
+        boot('.btn', '.box');
+        function boot (btnSelector, boxSelector) {
+            btn = document.querySelector(btnSelector);
+            dropdown = document.querySelector(boxSelector);
+            
+            document.body.addEventListener('click', (event) => {
+                if(event.target.classList.contains('btn')){
+                    dropdown.hidden = !dropdown.hidden;
+                    return;
+                }
+                if(!event.target.closest('.box'))
+                    dropdown.hidden = true;
+            });
+
+            dropdown.addEventListener('mouseleave', () => {
+                dropdown.hidden = true;
+            });
+        }
 
 
         /*const btn = document.querySelector('.btn');
