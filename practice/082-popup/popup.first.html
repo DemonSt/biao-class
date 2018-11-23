@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .popup {
+            position: fixed;
+            z-index: 2;
+            background: #fff;
+            padding: 10px;
+            border: 4px solid;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+        }
+        
+        .mask {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, .6);
+            z-index: 1;
+        }
+        
+        [hidden] {
+            display: none !important;
+        }
+    </style>
+    <title>popup</title>
+</head>
+<body>
+    <button id="btn">购物车</button>
+    <div id="popup" hidden>
+      确定加入购入车？
+    </div>
+    <script>
+        let btn, popup, mask;
+        boot('#btn', '#popup');
+        function boot (btnSelector, popupSelector) {
+            btn = document.querySelector(btnSelector);
+            popup = document.querySelector(popupSelector);
+            initPopup ();
+            initMask ();
+            openMask ();
+            closeMask ();
+        }
+        function initPopup () {
+            popup.classList.add('popup');
+        }
+
+        function initMask () {
+            mask = document.createElement('div');
+            mask.classList.add('mask');
+            mask.hidden = true;
+            document.body.appendChild(mask); 
+        }
+
+        function openMask () {
+            btn.addEventListener('click', () => {
+                setVisibility (true);
+                repositionPopup();
+            });
+        }
+
+        function closeMask () {
+            mask.addEventListener('click', () => {
+                setVisibility (false);
+            });
+            window.addEventListener('keyup', (event) => {
+                if(event.key === 'Escape')
+                    setVisibility (false);
+            });
+        }
+
+        function setVisibility (show = false) {
+            popup.hidden = mask.hidden = !show;
+        }
+
+        function repositionPopup () {
+            let width = popup.offsetWidth;
+            let height = popup.offsetHeight;
+            let windowWidth = window.innerWidth;
+            let windowHeight = window.innerHeight;
+            popup.style.left = windowWidth / 2 - width / 2 + 'px';
+            popup.style.top = windowHeight / 2 - height / 2 + 'px';
+        }
+    </script>
+</body>
+</html>
