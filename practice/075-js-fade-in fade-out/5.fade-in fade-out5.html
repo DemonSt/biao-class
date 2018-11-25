@@ -1,4 +1,4 @@
-·<link rel="stylesheet" type="text/css" href="./css/main.css">
+<link rel="stylesheet" type="text/css" href="./css/main.css">
 <div class="container">
     <div class="slider">
         <a href="#" class="item">
@@ -12,6 +12,23 @@
         </a>
     </div>
 </div>
+<!-- <script>
+    let fade, sons;
+    fade = document.querySelector('.slider');
+    sons = document.querySelectorAll('.item');
+    let index = 0;
+    setInterval(() => {
+        index++;
+        if(index > sons.length - 1)
+            index = 0;
+        if(sons[index - 1])
+            sons[index - 1].style.opacity = 0;
+        else
+            sons[sons.length - 1].style.opacity = 0;
+        sons[index].style.opacity = 1;
+        console.log(index);
+    },800);
+</script> -->
 <script>
     const parent = document.querySelector('.slider');
     const slides = parent.querySelectorAll('.item');
