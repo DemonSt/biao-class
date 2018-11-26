@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .popup {
+            position: fixed;
+            z-index: 2;
+            background: #fff;
+            padding: 10px;
+            border: 4px solid;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+            width: 135px;
+            height: 75px;
+        }
+        
+        .mask {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, .6);
+            z-index: 1;
+        }
+        
+        [hidden] {
+            display: none !important;
+        }
+    </style>
+    <title>popup</title>
+</head>
+<body>
+    <button id="btn">购物车</button>
+    <div id="popup" hidden>
+        <button data-direction="left-top">左上</button>
+        <button data-direction="top">上中</button>
+        <button data-direction="right-top">右上</button>
+        <button data-direction="left">中左</button>
+        <button data-direction="center">中间</button>
+        <button data-direction="right">中右</button>
+        <button data-direction="bottom-left">左下</button>
+        <button data-direction="bottom">下中</button>
+        <button data-direction="right-bottom">右下</button>
+    </div>
+    <script>
+        let btn, popup, mask, keys, config;
+        const defaultConfig = {
+            position: 'center',
+            on: 'click',
+            offsetX: 0,
+            offsetY: 0
+        }
+        boot ('#btn', '#popup', {});
+
+        function boot (Selector1, Selector2, custom = {}) {
+            btn = document.querySelector(Selector1);
+            popup = document.querySelector(Selector2);
+            keys = popup.querySelectorAll('button');
+            loadConfig (custom);
+            initPopup ();
+            initMask ();
+            openMask ();
+            closeMask ();
+        }
+
+        function loadConfig (custom) {
+            config = Object.assign({}, defaultConfig, custom);
+        }
+
+        function initPopup () {
+            popup.classList.add('popup');
+        }
+
+        function initMask () {
+            mask = document.createElement('div');
+            mask.classList.add('mask');
+            document.body.appendChild(mask);
+            mask.hidden = true;
+        }
+
+        function openMask () {
+            btn.addEventListener(config.on, () => {
+                setVisibility (true);
+                repositionPopup (config.position, config.offsetX, config.offsetY);
+            })
+        }
+
+        function closeMask () {
+            mask.addEventListener('click', () => {
+                setVisibility (false);
+            })
+            window.addEventListener('keyup', (event) => {
+                if(event.key == 'Escape')
+                setVisibility (false);
+            })
+        }
+
+        function setVisibility (show = false) {
+            popup.hidden = mask.hidden = !show;
+        }
+
+        /*// 方法一 最简单的 （直接给它的父元素绑定 同时查找事件源）
+        popup.addEventListener('click', (event) => {
+            repositionPopup (event.target.dataset.direction);
+        })
+        */
+        
+        //  方法二  （缺点：循环了10次）
+        // 当拿到 keys 值时它是一个类数组 通过简单方法遍历出每一个btn元素 统一给btn绑定事件
+        // 之后调用函数 repositionPopup 时传入的参数即指向 data-direction 类名即可
+        keys.forEach(button => {
+            button.addEventListener('click', () => {
+                repositionPopup (button.dataset.direction)
+            })
+        });
+        
+        // 方法三 最笨重的方法 绑定弹出层中各控制方向按钮
+        /*function bindBtn () {
+            keys[0].addEventListener('click', () => {
+                repositionPopup ('left-top');
+            });
+            keys[1].addEventListener('click', () => {
+                repositionPopup ('top');
+            });
+            keys[2].addEventListener('click', () => {
+                repositionPopup ('right-top');
+            });
+            keys[3].addEventListener('click', () => {
+                repositionPopup ('left');
+            });
+            keys[4].addEventListener('click', () => {
+                repositionPopup ('center');
+            });
+            keys[5].addEventListener('click', () => {
+                repositionPopup ('right');
+            });
+            keys[6].addEventListener('click', () => {
+                repositionPopup ('left-bottom');
+            });
+            keys[7].addEventListener('click', () => {
+                repositionPopup ('bottom');
+            });
+            keys[8].addEventListener('click', () => {
+                repositionPopup ('right-bottom');
+            });
+        }*/
+
+        function repositionPopup (position = 'center', offsetX = 0, offsetY = 0) {
+            let width = popup.offsetWidth;
+            let height = popup.offsetHeight;
+            let windowWidth = window.innerWidth;
+            let windowHeight = window.innerHeight;
+            if(!position.includes('-')){
+                if(position == 'left' || position == 'right')
+                    position += '-centerY';
+                else if(position == 'top' || position == 'bottom')
+                    position += '-centerX';
+                else
+                    position = 'centerX-centerY'
+            }
+            if(position.includes('centerX'))
+                popup.style.left = windowWidth / 2 - width / 2 + 'px';
+            if(position.includes('centerY'))
+                popup.style.top = windowHeight / 2 - height / 2 + 'px';
+            if(position.includes('top'))
+                popup.style.top = 0 + 'px';
+            if(position.includes('left'))
+                popup.style.left = 0 + 'px';
+            if(position.includes('right')){
+                popup.style.left = 'auto';
+                popup.style.right = 0 + 'px';
+            } 
+            if(position.includes('bottom')){
+                popup.style.top = 'auto';
+                popup.style.bottom = 0 + 'px';
+            }   
+        }
+    </script>
+</body>
+</html>

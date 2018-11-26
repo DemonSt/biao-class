@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slide</title>
+    <style>
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        .container {
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .slider {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+        }
+        .item {
+            position: absolute;
+            display: block;
+            transition: all .5s;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="slider">
+        <a class="item" href="#">
+            <img src="./img/1.jpeg" alt="A">
+        </a>
+        <a class="item" href="#">
+            <img src="./img/2.jpeg" alt="B">
+        </a>
+        <a class="item" href="#">
+            <img src="./img/3.jpeg" alt="C">
+        </a>
+        <a class="item" href="#">
+            <img src="./img/4.jpeg" alt="C">
+        </a>
+    </div>
+</div>
+<script>
+    let parent, slider, index = 0;
+    boot ();
+
+    function boot () {
+        parent = document.querySelector('.slider');
+        slider = parent.querySelectorAll('.item');
+        setInterval(() => {
+            index++;
+            if(index > slider.length - 1){
+                index = 0;
+            }  
+            slider[index]
+            console.log(index);
+        },1000)
+    }
+</script>
+</body>
+</html>

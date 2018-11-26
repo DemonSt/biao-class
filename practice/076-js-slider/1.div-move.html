@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图块移动</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        #div {
+            position: absolute;
+            width: 88px;
+            height: 88px;
+            background: tomato;
+            margin-top: 1rem;
+            left: 0;
+        }
+
+        #line {
+            width: 1px;
+            height: 1000px;
+            background: #333;
+            position: relative;
+            left: 800px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btnL">向左移动</button>
+    <button id="btnR">向右移动</button>
+    <div id="div"></div>
+    <div id="line"></div>
+
+    <script>
+        let btn, kuai, timerL, timerR;
+        btn = document.getElementById('btn');
+        kuai = document.getElementById('div');
+        
+        btnL.addEventListener('click', () => {
+            clearInterval(timerR);
+            clearInterval(timerL);
+            timerL = setInterval(() => {
+                let oldLeft = parseInt(getComputedStyle(kuai).left);   // 获取旧值
+                let newLeft = oldLeft + 17;                     // 获取新值
+                
+                if(newLeft > 800)
+                    newLeft = 800;
+                
+                kuai.style.left = newLeft + 'px';                             // 添加新值给源文件
+
+                if(newLeft == 800)
+                    clearInterval(timerL);
+            },40)
+        });
+
+
+        btnR.addEventListener('click', () => {
+            clearInterval(timerL);
+            clearInterval(timerR);
+            timerR = setInterval(() => {
+                let oldLeft = parseInt(getComputedStyle(kuai).left);   // 获取旧值
+                let newLeft = oldLeft - 19;                     // 获取新值
+                
+                if(newLeft < 0)
+                    newLeft = 0;
+                
+                kuai.style.left = newLeft + 'px';                             // 添加新值给源文件
+
+                if(newLeft == 0)
+                    clearInterval(timerR);
+            },40)
+        });
+    </script>
+</body>
+</html>
