@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        button {
+            outline: 0;
+        }
+        
+        button, .popout {
+            border: 2px solid;
+        }
+        
+        .popout {
+            padding: 10px;
+            display: inline-block;
+            position: fixed;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+            background: #fff;
+        }
+        
+        [hidden] {
+            display: none !important;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <button style="margin: 10em;"data-position="right"data-popout="Yo yo yo...">Yo</button>
+    <button style="margin: 10em;"data-position="right"data-popout="Ha ha ha...">Ha</button>
+    <button style="margin: 10em;"data-position="right"data-popout="Gg gg gg...">Gg</button>
+    <script>
+        let popout, lastTrigger;
+        let triggers = new Set ();   // 创建一个空对象
+        boot ();
+
+        function boot () {
+            document.body.addEventListener('click', (event) => {
+                let el = event.target;            //  事件源 button 本身 可以绑定属性
+                let info = el.dataset.popout;     //  事件源的属性
+
+                if(info){
+                    lastTrigger && hide(lastTrigger);   // 第一次点击时 lastTrigger 条件不满足 直接跳过
+                    lastTrigger = el;
+                    show (el, info);
+                    triggers.add(el);      // 把点击的每一次事件 推进 triggers 里
+                }else{
+                    hideAll ();
+                }
+            })
+        }
+        // 添加，显示 popout
+        function show (el, info) {
+            if(!el.$popout){
+                popout = document.createElement('div');
+                popout.classList.add('popout');
+                popout.innerText = info;
+                el.$popout = popout;
+                document.body.appendChild(popout);
+            }else
+                el.$popout.hidden = false;
+            reposition (el)
+        }
+        // 隐藏 前一项 
+        function hide (el) {
+            el.$popout.hidden = true;
+        }
+        //  遍历 triggers 中每一项 如果点击的不是添加了 $popout 属性的 就全部隐藏
+        function hideAll () {
+            triggers.forEach(el => {
+                el.$popout.hidden = true;
+            })
+        }
+        // 重新定位
+        function reposition (el) {
+            let btnPosition = el.getBoundingClientRect();    // 拿到 点击时添加的那个元素的大小
+            popout.style.left = btnPosition.left + 'px';
+            popout.style.top = btnPosition.top + 30 + 'px';
+        }
+    </script>
+</body>
+</html>
