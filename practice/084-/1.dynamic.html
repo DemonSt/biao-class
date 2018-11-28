@@ -1,0 +1,55 @@
+<style>
+    :root {
+        font-family: sans-serif;
+    }
+    
+    .dropdown {
+        display: block;
+        padding: 5px;
+    }
+</style>
+<body>
+</body>
+<script>
+    let list = [
+        {
+          text: 'a',
+          href: 'http://z.cn',
+        },
+        {
+          text: 'b',
+          href: 'http://biaoyansu.com',
+        },
+        {
+          text: 'c',
+          href: 'http://chaoshi.tmall.com',
+        },
+        {
+          text: 'd',
+          href: 'http://douban.com',
+        },
+    ];
+
+    boot ();
+
+    function boot () {
+        // dynamic ();
+        list.push({
+          text: 'f',
+          href: 'http://baidu.com',
+        })
+        dynamic ();
+    }
+    
+    function dynamic () {
+        document.body.innerText = '';   // 不清掉 旧的值就会一直出现
+        list.forEach(it => {
+            let a = document.createElement('a');
+            a.classList.add('dropdown');
+            a.innerText = it.text;
+            a.href = it.href;
+            document.body.appendChild(a);
+        })
+    }
+    
+</script>

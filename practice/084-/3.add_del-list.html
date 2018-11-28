@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        :root {
+            font-family: sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 30%;
+            border-collapse: collapse;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        
+        td, th {
+            text-align: center;
+            border: 1px solid;
+            padding: .5em;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>背背山中学花名册</h1>
+    <table>
+        <thead>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>分数</th>
+        <th>操作</th>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+</body>
+<script>
+    let tbody;
+    let userList = [
+    {
+        name: '王花花',
+        gender: '男',
+        score: 60,
+    },
+    {
+        name: '刘蓓蓓',
+        gender: '女',
+        score: 93,
+    },
+    {
+        name: '李拴蛋',
+        gender: '女',
+        score: 65,
+    },
+    {
+        name: '赵可爽',
+        gender: '男',
+        score: 80,
+    },
+    {
+        name: '熙洪氏',
+        gender: '男',
+        score: 17,
+    },
+    ]
+    boot ()
+
+    function boot () {
+        tbody = document.getElementById('tbody');
+        create ();
+    }
+
+    //  通过数据动态添加、删除内容
+    function create () {
+        userList.forEach((it, index) => {
+            let tr = document.createElement('tr');
+            tr.innerHTML = `
+            <td>${it.name}</td>
+            <td>${it.gender}</td>
+            <td>${it.score}</td>
+            <td><button id='del'>Del</button></td>
+            `
+            let btnDel = tr.querySelector('#del');
+            tbody.appendChild(tr);
+
+            btnDel.addEventListener('click', () => {
+                // 删除数据 循环第一遍index是0，第二遍index就是1
+                userList.splice(index, 1);
+                //  it是数据  it.remove() 会报错   删除tr对应的元素
+                tr.remove();            
+            })
+        })
+    }
+</script>
+</html>
