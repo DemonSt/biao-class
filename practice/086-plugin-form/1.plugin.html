@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        :root {
+            font-size: 16px;
+        }
+        
+        input, button {
+            font-size: inherit;
+            padding: .2em .3em;
+            margin: .2em auto;
+        }
+        
+        input {
+            width: 100%;
+        }
+        
+        input[type=checkbox],
+        input[type=radio] {
+            width: auto;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <form id="a">
+        <input type="text" name="name" placeholder="姓名" value="1">
+        <input type="text" name="age" placeholder="年龄" value="1">
+        <input type="text" name="gender" placeholder="性别" value="1">
+        <input type="text" name="height" placeholder="身高" value="1">
+        <button type="submit">提交</button>
+    </form>
+          
+    <form id="b">
+        <input type="text" name="name" placeholder="姓名" value="2">
+        <input type="text" name="age" placeholder="年龄" value="2">
+        <input type="text" name="gender" placeholder="性别" value="2">
+        <input type="text" name="height" placeholder="身高" value="2">
+        <button type="submit">提交</button>
+    </form>
+          
+    <form id="c">
+        <input type="text" name="name" placeholder="姓名" value="3">
+        <input type="text" name="age" placeholder="年龄" value="3">
+        <input type="text" name="gender" placeholder="性别" value="3">
+        <input type="text" name="height" placeholder="身高" value="3">
+        <button type="submit">提交</button>
+    </form>
+    <script>
+        /**
+        * 解析表单数据（取值）
+        * @param {HTMLFormElement} form 选好的form元素
+        * @return {Object}
+        */
+        function getData (form) {
+            let data = {};
+            let inputList = form.querySelectorAll('[name]');
+            inputList.forEach(it => {
+                data[it.name] = it.value;
+            })
+            return data;
+        }
+
+        /**
+        * 通过纯数据填充表单（存值）
+        * @param {Object} data 填充的数据
+        * @param {HTMLFormElement} form 目标表单
+        */
+        function setData (data, form) {
+            for(let key in data){
+                // 找到对应的输入组件
+                let inputList = form.querySelector(`[name=${key}]`);
+                 // 为组件存值
+                inputList.value = data[key];
+            }
+        }
+
+        let dataA = {
+            name: '王花花',
+            age: 2,
+            gender: '男',
+            height: 160,
+        };
+        
+        let dataB = {
+            name: '李拴蛋',
+            age: 2,
+            gender: '男',
+            height: 160,
+        };
+
+        setData(dataA, document.getElementById('a'));
+        setData(dataB, document.getElementById('b'));
+    </script>
+</body>
+</html>
