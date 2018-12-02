@@ -1,0 +1,17 @@
+<link rel="stylesheet" type="text/css" href="../popup.css">
+<button id="btn">购物车</button>
+<div id="popup" hidden>
+    <button data-direction="left-top">左上</button>
+    <button data-direction="top">上中</button>
+    <button data-direction="right-top">右上</button>
+    <button data-direction="left">中左</button>
+    <button data-direction="center">中间</button>
+    <button data-direction="right">中右</button>
+    <button data-direction="bottom-left">左下</button>
+    <button data-direction="bottom">下中</button>
+    <button data-direction="right-bottom">右下</button>
+</div>
+<script src="../popup.js"></script>
+<script>
+    biaoPopup.boot ('#btn', '#popup', {});
+</script>
