@@ -95,7 +95,6 @@
             return data;
         }
         let result = getData(b);
-        console.log(result);
 
         let user = {
             name: '西红柿',
@@ -113,6 +112,7 @@
                 // 循环对象之后 在form中找到有对应属性的 input 有单个的（name = name 、age、email等 ）
                 // 也有多个的 比如 （radio、checkbox ） 多个时只要取到它的类型，不管数量，数量交给下面判断
                 let input = form.querySelector(`[name=${key}]`)
+                console.log(input);
                 //内层
                 switch (input.type){
                     case 'radio':
