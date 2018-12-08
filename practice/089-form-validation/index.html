@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表严肃 Demo</title>
+    <style>
+        :root {
+          font-family: sans-serif;
+          font-size: 15px;
+        }
+        
+        input, button {
+          border: 1px solid;
+          width: 100%;
+          padding: .5em;
+          font-size: inherit;
+          margin-bottom: .5em;
+        }
+        
+        button {
+          background: #000;
+          color: #fff;
+        }
+        
+        main {
+          padding: .5em;
+          margin-left: auto;
+          margin-right: auto;
+          max-width: 40em;
+        }
+        
+        .error-container {
+          font-size: 90%;
+          padding: .5em;
+          background: pink;
+          color: #c10;
+          margin-bottom: .5em;
+        }
+        
+        input.error {
+          border: 2px solid #c10;
+          outline: 0;
+        }
+        
+        [hidden] {
+          display: none;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <form novalidate>
+            <h1>注册</h1>
+            <input type="text" name="username" placeholder="username" value="whhh">
+            <input type="email" name="email" placeholder="email" value="whh@gmail.com">
+            <input type="text" name="phone" placeholder="phone" value="18899990000">
+            <input type="password" name="password" placeholder="password" value="123456">
+            <div class="error-container" hidden></div>
+            <button>提交</button>
+        </form>
+    </main>
+    <script>
+        /*基础数据验证库开始*/
+
+        // 暴露接口
+        window.vali = {
+            isUsername,
+            isEmail,
+            isPhone,
+            isPassword,
+            betweenLength,
+            between,
+            positive,
+        };
+
+        /**
+         * 验证用户名
+         * @param str
+         * @return {boolean}
+         */
+        function isUsername(str) {
+            // 如果长度不在4-12之间就不合法
+            if (
+                !betweenLength(str, 4, 12) ||
+                str.includes('辣鸡')
+            ) return false;
+
+            return true;
+        }
+
+        /**
+         * 验证邮箱
+         * @param str
+         * @return {boolean}
+         */
+        function isEmail(str) {
+            // 如果不包含'@'符号就不合法
+            if (!str.includes('@'))
+                return false;
+
+            return true;
+        }
+
+        /**
+         * 验证电话
+         * @param str
+         * @return {boolean}
+         */
+        function isPhone(str) {
+            // 如果长度不对或者没有以'1'开头就不合法
+            if ((
+                    str.length != 11 && // 不是11位
+                    str.length != 13 && // 而且不是13位
+                    str.length != 14 // 而且不是14位
+                ) ||
+                !str.startsWith('1')
+            ) return false;
+
+            return true;
+        }
+
+        /**
+         * 验证密码
+         * @param {string} str
+         * @return {boolean}
+         */
+        function isPassword(str) {
+            // 如果长度不在6-64位之间就不合法
+            if (!betweenLength(str, 6, 64))
+                return false;
+
+            return true;
+        }
+
+        /**
+         * 字符串长度是否在指定范围内
+         * @param {string} str
+         * @param {number} min
+         * @param {number} max
+         * @return {boolean}
+         */
+        function betweenLength(str, min, max) {
+            return between(str.length, min, max);
+        }
+
+        /**
+         * 数字是否在指定范围内
+         * @param {string} num
+         * @param {number} min
+         * @param {number} max
+         * @return {boolean}
+         */
+        function between(num, min, max) {
+            // 大于等于最小值且小于等于最大值
+            return num >= min && num <= max;
+        }
+
+        /**
+         * 是否为正数
+         * @param {number} num
+         * @return {boolean}
+         */
+        function positive(num) {
+            // 是否大于零
+            return num >= 0;
+        }
+
+        /*基础数据验证库结束*/
+
+        // 公用元素
+        let form = document.querySelector('form');
+        let errorContainer = form.querySelector('.error-container');
+
+        // 公用数据
+        let data = {};
+        let error = {
+            username: [],
+            email: [],
+            phone: [],
+            password: [],
+        };
+
+        boot();
+
+        function boot() {
+            bindEvents();
+        }
+
+        /**
+         * 绑定必要的初始事件
+         */
+        function bindEvents() {
+            bindSubmit();
+            bindKeyup();
+        }
+
+        /**
+         * 绑定按键事件
+         */
+        function bindKeyup() {
+            // 如果用户按键了就取消红框
+            form.addEventListener('keyup', (e) => {
+                // 除了回车键
+                if (e.key != 'Enter')
+                    resetErrorInput();
+            });
+        }
+
+        /**
+         * 绑定表单提交事件
+         */
+        function bindSubmit() {
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+
+                // 取到每一项input的值
+                data.username = form.querySelector('[name=username]').value;
+                data.email = form.querySelector('[name=email]').value;
+                data.phone = form.querySelector('[name=phone]').value;
+                data.password = form.querySelector('[name=password]').value;
+
+                // 取到的值是否合法？
+                validate(data) ?
+                    hideError() : // 是就隐藏错误
+                    showError(); // 否就显示错误
+            });
+        }
+
+        /**
+         * 隐藏错误信息
+         */
+        function hideError() {
+            // 隐藏信息
+            errorContainer.hidden = true;
+            // 隐藏红框
+            resetErrorInput();
+        }
+
+        /**
+         * 重置红框
+         */
+        function resetErrorInput() {
+            form.querySelectorAll('.error').forEach(it => {
+                it.classList.remove('error');
+            });
+        }
+
+        /**
+         * 显示错误信息
+         */
+        function showError() {
+            errorContainer.hidden = false;
+            errorContainer.innerHTML = '';
+
+            for (let key in error) {
+                // 如error.username，是数组：['长度有问题', '已经被注册了']
+                let it = error[key];
+
+                // 缓存类对象，方便后续事使用
+                let klass = form
+                    .querySelector(`[name=${key}]`)
+                    .classList;
+
+                // 如果有错误（数组不为空）
+                if (it.length)
+                    // 就添加类名'error' ==> <input class="error">
+                    klass.add('error');
+
+                it.forEach(str => {
+                    // 以['长度有问题', '已经被注册了']的第0项为例
+                    let errorItem = document.createElement('div');
+                    // 得到：'<div>长度有问题<div>'
+                    errorItem.innerText = str;
+                    // 追加到错误容器上
+                    errorContainer.appendChild(errorItem);
+                });
+            }
+        }
+
+        /**
+         * 验证所有数据
+         * @param data 需要验证的数据，即 {username: xxx, email: xxx, phone:xxx, password:xxx}
+         * @return {boolean}
+         */
+        function validate(data) {
+            // 一开始默认大家都合法
+            let valid = true;
+
+            // 重置错误信息
+            error = {
+                username: [],
+                email: [],
+                phone: [],
+                password: [],
+            };
+
+            // 如果用户名不合法
+            if (!vali.isUsername(data.username)) {
+                // 只有有一个不合法就设为不合法
+                valid = false;
+
+                // 将错误信息推入error.username中
+                error.username.push('用户名有误，用户名应介于4至12位之间');
+            }
+
+            //（逻辑同上）
+            if (!vali.isEmail(data.email)) {
+                valid = false;
+                error.email.push('邮箱格式有误');
+            }
+
+            //（逻辑同上）
+            if (!vali.isPhone(data.phone)) {
+                valid = false;
+                error.phone.push('电话格式有误');
+            }
+
+            //（逻辑同上）
+            if (!vali.isPassword(data.password)) {
+                valid = false;
+                error.password.push('密码格式有误，应介于6至64位之间');
+            }
+
+            // 最后返回是否合法
+            return valid;
+        }
+    </script>
+</body>
+</html>
