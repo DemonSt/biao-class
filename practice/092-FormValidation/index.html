@@ -4,9 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <title>表单验证</title>
 </head>
 <body>
-    
+    <main>
+        <nav>
+            <input id="search" type="search" data-rule="numeric|min:3|max:6" placeholder="独苗">
+        </nav>
+        <form>
+            <h2>注册账号</h2>
+            <input data-rule="numeric|min:1|max:12" type="text" name="month" placeholder="month">
+            <input data-rule="numeric|min:1|max:7" type="text" name="week" placeholder="week">
+            <input data-rule="numeric|positive|min:1" type="text" name="age" placeholder="age">
+            <input data-rule="phone:zh" type="text" name="phone" placeholder="phone">
+            <input data-rule="in:male,female" type="text" name="gender" placeholder="gender">
+            <input data-rule="regex:^\w{4,12}$" type="text" name="username" placeholder="username">
+            <input data-rule="email" type="text" name="email" placeholder="email">
+            <input data-rule="numeric" type="text" name="balance" placeholder="balance">
+            <button type="submit">提交</button>
+        </form>
+    </main>
+    <script>
+        let is = {
+            numeric (value) {
+                if (!/^\d+$/.test(value.toString()))
+                    throw '请输入合法数字';
+            },
+
+            min (value, contrast) {   // contrast 对比
+                if(value < contrast)
+                    throw '最小值为' + contrast;
+            },
+
+            max (value, contrast) {   
+                if(value > contrast)
+                    throw '最大值为' + contrast;
+            },
+
+            between (value, min, max) {
+                if (!this.min(value, min) || !this.max(value, max))
+                    throw '合法数字应介于' + min + '和' + max + '之间';
+            },
+
+            positive(value) {
+                if (value <= 0)
+                    throw '不可小于0';
+            },
+        
+            negative(value) {
+                if (value >= 0)
+                    throw '不可大于0';
+            },
+        
+            minLength(value, comparison) {
+                if (value.length < comparison)
+                    throw '长度不可小于' + comparison;
+            },
+        
+            maxLength(value, comparison) {
+                if (value.length > comparison)
+                    throw '长度不可大于' + comparison;
+            },
+        
+            lengthBetween(value, min, max) {
+                if (!this.minLength(value, min) ||
+                    !this.maxLength(value, max))
+                    throw '长度需介于' + min + '至' + max + '之间';
+            },
+        
+            startsWith(value, comparison) {
+                if (!value.startsWith(comparison))
+                    throw '必须以"' + comparison + '"开头';
+            },
+         
+            endsWith(value, comparison) {
+                if (!value.endsWith(comparison))
+                    throw '必须以"' + comparison + '"结束';
+            },
+        
+            includes(value, comparison) {
+                if (!value.includes(comparison))
+                    throw '必须包含"' + comparison + '"';
+            },
+        
+            in(value, comparison) {
+                if (comparison.indexOf(value) === -1)
+                    throw '必须在' + comparison + '之重';
+            },
+        
+            email(value) {
+                let re = /^\w+@\w+\.\w+$/;
+                if (!re.test(value))
+                    throw '不合法的邮箱';
+            },
+        
+            username(value) {
+                let re = /^[a-zA-Z0-9]\w+$/;
+                if (!re.test(value))
+                    throw '不合法的用户名';
+            },
+        
+            phone(value, country = 'zh') {
+                let re;
+                switch (country) {
+                    case 'zh':
+                        re = /^(?:\+?(?:86))?(\s|-)?1\d{10}$/;
+                        break;
+                }  
+                if (!re.test(value))
+                    throw '不合法的手机号';
+            },
+        
+            //是否可以匹配正则
+            regex(value, re) {
+                if (typeof re == 'string')
+                    re = new RegExp(re);
+                if (!re.test(value))
+                    throw '不合法的格式';
+            },
+        }
+        console.log(is.positive('12'))
+    </script>
 </body>
 </html>
