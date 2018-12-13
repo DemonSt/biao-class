@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./main.css">
+    <title>GayHub用户搜索</title>
+</head>
+
+<body>
+    <main>
+        <h1>Gayhub用户搜索</h1>
+        <h5>体验交互的快乐</h5>
+        <form id="search-form">
+            <input type="search" name="keyword" autofocus>
+            <button type="submit" hidden></button>
+        </form>
+        <div id="user-list"></div>
+        <div id="page-container"></div>
+    </main>
+    <script src="./main.js"></script>
+    <!-- <script>
+        let form = document.getElementById('search-form');
+        let input = form.querySelector('input');
+        let userList = document.getElementById('user-list');
+        boot ();
+
+        function boot () {
+            bindEvents ();
+        }
+
+        function bindEvents () {
+            form.addEventListener('submit', (event) =>{
+                event.preventDefault();
+                let keyword = input.value;
+                search (keyword);
+            });
+        }
+
+        function search (keyword) {
+            let http = new XMLHttpRequest();
+            http.open('get', `https://api.github.com/search/users?q=${keyword}`);
+            http.send();
+            http.addEventListener('load', () => {
+                let data = JSON.parse(http.responseText);
+                render (data.items);
+            });
+        }
+
+        function render (users) {
+            userList.innerHTML = '';
+            users.forEach(it => {
+                let item = document.createElement('div');
+                item.classList.add('item');
+                item.innerHTML = `
+                <div class="avatar">
+                    <img src="${it.avatar_url}">
+                </div>
+                <div class="detail">
+                    <strong>${it.login}</strong>
+                    <div><a target="_blank" href="${it.html_url}">${it.html_url}</a></div>
+                </div>
+                `;
+                userList.appendChild(item);  
+            });
+        }
+    </script> -->
+</body>
+</html>
