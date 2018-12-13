@@ -1,8 +1,14 @@
+<script src="http://unpkg.com/jquery"></script>
+<script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script>
 <script>
-    fetch('/Users/demonsalvatore/Desktop/code/biao-class/practice/094-js-Request/index.html')
-        .then(response => {
-            return response.json();
-        })
+    // $.ajax({
+    //     method : 'get',
+    //     url : 'https://api.github.com/search/users?q=DemonSt',
+    // }).then(data => {
+    //     console.log(data);
+    // })
+
+    $.get('https://api.github.com/search/users?q=DemonSt')
         .then(data => {
             console.log(data);
         })
