@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #one {
+            width: 100px;
+            height: 100px;
+            background: #aaa;
+            display: inline-block;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="one">yo</div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+        // 元素选择器
+        $('div')
+            .css('color', '#eee');
+        // id选择器
+        $('#one')
+            .css('background', 'tomato');
+        // 选择器还有很多，css怎么选 jQuery就怎么选
+    </script>
+</body>
+</html>

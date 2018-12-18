@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+          -webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;
+        }
+        
+        :root {
+          font-family: sans-serif;
+          color: #444;
+        }
+        
+        body {
+          margin: 0;
+        }
+        
+        input, button, textarea {
+          color: inherit;
+        }
+        
+        form input, form button {
+          width: 100%;
+          padding: 1em;
+          border: 1px solid #ccc;
+          outline: 0;
+        }
+        
+        form {
+          margin: 0;
+        }
+        
+        form input:focus, form button:focus {
+          border-color: transparent;
+          -webkit-box-shadow: 0 0 0 3px #c1a7ff;-moz-box-shadow: 0 0 0 3px #c1a7ff;box-shadow: 0 0 0 3px #c1a7ff;
+        }
+        
+        .container,
+        .container-sm {
+          max-width: 50em;
+          margin-left: auto;
+          margin-right: auto;
+          padding-left: .5em;
+          padding-right: .5em;
+        }
+        
+        .container-sm {
+          max-width: 30em;
+        }
+        
+        :root {
+          background: #eee;
+        }
+        
+        input, button, .todo-item {
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          border-radius: 3px;
+        }
+        
+        #todo-form, .todo-item {
+          margin-bottom: .5rem;
+        }
+        
+        .todo-item {
+          background: #fff;
+          font-size: 0;
+          -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, .2);-moz-box-shadow: 0 0 2px rgba(0, 0, 0, .2);box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+        }
+        
+        .todo-item > * {
+          font-size: 1rem;
+          display: inline-block;
+          vertical-align: middle;
+          padding: .5em;
+        }
+        
+        .todo-item > .checkbox {
+          width: 10%;
+        }
+        
+        .todo-item > .title {
+          width: 60%;
+        }
+        
+        .todo-item > .operations {
+          width: 30%;
+          text-align: right;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="margin-top: 2em; text-align: center;" class="container-sm">
+        <h1>Todo代办清单</h1>
+        <form id="todo-form">
+            <input type="search" name="title" autofocus placeholder="你来了，小老弟">
+            <button type="submit" hidden></button>
+        </form>
+        <div id="todo-list"></div>
+    </div>
+    <script src="./api.js"></script>
+    <script>
+      // 全文视图
+      let todoForm = document.getElementById('todo-form');
+      let todoInput = todoForm.querySelector('[name=title]');
+      let todoList = document.getElementById('todo-list');
+
+      // 全文数据
+      let $list;
+      let $currentId = null;
+      boot ();
+
+      function boot () {
+        read ();
+        bindEvents ();
+      }
+
+      // 从服务器拿到数据
+      function read () {
+        api ('todo/read', null , it => {
+          $list = it.data;
+          render ($list);
+        });
+      }
+
+      function bindEvents () {
+        todoForm.addEventListener('submit', (event) => {
+          event.preventDefault();
+          let title = todoInput.value;
+          // 如果有记录当前id就说明是更新
+          if ($currentId)
+            update($currentId, { title });
+          else // 否则就是新增
+            create({ title });
+        });
+      }
+
+      // 增
+      function create (row) {
+        api ('todo/create', row, r => {
+          if(r.success)
+            read ();
+            todoForm.reset(); // 渲染后清空表单
+        });
+      }
+
+      // 删
+      function remove (id) {
+        api ('todo/delete', {id}, r => {
+          read ();
+        });
+      }
+
+      // 改（更新 ， id 更新哪一条事项 ， row 更新的数据）
+      function update (id, row) {
+        api('todo/update', { id, ...row }, r => {
+          if (r.success) {
+            $currentId = null;
+            read();
+            todoForm.reset();
+          }
+        });
+      }
+      // 将数据渲染至页面
+      function render () {
+        todoList.innerHTML = '';
+        $list.forEach(it => {
+          let item = document.createElement('div');
+          item.classList.add('todo-item');
+          item.innerHTML = `
+          <div class="checkbox">
+            <input class="completed" type="checkbox" ${it.completed ? 'checked' : ''}>
+          </div>
+          <div class="title">
+            ${it.title}
+          </div>
+          <div class="operations">
+            <button class="fill">更新</button>
+            <button class="delete">删除</button>
+          </div>
+          `;
+          // 选中每一项的复选框，后面设置完成与否要用到
+          let checkbox   = item.querySelector('.completed');
+          // 选中每一项的操作容器，后面删除或更新填充要用到
+          let operations = item.querySelector('.operations');
+
+          // 当复选框被点击时，打开或关闭完成状态
+          checkbox.addEventListener('change', e => {
+            setCompleted(it.id, checkbox.checked);
+          });
+
+          // 当操作容器被点击时
+          operations.addEventListener('click', e => {
+            let target = e.target;
+
+            // 如果事件源是.delete按钮，就执行删除操作
+            if (target.classList.contains('delete'))
+              remove(it.id);
+
+            // 如果事件源是.fill按钮，就填充表单
+            if (target.classList.contains('fill')) {
+              $currentId  = it.id;
+              todoInput.value = it.title;
+            }
+          });
+
+          todoList.appendChild(item);
+        });
+      }
+      
+      // 设置完成与否 , 选框是否被选中
+      function setCompleted (id, completed) {
+        api('todo/update', { id, completed }, r => {
+          read();
+        });
+      }
+    </script>
+</body>
+</html>
