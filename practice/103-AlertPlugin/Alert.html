@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./alert.css">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        ;(function () {
+            'use strict';
+            window.biaoAlert = biaoAlert;
+            let container;
+            // 默认配置
+            const defaultConfig = {
+                type: 'info', // {info|warn|danger|success} 类型，默认为普通信息
+                timeout: 2000, // {int} 显示时长
+                containerClass: 'biao-alert-container', // {string} 容器类
+                clickToClose: true, // {bool} 点击就关闭
+            };
+            function biaoAlert(title, config) {
+                // 合并设置
+                config = { ...defaultConfig, ...config, title};
+                prepareEnv(config);
+                render(config);
+                open(config);
+                bindClick(config);
+            }
+            //准备环境
+            function prepareEnv(config) {
+                container = getContainer(config);
+                // 有就用
+                if (getContainer(config))
+                    return;
+                // 没有就造一个
+                container = document.createElement('div');
+                container.classList.add(config.containerClass);
+                document.body.appendChild(container);
+            }
+            //获取容器
+            function getContainer(config) {
+                return document.querySelector('.' + config.containerClass);
+            }
+            //渲染提醒
+            function render(config) {
+                let el = document.createElement('div');
+                el.classList.add('biao-alert');
+                // 不同类型不同颜色 所以加个类方便控制样式
+                el.classList.add(config.type);
+                el.innerHTML =`
+                <div class="inner">
+                  <div class="title">${config.title}</div>
+                  ${config.desc ? `<div class="desc">${config.desc}</div>` : ''}
+                </div>`;
+                // 缓存下来后面用
+                config.el = el;
+            }
+            // 显示提醒
+            function open(config) {
+                // 如果有回调的话就叫一下回调
+                config.onOpen && config.onOpen();
+                container.appendChild(config.el);
+                // 如果没有期限，就让它一直显示吧
+                if (!config.timeout)
+                    return;
+                // 如果有期限
+                setTimeout($ => {
+                    // 到了那个时间就隐藏
+                    close(config);
+                }, config.timeout);
+            }
+            // 关闭提醒
+            function close(config) {
+                // 如果有回调的话就叫一下回调
+                config.onClose && config.onClose(config);
+                config.el.remove();
+            }
+            // 当被点击时...
+            function bindClick(config) {
+                config.el.addEventListener('click', e => {
+                    // 如果点击就关闭，那就关闭
+                    if (config.clickToClose)
+                        close(config);
+                    // 如果有回调的话就叫一下回调
+                    config.onClick && config.onClick(config);
+                });
+            }
+        })();
+
+        biaoAlert('Yo');
+        biaoAlert('余额不足，请充值', {
+            desc: '请前往我的余额进行充值',
+            type: 'warn',
+            timeout: false,
+            onClick(config) {
+                document.body.appendChild(config.el);
+                console.log(config);
+            },
+            onOpen() {
+                console.log('打开');
+            },
+            onClose() {
+                console.log('关闭');
+            },
+        });
+    </script>
+</body>
+</html>
