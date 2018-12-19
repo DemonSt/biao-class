@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 style="margin-top: 1em; font-size: 1.5rem;" class="text-center">Todo</h1>
+    <div class="container-sm">
+        <div class="left">
+            <div id="cat-list" class="sidebar-section"></div>
+            <div class="sidebar-section">
+                <button id="add-cat">+</button>
+            </div>
+            <form id="cat-form" class="sidebar-section" hidden>
+                <input type="search" name="name">
+                <button class="primary" type="submit">确定</button>
+                <button class="cancel" type="button">取消</button>
+            </form>
+        </div>
+        <div class="right">
+            <form id="todo-form">
+                <input type="search" name="title" autofocus placeholder="小老弟，你来啦">
+                <button type="submit" hidden></button>
+            </form>
+            <div id="todo-list"></div>
+        </div>
+    </div>
+    <script src="./api.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>

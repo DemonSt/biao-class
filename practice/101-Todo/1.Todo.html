@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style>
-        * {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    * {
           -webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;
         }
         
         :root {
           font-family: sans-serif;
-          color: #444;
+          color: #9ac6f0;
         }
         
         body {
@@ -29,14 +29,23 @@
           border: 1px solid #ccc;
           outline: 0;
         }
+
+        h1 {
+          color: #9ac6f0;
+          text-align: left;
+        }
         
         form {
           margin: 0;
         }
+
+        form input {
+          border-color: #9ac6f0;
+        }
         
         form input:focus, form button:focus {
           border-color: transparent;
-          -webkit-box-shadow: 0 0 0 3px #c1a7ff;-moz-box-shadow: 0 0 0 3px #c1a7ff;box-shadow: 0 0 0 3px #c1a7ff;
+          box-shadow: 0 0 0 3px #9ac6f0;
         }
         
         .container,
@@ -60,6 +69,11 @@
           -webkit-border-radius: 3px;
           -moz-border-radius: 3px;
           border-radius: 3px;
+          border: #9ac6f0 1px solid;
+        }
+
+        input::-webkit-input-placeholder {
+          color: #9ac6f0;
         }
         
         #todo-form, .todo-item {
@@ -69,7 +83,7 @@
         .todo-item {
           background: #fff;
           font-size: 0;
-          -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, .2);-moz-box-shadow: 0 0 2px rgba(0, 0, 0, .2);box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+          box-shadow: 0 0 2px #9ac6f0;
         }
         
         .todo-item > * {
@@ -92,20 +106,20 @@
           text-align: right;
         }
     </style>
-    <title>Document</title>
+  <title>Document</title>
 </head>
 
 <body>
-    <div style="margin-top: 2em; text-align: center;" class="container-sm">
-        <h1>Todo代办清单</h1>
-        <form id="todo-form">
-            <input type="search" name="title" autofocus placeholder="你来了，小老弟">
-            <button type="submit" hidden></button>
-        </form>
-        <div id="todo-list"></div>
-    </div>
-    <script src="./api.js"></script>
-    <script>
+  <div style="margin-top: 2em; text-align: center;" class="container-sm">
+    <h1>Todo List</h1>
+    <form id="todo-form">
+      <input type="search" name="title" autofocus placeholder="你来了，小老弟">
+      <button type="submit" hidden></button>
+    </form>
+    <div id="todo-list"></div>
+  </div>
+  <script src="./api.js"></script>
+  <!-- <script>
       // 全文视图
       let todoForm = document.getElementById('todo-form');
       let todoInput = todoForm.querySelector('[name=title]');
@@ -190,7 +204,7 @@
           // 选中每一项的操作容器，后面删除或更新填充要用到
           let operations = item.querySelector('.operations');
 
-          // 当复选框被点击时，打开或关闭完成状态
+          // 当复选框被点击时，打开或关闭完成状态   ***********************
           checkbox.addEventListener('change', e => {
             setCompleted(it.id, checkbox.checked);
           });
@@ -214,12 +228,13 @@
         });
       }
       
-      // 设置完成与否 , 选框是否被选中
+      // 设置完成与否 , 选框是否被选中   ***********************
       function setCompleted (id, completed) {
         api('todo/update', { id, completed }, r => {
           read();
         });
       }
-    </script>
+  </script> -->
 </body>
+
 </html>
