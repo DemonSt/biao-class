@@ -37,11 +37,7 @@
     function readTodo(params) {
         params = params || {};
 
-        // params.where = {
-        //   and : {
-        //     cat_id : $currentCatId,
-        //   },
-        // };
+        // params.where = {and : {cat_id : $currentCatId,},};
 
         params.query = `where("cat_id" = "${$currentCatId}")`;
 
@@ -60,13 +56,9 @@
 
             // 如果有记录当前id就说明是更新
             if ($updatingTodoId)
-                updateTodo($updatingTodoId, {
-                    title
-                });
+                updateTodo($updatingTodoId, {title});
             else // 否则就是新增
-                createTodo({
-                    title
-                });
+                createTodo({title});
         });
     }
 
@@ -83,18 +75,13 @@
     }
     // 删
     function removeTodo(id) {
-        api('todo/delete', {
-            id
-        }, r => {
+        api('todo/delete', {id}, r => {
             readTodo();
         });
     }
     // 更新
     function updateTodo(id, row) {
-        api('todo/update', {
-            id,
-            ...row
-        }, r => {
+        api('todo/update', {id, ...row}, r => {
             if (r.success) {
                 $updatingTodoId = null;
                 readTodo();
@@ -112,17 +99,17 @@
             let item = document.createElement('div');
             item.classList.add('todo-item');
             item.innerHTML = `
-        <div class="checkbox">
-          <input class="completed" type="checkbox" ${it.completed ? 'checked' : ''}>
-        </div>
-        <div class="title">
-          ${it.title}
-        </div>
-        <div class="operations">
-          <button class="fill">更新</button>
-          <button class="delete">删除</button>
-        </div>
-          `;
+            <div class="checkbox">
+                <input class="completed" type="checkbox" ${it.completed ? 'checked' : ''}>
+            </div>
+            <div class="title">
+                ${it.title}
+            </div>
+            <div class="operations">
+                <button class="fill">更新</button>
+                <button class="delete">删除</button>
+            </div>
+            `;
 
             // 选中每一项的复选框，后面设置完成与否要用到
             let checkbox = item.querySelector('.completed');
@@ -154,10 +141,7 @@
 
     // 设置完成与否
     function setCompleted(id, completed) {
-        api('todo/update', {
-            id,
-            completed
-        }, r => {
+        api('todo/update', {id, completed}, r => {
             readTodo();
         });
     }
@@ -173,13 +157,9 @@
 
             // 如果记录了当前更新分类id
             if ($updatingCatId)
-                updateCat($updatingCatId, {
-                    name
-                }); // 就更新分类
+                updateCat($updatingCatId, {name}); // 就更新分类
             else
-                createCat({
-                    name
-                }); // 否则就是新增分类
+                createCat({name}); // 否则就是新增分类
         });
     }
 
@@ -194,18 +174,13 @@
     }
     // 删
     function removeCat(id) {
-        api('cat/delete', {
-            id
-        }, r => {
+        api('cat/delete', {id}, r => {
             readCat();
         });
     }
     // 更新
     function updateCat(id, row) {
-        api('cat/update', {
-            id,
-            ...row
-        }, r => {
+        api('cat/update', {id, ...row}, r => {
             if (r.success) {
                 readCat();
                 setCatFormVisible(false);
@@ -279,12 +254,12 @@
             item.classList.add('item');
             // item.innerText = it.name;
             item.innerHTML = `
-        <span class="name">${it.name}</span>
-        <span class="operations">
-        <button class="fill">更新</button>
-        <button class="delete">删除</button>
-        </span>
-        `;
+            <span class="name">${it.name}</span>
+            <span class="operations">
+            <button class="fill">更新</button>
+            <button class="delete">删除</button>
+            </span>
+            `;
             catList.appendChild(item);
 
             // 当前分类作为整体被点击时
