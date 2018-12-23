@@ -35,11 +35,13 @@
 
     // 获取事项列表（数据）
     function readTodo(params) {
+        // 因为传入params是一个对象，保证 对象操作时不报错 所以让它或者等于一个空对象
         params = params || {};
 
-        // params.where = {and : {cat_id : $currentCatId,},};
+        // where,query 都是方法，cat_id 是判断依据  and 可多项条件一起筛选
 
-        params.query = `where("cat_id" = "${$currentCatId}")`;
+        params.where = {and : {cat_id : $currentCatId,},};
+        // params.query = `where("cat_id" = "${$currentCatId}")`;
 
         api('todo/read', params, r => {
             $todoList = r.data || [];
@@ -64,6 +66,7 @@
 
     // 增
     function createTodo(row) {
+        // 在新添加数据 title 的时候先拦截，添加一个属性 cat_id，让它等于侧栏的某一项item的id
         row.cat_id = $currentCatId;
 
         api('todo/create', row, r => {
@@ -139,7 +142,7 @@
         });
     }
 
-    // 设置完成与否
+    // 设置完成与否，(只更新哪一个复选框)
     function setCompleted(id, completed) {
         api('todo/update', {id, completed}, r => {
             readTodo();
@@ -147,6 +150,20 @@
     }
 
     // *************************************************************************
+    // 读取分类
+    function readCat() {
+        api('cat/read', null, r => {
+            $catList = r.data || [];
+            // 一开始添加一个默认分类， id不设置就是undefined，JSON解析优惠自动删掉，所以设为null
+            $catList.unshift({
+                id: null,
+                name: '默认',
+            });
+            renderCat();
+            // 一开始让默认分类 高亮
+            highlightCurrentCat();
+        });
+    }
 
     // 当分类表单提交时...
     function bindCatSubmit() {
@@ -186,16 +203,9 @@
                 setCatFormVisible(false);
             }
         });
-    }
-    // 读取分类
-    function readCat() {
-        api('cat/read', null, r => {
-            $catList = r.data || [];
-            renderCat();
-        });
-    }
+    } 
 
-    // 监听打开或关闭分类表单
+    // 监听打开或关闭分类表单  (点击按钮显示表单)
     function bindToggleCatForm() {
         // 添加分类按钮被点击时
         addCat.addEventListener('click', e => {
@@ -204,7 +214,7 @@
         });
     }
 
-    // 分类表单作为整体被点击时...
+    // 分类表单作为整体被点击时...  （点击取消按钮隐藏表单）
     function bindClickCatForm() {
         catForm.addEventListener('click', e => {
             let target = e.target;
@@ -223,7 +233,7 @@
 
         // 如果隐藏了
         if (catForm.hidden) {
-            // 就清掉当前更新分类的id
+            // 就清掉当前更新分类的id，否则后面再添加会一直在更新的那个值上操作
             $updatingCatId = null;
             // 重置表单
             catForm.reset();
@@ -233,10 +243,11 @@
 
     // 高亮选中分类
     function highlightCurrentCat() {
+        // 拿到侧栏的每一个分类项的数组合集，循环之后拿到里面每一项
         let items = catList.children;
         for (let i = 0; i < items.length; i++) {
             let it = items[i];
-
+            // 高亮点击时，先触发 渲染renderCat时 点击触发的操作，将it.id赋值， 此时再将值赋给 it.$id
             if (it.$id == $currentCatId)
                 it.classList.add('active');
             else
@@ -250,19 +261,17 @@
 
         $catList.forEach(it => {
             let item = document.createElement('div');
+            // 获取侧栏每一条信息的id， 当点击时高亮
             item.$id = it.id;
             item.classList.add('item');
-            // item.innerText = it.name;
             item.innerHTML = `
             <span class="name">${it.name}</span>
             <span class="operations">
-            <button class="fill">更新</button>
-            <button class="delete">删除</button>
+                <button class="fill">更新</button>
+                <button class="delete">删除</button>
             </span>
             `;
-            catList.appendChild(item);
-
-            // 当前分类作为整体被点击时
+            // 当前item分类作为整体被点击时
             item.addEventListener('click', e => {
                 let klass = e.target.classList;
                 // 是否是删除按钮
@@ -271,7 +280,7 @@
 
                 // 是否是更新按钮
                 if (klass.contains('fill')) {
-                    // 设置当前更新分类id为it.id
+                    // 设置当前  更新  分类id为it.id
                     $updatingCatId = it.id;
                     // 显示表单
                     setCatFormVisible(true);
@@ -279,11 +288,12 @@
                     return;
                 }
 
-                // 如果是其他位置
+                // 点击侧栏每一条item，当点击的不是删除或更新按钮的其他位置时：高亮，并重新渲染当前类的todo项目
                 $currentCatId = it.id;
                 highlightCurrentCat();
                 readTodo();
             });
+            catList.appendChild(item);
         });
     }
 })();
