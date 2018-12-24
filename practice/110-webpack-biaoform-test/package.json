@@ -1,0 +1,17 @@
+{
+  "name": "110-webpack-biaoform-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cli": "^1.0.1",
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2"
+  }
+}
