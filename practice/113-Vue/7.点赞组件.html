@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .clo {
+            color: tomato;
+            background: royalblue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <alert></alert>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            components: {
+                'alert': {
+                    template: '<button :class="{clo: clo}" @click="on_Click">👍 {{like_count}}</button>',
+                    data: function () {
+                        return {
+                            like_count: 8,
+                            liked: false,
+                        }   
+                    },
+                    methods: {
+                        on_Click: function () {
+                            if(!this.liked){
+                                this.like_count++;
+                            }else{
+                                this.like_count--;
+                            }
+                            this.liked = !this.liked;
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

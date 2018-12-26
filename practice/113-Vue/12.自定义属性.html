@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div v-defined="true" class="card">asdasdadsadasd</div>
+        <div v-defined="false" class="card">asdasdadsadasd</div>
+    </div>
+    
+    <script src="./vue.js"></script>
+    <script>
+        Vue.directive('defined', function(el, binding){
+            let val = binding.value;
+            console.log(val);
+        });
+        let app = new Vue({
+            el: '#app',
+            data: {},
+        });
+    </script>
+</body>
+
+</html>

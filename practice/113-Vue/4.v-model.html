@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <input type="text" v-model.lazy="name">
+            <span>{{name}}</span>
+        </div>
+        <div>
+            <input type="text" v-model.trim="name"> <!--  将前面空格去掉 -->
+            <span>{{name}}</span>
+        </div>
+        <div>
+            <input type="text" v-model.number="name"> <!-- 转化为数字类型 -->
+            <span>{{name}}</span>
+        </div>
+        <label>
+            男
+            <input v-model="sex" value="male" type="radio">
+        </label>
+        <label>
+            女
+            <input v-model="sex" value="female" type="radio">
+        </label>
+        {{sex}}
+        <br>
+
+
+
+        <label>
+            男
+            <input v-model="sex2" value="male" type="checkbox">
+        </label>
+        <label>
+            女
+            <input v-model="sex2" value="female" type="checkbox">
+        </label>
+        {{sex2}}
+        <br>
+
+
+        <select v-model="from">
+            <option value="1">牛栏山</option>
+            <option value="2">马栏山</option>
+        </select>
+        {{from}}
+        <br>
+
+
+        <select v-model="dest" multiple>
+            <option value="1">牛栏山</option>
+            <option value="2">马栏山</option>
+        </select>
+        {{dest}}
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                name: '西轰死',
+                sex: 'female',
+                sex2: [],
+                from: 1,
+                dest: [],
+            },
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <input type="text" v-model='name'>
+            <span>你的名字：{{name}}</span>
+        </div>
+        <div>
+            <input type="text" v-model='age'>
+            <span>你的年龄：{{age}}</span>
+        </div>
+        <div>
+            <input type="text" v-model='gender'>
+            <span v-show='gender'>你的性别：{{gender}}</span>
+        </div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                name: '西红柿',
+                age: 18,
+                gender: null,
+            },
+        });
+    </script>
+</body>
+
+</html>

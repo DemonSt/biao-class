@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <huahua></huahua>
+        <shuandan></shuandan>
+    </div>
+    
+    <script src="./vue.js"></script>
+    <script>
+        // 两个平行组建链接之间的桥梁
+        let Event = new Vue;
+        // 自定义花花组件并绑定一个键盘敲击事件，当敲击事件执行时通过桥梁Event.$emit再创建一个新事件，连同数据传递下去
+        Vue.component('huahua', {
+            template: '<div>我说<input @keyup="on_change" type="text" v-model="i_say"></div>',
+            data: function() {
+                return {
+                    i_say: '',
+                }
+            },
+            methods: {
+                on_change() {
+                    Event.$emit("huahuasay-something", this.i_say);
+                }
+            },
+        });
+        // 自定义拴蛋事件，利用勾子函数 mounted 里 Event.$on 接住传下来的事件并给数据绑定一个回调函数，输出传下来的数据
+        Vue.component('shuandan', {
+            template: '<div>花花说:{{huahua_say}}</div>',
+            data: function() {
+                return {
+                    huahua_say: '',
+                }
+            },
+            mounted: function () {
+                // 当 Event. 时 this就不再指向组建了，在此之前现将this存起来
+                let me = this;
+                Event.$on("huahuasay-something", function (data) {
+                    me.huahua_say = data;
+                })
+            }
+        });
+
+
+        let app = new Vue({
+            el: '#app',
+        });
+    </script>
+</body>
+
+</html>

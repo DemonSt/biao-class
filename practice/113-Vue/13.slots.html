@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <panel>
+            <div slot="title">单独写slot="title"属性在标签里</div>
+            <div slot="content">中间项，测试</div>
+        </panel>
+    </div>
+    <template id="panel-tpl">
+        <div class="panel">
+            <div class="title"><slot name="title"></slot></div>
+            <div class="content"><slot name="content"></slot></div>
+            <div class="footer"><slot name="footer"></slot>什么也不传，默认项</div>
+        </div>
+    </template>
+    <script src="./vue.js"></script>
+    <script>
+        Vue.component('panel', {
+            template: '#panel-tpl',
+        });
+
+        new Vue ({
+            el: '#app',
+            data: {},
+        });
+    </script>
+</body>
+
+</html>

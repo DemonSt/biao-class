@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="onClick">点我</button>
+        <button v-on="{mouseenter: onEnter, mouseleave: onLeave}">点我2</button>
+        <form @keyup.enter=onEnter @submit.prevent="onSubmit()">
+            <input type="text">
+            <button type="submit">提交</button>
+        </form>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            methods: {
+                onClick: function () {
+                    console.log('a');
+                }, 
+                onEnter: function () {
+                    console.log('E');
+                },
+                onLeave: function () {
+                    console.log('L');
+                },  
+                onSubmit: function () {
+                    console.log('S');
+                },  
+                onEnter: function () {
+                    console.log('K');
+                },  
+            },
+        });
+    </script>
+</body>
+
+</html>
