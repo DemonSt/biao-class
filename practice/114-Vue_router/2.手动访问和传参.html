@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>配置vue_router</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <router-link to="/">第一页</router-link>
+            <router-link to="/about">第二页</router-link>
+            <router-link to="/user/熙洪氏">熙洪氏</router-link>
+            <router-link to="/user/刘简">刘简</router-link>
+            <button @click="on_click">程序访问</button>
+        </div>
+        <div>
+            <router-view></router-view>
+        </div>
+    </div>
+    <script src="./vue.js"></script>
+    <script src="./vue.router.js"></script>
+    <script>
+        let test = [{
+                path: '/',
+                component: {
+                    template: `
+                    <div>
+                        <h1>11111</h1>
+                    </div>
+                    `,
+                },
+            },
+            {
+                path: '/about',
+                component: {
+                    template: `
+                    <div>
+                        <h1>22222</h1>
+                    </div>
+                    `,
+                },
+            },
+            {
+                path: '/user/:name',
+                name: 'user',
+                component: {
+                    template: `
+                    <div>
+                        <h1>我叫：{{$route.params.name}}</h1>
+                        <h1>我今年：{{$route.query.age}}岁了</h1>
+                        <router-link to="more" append>更多信息</router-link>
+                        <router-view></router-view>
+                    </div>
+                    `,
+                },
+                children: [{
+                    path: 'more',
+                    component: {
+                        template: `
+                            <div>
+                            我叫：{{$route.params.name}} ，这是我的信息 
+                            </div>
+                            `
+                    }
+                }]
+            },
+        ];
+
+        const router = new VueRouter({
+            routes: test,
+        });
+
+        new Vue({
+            el: '#app',
+            router: router,
+            methods: {
+                on_click: function() {
+                    setTimeout(function(){
+                        router.push('/about');
+                        setTimeout(function(){
+                            router.push({name: 'user', params:{name: '刘简'}});
+                        },2000);
+                    },2000);
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>

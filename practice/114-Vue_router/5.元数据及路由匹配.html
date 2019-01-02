@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>配置vue_router</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <router-link to="/">首页</router-link>
+            <router-link to="/login">登录</router-link>
+            <router-link to="/post">帖子管理</router-link>
+        </div>
+        <div>
+            <router-view></router-view>
+        </div>
+    </div>
+    <script src="./vue.js"></script>
+    <script src="./vue.router.js"></script>
+    <script>
+        let routes = [
+            {
+                path: '/',
+                component: {
+                    template: `
+                    <div>
+                        <h1>首页</h1>
+                    </div>
+                    `,
+                },
+            },
+            {
+                path: '/login',
+                component: {
+                    template: `
+                    <div>
+                        <h1>登录</h1>
+                    </div>
+                    `,
+                },
+            },
+            {
+                path: '/post',
+                meta: {
+                    login_required: true,
+                },
+                component: {
+                    template: `
+                    <div>
+                        <h1>帖子管理</h1>
+                        <router-link to="rain" append>☀️</router-link>
+                        <router-view></router-view>
+                    </div>
+                    `,
+                },
+                children:[
+                    {
+                        path: 'rain',
+                        component: {
+                            template: `<h3>晴天☀️</h3>`,
+                        }
+                    }
+                ]
+            },
+        ];
+
+        const router = new VueRouter({
+            routes : routes,
+        });
+
+        router.beforeEach(function (to, from, next) {
+            let logged_in = true;
+            if(!logged_in && to.matched.some(function (item) {
+                return  item.meta.login_required;
+            }))
+                next('/login');
+            else
+                next();
+        });
+
+        router.afterEach(function (to, from) {
+            console.log('to ' + to);
+            console.log('from ' + from);
+        });
+
+        new Vue({
+            el: '#app',
+            router: router,
+        });
+    </script>
+</body>
+
+</html>
