@@ -1,28 +1,59 @@
+
+//   Header函数是一个UI组件负责渲染页面上的样式  ， 容器组件是connect方法返回的组件负责处理数据和逻辑
+
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { IconGlobalStyle } from '../../statics/iconfont/iconfont';
 import { CSSTransition } from 'react-transition-group';
+import { actionCreators }  from './store';
 import { 
     HeaderWrapper,
     Logo,
     Nav,
     NavItem,
+    SearchInfo,
+    SearchInfoTitle,
+    SearchInfoSwitch,
+    SearchInfoList,
+    SearchInfoItem,
     SearchWrapper,
     NavSearch,
     Addition,
     Button,
 } from './style';
 
+
 class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            focused: false,
+
+    getListArea() {
+        const { focused, list,  } = this.props
+        if(focused) {
+            return (
+                <SearchInfo>
+                    <SearchInfoTitle>
+                        热门搜索
+                        <SearchInfoSwitch>
+                            换一批
+                        </SearchInfoSwitch>
+                    </SearchInfoTitle>
+                    <SearchInfoList>
+                        {
+                            list.map((item) => {
+                                return <SearchInfoItem key={item}>{item}</SearchInfoItem>
+                            })
+                        }
+                        
+                    </SearchInfoList>
+                </SearchInfo>
+            )
+        }else {
+            return null;
         }
-        this.handleInputFocus = this.handleInputFocus.bind(this);
-        this.handleInputBlur = this.handleInputBlur.bind(this)
     }
+
     render() {
-        return (
+        const { focused, handleInputFocus, handleInputBlur } = this.props
+        return(
             <HeaderWrapper>
                 <Logo />
                 <Nav>
@@ -35,19 +66,19 @@ class Header extends Component {
                     </NavItem>
                     <SearchWrapper>
                         <CSSTransition
-                        in={this.state.focused}
+                        in={focused}
                         timeout={200}
                         classNames="slide"
                         >
                             <NavSearch 
-                            className={this.state.focused ? 'focused' : ''}
-                            onFocus={this.handleInputFocus}
-                            onBlur={this.handleInputBlur}
+                            className={focused ? 'focused' : ''}
+                            onFocus={handleInputFocus}
+                            onBlur={handleInputBlur}
                             ></NavSearch>
                         </CSSTransition>
-                        <i className={this.state.focused ? 'focused iconfont' : 'iconfont'}>&#xe653;</i>
+                        <i className={focused ? 'focused iconfont' : 'iconfont'}>&#xe653;</i>
+                        {this.getListArea(focused)}
                     </SearchWrapper>
-                    
                 </Nav>
                 <Addition>
                     <Button className="writting">
@@ -59,18 +90,26 @@ class Header extends Component {
             </HeaderWrapper>
         )
     }
+}
 
-    handleInputFocus() {
-        this.setState({
-            focused: true,
-        })
-    }
-
-    handleInputBlur() {
-        this.setState({
-            focused: false,
-        })
+const mapStateToProps = (state) => {
+    return {
+        // focused: state.get('header').get('focused'),
+        focused: state.getIn(['header', 'focused']),
+        list: state.getIn(['header', 'list']),
     }
 }
 
-export default Header;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleInputFocus() {
+            dispatch(actionCreators.getList());
+            dispatch(actionCreators.getInputFocus());
+        },
+        handleInputBlur() {
+            dispatch(actionCreators.getInputBlur());
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
