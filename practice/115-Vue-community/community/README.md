@@ -1,4 +1,4 @@
-# hello-world
+# community
 
 ## Project setup
 ```
