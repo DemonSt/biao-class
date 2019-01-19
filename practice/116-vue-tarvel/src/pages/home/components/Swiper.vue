@@ -21,15 +21,15 @@
                 swiperList: [
                     {
                         id: '001',
-                        imgUrl: 'https://source.qunarzz.com/site/images/wns/20190109_dujia_homepage_top_banner_4.jpg'
+                        imgUrl: require('@/assets/img/swiper1.jpg')
                     },
                     {
                         id: '002',
-                        imgUrl: 'https://source.qunarzz.com/site/images/wns/20190115_dujia_homepage_2.jpg'
+                        imgUrl: require('@/assets/img/swiper2.jpg')
                     },
                     {
                         id: '003',
-                        imgUrl: 'https://source.qunarzz.com/site/images/wns/20190115_qunar_homepage_dujia_6.jpg'
+                        imgUrl: require('@/assets/img/swiper3.jpg')
                     },
                 ]
             }
@@ -44,7 +44,7 @@
         overflow: hidden;
         width: 100%;
         height: 0;
-        padding-bottom: 31.25%;
+        padding-bottom: 28%;
         .swiper-img
             width: 100%;
 </style>
