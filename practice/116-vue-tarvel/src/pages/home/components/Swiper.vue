@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
-        <swiper :options="swiperOption">
-            <swiper-slide v-for="item of swiperList" :key="item.id">
+        <swiper :options="swiperOption" v-if="getFirstPicture">
+            <swiper-slide v-for="item of list" :key="item.id">
                 <img class="swiper-img" :src="item.imgUrl" alt="" />
             </swiper-slide>
             <div class="swiper-pagination"  slot="pagination"></div>
@@ -17,21 +17,15 @@
                 swiperOption: {
                     pagination: '.swiper-pagination',
                     loop: true
-                },
-                swiperList: [
-                    {
-                        id: '001',
-                        imgUrl: require('@/assets/img/swiper1.jpg')
-                    },
-                    {
-                        id: '002',
-                        imgUrl: require('@/assets/img/swiper2.jpg')
-                    },
-                    {
-                        id: '003',
-                        imgUrl: require('@/assets/img/swiper3.jpg')
-                    },
-                ]
+                }
+            }
+        },
+        props: {
+            list: Array 
+        },
+        computed: {
+            getFirstPicture () {
+                return this.list.length;
             }
         }
     }

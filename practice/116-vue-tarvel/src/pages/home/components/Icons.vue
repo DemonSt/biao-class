@@ -1,84 +1,57 @@
 <template>
     <div class="icons">
-        <div class="icon" v-for="item of ClassifyIcon" :key="item.id">
-            <div class="icon-img">
-                <img class="icon-img-content" :src="item.imgUrl" alt="">
-                <p class="icon-describe">{{item.title}}</p>
-            </div>
-        </div>
+        <swiper :options="swiperOption"  v-if="getFirstIcon">
+            <swiper-slide v-for="page of pagination" :key="page">   
+                <div class="icon" v-for="item of page" :key="item.id">
+                    <div class="icon-img">
+                        <img class="icon-img-content" :src="item.imgUrl" alt="">
+                        <p class="icon-describe">{{item.desc}}</p>
+                    </div>
+                </div>
+            </swiper-slide>
+            <div class="swiper-pagination"  slot="pagination"></div>
+        </swiper>
     </div>
 </template>
 
 <script>
     export default {
         name: 'HomeIcons',
+        props: {
+            list: Array
+        },
         data () {
             return {
-                ClassifyIcon: [
-                    {
-                        id: '001',
-                        imgUrl: require('@/assets/img/classify1.png'),
-                        title: '景点门票'
-                    },
-                    {
-                        id: '002',
-                        imgUrl: require('@/assets/img/classify2.png'),
-                        title: '一日游'
-                    },
-                    {
-                        id: '003',
-                        imgUrl: require('@/assets/img/classify3.png'),
-                        title: '海洋馆'
-                    },
-                    {
-                        id: '004',
-                        imgUrl: require('@/assets/img/classify4.gif'),
-                        title: '滑雪季'
-                    },
-                    {
-                        id: '005',
-                        imgUrl: require('@/assets/img/classify5.png'),
-                        title: '千岛湖'
-                    },
-                    {
-                        id: '006',
-                        imgUrl: require('@/assets/img/classify6.png'),
-                        title: '世界之窗'
-                    },
-                    {
-                        id: '007',
-                        imgUrl: require('@/assets/img/classify7.png'),
-                        title: '迪士尼'
-                    },
-                    {
-                        id: '008',
-                        imgUrl: require('@/assets/img/classify8.png'),
-                        title: '野生动物园'
-                    },
-                    {
-                        id: '009',
-                        imgUrl: require('@/assets/img/classify9.png'),
-                        title: '野生动物园'
-                    },
-                    {
-                        id: '010',
-                        imgUrl: require('@/assets/img/classify10.png'),
-                        title: '野生动物园'
-                    },
-                    {
-                        id: '011',
-                        imgUrl: require('@/assets/img/classify11.png'),
-                        title: '野生动物园'
-                    },
-                ]
+                swiperOption: {
+                    pagination: '.swiper-pagination',
+                    loop: true,
+                    autoplay: false
+                }
             }
-        }
+        },
+        computed: {
+            pagination () {
+                const pages = []
+                this.list.forEach((item, index) => {
+                    const page = Math.floor(index / 8);
+                    if(!pages[page])
+                        pages[page] = [];
+                    pages[page].push(item);
+                });
+                return pages;
+            },
+            getFirstIcon () {
+                return this.list.length;
+            }
+        },
     }
 </script>
 
 <style lang="stylus" scoped>
     @import '~@/assets/styles/varibles.styl'
     @import '~@/assets/styles/mixins.styl'
+    .icons >>> .swiper-pagination-bullet-active
+        background: #fff;
     .icons
         overflow: hidden
         height: 0
@@ -111,6 +84,4 @@
                 line-height: .44rem
                 text-align: center
                 color: $darkTextColor
-                // ellipsis()
-
 </style>
