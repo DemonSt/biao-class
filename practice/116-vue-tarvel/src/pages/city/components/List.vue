@@ -12,7 +12,7 @@
             <div class="area">
                 <div class="title border-topbottom">字母排序</div>
                 <div class="button-list">
-                    <div class="alphabet-wrapper" v-for="(item, key) of cities" :key="key">
+                    <div class="alphabet-wrapper" @click="handleChangeClick" v-for="(item, key) of cities" :key="key">
                         <div class="alphabet">{{key}}</div>
                     </div>
                 </div>
@@ -44,18 +44,20 @@
             cities: Object,
             letter: String
         },
-        computed: {
-            letters1 () {
-                const letters1 = [];
-                for(let i in this.cities){
-                    letters.push(i);
-                };
-                return letters1;
+        data () {
+            return {
+                target: ''
+            }
+        },
+        methods: {
+            handleChangeClick (e) {
+                this.target = e.target.innerText;
             }
         },
         mounted() {
             this.scroll = new Bscroll (this.$refs.wrapper); 
         },
+        // 拿到点击的字母， 引用类型复制给数据  监听该数据回调函数
         watch: {
             letter () {
                 if(this.letter){
@@ -63,6 +65,13 @@
                     this.scroll.scrollToElement(element);
                 }
             },
+            target () {
+                if(this.target){
+                    console.log(this.$refs);   // 重点
+                    const element = this.$refs[this.target][0];
+                    this.scroll.scrollToElement(element);
+                }
+            }
         },
     }
 </script>
