@@ -6,7 +6,7 @@
         <!--   v-show="searchValue" 很重要 它的 z-index 导致它突出一层，会让其他功能失效， 所以只有输入的时候才能启用它 -->
         <div class="search-content" ref="searchWrapper" v-show="searchValue">
             <ul>
-                <li class="search-item border-bottom" v-for="item of list" :key="item.id">{{item.name}}</li>
+                <li class="search-item border-bottom" v-for="item of list" :key="item.id" @click="handleClickChangeCity(item.name)">{{item.name}}</li>
                 <li class="search-item border-bottom" v-show="handleNullData">没有找到匹配项</li>
             </ul>
         </div>
@@ -15,6 +15,7 @@
 
 <script>
     import Bscroll from 'better-scroll';
+    import { mapActions } from 'vuex';
     export default {
         name: 'CitySearch',
         props: {
@@ -26,6 +27,13 @@
                 timer: null,
                 list: [],
             }
+        },
+        methods: {
+            handleClickChangeCity (city) {
+                this.changeCity(city);
+                this.$router.push('/');
+            },
+            ...mapActions (['changeCity'])
         },
         watch: {
             searchValue () {
