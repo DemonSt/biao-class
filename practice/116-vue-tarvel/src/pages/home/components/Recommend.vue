@@ -2,14 +2,20 @@
     <div>
         <div class="recommend-title">猜你喜欢</div>
         <ul>
-            <li class="item border-bottom" v-for="item of list" :key="item.id">
+            <!-- :to="'/detail/' + item.id"  里面单引号 -->
+            <router-link
+            tag="li" 
+            :to="'/detail/' + item.id"    
+            class="item border-bottom" 
+            v-for="item of list" 
+            :key="item.id">
                 <img class="item-img" :src="item.imgUrl" alt="">
                 <div class="item-info">
                     <p class="item-title">{{item.title}}</p>
                     <p class="item-describe">{{item.desc}}</p>
                     <button class="item-button">详细信息</button>
                 </div>
-            </li>
+            </router-link>
         </ul>
     </div>
 </template>
