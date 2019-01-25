@@ -3,7 +3,7 @@
         <router-link tag="div" to="/" class="header-abs" v-show="showHeaderAbs">
             <div class="iconfont header-abs-back">&#xe6f0;</div>
         </router-link>
-        <div class="header-fixed"  v-show="!showHeaderAbs" :style="opacityStyle">
+        <div class="header-fixed" :style="opacityStyle">
             <router-link to="/">
                 <div class="iconfont header-fixed-back">&#xe6f0;</div>
             </router-link>
@@ -37,11 +37,11 @@
                 }
             }
         },
-        activated() {
+        mounted () {
             window.addEventListener('scroll', this.handleScroll);
         },
         // 解绑 节约性能
-        deactivated() {
+        unmounted () {
             window.removeEventListener('scroll', this.handleScroll);
         },
     }
@@ -63,23 +63,23 @@
             color: #fff
             font-size: .4rem
     .header-fixed
-        z-index: 2
-        position: fixed
+        z-index 2
+        position fixed
         top: 0
         left: 0
         right: 0
         height .86rem
         line-height .86rem
-        text-align: center
+        text-align center
         color: #fff
         background: $bgColor
         font-size: .32rem
         .header-fixed-back
-            position: absolute
+            position absolute
             top: 0
             left: 0
             width: .64rem
-            text-align: center
+            text-align center
             font-size: .4rem
             color: #fff
 </style>

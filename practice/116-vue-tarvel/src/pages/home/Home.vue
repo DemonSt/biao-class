@@ -31,7 +31,7 @@
                 ClassifyIcon: [],
                 recommendList: [],
                 weekendList: [],
-                lastCity: ''
+                lastCityPage: ''
             }
         },
         methods: {

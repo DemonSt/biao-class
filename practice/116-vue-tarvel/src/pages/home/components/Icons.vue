@@ -1,7 +1,7 @@
 <template>
     <div class="icons">
         <swiper :options="swiperOption"  v-if="getFirstIcon">
-            <swiper-slide v-for="page of pagination" :key="page">   
+            <swiper-slide v-for="page of pagination" :key="page.id">   
                 <div class="icon" v-for="item of page" :key="item.id">
                     <div class="icon-img">
                         <img class="icon-img-content" :src="item.imgUrl" alt="">

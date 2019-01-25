@@ -1,14 +1,18 @@
 <template>
     <div>
-        <DetailBanner :sightName="sightName" :bannerImg="bannerImg"></DetailBanner>
+        <DetailBanner :sightName="sightName" :bannerImg="bannerImg" :gallaryImgs="gallaryImgs"></DetailBanner>
         <DetailHeader></DetailHeader>
-        <div class="aaa"></div>
+        <div class="aaa">
+            <DetailList :categoryList="categoryList"></DetailList>
+        </div>
     </div>
 </template>
 
 <script>
     import DetailBanner from './components/Banner.vue';
     import DetailHeader from './components/Header.vue';
+    import DetailList from './components/List.vue';
+    import { mapState } from 'vuex';
     import axios from 'axios';
     export default {
         name: 'Detail',
@@ -17,31 +21,46 @@
                 sightName: '',
                 bannerImg: '',
                 gallaryImgs: [],
+                categoryList: [],
             }
         },
         components: {
             DetailBanner,
-            DetailHeader,  
+            DetailHeader, 
+            DetailList 
         },
         methods: {
+            // 请求详情页面时 每一页的数据都不同 后面跟着ID值 （因为已经在路由里定义了动态绑定 所以后面加上这段代码）
             getDetailInfo () {
-                axios.get('/api/detail.json')
-                    .then(this.getDetailInfoSucc)
+                axios.get('/api/detail.json', {
+                    params: {
+                        id: this.$route.params.id
+                    }
+                }).then(this.handleGetDetailInfoSucc)
             },
-            getDetailInfoSucc (res) {
+            handleGetDetailInfoSucc (res) {
                 res = res.data;
                 if(res.ret && res.data){
                     const data = res.data;
                     this.sightName = data.sightName;
                     this.bannerImg = data.bannerImg;
                     this.gallaryImgs = data.gallaryImgs;
-                    console.log(res);
+                    this.categoryList = data.categoryList;
                 }
             }
         },
+        // computed: {
+        //     ...mapState (['cityPage'])
+        // },
         mounted() {
             this.getDetailInfo();
         },
+        // activated() {
+        //     if(this.lastCityPage !== this.cityPage) {
+        //         this.lastCityPage = this.cityPage;
+        //         this.getDetailInfo();
+        //     };
+        // },
     }
 </script>
 

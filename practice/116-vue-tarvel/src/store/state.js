@@ -1,4 +1,5 @@
 let defaultCity = '杭州';
+let defaultCityPage = '';
 
 try {
     if(localStorage.city) 
@@ -9,4 +10,5 @@ try {
 
 export default {
     city: defaultCity,
+    cityPage: defaultCityPage
 }
