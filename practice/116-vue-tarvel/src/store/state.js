@@ -1,5 +1,5 @@
 let defaultCity = '杭州';
-let defaultCityPage = '';
+let defaultCityPage = '0001';
 
 try {
     if(localStorage.city) 

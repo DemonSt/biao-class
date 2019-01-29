@@ -22,11 +22,11 @@
                     </div>
                     <div class="iconfont banner-info-go">&#xe61d;</div>
                 </div>
-                <div class="banner-info-right">
+                <router-link tag="div" to="/intro/" class="banner-info-right">
                     <div class="banner-intro">景点简介</div>
                     <div class="banner-time">开放时间·贴士</div>
                     <div class="iconfont banner-info-go">&#xe61d;</div>
-                </div>
+                </router-link>
             </div>
             <div class="site">
                 <div class="iconfont banner-info-site">&#xe644;</div>

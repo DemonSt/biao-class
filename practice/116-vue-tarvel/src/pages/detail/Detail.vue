@@ -22,6 +22,7 @@
                 bannerImg: '',
                 gallaryImgs: [],
                 categoryList: [],
+                lastCityPage: ''
             }
         },
         components: {
@@ -49,10 +50,11 @@
                 }
             }
         },
-        // computed: {
-        //     ...mapState (['cityPage'])
-        // },
+        computed: {
+            ...mapState (['cityPage'])
+        },
         mounted() {
+            // this.lastCityPage = this.cityPage;
             this.getDetailInfo();
         },
         // activated() {
