@@ -1,0 +1,51 @@
+{
+	"success": true,
+	"data": {
+		"topicList": [{
+			"id": 1,
+			"title": "社会热点",
+			"imgUrl": "//upload.jianshu.io/collections/images/261938/man-hands-reading-boy-large.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
+		}, {
+			"id": 2,
+			"title": "手手绘",
+			"imgUrl": "//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
+		}],
+		"articleList": [{
+			"id": 1,
+			"title": "胡歌12年后首谈车祸",
+			"desc": "文/麦大人 01 胡歌又刷屏了。 近日他上了《朗读者》，而这一期的主题是“生命”，他用磁性的嗓音，朗读了一段《哈姆雷特》中的经典独白，相当震撼：...",
+			"imgUrl": "https://upload-images.jianshu.io/upload_images/2259045-2986b9be86b01f63?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"
+		}, {
+			"id": 2,
+			"title": "还记得语文课本里《买椟还珠》的故事吗？原来我们理解错了这么多年",
+			"desc": "每个人都有自己的性格，每首诗也都有自己的特点，每一天都有对应的诗，你是那一天出生就对应着哪一首诗，今天就跟着诗词君一起来看看你是哪首诗吧！ （按...",
+			"imgUrl": "https://upload-images.jianshu.io/upload_images/14551183-614c366c0aef2d8e?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
+		}, {
+			"id": 3,
+			"title": "你在哪天出生，就是哪首诗！",
+			"desc": "文/麦大人 01 胡歌又刷屏了。 近日他上了《朗读者》，而这一期的主题是“生命”，他用磁性的嗓音，朗读了一段《哈姆雷特》中的经典独白，相当震撼：...",
+			"imgUrl": "https://upload-images.jianshu.io/upload_images/12584904-94fdf49bd8ef4248?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
+		}, {
+			"id": 4,
+			"title": "水浒传中杀人越货的“必备良药”蒙汗药是何物，是否有法可解？",
+			"desc": "梁山好汉鱼龙混杂，来自不同阶层，好坏都有，有的原先是朝廷命官，有的是平头草民，有的是山中大王，有的是黑店老板...... 且说这江湖黑店，水浒这...",
+			"imgUrl": "https://upload-images.jianshu.io/upload_images/6341457-abddda47e0b3274a.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
+		}],
+		"recommendList": [{
+			"id": 1,
+			"imgUrl": "https://cdn2.jianshu.io/assets/web/banner-s-3-7123fd94750759acf7eca05b871e9d17.png"
+		}, {
+			"id": 2,
+			"imgUrl": "https://cdn2.jianshu.io/assets/web/banner-s-4-b70da70d679593510ac93a172dfbaeaa.png"
+		}, {
+			"id": 3,
+			"imgUrl": "https://cdn2.jianshu.io/assets/web/banner-s-7-1a0222c91694a1f38e610be4bf9669be.png"
+		}, {
+			"id": 4,
+			"imgUrl": "https://cdn2.jianshu.io/assets/web/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.png"
+		}, {
+			"id": 5,
+			"imgUrl": "https://cdn2.jianshu.io/assets/web/banner-s-6-c4d6335bfd688f2ca1115b42b04c28a7.png"
+		}]
+	}
+}
