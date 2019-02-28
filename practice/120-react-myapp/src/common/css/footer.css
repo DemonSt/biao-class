@@ -1,0 +1,40 @@
+#footer{
+    width:100%;
+    height: .98rem;
+    background: #fff;
+    position: fixed;
+    left:0;
+    bottom:0;
+    border-top:solid 2px #eee;
+}
+
+#footer>ul{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+}
+
+#footer>ul>li{
+    width: 100%;
+    height: 100%;
+}
+
+#footer>ul>li>a{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#footer>ul>li>a>i{
+    font-size: .32rem;
+}
+#footer>ul>li>a>span{
+    font-size: .24rem;
+}
+#footer>ul>li>.active{
+    color: rgb(253, 87, 92);
+}
