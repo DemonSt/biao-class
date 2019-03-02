@@ -6,6 +6,7 @@
 .container .main {
   height: calc(100vh);
   background: #e6e6e6;
+  overflow: auto;
 }
 
 .container .content {

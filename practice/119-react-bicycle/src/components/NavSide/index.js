@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Menu } from 'antd';
 import MenuConfig from '../../config/menuConfig.js';
 import './index.css';
@@ -26,7 +27,7 @@ class NavSide extends Component {
       menuTreeNode
     })
   };
-  // 递归 将MenuConfig里面的数据 循环渲染出来 
+  // 递归 将MenuConfig里面的数据 循环渲染出来  菜单渲染
   renderMenu (data) {
     return data.map ((item) => {
       if(item.children) {
@@ -34,7 +35,10 @@ class NavSide extends Component {
           {this.renderMenu (item.children)}
         </SubMenu>
       }
-      return <Menu.Item title={item.title} key={item.key}>{item.title}</Menu.Item>
+      return <Menu.Item title={item.title} key={item.key}>
+        <NavLink to={item.key}>{item.title}</NavLink> 
+      </Menu.Item>
+      
     });
   }
 }

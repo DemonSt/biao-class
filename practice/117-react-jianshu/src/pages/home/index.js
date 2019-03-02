@@ -34,11 +34,11 @@ class Home extends PureComponent {
       </HomeWrapper>
     )
   };
-  componentDidMount() {       
+  componentDidMount () {       
     this.props.changeHomeData();
     this.bindEvents();
   };
-  componentWillUnmount() {
+  componentWillUnmount () {
     window.removeEventListener("scroll", this.props.changeScroll)
   };
   bindEvents () {
