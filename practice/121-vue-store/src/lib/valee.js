@@ -181,7 +181,7 @@ export let is = {
    * @param {string} value
    * @return {boolean}
    */
-  email (value) {
+  mail (value) {
     let re = /^\w+@\w+\.\w+$/;
     if (!re.test(value))
       return false;

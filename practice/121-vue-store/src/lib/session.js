@@ -21,8 +21,11 @@ function logout (redirect = '/#/login') {
   location.href = redirect;
 }
 
-function user () {
-  return store.get('user');
+function user (key) {
+  let user = store.get('user');
+  if(!key)
+    return user;
+  return user[key];
 }
 
 function isAdmin () {

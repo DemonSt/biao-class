@@ -1,10 +1,15 @@
+* {
+  -webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;
+}
+
 :root {
   font-family: sans-serif;
+  color: #333;
   font-size: 12px;
 }
 
-* {
-  box-sizing: border-box;
+a {
+  text-decoration: none;
 }
 
 img {
@@ -12,6 +17,13 @@ img {
   width: 100%;
 }
 
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.form-container,
 .container {
   max-width: 800px;
   margin-left: auto;
@@ -20,23 +32,20 @@ img {
   padding-right: .5em;
 }
 
-.text-left {
-  text-align: left;
-} 
-
-.text-right {
-  text-align: right;
+.form-container {
+  max-width: 400px;
 }
 
-.text-center {
-  text-align: center;
-}
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
 
 .anchor {
   display: inline-block;
   padding: .3em .5em;
   color: #555;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .anchor:hover {
@@ -44,18 +53,18 @@ img {
   text-decoration: underline;
 }
 
-.vartical-gutter .el-col {
+.vertical-gutter .el-col {
   margin-bottom: .5em;
 }
 
 .pair {
   margin: .2em 0;
-  vertical-align: top;
 }
 
 .pair > * {
   display: inline-block;
   margin: 0 1em 0 0;
+  vertical-align: top;
 }
 
 .pair > *:nth-child(odd) {
@@ -63,7 +72,7 @@ img {
 }
 
 .well {
-  background: rgba(0, 0, 0, .1);
+  background: rgba(0,0,0,.1);
   padding: .5em;
 }
 
@@ -73,5 +82,29 @@ img {
 }
 
 .cny:before {
-  content: '¥';
+  content: '￥';
+}
+
+form label {
+  display: block;
+  margin: .5em 0;
+}
+
+.title {
+  font-weight: bold;
+}
+
+form .title {
+  display: inline-block;
+  margin: .5em 0;
+  font-size: 110%;
+}
+
+.error {
+  color: #e10;
+}
+
+form .error {
+  display: block;
+  margin: .5em 0;
 }
