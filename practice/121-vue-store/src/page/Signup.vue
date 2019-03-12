@@ -113,7 +113,7 @@
         // 能走到这一步说明没有错误 直接将这个函数反回true
         return true;
       },
-
+      // 查询
       uniqueExist () {
         let key   = this.signupBy;
         let value = this.form[ this.signupBy ];

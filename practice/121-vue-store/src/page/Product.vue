@@ -138,7 +138,15 @@
     name: 'Product',
     components: {
       RegularNav
-    }
+    },
+    data() {
+      return {
+        id: null
+      }
+    },
+    mounted() {
+      this.id = this.$route.params.id;
+    },
 }
 </script>
 

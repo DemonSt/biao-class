@@ -16,7 +16,7 @@
     name: 'app',
     components: {
       GolbalNav,
-      GolbalFooter
+      GolbalFooter,
     }
   }
 </script>

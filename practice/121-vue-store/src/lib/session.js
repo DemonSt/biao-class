@@ -27,9 +27,10 @@ function user (key) {
     return user;
   return user[key];
 }
-
+// 给 u 一个非空判断
 function isAdmin () {
-  return user().IS_ADMIN;
+  let u = user();
+  return u && user().IS_ADMIN;
 }
 
 export default {
