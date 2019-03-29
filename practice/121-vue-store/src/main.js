@@ -18,7 +18,7 @@ import Recover from './page/Recover.vue';
 import My from './page/My.vue';
 import Settings from './page/Settings.vue';
 import Order from './page/Order.vue';
-import Cart from './page/Cart.vue';
+// import Cart from './page/Cart.vue';
 
 import AdminBase from './page/admin/Base.vue';
 import AdminUser from './page/admin/User.vue';
@@ -28,6 +28,13 @@ import AdminBrand from './page/admin/Brand.vue';
 import AdminProduct from './page/admin/Product.vue';
 
 window.api = api;
+
+Vue.filter('cut', function(value, max){
+  if (!value) return '';
+  value = value.toString();
+  return value.slice(0, max) + '...';
+})
+
 
 Vue.use(ElementUI);
 Vue.use(Router);
@@ -66,12 +73,13 @@ const router = new Router({
           path: 'settings',
           component: Settings
         },{
-          path: 'order',
+          path: 'order/:id?',
           component: Order
-        },{
-          path: 'cart',
-          component: Cart
-        }
+        },
+        // {
+        //   path: 'cart',
+        //   component: Cart
+        // }
       ]
     },
     {

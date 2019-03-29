@@ -135,11 +135,13 @@
         <label>
           <span class="title">独有属性</span>
           <!--<button type="button" class="el-button el-button&#45;&#45;default">+</button>-->
+          <!-- 自定义添加的属性  -->
           <div class="row">
             <input v-model="propForm.key" class="even" type="text" placeholder="名称">
             <input v-model="propForm.value" class="even" type="text" placeholder="可选的值，请用|隔开">
             <button @click="addProp" type="button">完成</button>
           </div>
+          <!-- 当点击完成按钮后 就把键值对 渲染到页面上 -->
           <div :key="k" v-for="(v, k) in form.prop" class="row">
             <span>{{k}}</span>:
             <span>{{v}}</span>
@@ -155,7 +157,7 @@
         <div>
           <label>
             <span class="title">主图</span>
-            <Uploader @uploadSuccess="singleCoverUploaded" :autoUpload="true"/>
+            <Uploader @uploadSuccess="singleCoverUploaded" :autoUpload="true"/> <!-- 插入主图的组件  -->
           </label>
           <el-row>
             <el-col :key="img" class="thumbnail" :span="6" v-for="img in form.main_img">
@@ -341,10 +343,11 @@
         let f     = this.form;
         let key   = pf.key;
         let value = pf.value;
-
+        // 如果没填 就直接返回 否则 undefind 就会给添加进去了
         if (!key || !value)
           return;
-
+        // 如果一开始没有 this.form.prop 就初始化创建一个 否则就往里添加  this.form:{ prop:{ this.propForm.key: this.propForm.value } }
+        // Vue 不允许在已经创建的实例上动态添加新的根级响应式属性 (root-level reactive property)。然而它可以使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象上
         if (!f.prop)
           this.$set(f, 'prop', {});
 
@@ -352,31 +355,40 @@
 
         this.propForm = {};
       },
+      // 删除自定义的个性属性
       removeProp (key) {
         this.$delete(this.form.prop, key);
       },
+      // 更新自定义的个性属性  必须 $set 才能动态渲染视图
       fillPropForm (key, value) {
         this.$set(this.propForm, 'key', key);
         this.$set(this.propForm, 'value', value);
       },
+      // 轮播图执行函数
       carouselUploaded (data) {
         this.form.carousel_img = data;
+        // this.$set(this.form, 'carouse_img', data);
       },
+      // 添加主图 首先 form 没有 main_img 就先初始化一个 然后给他添加
       singleCoverUploaded (data) {
+        console.log(data);
         if (!this.form.main_img)
           this.$set(this.form, 'main_img', []);
 
         this.form.main_img.push(data);
       },
+      
       singleDescImageUploaded (image, index) {
         this.updateDesc(index, image);
       },
+      // 添加详情描述 首先 form 没有 detail 就先初始化一个 然后给他添加 这个函数只负责往里面推一项数据 并不在乎是文字还是图片
       inertDesc (type) {
         if (!this.form.detail)
           this.$set(this.form, 'detail', []);
 
         this.form.detail.push({ type });
       },
+      // 有了 inertDesc 函数之后才能更新 
       updateDesc (index, value) {
         this.$set(this.form.detail[ index ], 'value', value);
         console.log(this.form.detail);

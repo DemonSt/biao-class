@@ -1,5 +1,5 @@
 import { call as valee } from '../lib/valee';
-
+// admin这个文件会合并
 export default {
   //  生命周期函数，页面加载初期 发送api 查询用户数量
   mounted () {
@@ -11,19 +11,19 @@ export default {
         formVisible : false,       // 控制创建按钮的显示与隐藏
       },
       readParam    : {             // 每次去后端读数据 读多少条 默认 15 条，且 第一页
-        limit : 15,
+        limit : 10,
         page  : 1,
       },
       list         : [],
       form         : {},            //  这就是vmodel 双向绑定的那个form input框变化时自动往里推数据
       total        : 0,             // 表示一共有几条，默认0条
-      formOriginal : null,          // form原始数据 让后续操作可以拷贝一份
+      formOriginal : null,          // form原始数据 拷贝一份 用来在更新操作时 对比看哪一条更新了
       rules        : {},
       errors       : {},
     };
   },
   methods : {
-    // 点击翻页之后触发的函数 
+    // 点击翻页之后触发的函数  切换成当前页读取数据
     flip (page) {
       this.readParam.page = page;
       this.read();
@@ -123,7 +123,7 @@ export default {
       this.formOriginal   = row;
       this.form           = { ...row };
     },
-
+    // 删除某项
     remove (id) {
       if (!confirm('确定要删除此项吗？'))
         return;
@@ -141,7 +141,7 @@ export default {
           this.total = r.total;
         });
     },
-
+    // 创建或者更新 首先验证 没问题则判断是否有id 有就是更新没有就是创建 之后隐藏表单
     createOrUpdate () {
       if (!this.validateForm())
       {
@@ -167,7 +167,7 @@ export default {
       this.ui.formVisible = false;
       this.form           = {};
     },
-
+    // 下拉组件 传入的方法 
     makeSelect (prop) {
       return it => {
         this.form[ prop ] = it.id;

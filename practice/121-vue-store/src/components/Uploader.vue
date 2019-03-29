@@ -28,14 +28,15 @@
         fd.append("file", f);
 
         this.$emit('change', f);
-
+ 
         if (this.autoUpload) {
           let fd = new FormData();
           fd.append('file', f);
           api('_file/create', fd)
+            // 图片上传之后再触发下面的   上传后并清空
             .then(r => {
               if (r.success) {
-                input.value = '';
+                input.value = '';   
                 this.$emit('uploadSuccess', r.data);
               } else
                 this.$emit('uploadFail', r);

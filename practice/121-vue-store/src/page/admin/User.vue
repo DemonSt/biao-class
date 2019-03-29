@@ -41,6 +41,7 @@
             <span :key="e" v-if="invalid" v-for="(invalid, e) in errors.password" class="error">{{rules.password[e].msg}}</span>
           </span>
         </label>
+        
         <label>
           <button class="el-button el-button--primary" type="submit">提交</button>
           <button class="el-button el-button--text" @click="ui.formVisible=false">取消</button>
@@ -57,7 +58,7 @@
         <el-table-column
                 prop="nickname"
                 label="昵称"
-                width="180">
+                width="1800">
         </el-table-column>
         <el-table-column
                 prop="phone"
@@ -73,7 +74,7 @@
                 label="操作"
                 width="100">
           <template slot-scope="scope">
-            <el-button @click="fill(scope.row)" type="text" size="small">更新</el-button>
+            <el-button @click="fill(scope.row)" type="text" size="small">更新</el-button>   <!-- scope.row 它传给你点击更新的那一项 -->
             <el-button @click="remove(scope.row.id)" type="text" size="small">删除</el-button>
           </template>
         </el-table-column>
@@ -85,7 +86,7 @@
                 layout="prev, pager, next"
                 :total="total"
                 @current-change="flip"     
-        >       <!-- page-size 多少条数据，current-page 第几页，  current-change 翻页时触发  -->
+        >       <!--  备注： page-size 多少条数据，current-page 第几页， 总数 total ，   current-change 翻页时触发的回调函数  -->
         </el-pagination>
       </div>
     </div>

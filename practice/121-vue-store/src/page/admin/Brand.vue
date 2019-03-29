@@ -16,7 +16,7 @@
           <span class="title">品牌名</span>
           <input class="el-input__inner" type="text" v-model="form.name">
           <span class="error-list">
-            <span v-if="invalid" v-for="(invalid, e) in errors.name" class="error" :key="e">{{rules.name[e].msg}}</span>
+            <span  v-if="invalid" v-for="(invalid, e) in errors.name" class="error" :key="e">{{rules.name[e].msg}}</span>
           </span>
         </label>
         <label>
